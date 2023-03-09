@@ -1,0 +1,52 @@
+div.box{
+border: 2px solid;
+margin: 20%;
+padding: 100px 50px 150px 30px;
+padding-left: 12%;
+border-radius: 20px;
+background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  
+}
+div.log{
+    text-align: center;
+    color: aliceblue;
+    
+}
+input{
+border: 1px solid;
+border-radius: 5px;
+padding: 10px;
+box-shadow: 5px 5px 25px #000;
+}
+
+input:focus {
+    width: 100%;
+  }
+  input.c{
+    width: 50%;
+    width: 150px;
+  background-color: rgb(248, 247, 247);
+  box-shadow: 5px 5px 25px #000;
+  transition: all 1s;
+
+  }
+  input.c:hover {
+    /* Increase width */
+    width: 185px;
+    /* Change color */
+    background-color: orange;
+    /* Move the shadow */
+    box-shadow: -5px 5px 25px #000;
+  }
+body{
+    background-image: url("black.jpg") ; 
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body{
+    height: 100%;
+}
