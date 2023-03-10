@@ -9,12 +9,7 @@ div.box{
   width: 250px;
   height: 250px;
   }
-  div.log{
-      text-align: center;
-      color: aliceblue;
-      padding-bottom: 0%;
-      
-  }
+  
 h1.r{
     text-align: center;
     
@@ -47,10 +42,21 @@ h1.r{
     }
   body{
       background-image: url("black.jpg") ; 
-      background-position: center;
+      background-position:center;
+      background-size:contain;
+      
      
   }
   body{
       height: 100%;
   }
- 
+ h1.for{
+color: #ffffff;
+font-size:x-small ;
+text-align: left;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }
+ h1.for:hover{
+  color: rgb(71, 175, 235);
+text-decoration: underline; 
+}
