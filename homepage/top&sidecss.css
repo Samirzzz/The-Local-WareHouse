@@ -143,6 +143,7 @@ padding-bottom: 20%;
 margin-left: 31cm;
 margin-right: 75px;
 margin-top: 3%;
+
 }
 @keyframes slideleft {
   from{
@@ -154,12 +155,13 @@ transform: translateY(100%);
 
 }
 div.brands{
-  /* felx bet5liha bel 3ard we display flex bet5liha flexbox */
+  /* flex bet5liha bel 3ard we display flex bet5liha flexbox */
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
 justify-content:center  ;
 transition: 3s;
+overflow:hidden ;
 
 }
 /* div.s{
@@ -170,15 +172,10 @@ transition: 3s;
   animation-fill-mode: forwards;
 } */
 .s:hover{
-  filter: blur(0);
-filter: blur(0);
+ transform: scale(1.5);
+ transition: 1s;
 }
-.s{
-  filter: blur(3px);
-filter: blur(3px);
-transition: .3s ease-in-out;
-transition: .3s ease-in-out;
-}
+
 @keyframes gradient {
   0% {
   background-position: 0% 50%;
@@ -197,4 +194,20 @@ body{
 }
 .amar{
 object-fit: cover;
+}
+
+
+@keyframes auto {
+  0% {
+transform: translateY(0); 
+ }
+100%{
+  transform: translateY(calc(250px*4));
+}
+}
+.track{
+animation: auto 10s linear infinite;
+;}
+.track:hover{
+  animation-play-state: paused;
 }
