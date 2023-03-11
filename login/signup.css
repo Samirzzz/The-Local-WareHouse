@@ -8,13 +8,15 @@ div.box{
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
     width: 200px;
     height: 250px;
+    padding-top: 10px;
+    padding-bottom: 250px;
     }
     
   h1.r{
       text-align: center;
       
     }
-    input{
+    input.cc{
         
     border: 1px solid;
     border-radius: 5px;
@@ -24,8 +26,8 @@ div.box{
     box-shadow: 5px 5px 25px #000;
     }
     
-    input:focus {
-        width: 100%;
+    input.cc:focus {
+        width: 150%;
       }
       input.c{
         width: 50%;
@@ -33,7 +35,10 @@ div.box{
       background-color: rgb(248, 247, 247);
       box-shadow: 5px 5px 25px #000;
       transition: all 1s;
-    
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 10px;
+      padding-right: 60px;
       }
       input.c:hover {
         /* Increase width */
@@ -63,3 +68,15 @@ div.box{
     color: rgb(71, 175, 235);
   text-decoration: underline; 
   }
+  .d{
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    padding-right: 60px; 
+   }
+   .sel{
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    padding-right: 60px;
+   }
