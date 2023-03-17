@@ -1,0 +1,52 @@
+div.main{
+ padding: 3cm 2cm 2cm 4cm;
+	font-size: 14px;
+	margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 1cm;
+    padding-left: 2cm;
+    background-color: white;
+}
+.x{
+   
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+  
+    }
+   
+    body {
+       
+       
+        display: flex;
+       
+        align-items:center;
+    
+        justify-content: center;
+        background-color: whitesmoke;
+    }
+    
+    h1{
+    text-align:right;
+  margin-right: 1cm;
+  margin-top: -50px;
+  font-family:serif;
+    }
+    .c{
+        font-size: 14px;
+	margin-top:20px;
+    background-color: rgb(31, 90, 238);
+    transition:  1s;
+color: white;   
+border:1px  solid;
+    border-radius: 5px;
+    padding: 8px;
+  width: 250px;
+  
+    
+    }
+    .c:hover{
+        width: 270px;
+        
+    }

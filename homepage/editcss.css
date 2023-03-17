@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+nav.head
+{
+background: black;
+height: 40px;
+margin-top: 0;
+}
+
+nav.head ul
+{
+float:right;
+margin-right: 20px;
+}
+
+nav.head ul li
+{
+font-size: 14px;
+border-color: #ffffff;
+display:inline-block;
+line-height: 10px;
+top: 10px;
+padding: 10px;
+}
+a:link
+{
+color:white;
+}
+nav.head ul li a
+{
+font-size: 20px;
+
+}
+.head ul li a:hover
+{
+transition: 3s;
+color: #000000;
+background: whitesmoke;
+padding-left: 1px;
+
+}
+*{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.sidebar {
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #000000;
+  transition: all .5s ease;
+}
+.sidebar header {
+  font-size: 22px;
+  color: white;
+  top: 10px;
+  line-height: 30px;
+  text-align: center;
+  background: #000000;
+  user-select: none;
+}
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 30px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-top: 1px solid rgb(0, 0, 0);
+  transition: .4s;
+}
+ul li:hover a{
+  padding-left: 50px;
+  background: whitesmoke;
+  color: black;
+}
+.sidebar ul a i{
+  margin-right: 16px;
+}
+
+#check{
+  display: none;
+}
+label #btn,label #cancel{
+  position: absolute;
+  border-radius: 3px;
+  cursor: pointer;
+}
+label #btn{
+  left: 10px;
+  top: 5px;
+  background: #000000;
+  color: white;
+  font-size: 35px;
+  transition: all .5s;
+}
+label #cancel{
+  z-index: 1111;
+  left: -195px;
+  top: 17px;
+  font-size: 30px;
+  color: #ffffff;
+  padding: 4px 9px;
+  transition: all .5s ease;
+}
+#check:checked ~ .sidebar{
+  left: 0;
+}
+#check:checked ~ label #btn{
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+  left: 195px;
+}
+#check:checked ~ section{
+  margin-left: 250px;
+}
+section{
+  background: url(bg.jpeg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  transition: all .5s;
+}
+input.ccc:disabled{
+    background-color: #f0f0f0 ;
+    width: 65%;
+    
+}
+.ee{
+    border: 1px solid;
+    border-radius: 3.5px;
+    padding: 5px;
+    padding-right: 60px;
+    width: 65%;
+    
+}
+div.title{ 
+    float: right;
+   margin-right: 14.98%;
+   font-size: larger ;
+   position: relative;
+  margin-top: 100px;
+   width: 20.11cm;
+   height: 1.3cm;
+ background-color: #d6d6d6 ;
+ 
+}
+h1.head{
+    color: #000;
+margin-left: 3%;
+margin-top: 9px;
+font-weight: 100;
+font-size:larger;
+font-family:'Times New Roman', Times, serif;
+}
+div.two{
+    margin-left: 15%;
+    margin-top: 120px;
+  float: left;
+    
+}
+div.one{
+    width: 40%;
+    height: 5cm;
+    margin-left: 35%;
+    margin-top: 9%;
+    margin-bottom: 50%;
+    padding: 5%;
+    padding-bottom: 14%;
+    background-color: rgb(255, 255, 255);
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+}
+.cc{
+    border: 1px solid;
+    border-radius: 3.5px;
+    padding: 5px;
+    padding-right: 60px;
+    
+    
+}
+.ccc{
+    border: 1px solid;
+    border-radius: 3.5px;
+    padding: 5px;
+    padding-right: 60px;
+    
+  
+}
+.cccc{
+    width: 50%;
+        width: 150px;
+      background-color: rgb(31, 90, 238);
+      color: white;
+      transition: all 1s;
+      border: 1px solid;
+      border-radius: 3.5px;
+      padding: 5px;
+      padding-right: 60px;
+}
+.cccc:hover{
+    
+        /* Increase width */
+        width: 233px;
+        /* Change color */
+        background-color: rgb(31, 90, 238);
+        /* Move the shadow */
+        box-shadow: -5px 5px 25px #000;
+      
+}
+
+img.i{
+    margin-left: 30%;
+}
+body{
+    background-color:hsl(0, 0%, 99%);
+
+
+}
+
