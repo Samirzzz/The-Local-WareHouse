@@ -1,6 +1,81 @@
 <html>
 <link rel="stylesheet" href="signup.css">
 <title>the Local Warehouse</title>
+<head>
+    <style>
+        .error{
+            color: red;
+            font-size: small;
+        }
+    </style>
+</head>
+<script defer>
+    function validateUserName(field) {
+        if (field == '') {
+            document.getElementById("errorNameid").innerHTML = "Your email must be filled";
+           return 'hh';
+        }
+        else
+            return '';
+    }
+  
+
+    function validatepassword(field1, field2) {
+  
+     
+         if (field1 != field2) {
+        document.getElementById("errorpass").innerHTML= " password doesnt match ";    
+      }
+    else  if(field1 =='' || field2 ==''){
+            document.getElementById("errorpass").innerHTML="your password must be filled";
+       
+        }
+        else 
+        return '';
+
+        }
+    function validateage(field) {
+      if (field < 8) {
+        return 'not old enough';
+      
+      }
+      else
+      return '';
+ 
+    }
+ 
+    function
+        validateDOB(field) {
+            let dob = new Date(field);
+            
+        let diff_ms = Date.now() - dob.getTime();
+
+        let  age_dt = newDate(diff_ms);
+
+        if (Math.abs(age_dt.getUTCFullYear() - 1970) >= 18)
+
+            return'';
+
+        else
+
+        return'You Must be older than 18 years.';
+
+    }
+    function
+        validate(form){
+            let fail='';
+            fail+=validateUserName(form.username.value);        
+             fail += validatepassword(form.password.value, form.conpassword.value);
+             
+            // fail+=validateDOB(form.datee.value); 
+            if(fail==''){
+                return true;
+            }
+            else
+            return false;
+        }
+
+</script>
 
 <body>
     <div class="log">
@@ -13,26 +88,37 @@
         <h1
             style="color: aliceblue; text-align:center 12 ;padding-left: 23%;margin:1px ;padding-bottom: 5%;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             Sign Up</h1>
-        <form action="" method="post" class="q">
-            <input class="cc" type="text" name="username" placeholder="username " required><br><br>
-            <input class="cc" type="email" name="Email" placeholder="Email " required><br><br>
-            <input class="cc" type="password" name="password" placeholder="password " required><br><br>
-            <input class="cc" type="password" name="password" placeholder="Confirm password " required><br><br>
-            <input class="cc" type="text" name="phone" placeholder="phone no. " required><br><br>
-           
-                <input class="d" type="date" name="date" id="date" required>  <br><br>
-            <select class="sel" name="gender" required >
-              <option value="">Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-             </select><br><br>  
-       
+        <form action="" method="post" class="q" onsubmit="return validate(this)">
+            <input class="cc" id="errorName" type="text" name="username" placeholder="username ">
+            <span class="error" id="errorNameid" aria-hidden="true"> </span>
+            <br><br>
+            <input class="cc" type="email" id="errormail" name="Email" placeholder="Email " >
+            <span class="error" id="errormail"></span>
+            <br><br>
+            <input class="cc" type="password" id="errorpassid" name="password" placeholder="password " >
+            <span class="error" id="errorpass"></span>
+            <br><br>
+            <input class="cc" type="password"  name="conpassword" placeholder="Confirm password " >
+            <span class="error" id="errorconpassid"></span>
+            <br><br>
+            <input class="cc" type="text" id="errorno" name="phone" placeholder="phone no. " >
+            <br><br>
+            <input class="d" type="date" name="date" id="date" > 
+            <br><br>
+            <span class="error" name="datee"></span>
+
+            <select class="sel" name="gender" >
+                <option value="">Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br><br>
+
             <input type="submit" value="Create" class="c">
             <h1 class="for">Already have an account?</h1>
         </form>
 
     </div>
-    
+
 
 
 </body>
