@@ -1,0 +1,43 @@
+<html>
+<link rel="stylesheet" href="forget.css">
+<script >
+    
+    
+    function val(field){
+    var email=document.getElementById("email");
+    var password=document.getElementById("password").value;
+    var confirm=document.getElementById("confirm").value;
+
+if(password!=confirm){
+   document.getElementById("mess").innerHTML="incorrect password";
+   return false;
+}
+return true;
+}
+
+
+</script>
+
+<body>
+   
+
+    
+    <div class="main">
+        <h1 >Reset password</h1><br><br><br>
+<form action="" method="post"  onsubmit="return val(this)">
+    <input class="x" type="text" name="email" placeholder="Enter your email address"><br>
+    
+    <!-- <span id="mess" style="color: red; ;">    </span><br><br> -->
+    <input  type="submit"value="Send password reset email" class="c" >
+    
+</form>
+
+
+    </div>
+
+
+
+
+
+</body>
+</html>
