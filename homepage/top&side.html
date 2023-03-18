@@ -1,29 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <link rel="stylesheet" href="top&sidecss.css">
     <link rel="stylesheet" href="top&sidecss.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Loacl Warehouse </title>
+
+
+<!-- slideshow motion and index counter -->
+    <script>
+    
+      var slideIndex = 1;
+  showSlides(slideIndex);
+  function plusSlides(n) {
+      showSlides(slideIndex += n);
+  }
+  function currentSlide(n) {
+      showSlides(slideIndex = n);
+  }
+  function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+  }
+
+  // Auto Slide 
+  var slideIndex = 0;
+  showSlides();
+  function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+     for (i = 0; i < slides.length; i++) {
+         slides[i].style.display = "none";
+     }
+     slideIndex++;
+     if (slideIndex > slides.length) { slideIndex = 1 }
+     slides[slideIndex - 1].style.display = "block";
+     setTimeout(showSlides, 7000); // Change image every 2 seconds
+  }
+  </script>
 </head>
 
 <body>
-
+   <!-- the head bar (account/wishlist/cart) -->
     <nav class="head">
-        <ul>
-            <li><a href="#" style="color: aliceblue;"><i class='bx bx-cart'></i>Cart </a></li>
-            <li><a href="#" style="color: aliceblue;"><i class='bx bx-user-circle'></i>Account </a></li>
-
+        <ul><li><a href="#" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist </a></li>
+            <li><a href="#" style="color:white"><i class='bx bx-cart'></i>Cart </a></li>
+            <li><a href="#" style="color:white"><i class='bx bx-user-circle'></i>Account </a></li>
         </ul>
+
+
+<!-- the menu checkbox -->
     </nav>
     <input type="checkbox" id="check">
     <label for="check">
-        <i class='bx bx-menu' id="btn"></i>
+        <i class='bx bx-menu' id="mnubtn"></i>
         <i class='bx bx-arrow-back' id="cancel" ></i>
     </label>
+
+ 
+    <!-- sidebar content  -->
     <div class="sidebar">
         <header><i class='bx bx-home'></i>The <br> Local <br> Warehouse </header>
         <ul>
@@ -35,26 +84,50 @@
             <li><a href="#"><i class='bx bx-log-out'></i>Log Out</a></li>
         </ul>
     </div>
-    
-    <!-- <img src="download.jpg" alt="" width="50%" height="70%">     -->
+ 
 
-    <div class="brands">
-           <div class="track">
-        <div class="s"><img src="ck.png" alt="ck" width="130"></div><br><br><br><br>
-        <div class="s"><img src="ae.png" alt="ae" width="130"></div><br><br><br><br>
-        <div class="s"><img src="ga.jpg" width="130" ></div><br><br><br><br>
-        <div class="s"><img src="hol.png" width="130"></div>
+
+    <!-- slideshow images and container -->
+    <div class="slideshow-container">
+      <div class="mySlides fade"> 
+        <!-- the text and button -->
+        <div class="textcontainer">
+            <div class="text">THE BEST <BR> LOACL BRANDS <BR>IN TOWN SHOP NOW!!!.. </div>
+           <button class="butt">View Products</button>
+            </div> 
+            <!-- theimage itself -->
+          <img src="pic2-slideshow.png" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+         <!-- the text and button -->
+        <div class="textcontainer">
+            <div class="text">THE BEST <BR> LOACL BRANDS <BR>IN TOWN SHOP NOW!!!.. </div>
+           <button class="butt">View Products</button>
+            </div>
+             <!-- theimage itself -->
+          <img src="pic1-slideshow.png" style="width:100%">
         
-        </div><br>
-    </div> 
-    <div class="threed">
-     <span style="--i:1;"><img src="cargo.png" alt="cargo" ></span>
-     <span style="--i:2;"><img src="hoodie.png" alt="hoodie" ></span>
-     <span style="--i:3;"><img src="shirt.png"  ></span>
-     <span style="--i:4;"><img src="crop.png" ></span>
-     
- </div> 
+      </div>
+      <div class="mySlides fade">
+         <!-- the text and button -->
+        <div class="textcontainer">
+            <div class="text">THE BEST <BR> LOACL BRANDS <BR>IN TOWN SHOP NOW!!!.. </div>
+           <button class="butt">View Products</button>
+            </div>
+             <!-- theimage itself -->
+          <img src="pic3-slideshow.png" style="width:100%">
+      </div>
+       <!-- the counter for images  -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
 
+  <!-- the dots on the bottom  -->
+  <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
 
 </body>
 
