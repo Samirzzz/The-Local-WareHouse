@@ -44,15 +44,19 @@
 </div>
 <div class="one">
     <h1>     </h1><br><br>
-        <form action="" method="post" class="q">
+        <form action="" method="post" class="q" onsubmit="return val(this)">
             <input class="ccc" type="text" name="username" placeholder="username " disabled ><br><br>
             <input class="ee" type="email" name="Email" placeholder="Email "  ><br><br>
-            <input class="ccc" type="text" name="first" placeholder="First Name " > <span><input class="ccc" type="text" name="last" placeholder="Last Name " ></span><br><br>
+            <span id="name" style="color: red;font-size:90%;"></span>
+            <input class="ccc" type="text" name="first" placeholder="First Name " > <span id="namee" style="color: red;font-size: 90%;"></span> <span><input class="ccc" type="text" name="last" placeholder="Last Name " ></span><br><br>
             
-            <input class="cc" type="password" name="password" placeholder="password " ><span>  <input class="cc" type="password" name="password" placeholder="Confirm password " >
+            <span id="pass" style="color: red;font-size:90%;"></span>
+            <input class="cc" type="password" name="password" placeholder="password " > <span id="passs" style="color:red ;font-size:90%;"></span> <span>  <input class="cc" type="password" name="cpassword" placeholder="Confirm password " > <div id="cpass" style="color: red;font-size:70%;margin-bottom: 3px; "></div><div id="lpass" style="color: red;font-size:70%; margin-bottom: -15px; "></div><div id="mpass" style="color: red;font-size:70%; margin-bottom: -15px;" ></div>
+
             </span><br><br>
             <input class="cc" type="text" name="Address" placeholder="Address " >
-            <input class="cc" type="text" name="phone" placeholder="phone no. " ><span></span><br><br>   
+       
+        <span id="ph" style="color: red;"></span> <input class="cc" type="text" name="phone" placeholder="phone no. "  ><span></span><br><br>   
             <input type="submit" value="  Save Changes" class="cccc">
             
         </form>
@@ -66,4 +70,62 @@
 
 </body>
 
+<script>
+function pass(field,field2) {
+    if (field==""||field2==""){
+document.getElementById("pass").innerHTML="*";
+document.getElementById("passs").innerHTML="*";
+} else if(field.length<4){
+        document.getElementById("lpass").innerHTML="enter more than 4 characters";/*es2al el doc enak t5li loan el border nhowa el yetghyr*/
+
+    }else if(field.length>12){
+        document.getElementById("mpass").innerHTML="enter less than 12 characters";
+    }
+else if(field!=field2){
+    document.getElementById("cpass").innerHTML="Incorrect password";
+
+}
+   
+    else{
+        document.getElementById("lpass").innerHTML="";
+        document.getElementById("pass").innerHTML="";
+document.getElementById("passs").innerHTML="";
+document.getElementById("mpass").innerHTML="";
+document.getElementById("cpass").innerHTML="";
+
+
+}
+}
+function name(field,field2) {
+    if (field==""||field2==""){
+document.getElementById("name").innerHTML="*";
+document.getElementById("namee").innerHTML="*";
+
+
+    }else
+    return "";
+}
+function tel(field) {
+  var  pattern=/^01[0-2,5]{1}[0-9]{8}$/;
+    if(field!=pattern){
+        document.getElementById("ph").innerHTML="*";
+
+    }else{
+        return "";
+    }
+}
+function val(form) {
+    fail="";
+    fail+=name(form.first.value,form.last.value)
+    fail+=pass(form.password.value,form.cpassword.value)
+fail+=tel(form.phone.value);
+    if(fail==""){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+</script>
 </html>
