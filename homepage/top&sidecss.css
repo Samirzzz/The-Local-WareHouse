@@ -176,6 +176,7 @@ img  /*allign photos in middlie vertically */
   margin: auto;
   overflow: auto;
 max-width: 100%;
+height: 550px;
 margin: auto;
 }
 
@@ -231,7 +232,7 @@ animation-duration: 2s;
 }
 @keyframes fade 
  {
-from {opacity: .4} 
+from {opacity: .6 } 
 to {opacity: 1}
 }
 
@@ -241,34 +242,35 @@ to {opacity: 1}
   text-align: left;
  font-family: 'Righteous', cursive;
  font-size:47px; 
- top: 30%;
- left: 7%;
+ top:10%;
+ left: 9%;
  color: #000000;
- text-shadow: 0 1px 0 #ffffff, 0 2px 0 #ffffff,
- 0 3px 0 #ccc, 0 4px 0 #959595,
- 0 5px 0 #ccc, 0 6px 0 #ccc,
- 0 7px 0 #ccc, 0 8px 0 #ccc,
- 0 9px 0 #a5a5a5, 0 10px 0 #ccc,
- 0 11px 0 #ccc, 0 12px 0 #ccc,
- 0 20px 30px rgba(0, 0, 0, 0.5);
+
 }
 .butt /*the button in the middle of the sliude show */
 {
   position: absolute;
-  cursor: pointer;
-  top: 53%;
+  top: 43%;
   left: 10%;
-  font-family: 'Righteous', cursive;
-  border-radius: 12px;
-  background-color: white;
-  font-size: 30px;
-  border-width: 5px;
-  border-color: black;
-  padding: 3px 3px 3px 3px;
+font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-size: 25px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ border: solid 0px;
+ border-radius: 5px;
+  padding: 8px 8px 8px 8px;
 }
 .butt:hover /*hovering effect of the button */
 {
-background-color: #000000;
-color: #ffffff;
-transition: all  2s ease-in-out;
+background-color: #ffffff;
+scale: 1.2;
+color: #000000;
+transition: all  1.5s ;
+}
+
+
+div.info{
+  border: solid black;
+  height: 2cm;
 }

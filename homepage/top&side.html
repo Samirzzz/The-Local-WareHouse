@@ -13,44 +13,58 @@
 <!-- slideshow motion and index counter -->
     <script>
     
-      var slideIndex = 1;
-  showSlides(slideIndex);
-  function plusSlides(n) {
-      showSlides(slideIndex += n);
-  }
-  function currentSlide(n) {
-      showSlides(slideIndex = n);
-  }
-  function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("dot");
-      if (n > slides.length) { slideIndex = 1 }
-      if (n < 1) { slideIndex = slides.length }
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].className += " active";
-  }
+    //   var slideIndex = 1;
+//   showSlides(slideIndex);
+//   function plusSlides(n) {
+//       showSlides(slideIndex += n);
+//   }
+//   function currentSlide(n) {
+//       showSlides(slideIndex = n);
+//   }
+var index=0;
+  function showslides(){
+    var image=document.getElementsByClassName("mySlides ")
+    for(var i=0;i < image.length;i++){
+        image[i].style.display="none";
+    }
+    if(index>image.length-1){
+        index=0;
+    }
+image[index].style.display="block";
+index++;
+setTimeout(showslides,3000);
+}
+setTimeout(showslides,100);
+//   function showSlides(n) {
+//       var i;
+//       var slides = document.getElementsByClassName("mySlides");
+//       var dots = document.getElementsByClassName("dot");
+//       if (n > slides.length) { slideIndex = 1 }
+//       if (n < 1) { slideIndex = slides.length }
+//       for (i = 0; i < slides.length; i++) {
+//           slides[i].style.display = "none";
+//       }
+//       slides[slideIndex - 1].style.display = "block";
+//       for (i = 0; i < dots.length; i++) {
+//           dots[i].className = dots[i].className.replace(" active", "");
+//       }
+//       dots[slideIndex - 1].className += " active";
+//   }
 
   // Auto Slide 
-  var slideIndex = 0;
-  showSlides();
-  function showSlides() {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-     for (i = 0; i < slides.length; i++) {
-         slides[i].style.display = "none";
-     }
-     slideIndex++;
-     if (slideIndex > slides.length) { slideIndex = 1 }
-     slides[slideIndex - 1].style.display = "block";
-     setTimeout(showSlides, 7000); // Change image every 2 seconds
-  }
+//   var slideIndex = 0;
+//   showSlides();
+//   function showSlides() {
+//       var i;
+//       var slides = document.getElementsByClassName("mySlides");
+//      for (i = 0; i < slides.length; i++) {
+//        slides[i].style.display = "none";
+//      }
+//      slideIndex++;
+//      if (slideIndex > slides.length) { slideIndex = 1 }
+//      slides[slideIndex - 1].style.display = "block";
+//      setTimeout(showSlides, 7000); // Change image every 2 seconds
+//   }
   </script>
 </head>
 
@@ -88,11 +102,14 @@
 
 
     <!-- slideshow images and container -->
+    <div><H1>
+        <br><br>
+    </H1></div>
     <div class="slideshow-container">
       <div class="mySlides fade"> 
         <!-- the text and button -->
         <div class="textcontainer">
-            <div class="text">THE BEST <BR> LOACL BRANDS <BR>IN TOWN SHOP NOW!!!.. </div>
+            <div class="text">NovaCore </div>
            <button class="butt">View Products</button>
             </div> 
             <!-- theimage itself -->
@@ -101,7 +118,7 @@
       <div class="mySlides fade">
          <!-- the text and button -->
         <div class="textcontainer">
-            <div class="text">THE BEST <BR> LOACL BRANDS <BR>IN TOWN SHOP NOW!!!.. </div>
+            <div class="text">NovaCore </div>
            <button class="butt">View Products</button>
             </div>
              <!-- theimage itself -->
@@ -111,23 +128,23 @@
       <div class="mySlides fade">
          <!-- the text and button -->
         <div class="textcontainer">
-            <div class="text">THE BEST <BR> LOACL BRANDS <BR>IN TOWN SHOP NOW!!!.. </div>
+            <div class="text">NovaCore </div>
            <button class="butt">View Products</button>
             </div>
              <!-- theimage itself -->
           <img src="pic3-slideshow.png" style="width:100%">
       </div>
        <!-- the counter for images  -->
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
   </div>
-
+<div class="info"> under</div>
   <!-- the dots on the bottom  -->
-  <div style="text-align:center">
+  <!-- <div style="text-align:center">
       <span class="dot" onclick="currentSlide(1)"></span>
       <span class="dot" onclick="currentSlide(2)"></span>
       <span class="dot" onclick="currentSlide(3)"></span>
-  </div>
+  </div> -->
 
 </body>
 

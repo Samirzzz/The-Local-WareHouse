@@ -1,0 +1,85 @@
+div.box{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-top: -90px;
+    margin-left: 13cm;
+    
+    padding: 150px ;
+    padding-left: 9%;
+    border-radius: 20px;
+    width: 200px;
+    height: 250px;
+    padding-top: 10px;
+    padding-bottom: 350px;
+    background-color:gainsboro;
+  }
+    
+  h1.r{
+      text-align: center;
+    }
+    input.cc{
+        
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 60px;
+    margin-bottom:7px ;
+    
+    box-shadow: 5px 5px 5px #000;
+    }
+    
+    input.cc:focus {
+        width: 150%;
+      }
+      input.c{
+        width: 50%;
+        width: 150px;
+      background-color: rgb(248, 247, 247);
+      box-shadow: 5px 5px 25px #000;
+      transition: all 1s;
+      border: 1px solid;
+      border-radius: 5px;
+      padding: 10px;
+      padding-right: 60px;
+
+      }
+      input.c:hover {
+        /* Increase width */
+        width: 233px;
+        /* Change color */
+        background-color: orange;
+        /* Move the shadow */
+        box-shadow: -5px 5px 25px #000;
+      }
+    body{
+        /* background-image: url("black.jpg") ; 
+        background-position:center;
+        background-size:contain; */
+        background-color:rgb(129, 129, 129);
+       
+    }
+    body{
+        height: 100%;
+    }
+   h1.for{
+  color: #ffffff;
+  font-size:x-small ;
+  text-align: left;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   }
+   h1.for:hover{
+    color: rgb(27, 80, 202);
+  text-decoration: underline; 
+  }
+  .d{
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    padding-right: 60px; 
+   }
+   .sel{
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    padding-right: 60px;
+   }
+ 

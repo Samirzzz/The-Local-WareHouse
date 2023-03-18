@@ -1,0 +1,62 @@
+div.box{
+  border: 2px solid;
+  margin: auto;
+  padding: 60px ;
+  padding-left: 9%;
+  border-radius: 20px;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  width: 250px;
+  height: 250px;
+  }
+  
+h1.r{
+    text-align: center;
+    
+  }
+  input{
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 5px 5px 25px #000;
+  }
+  
+  input:focus {
+      width: 100%;
+    }
+    input.c{
+      width: 50%;
+      width: 150px;
+    background-color: rgb(248, 247, 247);
+    box-shadow: 5px 5px 25px #000;
+    transition: all 1s;
+  
+    }
+    input.c:hover {
+      /* Increase width */
+      width: 185px;
+      /* Change color */
+      background-color: orange;
+      /* Move the shadow */
+      box-shadow: -5px 5px 25px #000;
+    }
+  body{
+      background-image: url("black.jpg") ; 
+      background-position:center;
+      background-size:contain;
+      
+     
+  }
+  body{
+      height: 100%;
+  }
+ h1.for{
+color: #ffffff;
+font-size:x-small ;
+text-align: left;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }
+ h1.for:hover{
+  color: rgb(71, 175, 235);
+text-decoration: underline; 
+}
