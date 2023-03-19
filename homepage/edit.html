@@ -71,30 +71,53 @@
 </body>
 
 <script>
-function pass(field,field2) {
+function pass1(field,field2) {
+    
     if (field==""||field2==""){
 document.getElementById("pass").innerHTML="*";
+
 document.getElementById("passs").innerHTML="*";
-} else if(field.length<4){
-        document.getElementById("lpass").innerHTML="enter more than 4 characters";/*es2al el doc enak t5li loan el border nhowa el yetghyr*/
+return "";
+//     }
+// else if(field.length<4){
 
-    }else if(field.length>12){
-        document.getElementById("mpass").innerHTML="enter less than 12 characters";
-    }
-else if(field!=field2){
-    document.getElementById("cpass").innerHTML="Incorrect password";
-
+//     document.getElementById("lpass").innerHTML="enter more than 4 characters";
+ 
 }
    
+    //  if(field.length>12){
+    //     document.getElementById("mpass").innerHTML="enter less than 12 characters";
+    //  }
+//  if(field!=field2){
+//     document.getElementById("cpass").innerHTML="Incorrect password";
+
+
+
+  
+//     }
+    
     else{
-        document.getElementById("lpass").innerHTML="";
+        
         document.getElementById("pass").innerHTML="";
-document.getElementById("passs").innerHTML="";
-document.getElementById("mpass").innerHTML="";
-document.getElementById("cpass").innerHTML="";
+        return "";
+        
+        document.getElementById("passs").innerHTML="";
+        return "";
 
 
-}
+    }
+   
+
+    }
+
+function pass2(field) {
+    if(field.length<4){
+        document.getElementById("lpass").innerHTML="enter more than 4 characters";/*es2al el doc enak t5li loan el border nhowa el yetghyr*/
+   } else{
+    return "";
+    document.getElementById("lpass").innerHTML="";/*es2al el doc enak t5li loan el border nhowa el yetghyr*/
+
+    }
 }
 function name(field,field2) {
     if (field==""||field2==""){
@@ -107,17 +130,22 @@ document.getElementById("namee").innerHTML="*";
 }
 function tel(field) {
   var  pattern=/^01[0-2,5]{1}[0-9]{8}$/;
-    if(field!=pattern){
-        document.getElementById("ph").innerHTML="*";
+    if(field.match(pattern)){
+        document.getElementById("ph").innerHTML=" ";
+
+        return "";
 
     }else{
-        return "";
+        document.getElementById("ph").innerHTML="*";
+
     }
 }
 function val(form) {
     fail="";
     fail+=name(form.first.value,form.last.value)
-    fail+=pass(form.password.value,form.cpassword.value)
+    fail+=pass1(form.password.value,form.cpassword.value)
+    fail+=pass1(form.password.value)
+
 fail+=tel(form.phone.value);
     if(fail==""){
         return true;
@@ -128,4 +156,5 @@ fail+=tel(form.phone.value);
 
 
 </script>
+
 </html>

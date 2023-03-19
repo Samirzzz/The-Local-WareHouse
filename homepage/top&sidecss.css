@@ -96,8 +96,8 @@ body
 ul li:hover a /*hovering effect of every link */
 {
   padding-left: 50px;
-  background: whitesmoke;
-  color: black;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 .sidebar ul a i /*icons of links */
 {
@@ -238,6 +238,7 @@ to {opacity: 1}
 
 .textcontainer .text /*text in the middle of the slide show */
 {
+  z-index: 6;
   position: absolute;
   text-align: left;
  font-family: 'Righteous', cursive;
@@ -249,6 +250,7 @@ to {opacity: 1}
 }
 .butt /*the button in the middle of the sliude show */
 {
+  z-index: 6;
   position: absolute;
   top: 43%;
   left: 10%;
