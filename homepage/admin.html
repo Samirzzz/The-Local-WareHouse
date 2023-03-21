@@ -110,8 +110,12 @@
                             <h5>Software Engineer</h5>
                             <p>web development</p>
                         </td>
-                        <td class="active"><p>Active</p></td>
-                        <td class="role"><p>Owner</p></td>
+                        <td class="active">
+                            <p>Active</p>
+                        </td>
+                        <td class="role">
+                            <p>Owner</p>
+                        </td>
                         <td class="edit"><a href="#">Edit</a></td>
                     </tr>
                 </tbody>
@@ -120,7 +124,43 @@
             </table>
 
         </div>
+        <button class="open-button" onclick="openForm()">Chat</button>
+        <div class="chat-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <h1>Chat</h1>
+
+                <label for="msg"><b>Message</b></label>
+                <textarea placeholder="Type message.." name="msg" required></textarea>
+                
+
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+
+
+
     </section>
+
+    <script>
+         function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+       
+
+    </script>
+
+
+
+
+
+
+
 
 
 </body>
