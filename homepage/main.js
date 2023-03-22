@@ -10,13 +10,14 @@ cartIcon.onclick=()=>{
 closeCart.onclick=()=>{
     cart.classList.remove("active");
 };
+
 if(document.readyState=="loading"){
-    document.addEventListener("DOMContentLoaded",ready);
+    document.addEventListener("DOMContentLoaded",readyy);
 }else{
-    ready();
+    readyy();
 }
 
-function ready(){
+function readyy(){
     var reomveCartButtons =document.getElementsByClassName("cart-remove");
     console.log(reomveCartButtons);
     for(var i=0;i<reomveCartButtons.length;i++)
@@ -36,20 +37,19 @@ function ready(){
     for(var i=0;i<addCart.length;i++)
     {
         var button=addCart[i];
-        input.addEventListener("click",addCartClicked);
+        button.addEventListener("click",addCartClicked);
     }
     //button buy work
     document.getElementsByClassName("btn-buy")[0].addEventListener("click",buyButtonClicked);
 }
 //buy button sa7
 function buyButtonClicked(){
-    alert('your order is placed')
     var cartContent=document.getElementsByClassName("cart-content")[0];
     while(cartContent.hasChildNodes()){
         cartContent.removeChild(cartContent.firstChild);
 
     }
-    update();
+    updatetotal();
 }
 
 
@@ -57,7 +57,7 @@ function buyButtonClicked(){
 function removeCartItem(event){
 var buttonClicked=event.target;
 buttonClicked.parentElement.remove();
-update();
+updatetotal();
 }
 //Changes of quantity sa7
 function quantityChanged(event){
@@ -65,7 +65,7 @@ var input=event.target;
 if(isNaN(input.value) || input.value<=0){
     input.value=1;
 }
-update();
+updatetotal();
 }
 //Add to cart sa7
 function addCartClicked(event){
@@ -75,9 +75,9 @@ var title =shopProducts.getElementsByClassName("product-title")[0].innerText;
 var price =shopProducts.getElementsByClassName("price")[0].innerText;
 var productImg =shopProducts.getElementsByClassName("product-img")[0].src;
 addProductToCart(title,price,productImg);
-update();
+updatetotal();
 }
-
+//products appear in cart sa7
 function addProductToCart(title,price,productImg){
     var cartShopBox=document.createElement("div");
     cartShopBox.classList.add("cart-box");
@@ -85,20 +85,39 @@ function addProductToCart(title,price,productImg){
     var cartItemsNames=cartItems.getElementsByClassName("cart-product-title");
     for(var i=0;i<cartItemsNames.length;i++){
         if(cartItemsNames[i].innerText==title){
-            alert("you have already add this item to cart");
             return;
         }
       
     }
-    var cartBoxContent= `
+    var cartBoxContent=`	
                         <img src="${productImg}" alt="" class="cart-img">
                         <div class="detail-box">
                             <div class="cart-product-title">${title}</div>
                             <div class="cart-price">${price}</div>
                             <input type="number" value="1" class="cart-quantity">
+                            <div class="Size">
+                                <select name="size">
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                    <option value="x-large">X-Large</option>
+                                </select>
+                            </div>
+                            <div class="Color">
+                                <select name="color">
+                                    <option value="Black">Black</option>
+                                    <option value="White">White</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Red">Red</option>                              
+                                    <option value="Green">Green</option>                              
+                                    <option value="Yellow">Yellow</option>
+
+                                </select>
+                            </div>
                         </div>
-                        <!--Remove Cart-->
-                        <i class='bx bxs-trash-alt cart-remove' ></i>`;
+                         <!--Remove Cart--> 
+                        <i class='bx bxs-trash-alt cart-remove' ></i>
+                        `;
 
 cartShopBox.innerHTML=cartBoxContent;
 cartItems.append(cartShopBox);
@@ -109,7 +128,7 @@ cartShopBox.getElementsByClassName("cart-quantity")[0].addEventListener("change"
 
 
 //update sa7
-function update(){
+function updatetotal(){
     var cartContent=document.getElementsByClassName("cart-content")[0];
     var cartBoxes=cartContent.getElementsByClassName("cart-box");
     var total=0;
@@ -119,7 +138,8 @@ function update(){
         var quantityElement=cartBox.getElementsByClassName("cart-quantity")[0];
         var price=parseFloat(priceElement.innerText.replace("$",""));
         var quantity=quantityElement.value;
-        total =total+price *quantity;}//
+        total =total+ (price * quantity);
+    }//
         total=Math.round(total*100)/100;
         document.getElementsByClassName("total-price")[0].innerText="$"+total;
     

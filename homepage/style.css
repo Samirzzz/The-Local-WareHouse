@@ -38,31 +38,7 @@ header{
     justify-content: space-between;
     padding: 20px 0;
 }
-/* .navbar{
-    display:flex;
-    align-items:center;
-    background-color: rgba(152, 152, 153, 0.166);
-    padding:5px;
-} */
-/* nav{
-    flex:1;
-    text-align: right;
-} */
-/* nav ul{
-    display: inline-block;
-    list-style-type: none;
-}
-nav ul li{
-    display: inline-block;
-    margin-right: 20px;
-}
-a{
-    text-decoration: none;
-    color:#555;
-}
-p{
-    color:#555;
-} */
+
 .container{
     max-width:1000px;
     margin: auto;
@@ -219,4 +195,25 @@ right:0;
     font-size: 2rem;
     color: var(--text-color);
     cursor: pointer;
+}
+
+input{
+    width: 240px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    box-sizing:20px border-box;
+    width:100%;
+    float: center;
+
+}
+.box{
+    display: block;
+    margin: 0 auto;
+    width:150px; /* Set this based on the size of the text box you are using */
+}
+#search {
+    margin: 0 auto;
+    display: block;
 }
