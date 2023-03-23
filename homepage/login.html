@@ -1,25 +1,115 @@
 <html>
 <link rel="stylesheet" href="logincss.css">
 <title>the Local Warehouse</title>
+<head>
+    <style>
+        .error{
+            color: red;
+            font-size: small;
+            width: 80%;
+    margin-left: 35px;
+        }
+    </style>
+</head>
+<script defer>
+    function validateUserName(field) {
+ if (field == '') {
+     document.getElementById("erroruser").innerHTML = "enter username";
+    return 'hh';
+ }
+ else
+ document.getElementById("erroruser").innerHTML="";
+
+     return '';
+}
+
+           function validatepassword(field1) {
+  if(field1 ==''){
+     document.getElementById("errorpass").innerHTML="your password must be filled";
+     return "kkk";
+
+ }else if(field1.length<4){
+    document.getElementById("errorpass").innerHTML="enter more than 4 characters";
+    return "kkk";
+
+
+ } else if(field1.length>12){
+        document.getElementById("errorpass").innerHTML="enter less than 12 characters";
+        return "kkk";
+
+     }
+ else 
+ document.getElementById("errorpass").innerHTML="";
+
+
+ return '';
+
+
+ }
+function both(field,field2) {
+    if(field==''||field2==''){
+return 'kkk';
+    }else{
+        return '';
+    }
+}
+
+ 
+function
+        validate(form){
+            let fail='';
+            fail +=both(form.username.value,form.password.value);
+            fail +=validateUserName(form.username.value);        
+            fail += validatepassword(form.password.value);
+            if(fail==''){
+                return true;
+            }
+            else
+            return false;
+        }
+</script>
+
+
+
+
+
 <body>
     <div class="log">
-        
+          </div> 
+    <div class="sectionv">
+    <div class="video-container">
+        <div class="color-overlay"></div>
+        <video autoplay loop muted>
+            <source src="bavk.mp4" type="video/mp4">
+        </video>   
+     </div>
         <br><br> <br><br><br><br><h1 >  </h1><br>
-    </div> 
-    
+
+
+
+  
+
 <div class="box">
 <h1 style="color: rgb(0, 0, 0); text-align:center 10 ;padding-left: 38%;margin: auto;padding-bottom: 10%;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Login</h1>
- <form action="" method="post" class="q" id="l"> 
+ <form action="" method="post" class="q" id="l" onsubmit="return validate(this)"> 
         
-        <input class="b" type="text" name="username" placeholder="username "><br><br>
+        <input class="b" type="text" name="username" placeholder="username" >
+        <br>
+        <span class="error" id="erroruser"></span>
+        <br><br>
        
-        <input class="b" type="password" name="password" placeholder="password " ><br><br>
+        <input class="b" type="password" name="password" placeholder="password ">
+        <br>
         
+        <span class="error" id="errorpass"></span>
+        <br>
+        <br>
         <input type="submit" class="c" formaction="top&side.html" >   
         <a href="forget .html">  <h1  class="for" id="v">forget password?</h1>   </a>
 <a href="signup.html"> <h1 class="for">don't have an account?</h1>
 </a>
 </div>
+</form>
 
 
 

@@ -60,8 +60,8 @@ z-index: 100;
         /* background-image: url("black.jpg") ; 
         background-position:center;
         background-size:contain; */
-       background-image: url("back2.jpg");
-background-position: center;
+background-color: aliceblue;
+        background-position: center;
        background-repeat: no-repeat;
        background-size: 100cm;
        width: 500px;
@@ -105,15 +105,17 @@ background-position: center;
     position: fixed;
     display: flex;
     top: 0;
-    width: 100%;
+    width: 150%;
     height: 100%;
+    left: 0;
+    margin-left: 6.5%;
   }
   
   .color-overlay {
-    position: absolute;
+    position: fixed;
     background-color: rgb(188, 188, 188);
-    width: 100%;
+    width: 150%;
     height: 100%;
-    opacity: 0.5;
+    opacity: 0.2;
   }
  

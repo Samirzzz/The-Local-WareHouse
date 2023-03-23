@@ -45,17 +45,21 @@
     <h1>     </h1><br><br>
         <form action="" method="post" class="q" onsubmit="return val(this)">
             <input class="ccc" type="text" name="username" placeholder="username " disabled ><br><br>
-            <input class="ee" type="email" name="Email" placeholder="Email "  ><br><br>
+            
+            <span id="em" style="color: red;font-size:90%;"></span>
+
+            <input class="ee" type="text" name="email" placeholder="Email "  ><br><br>
+
             <span id="name" style="color: red;font-size:90%;"></span>
             <input class="ccc" type="text" name="first" placeholder="First Name " > <span id="namee" style="color: red;font-size: 90%;"></span> <span><input class="ccc" type="text" name="last" placeholder="Last Name " ></span><br><br>
             
             <span id="pass" style="color: red;font-size:90%;"></span>
-            <input class="cc" type="password" name="password" placeholder="password " > <span id="passs" style="color:red ;font-size:90%;"></span> <span>  <input class="cc" type="password" name="cpassword" placeholder="Confirm password " > <div id="cpass" style="color: red;font-size:70%;margin-bottom: 3px; "></div><div id="lpass" style="color: red;font-size:70%; margin-bottom: -15px; "></div><div id="mpass" style="color: red;font-size:70%; margin-bottom: -15px;" ></div>
+            <input class="cc" type="password" name="password" placeholder="password " > <span id="passs" style="color:red ;font-size:90%;"></span> <span>  <input class="cc" type="password" name="cpassword" placeholder="Confirm password " > <div id="lpass" style="color: red;font-size:70%; margin-bottom: -15px; "></div>
 
             </span><br><br>
             <input class="cc" type="text" name="Address" placeholder="Address " >
        
-        <span id="ph" style="color: red;"></span> <input class="cc" type="text" name="phone" placeholder="phone no. "  ><span></span><br><br>   
+            <span id="ph" style="color: red;"></span> <input class="cc" type="text" name="phone" placeholder="phone no. "  ><span></span><br><br>   
             <input type="submit" value="  Save Changes" class="cccc">
             
         </form>
@@ -70,38 +74,54 @@
 </body>
 
 <script>
+function star1(field) {
+    
+}
+function star2(field){
+
+}
+
+
 function pass1(field,field2) {
     
     if (field==""||field2==""){
 document.getElementById("pass").innerHTML="*";
 
 document.getElementById("passs").innerHTML="*";
-return "";
-//     }
-// else if(field.length<4){
+return "kkk";
 
-//     document.getElementById("lpass").innerHTML="enter more than 4 characters";
- 
+    } else if(field.length<4){
+
+    document.getElementById("lpass").innerHTML="enter more than 4 characters";
+    return "kkk";
+
 }
    
-    //  if(field.length>12){
-    //     document.getElementById("mpass").innerHTML="enter less than 12 characters";
-    //  }
-//  if(field!=field2){
-//     document.getElementById("cpass").innerHTML="Incorrect password";
+    else if(field.length>12){
+        document.getElementById("lpass").innerHTML="enter less than 12 characters";
+        return "kkk";
 
+     }
+ else if(field!=field2){
+    document.getElementById("lpass").innerHTML="Incorrect password";
+
+    return "lll";
 
 
   
-//     }
+   }
     
     else{
         
         document.getElementById("pass").innerHTML="";
-        return "";
         
         document.getElementById("passs").innerHTML="";
+        document.getElementById("lpass").innerHTML="";
+
         return "";
+
+ 
+
 
 
     }
@@ -109,24 +129,30 @@ return "";
 
     }
 
-function pass2(field) {
-    if(field.length<4){
-        document.getElementById("lpass").innerHTML="enter more than 4 characters";/*es2al el doc enak t5li loan el border nhowa el yetghyr*/
-   } else{
-    return "";
-    document.getElementById("lpass").innerHTML="";/*es2al el doc enak t5li loan el border nhowa el yetghyr*/
 
-    }
-}
-function name(field,field2) {
-    if (field==""||field2==""){
+function name(field) {
+    if (field==""){
 document.getElementById("name").innerHTML="*";
-document.getElementById("namee").innerHTML="*";
+return "lll";
 
-
-    }else
+}
+    
+    
+    else
+    document.getElementById("name").innerHTML="";
     return "";
 }
+function lname(field) {
+     if(field==""){
+
+document.getElementById("namee").innerHTML="*";
+return "lll"; 
+    } else
+    document.getElementById("namee").innerHTML="";
+    return "";
+}
+
+
 function tel(field) {
   var  pattern=/^01[0-2,5]{1}[0-9]{8}$/;
     if(field.match(pattern)){
@@ -139,11 +165,26 @@ function tel(field) {
 
     }
 }
+function email(field) {
+    pattern =/^\S+@\S+\.\S+$/;
+    if(field.match(pattern)){
+        document.getElementById("em").innerHTML=" ";
+
+        return "";
+
+    }else{
+        document.getElementById("em").innerHTML="*";
+
+    }
+
+}
 function val(form) {
     fail="";
-    fail+=name(form.first.value,form.last.value)
-    fail+=pass1(form.password.value,form.cpassword.value)
-    fail+=pass1(form.password.value)
+    fail+=email(form.email.value);
+    fail+=name(form.first.value);
+    fail+=lname(form.last.value);
+    fail+=pass1(form.password.value,form.cpassword.value);
+    
 
 fail+=tel(form.phone.value);
     if(fail==""){
