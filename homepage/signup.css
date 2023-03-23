@@ -1,18 +1,23 @@
 div.box{
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin-top: -90px;
-    margin-left: 13cm;
+filter: blur(5px);
+position: relative;
+}
+    div.tr{
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      margin-top: -110px;
+        margin-left: 13cm;
+        
+        padding: 150px ;
+        padding-left: 20%;
+        border-radius: 25px;
+        width: 200px;
+        height: 250px;
+        padding-top: 35px;
+        padding-bottom: 320px;
     
-    padding: 150px ;
-    padding-left: 9%;
-    border-radius: 20px;
-    width: 200px;
-    height: 250px;
-    padding-top: 10px;
-    padding-bottom: 350px;
-    background-color:gainsboro;
-  }
-    
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.5); 
+    }
   h1.r{
       text-align: center;
     }
@@ -22,7 +27,7 @@ div.box{
     border-radius: 5px;
     padding: 10px;
     padding-right: 60px;
-    margin-bottom:7px ;
+    margin-bottom:10px ;
     
     box-shadow: 5px 5px 5px #000;
     }
@@ -54,12 +59,16 @@ div.box{
         /* background-image: url("black.jpg") ; 
         background-position:center;
         background-size:contain; */
-        background-color:rgb(129, 129, 129);
+       background-image: url("back2.jpg");
+background-position: center;
+       background-repeat: no-repeat;
+       background-size: 100cm;
+       width: 500px;
+       height: 500px;
+
        
     }
-    body{
-        height: 100%;
-    }
+   
    h1.for{
   color: #ffffff;
   font-size:x-small ;
