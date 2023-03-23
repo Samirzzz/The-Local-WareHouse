@@ -126,7 +126,7 @@
                     <i class='bx bxs-shopping-bag-alt add-cart'></i>
                 </div>
             </div>
-                <button class="open-button" onclick="openForm()">Chat</button>
+                <button class="open-button" onclick="openForm()"><img src="chaticon.png"></button>
                 <div class="chat-popup" id="myForm">
                     <form action="/action_page.php" class="form-container">
                         <h1>Chat</h1>
@@ -149,5 +149,18 @@
        
         <!--Java Script-->
         <script src="main.js"></script>
+        <script>
+            function closeForm() {
+               document.getElementById("myForm").style.display = "none";
+           }
+   
+           function openForm() {
+               document.getElementById("myForm").style.display = "block";
+           }
+   
+          
+   
+       </script>
+   
 </body>
 </html>
