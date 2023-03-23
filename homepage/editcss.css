@@ -166,8 +166,8 @@ font-size:larger;
 font-family:'Times New Roman', Times, serif;
 }
 div.two{
-    margin-left: 15%;
-    margin-top: 120px;
+    margin-left: 12%;
+    margin-top: 100px;
   float: left;
     
 }
@@ -180,7 +180,7 @@ div.one{
     padding: 5%;
     padding-bottom: 14%;
     background-color: rgb(255, 255, 255);
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
     
 }
 .cc{
@@ -217,7 +217,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         /* Change color */
         background-color: rgb(31, 90, 238);
         /* Move the shadow */
-        box-shadow: -5px 5px 25px #000;
+        box-shadow: -5px 5px 5px #000;
       
 }
 
