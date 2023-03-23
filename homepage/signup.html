@@ -6,104 +6,163 @@
         .error{
             color: red;
             font-size: small;
-           
-;        }
+
+   }
+   
+
         
     </style>
 </head>
 <script defer>
     function validateUserName(field) {
-        if (field == '') {
-            document.getElementById("errorNameidd").innerHTML = "*";
-
-           
-        }else if(field.length<4){
+        if (field == '')
+         {
+            document.getElementById("errorNameid").innerHTML = "Please Enter UserName";
+            return  "kkk";
+        }
+        else if(field.length<4){
             document.getElementById("errorNameid").innerHTML = "enter more than 4 characters";
+            return  "kkk";
+
         }
     else if(field.length>12){
             document.getElementById("errorNameid").innerHTML = "enter less than 12 characters";
+            return  "kkk";
+
         }
         else
+        document.getElementById("errorNameid").innerHTML="";
+
             return '';
     }
   
 
     function validatepassword(field1, field2) {
-  
-     
          if (field1 != field2) {
+        document.getElementById("errorpasss").innerHTML= " password doesnt match ";   
         document.getElementById("errorconpassid").innerHTML= " password doesnt match ";    
+    
       }
     else  if(field1 =='' || field2 ==''){
-        document.getElementById("errorpasss").innerHTML="*";
-
-            document.getElementById("errorpass").innerHTML="enter password";
-       
+        document.getElementById("errorpasss").innerHTML="please Enter Password and confirm";
+        document.getElementById("errorconpassid").innerHTML= " Please Confirm ";  
         }
-        else 
-        return '';
-
-        }
-    function validateage(field) {
-      if (field < 8) {
-        return 'not old enough';
-      
-      }
-      else
-      return '';
- 
-    }
- 
-    function
-        validateDOB(field) {
-            let dob = new Date(field);
-            
-        let diff_ms = Date.now() - dob.getTime();
-
-        let  age_dt = newDate(diff_ms);
-
-        if (Math.abs(age_dt.getUTCFullYear() - 1970) >= 18)
-
-            return'';
-
         else
-        return'You Must be older than 18 years.';
-
-
-    }
-    function valphone(field) {
-        pattern= /^01[0125][0-9]{8}$/;
-
-        if(field =="" ){
-            document.getElementById("phone").innerHTML="*";
-       
-        }else if(field.length<11){
-            document.getElementById("phonee").innerHTML="enter valid phone number";
-
-        }
-
-        else if(field.value!=pattern){
-            document.getElementById("phonee").innerHTML="enter valid number";
-
-        }
-        else{
+        document.getElementById("errorpasss").innerHTML=""; 
         return "";
+
         }
+
+        function validateemail(field){
+        if(field =='')
+        {
+            document.getElementById("errormails").innerHTML="your e-mail must be filled";
+            return 'hh';
+        }
+        else
+        document.getElementById("errormails").innerHTML="";
+           return'';
     }
+
+    // // function validateage(field) {
+    // //   if (field < 8) {
+    // //     return 'not old enough';
+      
+    // //   }
+    // //   else
+    // //   return '';
+ 
+    // }
+ 
+    // function
+    //     validateDOB(field) {
+    //         let dob = new Date(field);
+            
+    //     let diff_ms = Date.now() - dob.getTime();
+
+    //     let  age_dt = newDate(diff_ms);
+
+    //     if (Math.abs(age_dt.getUTCFullYear() - 1970) >= 18)
+
+    //         return'';
+
+    //     else
+    //     return'You Must be older than 18 years.';
+
+
+    // }
+    // function valphone(field) {
+    //     pattern= /^01[0125][0-9]{8}$/;
+
+    //     if(field =='' ){
+    //         document.getElementById("phone").innerHTML="Please Enter Your Phone Number";
+       
+    //     }else if(field.length<11){
+    //         document.getElementById("phone").innerHTML="enter valid phone number";
+
+    //     }
+
+    //     else if(field.value!=pattern){
+    //         document.getElementById("phone").innerHTML="enter valid number";
+
+    //     }
+    //     else{
+    //     return '';
+    //     }
+    // }
+
+    function tel(field) {
+  var  pattern=/^01[0-2,5]{1}[0-9]{8}$/;
+    if(field.match(pattern)){
+        document.getElementById("phone").innerHTML=" ";
+
+        return "";
+
+    }else{
+        document.getElementById("phone").innerHTML="Please Enter valid phone number";
+    }
+}
+function email(field) {
+    pattern =/^\S+@\S+\.\S+$/;
+    if(field.match(pattern)){
+        document.getElementById("errormails").innerHTML=" ";
+
+        return "";
+
+    }else{
+
+        document.getElementById("errormails").innerHTML="Please Enter a valid E-mail";
+        return '';
+    }
+}
+
+function validategender(field){
+        if(field==''){
+            document.getElementById("genderid").innerHTML="must choose a gender"
+        }
+        else
+        return '';
+}
     function
         validate(form){
             let fail='';
-            fail+=validateUserName(form.username.value);        
-             fail += validatepassword(form.password.value, form.conpassword.value);
+             fail+=validateUserName(form.username.value);    
+             fail+=validateemail(form.Email.value);
+             fail+=validatepassword(form.password.value, form.conpassword.value);
+             fail+=tel(form.phonee.value);
+             fail+=email(form.Email.value);
+             fail+=validategender(form.gender.value);
+           //  fail+=valphone(form.phone.value);
             // fail+=validateDOB(form.datee.value); 
-            fail+=valphone(form.phone.value);
+
             if(fail==''){
                 return true;
             }
             else
             return false;
         }
-
+       
+    
 </script>
 
 <body>
@@ -118,35 +177,33 @@
             style="color: black; text-align:center 12 ;padding-left: 25%;margin:1px ;margin-left: 10px;margin-top: -10px; padding-bottom: 5%;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             Sign Up</h1><br>
         <form action="" method="post" class="q" onsubmit="return validate(this)">
-            <span class="error" id="errorNameidd" aria-hidden="true" > </span>
-
-            <input class="cc" id="errorName" type="text" name="username" placeholder="username "  >
-            <span class="error" id="errorNameid" aria-hidden="true" > </span>
+             <input class="cc" id="errorName" type="text" name="username" placeholder="username " >
+            <span class="error" id="errorNameid"> </span> 
+             <br>
+            <input class="cc" type="text" id="errormail" name="Email" placeholder="Email" >
+            <span class="error" id="errormails"></span>
             <br>
-            <input class="cc" type="text" id="errormail" name="Email" placeholder="Email " >
-            <span class="error" id="errormail"></span>
-            <br>
-            <span class="error" id="errorpasss"></span>
             <input class="cc" type="password" id="errorpassid" name="password" placeholder="password " >
-            <span class="error" id="errorpass"></span>  
+            <span class="error" id="errorpasss"></span>
             <br>
             <input class="cc" type="password"  name="conpassword" placeholder="Confirm password " >
             <span class="error" id="errorconpassid"></span>
             <br>
+            <input class="cc" type="text" id="errorno" name="phonee" placeholder="phone no. " >
             <span class="error" id="phone"></span>
-            <input class="cc" type="text" id="errorno" name="phone" placeholder="phone no. " >
-            <span class="error" id="phonee"></span>
-            
             <br>
-            <input class="d" type="date" name="date" id="date" > 
-            <br><br>
+            <input class="d" type="date" name="date" id="date" >
             <span class="error" name="datee"></span>
-
+            <br><br>
             <select class="sel" name="gender" >
                 <option value="">Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-            </select><br><br>
+            </select>
+            <br>
+            <span class="error" id="genderid"></span>
+
+            <br><br>
 
             <input type="submit" value="Create" class="c" formaction="top&side.html"><br>
             <h1 class="for">Already have an account?</h1>
