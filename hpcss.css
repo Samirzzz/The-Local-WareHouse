@@ -1,0 +1,62 @@
+div.brands{
+    border: 2px solid;
+    border-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  padding: 90px ;
+  padding-bottom: 20%;
+    border-width: 8px ;
+margin-left: 24cm;
+margin-right: 250px;
+margin-top:10% ;
+}
+@keyframes slideleft {
+    from{
+transform: translateY(-100%);
+    }
+    to{
+transform: translateY(100%);
+    }
+  
+}
+div.brands{
+    /* felx bet5liha bel 3ard we display flex bet5liha flexbox */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+justify-content:center  ;
+transition: 3s;
+
+}
+/* div.s{
+    animation-name:slideleft;
+    animation-duration: 2s;
+    animation-direction:alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+} */
+.s:hover{
+    filter: blur(0);
+	filter: blur(0);
+}
+.s{
+    filter: blur(3px);
+	filter: blur(3px);
+	transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+@keyframes gradient {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+body{
+    background: linear-gradient(-45deg, #31044d, #07555e, #9c27b0);
+    background-size: 400% 400%;animation: gradient 2s ease infinite;
+
+}
