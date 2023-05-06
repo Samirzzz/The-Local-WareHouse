@@ -1,8 +1,174 @@
 /*Google fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;600&family=Righteous&display=swap');
 
-*{
-    font-family: 'poppins',sans-serif;
+nav.head /*the bar itself */
+{
+z-index: 20px;
+position: relative;
+background: black;
+height: 50px;
+margin-top: 0;
+}
+
+nav.head ul /*the account/cart/wishlist content*/
+{
+    z-index: 21px;
+float:right;
+margin-right: 20px;
+}
+
+nav.head ul li /*the account/wishlist/cart */
+{
+    z-index: 50px;
+font-size: 14px;
+border-color: #ffffff;
+border-width: 2px;
+display:inline-block;
+line-height: 10px;
+top: 10px;
+padding: 10px;
+}
+a:link /*so the link of account  doesnt turn blue */
+{
+color:rgb(0, 0, 0);
+}
+nav.head ul li a /* acc/cart/wishlist fontsize*/
+{
+font-size: 20px;
+}
+.head ul li a:hover /*hover effect of acc / cart/wishlist */
+{
+background-color: #000000;
+transition: 2s all ease;
+padding-top: 30px;
+}
+
+
+ /*-----------------------------------------------------------------*/
+ /*Side bar */
+
+
+*
+{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+body 
+{
+  font-family: 'Roboto', sans-serif;
+}
+.sidebar /*the sidde bar itself*/
+ {
+   z-index: 50px;
+  position: absolute;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #000000;
+  transition: all .5s ease;
+  overflow: visible;
+}
+.sidebar header  /*the loacal warehouse on the sidebar and menu icon */
+{ 
+  font-size: 22px;
+  color: white;
+  top: 10px;
+  line-height: 25px;
+  text-align: center;
+  background: #000000;
+  user-select: none;
+}
+.sidebar ul a /*the links inside the side bar */
+{
+
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 30px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-top: 1px solid rgb(0, 0, 0);
+  transition: .4s; 
+  z-index: 10px;
+  
+}
+ul li:hover a /*hovering effect of every link */
+{
+  padding-left: 50px;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+.sidebar ul a i /*icons of links */
+{
+  margin-right: 16px;
+}
+
+#check /*checkbox of sidebar */
+{
+  display: none;
+}
+label #mnubtn,label #cancel /*menu button and cancel button */
+{
+  position: absolute;
+  border-radius: 3px;
+  cursor: pointer;
+}
+label #mnubtn /*menu button */
+{
+  left: 10px;
+  top: 5px;
+  background: #000000;
+  color: white;
+  font-size: 35px;
+  transition: all .5s;
+}
+label #cancel /*back button in sidebar */
+{
+  z-index: 1111;
+  left: -195px;
+  top: 17px;
+  font-size: 30px;
+  color: #ffffff;
+  padding: 4px 9px;
+  transition: all .5s ease;
+}
+#check:checked ~ .sidebar /*if not checked dont apper*/
+{
+  left: 0;
+}
+#check:checked ~ label #mnubtn /*if checked apper */
+{
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+  left: 195px;
+}
+#check:checked ~ section{
+  margin-left: 250px;
+}
+/* section{
+  background: url(bg.jpeg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 10px;
+  z-index: 20px;
+  transition: all .5s;
+  padding: 4rem 0 3rem;
+} */
+
+
+/* *{
+    
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -11,7 +177,7 @@
     list-style: none;
     text-decoration: none;
     
-}
+} */
 :root{
     --main-color:#fd4646;
     --text-color:#171427;
@@ -23,23 +189,18 @@ img{
 body{
     color:var(--text-color);
 }
-header{
+/* header{
     position: fixed;
     top:0;
     left:0;
-    width:100%;
-    background:var(--bg-color) ;
+    width: 100%;
+    background: var(--bg-color);
     box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
-    z-index: 100; /**/
-}
-.nav{
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
-    padding: 20px 0;
-}
+    z-index: 100;
+} */
 
 .container{
+    position: sticky;
     max-width:1000px;
     margin: auto;
     width:100%;
@@ -51,7 +212,7 @@ header{
     font-weight:400;
 }
 #cart-icon{
-    font-size: 1.8rem;
+
     cursor: pointer;
 }
 section{
@@ -90,7 +251,8 @@ section{
     text-transform: uppercase;
     margin-bottom: 0.5rem;
 }
-.price{
+.price
+{
     font-weight: 500;
 }
 .add-cart{
@@ -106,7 +268,8 @@ section{
     background: hsl(249,32%,17%);
 }
 .cart{
-    position: fixed;
+    z-index: 200;
+    position: absolute;
     top: 0;
     right:-100%; /* -100% hide cart*/
     width:360px; /**/
@@ -116,16 +279,20 @@ section{
     box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
     transition: 0.3s;
 }
-.cart.active{
+.cart.active
+{
 right:0;
 }
-.cart-title{
+.cart-title
+{z-index: 100px;
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
     margin-top: 2rem;
 }
-.cart-box{
+.cart-box
+{
+    z-index: 100px;
     display:grid ;
     grid-template-columns:32% 50% 18% ;
     align-items:center;
