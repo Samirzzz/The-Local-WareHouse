@@ -1,3 +1,465 @@
+<<<<<<< HEAD:homepage/style.css
+/*Google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;600&family=Righteous&display=swap');
+
+nav.head /*the bar itself */
+{
+z-index: 20px;
+position: relative;
+background: black;
+height: 50px;
+margin-top: 0;
+}
+
+nav.head ul /*the account/cart/wishlist content*/
+{
+    z-index: 21px;
+float:right;
+margin-right: 20px;
+}
+
+nav.head ul li /*the account/wishlist/cart */
+{
+    z-index: 50px;
+font-size: 14px;
+border-color: #ffffff;
+border-width: 2px;
+display:inline-block;
+line-height: 10px;
+top: 10px;
+padding: 10px;
+}
+a:link /*so the link of account  doesnt turn blue */
+{
+color:rgb(0, 0, 0);
+}
+nav.head ul li a /* acc/cart/wishlist fontsize*/
+{
+font-size: 20px;
+}
+.head ul li a:hover /*hover effect of acc / cart/wishlist */
+{
+background-color: #000000;
+transition: 2s all ease;
+padding-top: 30px;
+}
+
+
+ /*-----------------------------------------------------------------*/
+ /*Side bar */
+
+
+*
+{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+body 
+{
+  font-family: 'Roboto', sans-serif;
+}
+.sidebar /*the sidde bar itself*/
+ {
+   z-index: 50px;
+  position: absolute;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #000000;
+  transition: all .5s ease;
+  overflow: visible;
+}
+.sidebar header  /*the loacal warehouse on the sidebar and menu icon */
+{ 
+  font-size: 22px;
+  color: white;
+  top: 10px;
+  line-height: 25px;
+  text-align: center;
+  background: #000000;
+  user-select: none;
+}
+.sidebar ul a /*the links inside the side bar */
+{
+
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 30px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-top: 1px solid rgb(0, 0, 0);
+  transition: .4s; 
+  z-index: 10px;
+  
+}
+ul li:hover a /*hovering effect of every link */
+{
+  padding-left: 50px;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+.sidebar ul a i /*icons of links */
+{
+  margin-right: 16px;
+}
+
+#check /*checkbox of sidebar */
+{
+  display: none;
+}
+label #mnubtn,label #cancel /*menu button and cancel button */
+{
+  position: absolute;
+  border-radius: 3px;
+  cursor: pointer;
+}
+label #mnubtn /*menu button */
+{
+  left: 10px;
+  top: 5px;
+  background: #000000;
+  color: white;
+  font-size: 35px;
+  transition: all .5s;
+}
+label #cancel /*back button in sidebar */
+{
+  z-index: 1111;
+  left: -195px;
+  top: 17px;
+  font-size: 30px;
+  color: #ffffff;
+  padding: 4px 9px;
+  transition: all .5s ease;
+}
+#check:checked ~ .sidebar /*if not checked dont apper*/
+{
+  left: 0;
+}
+#check:checked ~ label #mnubtn /*if checked apper */
+{
+  left: 250px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+  left: 195px;
+}
+#check:checked ~ section{
+  margin-left: 250px;
+}
+/* section{
+  background: url(bg.jpeg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 10px;
+  z-index: 20px;
+  transition: all .5s;
+  padding: 4rem 0 3rem;
+} */
+
+
+/* *{
+    
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    
+} */
+:root{
+    --main-color:#fd4646;
+    --text-color:#171427;
+    --bg-color:#fff;
+}
+img{
+    width:100%;
+}
+body{
+    color:var(--text-color);
+}
+/* header{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    background: var(--bg-color);
+    box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+    z-index: 100;
+} */
+
+.container{
+    position: sticky;
+    max-width:1000px;
+    margin: auto;
+    width:100%;
+    /* padding-left: 25px; */
+}
+.logo{
+    font-size: 1.1rem;
+    color:var(--text-color);
+    font-weight:400;
+}
+#cart-icon{
+
+    cursor: pointer;
+}
+section{
+    padding: 4rem 0 3rem;
+}
+.section-title{
+    font-size: 1.9rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.shop{
+    margin-top: 2rem;
+}
+.shop-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,auto));
+    gap:1.5rem; 
+}
+.product-box{
+    position: relative;
+}
+.product-box:hover{
+    padding:10px;
+    border: 1px solid var(--text-color);
+    transition: 0.4sec;
+}
+.product-img{
+    width:100%;
+    height:auto;
+    margin-bottom: 0.5rem;
+}
+.product-title{
+    font-size: 1.1rem;
+    font-weight:600 ;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+.price
+{
+    font-weight: 500;
+}
+.add-cart{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background:var(--text-color);
+    color:var(--bg-color);
+    padding: 10px;
+    cursor: pointer;
+}
+.add-cart:hover{
+    background: hsl(249,32%,17%);
+}
+.cart{
+    z-index: 200;
+    position: absolute;
+    top: 0;
+    right:-100%; /* -100% hide cart*/
+    width:360px; /**/
+    min-height: 100vh;
+    padding: 20px;
+    background: var(--bg-color);
+    box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+    transition: 0.3s;
+}
+.cart.active
+{
+right:0;
+}
+.cart-title
+{z-index: 100px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+.cart-box
+{
+    z-index: 100px;
+    display:grid ;
+    grid-template-columns:32% 50% 18% ;
+    align-items:center;
+    gap:1rem ;
+    margin-top:1rem ;
+}
+.cart-img{
+    width:100px;
+    height:100px;
+    object-fit:contain;
+    padding: 10px;
+}
+.cart-product-title{
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+.detail-box{
+    display: grid;
+    row-gap: 0.5rem;
+}
+.cart-price{
+    font-weight: 500;
+}
+.cart-quantity{
+    border: 1px solid var(--text-color);
+    outline-color: var(--main-color);
+    width: 2.4rem;
+    text-align: center;
+    font-size: 1rem;
+}
+.cart-remove{
+    font-size: 24px;
+    color:var(--main-color);
+    cursor: pointer;
+}
+.total{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--text-color);
+}
+.total-title{
+    font-size: 1rem;
+    font-weight: 600;
+}
+.total-price{
+    margin-left: 0.5rem;
+}
+.btn-buy{
+    display:flex;
+    margin:1.5rem auto 0 auto ;
+    padding:12px 20px;
+    border: none;
+    background: var(--main-color);
+    color: var(--bg-color);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.btn-buy:hover{
+    background: var(--text-color);
+}
+#close-cart{
+    position: absolute;
+    top: 1rem;
+    right:0.8rem;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+input{
+    width: 240px;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    box-sizing:20px border-box;
+    width:100%;
+    float: center;
+
+}
+.box{
+    display: block;
+    margin: 0 auto;
+    width:150px; /* Set this based on the size of the text box you are using */
+}
+#search {
+    margin: 0 auto;
+    display: block;
+}
+/*/////////////////////////////////////////////////////////*/
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+
+.open-button {
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 30px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 100px;
+}
+
+
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+
+.form-container .cancel {
+  background-color: red;
+}
+
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+=======
 /*Google fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,300&display=swap');
 
@@ -291,4 +753,5 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+>>>>>>> b8c1b3b027f2d07d0fa67c7e173cf7f1286fb4d4:style.css
 }
