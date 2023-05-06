@@ -12,9 +12,24 @@
     </style>
 </head>
 <script defer>
+    function email(field) {
+    pattern =/^\S+@\S+\.\S+$/;
+
+    if(field.match(pattern)){
+        document.getElementById("erroruser").innerHTML=" ";
+
+        return "";
+
+    }
+    else{
+
+        document.getElementById("erroruser").innerHTML="Please Enter a valid E-mail";
+        return '';
+    }
+}
     function validateUserName(field) {
  if (field == '') {
-     document.getElementById("erroruser").innerHTML = "enter username";
+     document.getElementById("erroruser").innerHTML = "enter email";
     return 'hh';
  }
  else
@@ -61,6 +76,7 @@ function
             fail +=both(form.username.value,form.password.value);
             fail +=validateUserName(form.username.value);        
             fail += validatepassword(form.password.value);
+
             if(fail==''){
                 return true;
             }
@@ -93,7 +109,7 @@ function
 <h1 style="color: rgb(0, 0, 0); text-align:center 10 ;padding-left: 38%;margin: auto;padding-bottom: 10%;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Login</h1>
  <form action="" method="post" class="q" id="l" onsubmit="return validate(this)"> 
         
-        <input class="b" type="text" name="username" placeholder="username" >
+        <input class="b" type="text" name="username" placeholder="email" >
         <br>
         <span class="error" id="erroruser"></span>
         <br><br>
@@ -104,7 +120,7 @@ function
         <span class="error" id="errorpass"></span>
         <br>
         <br>
-        <input type="submit" class="c" formaction="top&side.html" >   
+        <input type="submit" class="c" formaction="index.html" >   
         <a href="forget .html">  <h1  class="for" id="v">forget password?</h1>   </a>
 <a href="signup.html"> <h1 class="for">don't have an account?</h1>
 </a>
