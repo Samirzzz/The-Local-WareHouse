@@ -1,0 +1,98 @@
+
+input.ccc:disabled{
+    background-color: #f0f0f0 ;
+    width: 65%;
+    
+}
+.ee{
+    border: 1px solid;
+    border-radius: 3.5px;
+    padding: 5px;
+    padding-right: 60px;
+    width: 65%;
+    
+}
+div.title{ 
+    float: right;
+   margin-right: 19.99%;
+   font-size: larger ;
+   position: relative;
+  margin-top: 100px;
+   width: 20.11cm;
+   height: 1.3cm;
+ background-color: #d6d6d6 ;
+ 
+}
+h1.head{
+    color: #000;
+margin-left: 3%;
+margin-top: 9px;
+font-weight: 100;
+font-size:larger;
+font-family:'Times New Roman', Times, serif;
+}
+div.two{
+    margin-left: 8.6%;
+    margin-top: 100px;
+  float: left;
+    
+}
+div.one{
+    width: 40%;
+    height: 5cm;
+    margin-left: 30%;
+    margin-top: 9%;
+    margin-bottom: 50%;
+    padding: 5%;
+    padding-bottom: 14%;
+    background-color: rgb(255, 255, 255);
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+    
+}
+.cc{
+    border: 1px solid;
+    border-radius: 3.5px;
+    padding: 5px;
+    padding-right: 60px;
+    
+    
+}
+.ccc{
+    border: 1px solid;
+    border-radius: 3.5px;
+    padding: 5px;
+    padding-right: 60px;
+    
+  
+}
+.cccc{
+    width: 50%;
+        width: 150px;
+      background-color: rgb(31, 90, 238);
+      color: white;
+      transition: all 1s;
+      border: 1px solid;
+      border-radius: 3.5px;
+      padding: 5px;
+      padding-right: 60px;
+}
+.cccc:hover{
+    
+        /* Increase width */
+        width: 233px;
+        /* Change color */
+        background-color: rgb(31, 90, 238);
+        /* Move the shadow */
+        box-shadow: -5px 5px 5px #000;
+      
+}
+
+img.i{
+    margin-left: 30%;
+}
+body{
+    background-color:hsl(0, 0%, 99%);
+
+
+}
+
