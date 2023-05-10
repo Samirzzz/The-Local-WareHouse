@@ -15,6 +15,7 @@ const port =3000
 
 app.get('/',(req,res)=>{
     res.render('index');
+
 })
 app.get('/edit',(req,res)=>{
     res.render('edit');
@@ -36,6 +37,6 @@ app.get('/signup',(req,res)=>{
 }) 
 
 
-app.listen(port,()=>{
-    console.log("running");
-});
+app.listen(port, () => {
+    console.log(`Example app listening on port http://localhost:${port}`)
+  });
