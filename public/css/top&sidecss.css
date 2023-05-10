@@ -302,10 +302,7 @@ margin-left: 20px;
 font-size: 10px; 
 }
 
-section.shop_container
-{
-  display: inline-block;
-}
+
 
 .container{
   display: inline;
@@ -315,15 +312,21 @@ section.shop_container
   /* padding-left: 25px; */
 }
 .shop{
-  margin-top: 2rem;
+]
   display: inline;
 }
 .shop-content{
   display: inline-block;
   grid-template-columns: repeat(auto-fit,minmax(220px,auto));
   gap:1.5rem; 
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .product-box{
+  border-radius: 10px;
+  border-width: 16px;
+  border: #000000;
+  border-style: solid;
   height: 170px;
   width: 170px;
   position: relative;
