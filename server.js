@@ -13,6 +13,10 @@ app.use(express.static('public/js'))
 
 const port =3000
 
+const mongoose = require('mongoose');
+
+
+
 app.get('/',(req,res)=>{
     res.render('index');
 
@@ -35,7 +39,6 @@ app.get('/forget',(req,res)=>{
 app.get('/signup',(req,res)=>{
     res.render('signup');
 }) 
-
 
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`)
