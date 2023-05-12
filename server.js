@@ -35,7 +35,18 @@ app.get('/forget',(req,res)=>{
 app.get('/signup',(req,res)=>{
     res.render('signup');
 }) 
-
+app.get('/admin',(req,res)=>{
+    res.render('admin');
+}) 
+app.get('/admin/adduser',(req,res)=>{
+    res.render('adduser');
+}) 
+app.get('/admin/edituser',(req,res)=>{
+    res.render('edituser');
+}) 
+app.get('/admin/banuser',(req,res)=>{
+    res.render('banuser');
+}) 
 
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`)
