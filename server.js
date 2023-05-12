@@ -13,8 +13,13 @@ app.use(express.static('public/js'))
 
 const port =3000
 
+const mongoose = require('mongoose');
+
+
+
 app.get('/',(req,res)=>{
     res.render('index');
+
 })
 app.get('/edit',(req,res)=>{
     res.render('edit');
@@ -34,8 +39,21 @@ app.get('/forget',(req,res)=>{
 app.get('/signup',(req,res)=>{
     res.render('signup');
 }) 
+app.get('/admin',(req,res)=>{
+    res.render('admin');
+}) 
+app.get('/admin/adduser',(req,res)=>{
+    res.render('adduser');
+}) 
+app.get('/admin/edituser',(req,res)=>{
+    res.render('edituser');
+}) 
+app.get('/admin/banuser',(req,res)=>{
+    res.render('banuser');
+}) 
+ 
 
 
-app.listen(port,()=>{
-    console.log("running");
-});
+app.listen(port, () => {
+    console.log(`Example app listening on port http://localhost:${port}`)
+  });

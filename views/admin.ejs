@@ -1,232 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
 
-<head>
-    <meta charset="UTF-8">
+    <!-- Box Icons  -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <!-- Styles  -->
+    <link rel="stylesheet" href="adminDashboard.css" />
+    <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="dashboard.css" />
+  </head>
 
-    <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-
-
-
-</head>
-
-<body>
-
-    <section id="menu">
-        <div class="logo">
-            <img src="icons8-admin-64.png" alt="">
-            <h2> Admin </h2>
-
-        </div>
-        <div class="items">
-            <li><i class="fad fa-chart-pie-alt"></i><a href="#">dashboard</a></li>
-            <li><i class="fab fa-uikit"></i><a href="#">Products</a></li>
-            <li><i class="fas fa-th-large"></i><a href="#">tabels</a></li>
-            <li><i class="fas fa-edit"></i><a href="#">forms</a></li>
-            <li><i class="fab fa-cc-visa"></i><a href="#">cards</a></li>
-            
-
-
-        </div>
-    </section>
-
-    <section id="interface">
-        <div class="navigation">
-            <div class="n1">
-                <div id="menu-btn" class="fas fa-bars"></div>
-                <div class="search">
-                    <i class="far fa-search"></i>
-                    <input type="text" placeholder="Search">
+  <body>
+    <%- include('./aside.ejs')%>
+    <!-- MAIN -->
+      <main>
+        <!-- info-data -->
+        <section>
+          <article>
+            <div class="info-data">
+              <!-- info-data-card -->
+              <div class="card">
+                <div class="head">
+                  <div>
+                    <h2>1500</h2>
+                    <p>customers</p>
+                  </div>
+                  <i class="bx bx-trending-up icon"></i>
                 </div>
-            </div>
+                <span class="progress" data-value="40%"></span>
+                <span class="label">70%</span>
+              </div>
 
-            <div class="profile">
-                <i class="far fa-bell"></i>
-                <img src="bakry.jfif" alt="">
-
-            </div>
-
-        </div>
-
-        <h3 class="i-name">
-            Dashboard
-        </h3>
-        <div class="values">
-            <div class="val-box">
-                <i class="fas fa-users"></i>
-                <div>
-                    <h3>2,343</h3>
-                    <span>New Users</span>
+              <div class="card">
+                <div class="head">
+                  <div>
+                    <h2>1500</h2>
+                    <p>new customers</p>
+                  </div>
+                  <i class="bx bx-trending-up icon"></i>
                 </div>
-            </div>
-            <div class="val-box">
-                <i class="fas fa-shopping-cart"></i>
-                <div>
-                    <h3>5,354</h3>
-                    <span>Total orders</span>
+                <span class="progress" data-value="60%"></span>
+                <span class="label">20%</span>
+              </div>
+
+              <div class="card">
+                <div class="head">
+                  <div>
+                    <h2>1500</h2>
+                    <p>total orders</p>
+                  </div>
+                  <i class="bx bx-trending-up icon"></i>
                 </div>
-            </div>
-            <div class="val-box">
-                <i class="fas fa-acorn"></i>
-                <div>
-                    <h3>7,365</h3>
-                    <span>Products Sell</span>
+                <span class="progress" data-value="70%"></span>
+                <span class="label">50%</span>
+              </div>
+
+              <div class="card">
+                <div class="head">
+                  <div>
+                    <h2>1500</h2>
+                    <p>products sell</p>
+                  </div>
+                  <i class="bx bx-trending-up icon"></i>
                 </div>
+                <span class="progress" data-value="20%"></span>
+                <span class="label">80%</span>
+              </div>
             </div>
-            <div class="val-box">
-                <i class="fas fa-dollar-sign"></i>
-                <div>
-                    <h3>1,559</h3>
-                    <span>This Month</span>
+          </article>
+
+          <div class="data">
+            <!-- CHART CONTAINER -->
+            <div class="contact-data">
+              <div class="head">
+                <h3>Sales Report</h3>
+                <!-- THREE DOTS  -->
+                <div class="menu">
+                  <i class="bx bx-dots-horizontal-rounded icon"></i>
+                  <ul class="menu-link">
+                    <li><a href="">Edit</a></li>
+                    <li><a href="">Save</a></li>
+                    <li><a href="">Remove</a></li>
+                  </ul>
                 </div>
+              </div>
+              <div id="chart"></div>
             </div>
 
-        </div>
-        <div class="board">
-            <table width="100%">
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Title</td>
-                        <td>Status</td>
-                        <td>Role</td>
-                        <td></td>
+            <!-- CHATBOX CONTAINER-->
+            <div class="contact-data">
+              <div class="head">
+                <h3>Chatbox</h3>
+                <!-- CHATBOX THREE DOTS-->
+                <div class="menu">
+                  <i class="bx bx-dots-horizontal-rounded icon"></i>
+                  <ul class="menu-link">
+                    <li><a href="">Edit</a></li>
+                    <li><a href="">Save</a></li>
+                    <li><a href="">Remove</a></li>
+                  </ul>
+                </div>
+              </div>
 
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <td class="people">
-                            <img src="bakry.jfif" alt="">
-                            <div class="people-de">
-                                <h5>Youssef Bakry</h5>
-                                <p>Youssefbakry5@gmail.com</p>
-
-                            </div>
-                        </td>
-                        <td class="people-des">
-                            <h5>Software Engineer</h5>
-                            <p>web development</p>
-                        </td>
-                        <td class="active">
-                            <p>Active</p>
-                        </td>
-                        <td class="role">
-                            <p>Owner</p>
-                        </td>
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="classic.jpeg" alt="">
-                            <div class="people-de">
-                                <h5>Abdelrahman suezy</h5>
-                                <p>abdelrahmansuezy@gmail.com</p>
-
-                            </div>
-                        </td>
-                        <td class="people-des">
-                            <h5>Software Engineer</h5>
-                            <p>web development</p>
-                        </td>
-                        <td class="active">
-                            <p>Active</p>
-                        </td>
-                        <td class="role">
-                            <p>Owner</p>
-                        </td>
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-                    <tr>
-                        <td class="people">
-                            <img src="samir.jpg" alt="">
-                            <div class="people-de">
-                                <h5>Abdelrahman samir</h5>
-                                <p>abdelrahmansamir@gmail.com</p>
-
-                            </div>
-                        </td>
-                        <td class="people-des">
-                            <h5>Software Engineer</h5>
-                            <p>web development</p>
-                        </td>
-                        <td class="active">
-                            <p>Active</p>
-                        </td>
-                        <td class="role">
-                            <p>Owner</p>
-                        </td>
-                        <td class="edit"><a href="#">Edit</a></td>
-                    </tr>
-
-
-
-
-
-
-
-
-
-                </tbody>
-
-
-            </table>
-            <button class="open-button" src="chaticon.png" onclick="openForm()"><img src="chaticon.png"></button>
-            <div class="chat-popup" id="myForm">
-                <form action="/action_page.php" class="form-container">
-                    <h1>chat</h1>
-    
-                    <label for="msg"><b>Message</b></label>
-                    <textarea placeholder="Type message.." name="msg" required></textarea>
-                    
-    
-                    <button type="submit" class="btn">Send</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+              <!-- CHATBOX-->
+              <!-- MSG 1 -->
+              <div class="chat-box">
+                <p class="day"><span>Today</span></p>
+                <div class="msg">
+                  <img src="img/avatar.jpg" alt="" />
+                  <div class="chat">
+                    <div class="profile">
+                      <span class="username">Alan</span>
+                      <span class="time">18:30</span>
+                    </div>
+                    <p>Hello.</p>
+                  </div>
+                </div>
+                <!-- MSG 2 -->
+                <div class="msg me">
+                  <div class="chat">
+                    <div class="profile">
+                      <span class="time">18:30</span>
+                    </div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officia cumque beatae accusamus ea placeat nihil
+                      praesentium cum distinctio odio reprehenderit fugiat iusto
+                      reiciendis adipisci obcaecati, dicta laboriosam,
+                      consequuntur illo dignissimos?.
+                    </p>
+                  </div>
+                </div>
+                <!-- MSG 3 -->
+                <div class="msg">
+                  <img src="img/avatar.jpg" alt="" />
+                  <div class="chat">
+                    <div class="profile">
+                      <span class="username">Alan</span>
+                      <span class="time">18:30</span>
+                    </div>
+                    <p>Hello.</p>
+                  </div>
+                </div>
+                <!-- MSG 4 -->
+                <div class="msg me">
+                  <div class="chat">
+                    <div class="profile">
+                      <span class="time">18:30</span>
+                    </div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Officia cumque beatae accusamus ea placeat nihil
+                      praesentium cum distinctio odio reprehenderit fugiat iusto
+                      reiciendis adipisci obcaecati, dicta laboriosam,
+                      consequuntur illo dignissimos?.
+                    </p>
+                  </div>
+                </div>
+                <!-- MSG 4 -->
+                <div class="msg me">
+                  <div class="chat">
+                    <div class="profile">
+                      <span class="time">18:30</span>
+                    </div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+                <!-- MSG 5 -->
+                <div class="msg me">
+                  <div class="chat">
+                    <div class="profile">
+                      <span class="time">18:30</span>
+                    </div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- MSG TYPE BOX -->
+              <section>
+                <form action="#">
+                  <div class="form-group">
+                    <input type="text" placeholder="Type..." />
+                    <button type="submit" class="btn-send">
+                      <i class="bx bxs-send"></i>
+                    </button>
+                  </div>
                 </form>
+              </section>
             </div>
+          </div>
+        </section>
+      </main>
+    <!-- MAIN -->
 
-        
-        </div>
-      
-
-
-
-    </section>
-
-    <script>
-         function closeForm() {
-            document.getElementById("myForm").style.display = "none";
-        }
-
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
-        }
-
-       
-
-    </script>
-
-
-
-
-
-
-
-
-
-</body>
-
-
-
-
-
-
-
-
-
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="script.js"></script>
+    <!-- Link JS -->
+    <script src="/adminDashboard.js"></script>
+  </body>
 </html>

@@ -239,7 +239,7 @@ to {opacity: 1}
 .textcontainer .text /*text in the middle of the slide show */
 {
   z-index: 6;
-  position: fixed;
+  position: absolute;
   text-align: left;
  font-family: 'Righteous', cursive;
  font-size:47px; 
@@ -251,7 +251,7 @@ to {opacity: 1}
 .butt /*the button in the middle of the sliude show */
 {
   z-index: 6;
-  position: fixed;
+  position: absolute;
   top: 43%;
   left: 10%;
 font-family: Arial, Helvetica, sans-serif;
@@ -294,4 +294,69 @@ display: inline-block;
 margin-top: 25px;
 padding-left: 20px;
 
+}
+/*--------------------------------------------------*/
+#bestselling
+{
+margin-left: 20px;
+font-size: 30px; 
+font-style: italic;
+}
+
+
+
+.container{
+  display: inline-block;
+  max-width:1000px;
+  margin: auto;
+  width:100%;
+  /* padding-left: 25px; */
+}
+
+.shop-content{
+ height: 300px;
+ width: 100%;
+background-color: #F5F5DC;
+ display: flex;
+
+}
+.product-box{ 
+   margin-left: 20px;
+    margin-right: 30px;
+  margin-top: 50px;
+
+  height: 170px;
+  width: 170px;
+  position: relative; 
+   display: inline-block;
+   margin-top: 20px;
+
+}
+.product-box:hover{
+  padding:10px;
+  border: 1px solid var(--text-color);
+  transition: 0.4sec;
+}
+.product-img{
+  border-radius: 10px;
+  border-width: 16px;
+  border: #000000;
+  border-style: solid;
+  display: inline-block;
+  width: 100%;
+  height:auto;
+}
+.product-title{
+
+  border-radius: 10px;
+  border-width: 16px;
+  border: #000000;
+  font-size: 12px;
+  font-weight:600 ;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.price
+{
+  font-weight: 500;
 }
