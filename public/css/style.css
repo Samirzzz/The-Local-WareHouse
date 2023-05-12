@@ -256,13 +256,16 @@ section{
     font-weight: 500;
 }
 .add-cart{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background:var(--text-color);
-    color:var(--bg-color);
-    padding: 10px;
-    cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background:var(--text-color);
+  color:var(--bg-color);
+  padding: 10px;
+  cursor: pointer;
+  align-items: center ;
+  display: flex;
+  justify-content:end;
 }
 .add-cart:hover{
     background: hsl(249,32%,17%);
