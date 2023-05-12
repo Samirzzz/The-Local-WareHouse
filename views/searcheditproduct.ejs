@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ban user</title>
+    <title>search to edit product</title>
 
     <!-- Box Icons  -->
     <link
@@ -21,24 +21,24 @@
 
   <body>
     <%- include('./partials/aside.ejs')%>
+    <section class="home">
 
-    <!-- ============= Home Section =============== -->
-    <section class="home">      
       <div class="container">
         <div class="right">
-          <h2 id="j">Ban User</h2>
-          <input type="text" class="field" placeholder="User's ID" value="57916532"/>
-          <input type="text" class="field" placeholder="User's Name" value="Abdelrahman samir"/>
-          <input type="text" class="field" placeholder="User's Email" value="Abdelrahmansamir@gmail.com" />
-          <input type="text" class="field" placeholder="User's Password" value="samir321" />
-          <textarea placeholder="Notes" class="field" ></textarea>
-          <button class="btn">Ban this Student</button>
+          <h2 id="j">Search Product</h2>
+
+          <!-- <input class="filed" type="text" name="search" placeholder="Enter "> -->
+          <div class="serchbar">
+          <input type="text" class="field" placeholder="Product ID" /> <a href="/admin/editproduct"> <i id="searchicon" class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></a>
+          </div>
+          <!-- <button class="btn">Search</button> -->
         </div>
       </div>
-
+    
+      
     </section>
-
     <!-- Link JS -->
     <script src="/adminDashboard.js"></script>
+
   </body>
 </html>
