@@ -24,6 +24,9 @@ app.get('/',(req,res)=>{
 app.get('/edit',(req,res)=>{
     res.render('edit');
 })
+app.get('/Wishlist',(req,res)=>{
+    res.render('Wishlist')
+})
 app.get('/login',(req,res)=>{
     res.render('login');
 })
