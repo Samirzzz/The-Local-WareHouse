@@ -48,8 +48,23 @@ app.get('/admin/adduser',(req,res)=>{
 app.get('/admin/edituser',(req,res)=>{
     res.render('edituser');
 }) 
+app.get('/admin/searchbanuser',(req,res)=>{
+    res.render('searchbanuser');
+}) 
 app.get('/admin/banuser',(req,res)=>{
     res.render('banuser');
+}) 
+app.get('/admin/addproduct',(req,res)=>{
+    res.render('addproduct');
+}) 
+app.get('/admin/editproduct',(req,res)=>{
+    res.render('editproduct');
+}) 
+app.get('/admin/searchremoveprod',(req,res)=>{
+    res.render('searchremoveprod');
+}) 
+app.get('/admin/removeprod',(req,res)=>{
+    res.render('removeprod');
 }) 
  
 
