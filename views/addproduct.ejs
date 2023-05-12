@@ -20,21 +20,18 @@
   </head>
 
   <body>
-    <%- include('./aside.ejs')%>
+    <%- include('./partials/aside.ejs')%>
 
     <section class="home">
       <div class="container">
         <div class="right">
           <h2 id="j">Add Product</h2>
-          <input type="text" class="field" placeholder="Product's's Name" />
-          <input type="text" class="field" placeholder="Product's ID" />
+          
+          <input type="text" class="field" placeholder="Product's's ID" />
+          <input type="text" class="field" placeholder="Product's Name" />
           <input type="text" class="field" placeholder="Product's Price" />
+          <input type="text"class="field" placeholder="Product's Quantity" />
 
-          <input
-            type="text"
-            class="field"
-            placeholder="Product's Quantity"
-          />
           <textarea placeholder="Notes" class="field"></textarea>
           <button class="btn">Add</button>
         </div>

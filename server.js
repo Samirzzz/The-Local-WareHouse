@@ -45,6 +45,10 @@ app.get('/admin',(req,res)=>{
 app.get('/admin/adduser',(req,res)=>{
     res.render('adduser');
 }) 
+app.get('/admin/searchedituser',(req,res)=>{
+    res.render('searchedituser');
+}) 
+
 app.get('/admin/edituser',(req,res)=>{
     res.render('edituser');
 }) 
@@ -56,6 +60,9 @@ app.get('/admin/banuser',(req,res)=>{
 }) 
 app.get('/admin/addproduct',(req,res)=>{
     res.render('addproduct');
+}) 
+app.get('/admin/searcheditproduct',(req,res)=>{
+    res.render('searcheditproduct');
 }) 
 app.get('/admin/editproduct',(req,res)=>{
     res.render('editproduct');
