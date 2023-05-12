@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The-Local-WareHouse|Ecommerce Website design</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header id="bar">
+        <!-- the head bar (account/wishlist/cart) -->
+ <nav class="head">
+     <ul><li><a href="#" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist </a></li>
+         <li><a href="#" style="color:white" id="cart-icon"><i class='bx bx-cart'></i>Cart </a></li>
+         <li><a href="edit.html" style="color:white"><i class='bx bx-user-circle'></i>Account </a></li>
+     </ul>
+ </nav>
+
+<!-- the menu checkbox -->
+
+ <input type="checkbox" id="check">
+ <label for="check">
+     <i class='bx bx-menu' id="mnubtn"></i>
+     <i class='bx bx-arrow-back' id="cancel" ></i>
+ </label>
+
+
+ <!-- sidebar content  -->
+ <div class="sidebar">
+    <header>
+        <i class='bx bx-home'></i>The <br> Local <br> Warehouse 
+    </header>
+    <ul>
+        <li><a href="top&side.html"><i class='bx bxs-offer'></i>Home</a></li>
+        <li><a href="#"><i class='bx bx-male'></i>Men </a></li>
+        <li><a href="#"><i class='bx bx-female'></i>Women</a></li>
+        <li><a href="#"><i class='bx bx-help-circle'></i>Support&Help</a></li>
+        <li><a href="#"><i class='bx bx-group'></i>About US</a></li>
+        <li><a href="login.html"><i class='bx bx-log-out'></i>Log Out</a></li>
+    </ul>
+</div>
+       <h1 style="text-align: center;padding: 20px;">My Wishlist</h1>
+
+<div  class="cart">
+
+    <h2 class="cart-title">Your Cart <br> <i class='bx bxs-shopping-bag-alt' id="cart-icon"></i></h2>
+
+    <!--Content-->
+    <div class="cart-content"> 
+        
+        <!-- <div class="cart-box">
+            <img src="prod1.jpeg" alt="" class="cart-img">
+            <div class="deatil-box">
+                <div class="cart-product-title">Tshirt</div>
+                <div class="cart-price">45$</div>
+                <input type="number" value="1" class="cart-quantity">
+            </div>              
+        <!- </div> -->
+    </div>
+    <!--Total-->
+    <div class="total">
+        <div class="total-title">Total</div>
+        <div class="total-price">0$</div>
+    </div>
+    <!--Buy Button-->
+    <button type="button" class="btn-buy">Buy Now</button>
+    <!--Cart Close-->
+    <i class="bx bx-x" id="close-cart" ></i>
+    
+   
+
+
+</div>
+
+
+<script src="main.js">
+
+  
+</script>
+</body>
+</html>
