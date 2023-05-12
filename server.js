@@ -92,7 +92,9 @@ app.get('/admin/searchremovebrand',(req,res)=>{
 app.get('/admin/removebrand',(req,res)=>{
     res.render('removebrand');
 }) 
-
+app.get('/wishlist',(req,res)=>{
+    res.render('wishlist');
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`)
