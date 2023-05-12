@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit User</title>
+    <title>search to remove prod</title>
 
     <!-- Box Icons  -->
     <link
@@ -21,37 +21,24 @@
 
   <body>
     <%- include('./partials/aside.ejs')%>
-
-    <!-- ============= Home Section =============== -->
     <section class="home">
+
       <div class="container">
         <div class="right">
-          <h2 id="j">Edit User</h2>
-          <input
-            type="text"
-            class="field"
-            placeholder="Student's Name"
-           
-          />
-          <input
-            type="text"
-            class="field"
-            placeholder="Student's Email"
-           
-          />
-          <input
-            type="text"
-            class="field"
-            placeholder="Student's Password"
-          
-          />
-          <textarea placeholder="Notes" class="field"></textarea>
-          <button class="btn">Save Changes</button>
+          <h2 id="j">Search Product</h2>
+
+          <!-- <input class="filed" type="text" name="search" placeholder="Enter "> -->
+          <div class="serchbar">
+          <input type="text" class="field" placeholder="Product ID" /> <a href="/admin/removeprod"> <i id="searchicon" class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></a>
+          </div>
+          <!-- <button class="btn">Search</button> -->
         </div>
       </div>
+    
+      
     </section>
-
     <!-- Link JS -->
     <script src="/adminDashboard.js"></script>
+
   </body>
 </html>

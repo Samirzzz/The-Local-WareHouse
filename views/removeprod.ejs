@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit User</title>
+    <title>remove product</title>
 
     <!-- Box Icons  -->
     <link
@@ -17,41 +17,30 @@
     />
     <!-- Styles  -->
     <link rel="stylesheet" href="/adminDashboard.css" />
+
   </head>
 
   <body>
     <%- include('./partials/aside.ejs')%>
-
-    <!-- ============= Home Section =============== -->
     <section class="home">
+
+      
       <div class="container">
         <div class="right">
-          <h2 id="j">Edit User</h2>
-          <input
-            type="text"
-            class="field"
-            placeholder="Student's Name"
-           
-          />
-          <input
-            type="text"
-            class="field"
-            placeholder="Student's Email"
-           
-          />
-          <input
-            type="text"
-            class="field"
-            placeholder="Student's Password"
-          
-          />
-          <textarea placeholder="Notes" class="field"></textarea>
-          <button class="btn">Save Changes</button>
+          <h2 id="j">Remove Product</h2>
+          <input type="text" class="field" placeholder="Product's Name" value="Jeans"/>
+          <input type="text" class="field" placeholder="Product's ID" value="123"/>
+          <input type="text" class="field" placeholder="Product's Price" value="200$"/>
+          <input type="text" class="field" placeholder="Product's Quantity" value="12"/>
+          <textarea placeholder="Notes" class="field" ></textarea>
+          <button class="btn">Remove this Product</button>
         </div>
       </div>
+
     </section>
 
     <!-- Link JS -->
     <script src="/adminDashboard.js"></script>
+
   </body>
 </html>
