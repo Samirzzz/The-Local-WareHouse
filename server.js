@@ -66,7 +66,22 @@ app.get('/admin/searchremoveprod',(req,res)=>{
 app.get('/admin/removeprod',(req,res)=>{
     res.render('removeprod');
 }) 
- 
+app.get('/admin/addbrand',(req,res)=>{
+    res.render('addbrand');
+}) 
+app.get('/admin/searcheditbrand',(req,res)=>{
+    res.render('searcheditbrand');
+}) 
+
+app.get('/admin/editbrand',(req,res)=>{
+    res.render('editbrand');
+}) 
+app.get('/admin/searchremovebrand',(req,res)=>{
+    res.render('searchremovebrand');
+}) 
+app.get('/admin/removebrand',(req,res)=>{
+    res.render('removebrand');
+}) 
 
 
 app.listen(port, () => {
