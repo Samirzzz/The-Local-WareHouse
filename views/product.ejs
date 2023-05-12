@@ -12,7 +12,7 @@
     <header id="bar">
         <!-- the head bar (account/wishlist/cart) -->
  <nav class="head">
-     <ul><li><a href="#" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist </a></li>
+     <ul><li><a href="Wishlist.html" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist </a></li>
          <li><a href="#" style="color:white" id="cart-icon"><i class='bx bx-cart'></i>Cart </a></li>
          <li><a href="edit.html" style="color:white"><i class='bx bx-user-circle'></i>Account </a></li>
      </ul>
@@ -29,14 +29,16 @@
 
  <!-- sidebar content  -->
  <div class="sidebar">
-     <header><i class='bx bx-home'></i>The <br> Local <br> Warehouse </header>
+    <header>
+        <i class='bx bx-home'></i>The <br> Local <br> Warehouse 
+    </header>
      <ul>
-         <li><a href="/"><i class='bx bxs-offer'></i>Home</a></li>
+         <li><a href="top&side.html"><i class='bx bxs-offer'></i>Home</a></li>
          <li><a href="#"><i class='bx bx-male'></i>Men </a></li>
          <li><a href="#"><i class='bx bx-female'></i>Women</a></li>
          <li><a href="#"><i class='bx bx-help-circle'></i>Support&Help</a></li>
          <li><a href="#"><i class='bx bx-group'></i>About US</a></li>
-         <li><a href="login"><i class='bx bx-log-out'></i>Log Out</a></li>
+         <li><a href="login.html"><i class='bx bx-log-out'></i>Log Out</a></li>
      </ul>
  </div>
         
@@ -74,30 +76,32 @@
         <section class="shop container">
                 <div class="filter">
                     <a href="#"><button>All</button></a>
-                    <a href="jeanshtml"><button>Jeans </button></a>   
-                    <a href="shirtshtml"><button>Tshirts & Hoodies</button></a>
+                    <a href="jeanshtml.html"><button>Jeans </button></a>   
+                    <a href="shirtshtml.html"><button>Tshirts & Hoodies</button></a>
                 </div>
             <h2 class="section-title">Tshirts & Hoodies</h2>
             
             <!--content-->
             <div class="shop-content">
                 <!--box1-->
-                
                 <div class="product-box">
-
+                   
                     <img src="prod1.jpeg" alt="" class="product-img" >
                     <h2 class="product-title">Nike Sportswear Premium Essentials Men's T-Shirt</h2>
                     <span class="price">45$</span>
                     <i class='bx bxs-shopping-bag-alt add-cart'></i>
+                    <i class='bx bx-heart add-cart' 
+                    onclick="showPhoto()"></i>
                     
                 </div>
-
                 <!--box2-->
                 <div class="product-box">
                     <img src="prod2.webp" alt="" class="product-img">
                     <h2 class="product-title">Nike Dri-FIT Ready</h2>
                     <span class="price">40$</span>
                     <i class='bx bxs-shopping-bag-alt add-cart'></i>
+                    <i class='bx bx-heart add-cart' 
+                    onclick="showPhoto()"></i>
                 </div>
                 <!--box3-->
                 <div class="product-box">
@@ -105,6 +109,8 @@
                     <h2 class="product-title">Men's French Terry Crew</h2>     
                     <span class="price">40$</span>
                     <i class='bx bxs-shopping-bag-alt add-cart'></i>
+                    <i class='bx bx-heart add-cart' 
+                    onclick="showPhoto()"></i>
                     
                 </div>
 
@@ -124,6 +130,8 @@
                     <h2 class="product-title">MEN Jacket Jeans</h2>
                     <span class="price">55$</span>
                     <i class='bx bxs-shopping-bag-alt add-cart'></i>
+                    <i class='bx bx-heart add-cart' 
+                    onclick="showPhoto()"></i>
                     
                 </div>
 
@@ -133,6 +141,8 @@
                     <h2 class="product-title">Jeans Pants For Men</h2>
                     <span class="price">50$</span>
                     <i class='bx bxs-shopping-bag-alt add-cart'></i>
+                    <i class='bx bx-heart add-cart' 
+                    onclick="showPhoto()"></i>
                 </div>
                 <!--box3-->
                 <div class="product-box">
@@ -140,8 +150,11 @@
                     <h2 class="product-title">Women's Jeans Pants</h2>
                     <span class="price">40$</span>
                     <i class='bx bxs-shopping-bag-alt add-cart'></i>
+                    <i class='bx bx-heart add-cart' 
+                    onclick="showPhoto()"></i>
                 </div>
             </div>
+
                 <button class="open-button" onclick="openForm()"><img src="chaticon.png"></button>
                 <div class="chat-popup" id="myForm">
                     <form action="/action_page.php" class="form-container">
@@ -173,10 +186,11 @@
            function openForm() {
                document.getElementById("myForm").style.display = "block";
            }
-   
-          
-   
-       </script>
+
+           function showPhoto() {
+        window.open("Wishlist.html", "_blank");
+    }
+        </script>
    
 </body>
 </html>
