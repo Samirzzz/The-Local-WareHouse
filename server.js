@@ -4,17 +4,27 @@ var fs=require('fs')
 const express=require('express');
 const session=require('express-session');
  const app=express();
+ const mongoose = require('mongoose');
+
+ const Sign=require('./models/clientschema');
+
  app.use(session({secret:"Your_Secret_Key"}))
 app.set('view engine','ejs');
 app.use(express.static('public/css'))
 app.use(express.static('public/images'))
 app.use(express.static('public/js'))
-
+app.use(express.urlencoded({extended:true}));
 
 const port =3000
 
-const mongoose = require('mongoose');
-
+ 
+mongoose.connect("mongodb+srv://SBF:SBF30@project.qbd3pcm.mongodb.net/?retryWrites=true&w=majority")
+  .then( result => {
+    app.listen(8080);
+  })
+  .catch( err => {
+    console.log(err);
+  }); 
 
 
 app.get('/',(req,res)=>{
@@ -98,7 +108,18 @@ app.get('/wishlist',(req,res)=>{
 app.get('/edit',(req,res)=>{
     res.render('edit');
 })
+app.post("/", (req, res) => {
+    const x = new Sign(req.body);
+    x
+    .save( )
+    .then( result => {
+      res.redirect("/");
+    })
+    .catch( err => {
+      console.log(err);
+    });
 
+})
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`)
   });
