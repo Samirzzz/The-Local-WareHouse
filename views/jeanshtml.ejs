@@ -9,36 +9,9 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <header id="bar">
-        <!-- the head bar (account/wishlist/cart) -->
- <nav class="head">
-     <ul><li><a href="#" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist </a></li>
-         <li><a href="#" style="color:white" id="cart-icon"><i class='bx bx-cart'></i>Cart </a></li>
-         <li><a href="edit" style="color:white"><i class='bx bx-user-circle'></i>Account </a></li>
-     </ul>
- </nav>
+      <!-- the head bar (account/wishlist/cart) -->
+<%- include("./partials/navbar.ejs") %>
 
-<!-- the menu checkbox -->
-
- <input type="checkbox" id="check">
- <label for="check">
-     <i class='bx bx-menu' id="mnubtn"></i>
-     <i class='bx bx-arrow-back' id="cancel" ></i>
- </label>
-
-
- <!-- sidebar content  -->
- <div class="sidebar">
-     <header><i class='bx bx-home'></i>The <br> Local <br> Warehouse </header>
-     <ul>
-         <li><a href="/"><i class='bx bxs-offer'></i>Home</a></li>
-         <li><a href="#"><i class='bx bx-male'></i>Men </a></li>
-         <li><a href="#"><i class='bx bx-female'></i>Women</a></li>
-         <li><a href="#"><i class='bx bx-help-circle'></i>Support&Help</a></li>
-         <li><a href="#"><i class='bx bx-group'></i>About US</a></li>
-         <li><a href="login"><i class='bx bx-log-out'></i>Log Out</a></li>
-     </ul>
- </div>
         
   <!--cart-->
  <div  class="cart">
