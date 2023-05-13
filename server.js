@@ -15,9 +15,11 @@ app.use(express.static('public/images'))
 app.use(express.static('public/js'))
 app.use(express.urlencoded({extended:true}));
 
+
 const port =3000
 
- 
+const mongoose = require('mongoose');
+
 mongoose.connect("mongodb+srv://SBF:SBF30@project.qbd3pcm.mongodb.net/?retryWrites=true&w=majority")
   .then( result => {
     app.listen(8080);
@@ -108,6 +110,10 @@ app.get('/wishlist',(req,res)=>{
 app.get('/edit',(req,res)=>{
     res.render('edit');
 })
+app.get('/shirtshtml',(req,res)=>{
+    res.render('shirtshtml');
+})
+
 app.post("/", (req, res) => {
     const x = new Sign(req.body);
     x
