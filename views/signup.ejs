@@ -20,16 +20,7 @@
             document.getElementById("errorNameid").innerHTML = "Please Enter UserName";
             return  "kkk";
         }
-        else if(field.length<4){
-            document.getElementById("errorNameid").innerHTML = "enter more than 4 characters";
-            return  "kkk";
-
-        }
-    else if(field.length>12){
-            document.getElementById("errorNameid").innerHTML = "enter less than 12 characters";
-            return  "kkk";
-
-        }
+       
         else
         document.getElementById("errorNameid").innerHTML="";
 
@@ -176,7 +167,7 @@ function validategender(field){
         <h1
             style="color: black; text-align:center 12 ;padding-left: 25%;margin:1px ;margin-left: 10px;margin-top: -10px; padding-bottom: 5%;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             Sign Up</h1><br>
-        <form action="" method="" class="q" onsubmit="return validate(this)">
+        <form action="/" method="post" class="q" onsubmit="return validate(this)">
              <input class="cc" id="errorName" type="text" name="username" placeholder="username " >
             <span class="error" id="errorNameid"> </span> 
              <br>
@@ -205,7 +196,7 @@ function validategender(field){
 
             <br><br>
 
-            <input type="submit" value="Create" class="c" formaction="/"><br>
+            <input type="submit" value="Create" class="c" ><br>
            <a href="login"> <h1 class="for">Already have an account?</h1></a> 
         </form>
     </div>

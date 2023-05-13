@@ -57,7 +57,11 @@
             <img src="jeans1.jpeg" alt="" class="product-img" >
             <h2 class="product-title">MEN Jacket Jeans</h2>
             <span class="price">55$</span>
-            <i class='bx bxs-shopping-bag-alt add-cart'></i>
+            <div class="add-cart">
+                <i class='bx bxs-shopping-bag-alt '></i>
+                <i class='bx bx-heart ' 
+                onclick="showPhoto()"></i>
+            </div>
             
         </div>
 
@@ -66,20 +70,32 @@
             <img src="jeans3.jpg" alt="" class="product-img">
             <h2 class="product-title">Jeans Pants For Men</h2>
             <span class="price">50$</span>
-            <i class='bx bxs-shopping-bag-alt add-cart'></i>
+            <div class="add-cart">
+                <i class='bx bxs-shopping-bag-alt '></i>
+                <i class='bx bx-heart ' 
+                onclick="showPhoto()"></i>
+            </div>
         </div>
         <!--box3-->
         <div class="product-box">
             <img src="jeans2.jpg" alt="" class="product-img">
             <h2 class="product-title">Women's Jeans Pants</h2>
             <span class="price">40$</span>
-            <i class='bx bxs-shopping-bag-alt add-cart'></i>
+            <div class="add-cart">
+                <i class='bx bxs-shopping-bag-alt '></i>
+                <i class='bx bx-heart ' 
+                onclick="showPhoto()"></i>
+            </div>
         </div>
 
     </div>
 
 </section>
  <!--Java Script-->
- <script src="main.js"></script>
+    <script src="main.js">
+        function showPhoto() {
+            window.open("/Wishlist", "_blank");
+        }
+    </script>
 </body>
 </html>
