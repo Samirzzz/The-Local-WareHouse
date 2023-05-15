@@ -27,7 +27,7 @@ line-height: 10px;
 top: 10px;
 padding: 10px;
 }
-a:link /*so the link of account  doesnt turn blue */
+#hmbut a:link /*so the link of account  doesnt turn blue */
 {
 color:rgb(0, 0, 0);
 }
@@ -93,7 +93,7 @@ body
   border-top: 1px solid rgb(0, 0, 0);
   transition: .4s;
 }
-ul li:hover a /*hovering effect of every link */
+#hmbut ul li:hover a /*hovering effect of every link */
 {
   padding-left: 50px;
   background: rgb(255, 255, 255);
@@ -158,6 +158,8 @@ section{
 }
 
 
+
+
  /*------------------------------------------------------------*/
  /*SLideSHow */
 
@@ -172,11 +174,12 @@ img  /*allign photos in middlie vertically */
 }
 .slideshow-container/* Slideshow container */
 { 
+  padding-top: 50px;
    position: relative;
   margin: auto;
   overflow: auto;
 max-width: 100%;
-height: 500px;
+height: 700px;
 margin: auto;
 }
 
@@ -247,10 +250,11 @@ to {opacity: 1}
  left: 4%;
  color: #000000;
  margin-left: 3px;
-
+height: auto;
 }
 .butt /*the button in the middle of the sliude show */
 {
+  height: auto;
   z-index: 6;
   position: absolute;
   top: 43%;
@@ -335,7 +339,8 @@ background-color: #F5F5DC;
   border: 1px solid var(--text-color);
   transition: 0.4sec;
 }
-.product-img{
+.product-img
+{
   border-radius: 10px;
   border-width: 16px;
   border: #000000;
@@ -344,7 +349,8 @@ background-color: #F5F5DC;
   width: 100%;
   height:auto;
 }
-.product-title{
+.product-title
+{
 
   border-radius: 10px;
   border-width: 16px;
@@ -358,14 +364,36 @@ background-color: #F5F5DC;
 {
   font-weight: 500;
 }
-
-@media screen and(max-width=400)
+.img_in_slideshow
 {
-  .slideshow-container
-  {
-  display:flexbox;
+width: 100%;
+height: 600px;
+opacity: 60%;
+}
+.text_inslideshow
+{
+  border-width: 5px;
+  border: #000000;
+  object-position: center;
+  text-align: center;
+  position: absolute;
+  font-size:47px; 
+  z-index: 6;
+  left: 37%;
+  top: 40%;
+  font-family: 'Righteous', cursive;
+  color: #ffffff;
+  text-shadow:
+  3px 3px 0 #000,
+-1px -1px 0 #000,  
+ 1px -1px 0 #000,
+ -1px 1px 0 #000,
+  1px 1px 0 #000;
+}
 
-  }
+
+@media screen and(max-width=480)
+{
   .main-pic
   {
   display: flexbox;
@@ -374,6 +402,7 @@ background-color: #F5F5DC;
   .textcontainer .text
   {
   display: flex;
+  height: fit-content;
   }
 
 }

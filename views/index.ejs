@@ -35,6 +35,22 @@ index++;
 setTimeout(showslides,3000);
 }
 setTimeout(showslides,100);
+
+
+var index=0;
+  function showslides(){
+    var image=document.getElementsByClassName("mySlides ")
+    for(var i=0;i < image.length;i++){
+        image[i].style.display="none";
+    }
+    if(index>image.length-1){
+        index=0;
+    }
+image[index].style.display="block";
+index++;
+setTimeout(showslides,3000);
+}
+setTimeout(showslides,100);
   </script>
 
   
@@ -47,7 +63,7 @@ setTimeout(showslides,100);
 
 
 <div class-"main-pic">
-           <img src="hm-main.png" style="width:100%;height: 800px;">
+           <img src="hm-main.png" style="width:100%;height: auto;">
         <div class="textcontainer">
             <div class="text">ALL <br> NEW  <br>& <br> EXCLUSIVE </div>
             <a href="product">          
@@ -55,6 +71,49 @@ setTimeout(showslides,100);
             </a> 
             </div> 
 </div>
+
+ <!-- slideshow images and container --> 
+
+    <div class="slideshow-container">    
+             <!-- the text and button -->
+             <div class="text_inslideshow">NEW  COLLECTION  </div>
+      <div class="mySlides fade"> 
+
+            <!-- theimage itself -->
+          <img class="img_in_slideshow" src="hm4.png" >
+      </div>
+      <div class="mySlides fade">
+      
+          <img class="img_in_slideshow" src="hm3.png" >
+        
+      </div>
+      <div class="mySlides fade">
+       
+          <img class="img_in_slideshow"  src="hm5.png" >
+      </div>
+  </div>
+
+
+  <div class="slideshow-container">    
+    <!-- the text and button -->
+    <div class="text_inslideshow">SUMMER COLLECTION <BR> OUT NOW!!! </div>
+<div class="mySlides fade"> 
+
+   <!-- theimage itself -->
+ <img class="img_in_slideshow" src="hm10.png" >
+</div>
+<div class="mySlides fade">
+
+ <img class="img_in_slideshow" src="hm11.png" >
+
+</div>
+<div class="mySlides fade">
+
+ <img class="img_in_slideshow"  src="hm12.png" >
+</div>
+</div>
+
+
 
  <div class="small pic slide " >
 
@@ -94,36 +153,7 @@ setTimeout(showslides,100);
 
  </div>
 
-    <!-- slideshow images and container --> 
-
-    <div class="slideshow-container">    
-             <!-- the text and button -->
-
-      <div class="mySlides fade"> 
-
-            <!-- theimage itself -->
-          <img src="man2.jpg" style="width:100%;height: 500px;">
-      </div>
-      <div class="mySlides fade">
-      
-          <img src="woman3.jpg" style="width:100%;height: 500px;">
-        
-      </div>
-      <div class="mySlides fade">
-       
-          <img src="men3.jpg" style="width:100%;height: 500px;">
-      </div>
-      <div class="mySlides fade">
-       
-        <img src="woman1.jpg" style="width:100%;height: 500px;">
-    </div>
-    <div class="mySlides fade">
-       
-        <img src="woman2.jpg" style="width:100%;height: 500px;">
-    </div>
-  </div>
-
-
+   
 
     <div class="downnavbr"> 
 
