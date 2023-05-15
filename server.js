@@ -3,9 +3,9 @@ var fs=require('fs')
 const express=require('express');
 const session=require('express-session');
  const app=express();
-
+ const crypt = require("bcryptjs");
  const Sign=require('./models/clientschema');
-
+//  var db=mongoose.connection;
  app.use(session({secret:"Your_Secret_Key"}))
 app.set('view engine','ejs');
 app.use(express.static('public/css'))
@@ -18,19 +18,16 @@ const port =3000
 
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://SBF:SBF30@project.qbd3pcm.mongodb.net/?retryWrites=true&w=majority")
-  .then( result => {
-    app.listen(8080);
-  })
-  .catch( err => {
-    console.log(err);
-  }); 
 
 
 app.get('/',(req,res)=>{
     res.render('index');
 
 })
+// app.post('/',(req,res)=>{
+//     res.render('index');
+
+// })
 app.get('/edit',(req,res)=>{
     res.render('edit');
 })
@@ -38,8 +35,20 @@ app.get('/Wishlist',(req,res)=>{
     res.render('Wishlist')
 })
 app.get('/login',(req,res)=>{
+    
     res.render('login');
+
+
+
+
 })
+// app.post('/login',async(req,res) => { 
+//     try {
+//         const check=await collection
+//     } catch (error) {
+        
+//     }
+//  })
 app.get('/product',(req,res)=>{
     res.render('product');
 }) 
@@ -114,24 +123,66 @@ app.get('/product-details',(req,res)=>{
     res.render('product-details');
 })
 
-app.post("/", (req, res) => {
-    const x = new Sign(req.body);
-    x
-    .save( )
-    .then( result => {
-      res.redirect("/");
-    })
-    .catch( err => {
-      console.log(err);
-    });
+app.post("/signup", (req, res) => {
+    req.body.password=crypt.hashSync(req.body.password,10)
+    
+   
+      
+      var query={"Email":req.body.Email};
+      
+      Sign.find(query)
+        .then(result => {
+            if(result.length>0){
+                res.send('email taken');
 
-})
+            }
+    else{
+                
+      const emp = new Sign({
+        username: req.body.username,
+        Email:req.body.Email,
+        password: req.body.password,
+        phonee:req.body.phonee,
+        birth:req.body.birth,
+        gender:req.body.gender
+
+       })
+      
+          emp.save();
+          res.redirect('/');
+    }
+
+    });
+});
+
+  
+
 
 app.use((req,res) =>{
     res.status(404).send("404 ,page not found");
 });
 
 
-app.listen(port, () => {
-    console.log(`Example app listening on port http://localhost:${port}`)
-  });
+app.post("/login", async function(req, res){
+    try {
+        // check if the user exists
+        const user = await Sign.findOne({ Email: req.body.Email });
+        if (user) {
+          //check if password matches
+          const result = req.body.password === user.password;
+          if (result) {
+            res.render("/");
+          } else {
+            res.status(400).json({ error: "password doesn't match" });
+          }
+        } else {
+          res.status(400).json({ error: "User doesn't exist" });
+        }
+      } catch (error) {
+        res.status(400).json({ error });
+      }});
+
+
+mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+.then(result => app.listen(3000))
+.catch(err => console.log(err));
