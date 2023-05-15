@@ -111,6 +111,10 @@ app.get('/shirtshtml',(req,res)=>{
     res.render('shirtshtml');
 })
 
+app.get('/product-details',(req,res)=>{
+    res.render('product-details');
+})
+
 app.post("/", (req, res) => {
     const x = new Sign(req.body);
     x
