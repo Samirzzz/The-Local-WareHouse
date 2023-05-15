@@ -46,9 +46,9 @@
         <!--shop-->
         <section class="shop container">
             <div class="filter">
-                <a href="product.html"><button>All</button></a>
-                <a href="jeanshtml.html"><button>Jeans </button></a>   
-                <a href="shirtshtml.html"><button>Tshirts & Hoodies</button></a>
+                <a href="/product"><button>All</button></a>
+                <a href="/jeanshtml"><button>Jeans </button></a>   
+                <a href="/shirtshtml"><button>Tshirts & Hoodies</button></a>
             </div>
             <h2 class="section-title">Tshirts & Hoodies</h2>
             <!--content-->
@@ -58,7 +58,11 @@
                     <img src="prod1.jpeg" alt="" class="product-img" >
                     <h2 class="product-title">Nike Sportswear Premium Essentials Men's T-Shirt</h2>
                     <span class="price">45$</span>
-                    <i class='bx bxs-shopping-bag-alt add-cart'></i>
+                    <div class="add-cart">
+                        <i class='bx bxs-shopping-bag-alt '></i>
+                        <i class='bx bx-heart ' 
+                        onclick="showPhoto()"></i>
+                    </div>
                     
                 </div>
 
@@ -67,14 +71,22 @@
                     <img src="prod2.webp" alt="" class="product-img">
                     <h2 class="product-title">Nike Dri-FIT Ready</h2>
                     <span class="price">40$</span>
-                    <i class='bx bxs-shopping-bag-alt add-cart'></i>
+                    <div class="add-cart">
+                        <i class='bx bxs-shopping-bag-alt '></i>
+                        <i class='bx bx-heart ' 
+                        onclick="showPhoto()"></i>
+                    </div>
                 </div>
                 <!--box3-->
                 <div class="product-box">
                     <img src="prod3.webp" alt="" class="product-img">
                     <h2 class="product-title">Men's French Terry Crew</h2>
                     <span class="price">40$</span>
-                    <i class='bx bxs-shopping-bag-alt add-cart'></i>
+                    <div class="add-cart">
+                        <i class='bx bxs-shopping-bag-alt '></i>
+                        <i class='bx bx-heart ' 
+                        onclick="showPhoto()"></i>
+                    </div>
                 </div>
 
             </div>
@@ -82,6 +94,11 @@
 
         </section>
         <!--Java Script-->
-        <script src="main.js"></script>
+        <script src="main.js">
+
+            function showPhoto() {
+                window.open("/Wishlist", "_blank");
+            }
+        </script>
 </body>
 </html>
