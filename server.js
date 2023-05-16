@@ -42,6 +42,7 @@ app.get('/login',(req,res)=>{
 
 
 })
+
 // app.post('/login',async(req,res) => { 
 //     try {
 //         const check=await collection
@@ -112,9 +113,7 @@ app.get('/admin/removebrand',(req,res)=>{
     res.render('removebrand');
 }) 
 
-app.get('/edit',(req,res)=>{
-    res.render('edit');
-})
+
 app.get('/shirtshtml',(req,res)=>{
     res.render('shirtshtml');
 })
@@ -158,29 +157,43 @@ app.post("/signup", (req, res) => {
   
 
 
-app.use((req,res) =>{
-    res.status(404).send("404 ,page not found");
-});
 
 
-app.post("/login", async function(req, res){
-    try {
-        // check if the user exists
-        const user = await Sign.findOne({ Email: req.body.Email });
-        if (user) {
-          //check if password matches
-          const result = req.body.password === user.password;
-          if (result) {
-            res.render("/");
-          } else {
-            res.status(400).json({ error: "password doesn't match" });
-          }
-        } else {
-          res.status(400).json({ error: "User doesn't exist" });
-        }
-      } catch (error) {
-        res.status(400).json({ error });
-      }});
+
+app.post("/login", (req, res)=>{
+  
+        req.body.password=crypt.hashSync(req.body.password,10)
+        var query = { Email: req.body.Email, password:req.body.password };  
+ 
+        Sign.find(query)
+        .then(result => {
+            if(result.length>0){
+           
+                res.redirect('/');
+
+           
+            }
+    else{
+        res.send( 'incorrect password');      
+                
+    }
+
+    });
+        
+          //Sign.find({ query });
+        // if (query) {
+        //   //check if password matches
+        //   const result = req.body.password === user.password;
+        //   if (result) {
+        //     res.render("/");
+        //   } else {
+        //     res.status(400).json({ error: "password doesn't match" });
+        //   }
+        // } else {
+        //   res.status(400).json({ error: "User doesn't exist" });
+        // }
+      } 
+      );
 
 
 mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
