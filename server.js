@@ -5,7 +5,6 @@ const session=require('express-session');
  const app=express();
  const crypt = require("bcryptjs");
  const Sign=require('./models/clientschema');
-//  var db=mongoose.connection;
  app.use(session({secret:"Your_Secret_Key"}))
 app.set('view engine','ejs');
 app.use(express.static('public/css'))
@@ -158,27 +157,47 @@ app.post("/signup", (req, res) => {
 });
 
 app.post('/login',  (req, res)=> {
+    var user={"Email":req.body.email};
+    const hash=crypt.hashSync(req.body.password,10)
+
+    Sign.find(user).then(result=>{
+
+        if(result[0]==null){
+         res.send('email does not exist');
+    
+        }
+       
+            if(crypt.compare(result[0].password,hash)){
+                res.send('true');
+            }else{
+                res.send('false');
+           
+        } 
+    })
+    .catch(err => {
+    console.log(err);
+  });
 	//console.log(req.body);
 
-    var query={"Email":req.body.email,"password":req.body.password};
+//     var query={"Email":req.body.email,"password":req.body.password};
     
-  Sign.find(query)
-  .then(result => {
+//   Sign.find(query)
+//   .then(result => {
     
-    if (result.length>0) {
-            res.send('found');
-        }else{
-            res.send('error');
-        }
+//     if (result.length>0) {
+//             res.send('found');
+//         }else{
+//             res.send('error');
+//         }
        
    
 
 
-  })
-  .catch(err => {
-    console.log(err);
-  });
-	});
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+ 	});
 
 
 
