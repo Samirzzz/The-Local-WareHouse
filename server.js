@@ -141,7 +141,7 @@ app.use('/admin',admin_router);
 app.use('/product',product_router);
 app.use('/forget',forget_router);
 app.use('/edit',edit_router);
-app.use('/wishlist',jwishlist_router);
+app.use('/wishlist',wishlist_router);
 
 mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
 .then(result =>
