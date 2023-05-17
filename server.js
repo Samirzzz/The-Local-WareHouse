@@ -100,6 +100,8 @@ app.post('/login',  (req, res)=> {
     .catch(err => {
     console.log(err);
   });
+});
+
 	//console.log(req.body);
 
 //     var query={"Email":req.body.email,"password":req.body.password};
@@ -129,7 +131,7 @@ app.post('/login',  (req, res)=> {
 //   .catch(err => {
 //     console.log(err);
 //   });
- 	});
+ 	
 
     
 //setup routes
