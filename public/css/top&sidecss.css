@@ -410,12 +410,11 @@ opacity: 60%;
 footer{
   line-height: 1.5;
   font-family: 'Poppins', sans-serif;
+  background-color: #24262b;
+  padding: 50px;
 }
 
-.footer{
-background-color: #24262b;
-padding: 70px 0;
-}
+
 .footer,.social-links,.footer-col,.container,.row{
 margin:0;
 padding:0;
