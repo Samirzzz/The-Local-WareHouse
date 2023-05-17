@@ -143,8 +143,6 @@ app.post("/clientup", (req, res) => {
         });
 });
 
-<<<<<<< HEAD
-=======
 
 
 app.get('/logout', (req, res) => {
@@ -152,10 +150,7 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-// mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(result => app.listen(3000))
-//     .catch(err => console.log(err));
->>>>>>> d279cb12bfe7cebfdd03cd900fbe182dac350d45
+
 app.post('/login',  (req, res)=> {
     var user={"Email":req.body.email};
     const hash=crypt.hashSync(req.body.password,10)
@@ -177,21 +172,12 @@ app.post('/login',  (req, res)=> {
     .catch(err => {
     console.log(err);
   });
+});
+
 	//console.log(req.body);
 
 //     var query={"Email":req.body.email,"password":req.body.password};
     
-<<<<<<< HEAD
-  client.find(query)
-  .then(result => {
-    
-    if (result.length>0) {
-            res.send('found');
-            res.redirect('/');
-        }else{
-            res.send('error');
-        }
-=======
 //   client.find(query)
 //   .then(result => {
     
@@ -200,7 +186,6 @@ app.post('/login',  (req, res)=> {
 //         }else{
 //             res.send('error');
 //         }
->>>>>>> d279cb12bfe7cebfdd03cd900fbe182dac350d45
        
    
 
@@ -209,7 +194,7 @@ app.post('/login',  (req, res)=> {
 //   .catch(err => {
 //     console.log(err);
 //   });
- 	});
+ 	
 
 
 
