@@ -18,7 +18,9 @@ const port = 3000
 
 const mongoose = require('mongoose');
 
-
+// app.listen(port, () => {
+//     console.log(`Server is up and  listening on port http://localhost:${port}`)
+//   });
 
 app.get('/', (req, res) => {
     res.render('index', { user: (req.session.user === undefined ? "" : req.session.user) });
@@ -141,6 +143,7 @@ app.post("/signup", (req, res) => {
         });
 });
 
+<<<<<<< HEAD
 
 
 app.get('/logout', (req, res) => {
@@ -151,3 +154,42 @@ app.get('/logout', (req, res) => {
 mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => app.listen(3000))
     .catch(err => console.log(err));
+=======
+app.post('/login',  (req, res)=> {
+	//console.log(req.body);
+
+    var query={"Email":req.body.email,"password":req.body.password};
+    
+  Sign.find(query)
+  .then(result => {
+    
+    if (result.length>0) {
+            res.send('found');
+        }else{
+            res.send('error');
+        }
+       
+   
+
+
+  })
+  .catch(err => {
+    console.log(err);
+  });
+	});
+
+
+
+
+
+
+
+
+mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+.then(result =>
+    { app.listen(3000);
+console.log(`server up and listening  on port http://localhost:${port}`)
+}
+)
+.catch(err => console.log(err));
+>>>>>>> 3de5b13e62f95d1869447476e031cc863881e32a
