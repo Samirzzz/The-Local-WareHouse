@@ -6,13 +6,22 @@ const session=require('express-session');
  const crypt = require("bcryptjs");
  const client=require('./models/clientschema');
 //  var db=mongoose.connection;
- app.use(session({secret:"Your_Secret_Key"}))
+app.use(session({secret:"Your_Secret_Key"}))
 app.set('view engine','ejs');
 app.use(express.static('public/css'))
 app.use(express.static('public/images'))
 app.use(express.static('public/js'))
 app.use(express.urlencoded({ extended: true }));
 
+
+var index_router = require("./routes/index.js");
+var login_router = require("./routes/login.js");
+var signup_router = require("./routes/signup.js");
+var admin_router = require("./routes/admin.js");
+var product_router = require("./routes/product.js");
+var edit_router = require("./routes/Account.js");
+var forget_router = require("./routes/forget.js");
+var wishlist_router=require("./routes/wishlist.js");
 
 const port = 3000
 
@@ -21,86 +30,6 @@ const mongoose = require('mongoose');
 // app.listen(port, () => {
 //     console.log(`Server is up and  listening on port http://localhost:${port}`)
 //   });
-
-app.get('/', (req, res) => {
-    res.render('index', { user: (req.session.user === undefined ? "" : req.session.user) });
-
-})
-app.get('/edit', (req, res) => {
-    res.render('edit', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-app.get('/Wishlist', (req, res) => {
-    res.render('Wishlist', { user: (req.session.user === undefined ? "" : req.session.user) })
-})
-app.get('/login', (req, res) => {
-
-    res.render('login', { user: (req.session.user === undefined ? "" : req.session.user) });
-
-})
-
-app.get('/product', (req, res) => {
-    res.render('product', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-app.get('/jeanshtml', (req, res) => {
-    res.render('jeanshtml', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-app.get('/forget', (req, res) => {
-    res.render('forget');
-})
-app.get('/clientup', (req, res) => {
-    res.render('clientup', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-app.get('/admin', (req, res) => {
-    res.render('admin', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-app.get('/admin/adduser', (req, res) => {
-    res.render('adduser');
-})
-app.get('/admin/searchedituser', (req, res) => {
-    res.render('searchedituser');
-})
-
-app.get('/admin/edituser', (req, res) => {
-    res.render('edituser');
-})
-app.get('/admin/searchbanuser', (req, res) => {
-    res.render('searchbanuser');
-})
-app.get('/admin/banuser', (req, res) => {
-    res.render('banuser');
-})
-app.get('/admin/addproduct', (req, res) => {
-    res.render('addproduct');
-})
-app.get('/admin/searcheditproduct', (req, res) => {
-    res.render('searcheditproduct');
-})
-app.get('/admin/editproduct', (req, res) => {
-    res.render('editproduct');
-})
-app.get('/admin/searchremoveprod', (req, res) => {
-    res.render('searchremoveprod');
-})
-app.get('/admin/removeprod', (req, res) => {
-    res.render('removeprod');
-})
-app.get('/admin/addbrand', (req, res) => {
-    res.render('addbrand');
-})
-app.get('/admin/searcheditbrand', (req, res) => {
-    res.render('searcheditbrand');
-})
-
-app.get('/admin/editbrand', (req, res) => {
-    res.render('editbrand');
-})
-app.get('/admin/searchremovebrand', (req, res) => {
-    res.render('searchremovebrand');
-})
-app.get('/admin/removebrand', (req, res) => {
-    res.render('removebrand');
-})
-
 
 app.get('/shirtshtml', (req, res) => {
     res.render('shirtshtml', { user: (req.session.user === undefined ? "" : req.session.user) });
@@ -112,9 +41,6 @@ app.get('/product-details', (req, res) => {
 
 app.post("/clientup", (req, res) => {
     // req.body.password = crypt.hashSync(req.body.password, 10)
-
-
-
     var query = { "Email": req.body.Email };
 
     client.find(query)
@@ -205,12 +131,16 @@ app.post('/login',  (req, res)=> {
 //   });
  	});
 
-
-
-
-
-
-
+    
+//setup routes
+app.use('/', index_router);
+app.use('/login',login_router);
+app.use('/signup',signup_router);
+app.use('/admin',admin_router);
+app.use('/product',product_router);
+app.use('/forget',forget_router);
+app.use('/edit',edit_router);
+app.use('/wishlist',jwishlist_router);
 
 mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
 .then(result =>
