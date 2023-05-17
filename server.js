@@ -163,13 +163,13 @@ app.post('/login',  (req, res)=> {
          res.send('email does not exist');
     
         }
+        if(crypt.compare(result[0].password,hash)){
+            res.send('true');
+        }else{
+            res.send('false');
        
-            if(crypt.compare(result[0].password,hash)){
-                res.send('true');
-            }else{
-                res.send('false');
-           
-        } 
+    } 
+       
     })
     .catch(err => {
     console.log(err);
@@ -180,15 +180,15 @@ app.post('/login',  (req, res)=> {
 
 //     var query={"Email":req.body.email,"password":req.body.password};
     
-  client.find(query)
-  .then(result => {
+//   client.find(query)
+//   .then(result => {
     
-    if (result.length>0) {
-            res.send('found');
-            res.redirect('/');
-        }else{
-            res.send('error');
-        }
+//     if (result.length>0) {
+//             res.send('found');
+//             res.redirect('/');
+//         }else{
+//             res.send('error');
+//         }
 //   client.find(query)
 //   .then(result => {
     
@@ -198,7 +198,6 @@ app.post('/login',  (req, res)=> {
 //             res.send('error');
 //         }
        
-   
 
 
 //   })
@@ -220,4 +219,4 @@ mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWri
 console.log(`server up and listening  on port http://localhost:${port}`)
 }
 )
-.catch(err => console.log(err))});
+.catch(err => console.log(err));
