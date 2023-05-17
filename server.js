@@ -21,7 +21,7 @@ const mongoose = require('mongoose');
 
 
 app.get('/',(req,res)=>{
-    res.render('index');
+    res.render('index', { user: (req.session.user === undefined ? "" : req.session.user) });
 
 })
 // app.post('/',(req,res)=>{
@@ -29,14 +29,14 @@ app.get('/',(req,res)=>{
 
 // })
 app.get('/edit',(req,res)=>{
-    res.render('edit');
+    res.render('edit', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 app.get('/Wishlist',(req,res)=>{
-    res.render('Wishlist')
+    res.render('Wishlist', { user: (req.session.user === undefined ? "" : req.session.user) })
 })
 app.get('/login',(req,res)=>{
     
-    res.render('login');
+    res.render('login', { user: (req.session.user === undefined ? "" : req.session.user) });
 
 
 
@@ -51,19 +51,19 @@ app.get('/login',(req,res)=>{
 //     }
 //  })
 app.get('/product',(req,res)=>{
-    res.render('product');
+    res.render('product', { user: (req.session.user === undefined ? "" : req.session.user) });
 }) 
 app.get('/jeanshtml',(req,res)=>{
-    res.render('jeanshtml');
+    res.render('jeanshtml', { user: (req.session.user === undefined ? "" : req.session.user) });
 }) 
 app.get('/forget',(req,res)=>{
     res.render('forget');
 }) 
 app.get('/signup',(req,res)=>{
-    res.render('signup');
+    res.render('signup', { user: (req.session.user === undefined ? "" : req.session.user) });
 }) 
 app.get('/admin',(req,res)=>{
-    res.render('admin');
+    res.render('admin', { user: (req.session.user === undefined ? "" : req.session.user) });
 }) 
 app.get('/admin/adduser',(req,res)=>{
     res.render('adduser');
@@ -115,11 +115,11 @@ app.get('/admin/removebrand',(req,res)=>{
 
 
 app.get('/shirtshtml',(req,res)=>{
-    res.render('shirtshtml');
+    res.render('shirtshtml', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 
 app.get('/product-details',(req,res)=>{
-    res.render('product-details');
+    res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 
 app.post("/signup", (req, res) => {
@@ -141,8 +141,9 @@ app.post("/signup", (req, res) => {
         username: req.body.username,
         Email:req.body.Email,
         password: req.body.password,
+        Type: req.body.type,
         phonee:req.body.phonee,
-        birth:req.body.birth,
+        birth:req.body.date,
         gender:req.body.gender
 
        })

@@ -1,74 +1,70 @@
 <html>
 <link rel="stylesheet" href="signup.css">
 <title>the Local Warehouse</title>
+
 <head>
     <style>
-        .error{
+        .error {
             color: red;
             font-size: small;
 
-   }
-   
-
-        
+        }
     </style>
 </head>
 <script defer>
     function validateUserName(field) {
-        if (field == '')
-         {
+        if (field == '') {
             document.getElementById("errorNameid").innerHTML = "Please Enter UserName";
-            return  "kkk";
+            return "kkk";
         }
-       
-        else
-        document.getElementById("errorNameid").innerHTML="";
 
-            return '';
+        else
+            document.getElementById("errorNameid").innerHTML = "";
+
+        return '';
     }
-  
+
 
     function validatepassword(field1, field2) {
-         if (field1 != field2) {
-        document.getElementById("errorpasss").innerHTML= " password doesnt match ";   
-        document.getElementById("errorconpassid").innerHTML= " password doesnt match ";    
-    
-      }
-    else  if(field1 =='' || field2 ==''){
-        document.getElementById("errorpasss").innerHTML="please Enter Password and confirm";
-        document.getElementById("errorconpassid").innerHTML= " Please Confirm ";  
+        if (field1 != field2) {
+            document.getElementById("errorpasss").innerHTML = " password doesnt match ";
+            document.getElementById("errorconpassid").innerHTML = " password doesnt match ";
+
+        }
+        else if (field1 == '' || field2 == '') {
+            document.getElementById("errorpasss").innerHTML = "please Enter Password and confirm";
+            document.getElementById("errorconpassid").innerHTML = " Please Confirm ";
         }
         else
-        document.getElementById("errorpasss").innerHTML=""; 
+            document.getElementById("errorpasss").innerHTML = "";
         return "";
 
-        }
+    }
 
-        function validateemail(field){
-        if(field =='')
-        {
-            document.getElementById("errormails").innerHTML="your e-mail must be filled";
+    function validateemail(field) {
+        if (field == '') {
+            document.getElementById("errormails").innerHTML = "your e-mail must be filled";
             return 'hh';
         }
         else
-        document.getElementById("errormails").innerHTML="";
-           return'';
+            document.getElementById("errormails").innerHTML = "";
+        return '';
     }
 
     // // function validateage(field) {
     // //   if (field < 8) {
     // //     return 'not old enough';
-      
+
     // //   }
     // //   else
     // //   return '';
- 
+
     // }
- 
+
     // function
     //     validateDOB(field) {
     //         let dob = new Date(field);
-            
+
     //     let diff_ms = Date.now() - dob.getTime();
 
     //     let  age_dt = newDate(diff_ms);
@@ -87,7 +83,7 @@
 
     //     if(field =='' ){
     //         document.getElementById("phone").innerHTML="Please Enter Your Phone Number";
-       
+
     //     }else if(field.length<11){
     //         document.getElementById("phone").innerHTML="enter valid phone number";
 
@@ -103,57 +99,57 @@
     // }
 
     function tel(field) {
-  var  pattern=/^01[0-2,5]{1}[0-9]{8}$/;
-    if(field.match(pattern)){
-        document.getElementById("phone").innerHTML=" ";
+        var pattern = /^01[0-2,5]{1}[0-9]{8}$/;
+        if (field.match(pattern)) {
+            document.getElementById("phone").innerHTML = " ";
 
-        return "";
+            return "";
 
-    }else{
-        document.getElementById("phone").innerHTML="Please Enter valid phone number";
+        } else {
+            document.getElementById("phone").innerHTML = "Please Enter valid phone number";
+        }
     }
-}
-function email(field) {
-    pattern =/^\S+@\S+\.\S+$/;
-    if(field.match(pattern)){
-        document.getElementById("errormails").innerHTML=" ";
+    function email(field) {
+        pattern = /^\S+@\S+\.\S+$/;
+        if (field.match(pattern)) {
+            document.getElementById("errormails").innerHTML = " ";
 
-        return "";
+            return "";
 
-    }else{
+        } else {
 
-        document.getElementById("errormails").innerHTML="Please Enter a valid E-mail";
-        return '';
+            document.getElementById("errormails").innerHTML = "Please Enter a valid E-mail";
+            return '';
+        }
     }
-}
 
-function validategender(field){
-        if(field==''){
-            document.getElementById("genderid").innerHTML="must choose a gender"
+    function validategender(field) {
+        if (field == '') {
+            document.getElementById("genderid").innerHTML = "must choose a gender"
         }
         else
-        return '';
-}
+            return '';
+    }
     function
-        validate(form){
-            let fail='';
-             fail+=validateUserName(form.username.value);    
-             fail+=validateemail(form.Email.value);
-             fail+=validatepassword(form.password.value, form.conpassword.value);
-             fail+=tel(form.phonee.value);
-             fail+=email(form.Email.value);
-             fail+=validategender(form.gender.value);
-           //  fail+=valphone(form.phone.value);
-            // fail+=validateDOB(form.datee.value); 
+        validate(form) {
+        let fail = '';
+        fail += validateUserName(form.username.value);
+        fail += validateemail(form.Email.value);
+        fail += validatepassword(form.password.value, form.conpassword.value);
+        fail += tel(form.phonee.value);
+        fail += email(form.Email.value);
+        fail += validategender(form.gender.value);
+        //  fail+=valphone(form.phone.value);
+        // fail+=validateDOB(form.datee.value); 
 
-            if(fail==''){
-                return true;
-            }
-            else
-            return false;
+        if (fail == '') {
+            return true;
         }
-       
-    
+        else
+            return false;
+    }
+
+
 </script>
 
 <body>
@@ -162,31 +158,38 @@ function validategender(field){
         <br><br> <br><br><br><br>
         <h1> </h1><br>
     </div>
-<div class="box"></div>
-        <div class="tr"> 
+    
+
+
+    
+    <div class="tr">
         <h1
             style="color: black; text-align:center 12 ;padding-left: 25%;margin:1px ;margin-left: 10px;margin-top: -10px; padding-bottom: 5%;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             Sign Up</h1><br>
+
+
+
+
         <form action="signup" method="post" class="q" onsubmit="return validate(this)">
-             <input class="cc" id="errorName" type="text" name="username" placeholder="username " >
-            <span class="error" id="errorNameid"> </span> 
-             <br>
-            <input class="cc" type="text" id="errormail" name="Email" placeholder="Email" >
+            <input class="cc" id="errorName" type="text" name="username" placeholder="username ">
+            <span class="error" id="errorNameid"> </span>
+            <br>
+            <input class="cc" type="text" id="errormail" name="Email" placeholder="Email">
             <span class="error" id="errormails"></span>
             <br>
-            <input class="cc" type="password" id="errorpassid" name="password" placeholder="password " >
+            <input class="cc" type="password" id="errorpassid" name="password" placeholder="password ">
             <span class="error" id="errorpasss"></span>
             <br>
-            <input class="cc" type="password"  name="conpassword" placeholder="Confirm password " >
+            <input class="cc" type="password" name="conpassword" placeholder="Confirm password ">
             <span class="error" id="errorconpassid"></span>
             <br>
-            <input class="cc" type="text" id="errorno" name="phonee" placeholder="phone no. " >
+            <input class="cc" type="text" id="errorno" name="phonee" placeholder="phone no. ">
             <span class="error" id="phone"></span>
             <br>
-            <input class="d" type="date" name="date" id="date" >
+            <input class="d" type="date" name="date" id="date">
             <span class="error" name="datee"></span>
             <br><br>
-            <select class="sel" name="gender" >
+            <select class="sel" name="gender">
                 <option value="">Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -195,18 +198,29 @@ function validategender(field){
             <span class="error" id="genderid"></span>
 
             <br><br>
-
-            <input type="submit" value="Create" class="c" ><br>
-           <a href="login"> <h1 class="for">Already have an account?</h1></a> 
+            <input type="hidden" name="type" value="client">
+            <input type="submit" value="Create" class="c"><br>
+            <a href="login">
+                <h1 class="for">Already have an account?</h1>
+            </a>
         </form>
+
+
+        
     </div>
-        <div class="sectionv">
-            <div class="video-container">
-                <div class="color-overlay"></div>
-                <video autoplay loop muted>
-                    <source src="bavk.mp4" type="video/mp4">
-                </video>
-            </div>
+
+
+
+
+
+
+    <div class="sectionv">
+        <div class="video-container">
+            <div class="color-overlay"></div>
+            <video autoplay loop muted>
+                <source src="bavk.mp4" type="video/mp4">
+            </video>
+        </div>
 </body>
 
 </html>
