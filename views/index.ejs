@@ -21,6 +21,22 @@
 //   function currentSlide(n) {
 //       showSlides(slideIndex = n);
 //   }
+
+var indexValue = 0;
+         function slideShow(){
+           setTimeout(slideShow, 2500);
+           var x;
+           const img = document.getElementsByClassName("mySlides2");
+           for(x = 0; x < img.length; x++){
+             img[x].style.display = "none";
+           }
+           indexValue++;
+           if(indexValue > img.length){indexValue = 1}
+           img[indexValue -1].style.display = "block";
+         }
+         slideShow();
+
+         
 var index=0;
   function showslides(){
     var image=document.getElementsByClassName("mySlides ")
@@ -36,21 +52,6 @@ setTimeout(showslides,3000);
 }
 setTimeout(showslides,100);
 
-
-var index=0;
-  function showslides(){
-    var image=document.getElementsByClassName("mySlides ")
-    for(var i=0;i < image.length;i++){
-        image[i].style.display="none";
-    }
-    if(index>image.length-1){
-        index=0;
-    }
-image[index].style.display="block";
-index++;
-setTimeout(showslides,3000);
-}
-setTimeout(showslides,100);
   </script>
 
   
@@ -97,17 +98,17 @@ setTimeout(showslides,100);
   <div class="slideshow-container">    
     <!-- the text and button -->
     <div class="text_inslideshow">SUMMER COLLECTION <BR> OUT NOW!!! </div>
-<div class="mySlides fade"> 
+<div class="mySlides2 fade"> 
 
    <!-- theimage itself -->
  <img class="img_in_slideshow" src="hm10.png" >
 </div>
-<div class="mySlides fade">
+<div class="mySlides2 fade">
 
  <img class="img_in_slideshow" src="hm11.png" >
 
 </div>
-<div class="mySlides fade">
+<div class="mySlides2 fade">
 
  <img class="img_in_slideshow"  src="hm12.png" >
 </div>
