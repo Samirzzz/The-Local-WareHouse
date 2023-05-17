@@ -150,7 +150,9 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-
+// mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(result => app.listen(3000))
+//     .catch(err => console.log(err));
 app.post('/login',  (req, res)=> {
     var user={"Email":req.body.email};
     const hash=crypt.hashSync(req.body.password,10)
@@ -178,6 +180,15 @@ app.post('/login',  (req, res)=> {
 
 //     var query={"Email":req.body.email,"password":req.body.password};
     
+  client.find(query)
+  .then(result => {
+    
+    if (result.length>0) {
+            res.send('found');
+            res.redirect('/');
+        }else{
+            res.send('error');
+        }
 //   client.find(query)
 //   .then(result => {
     
@@ -209,4 +220,4 @@ mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWri
 console.log(`server up and listening  on port http://localhost:${port}`)
 }
 )
-.catch(err => console.log(err));
+.catch(err => console.log(err))});
