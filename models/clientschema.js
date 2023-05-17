@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const client = new Schema({
+const clientSchema = new Schema({
   username:{
     type:String,
   required:true,
@@ -31,5 +31,5 @@ const client = new Schema({
   required:true,
   }, 
 },{timestamps:true});
-const Sign = mongoose.model('Sign', client);
-module.exports=Sign;
+const client = mongoose.model('client', clientSchema);
+module.exports=client;
