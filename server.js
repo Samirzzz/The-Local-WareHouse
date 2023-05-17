@@ -39,8 +39,8 @@ app.get('/product-details', (req, res) => {
     res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 
-app.post("/clientup", (req, res) => {
-    // req.body.password = crypt.hashSync(req.body.password, 10)
+app.post("/signup", (req, res) => {
+     req.body.password = crypt.hashSync(req.body.password, 10)
     var query = { "Email": req.body.Email };
 
     client.find(query)
@@ -82,14 +82,16 @@ app.get('/logout', (req, res) => {
 app.post('/login',  (req, res)=> {
     var user={"Email":req.body.email};
     const hash=crypt.hashSync(req.body.password,10)
-
-    client.find(user).then(result=>{
-
-        if(result[0]==null){
+console.log(hash);
+console.log(req.body.password);
+    client.findOne(user).then(result=>{
+console.log(result.password);
+        if(result==null){
          res.send('email does not exist');
     
         }
-        if(crypt.compare(result[0].password,hash)){
+        if(crypt.compare(result.password,hash)){
+
             res.send('true');
         }else{
             res.send('false');
