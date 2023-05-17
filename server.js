@@ -1,13 +1,13 @@
-var http = require('http');
-var fs = require('fs')
-const express = require('express');
-const session = require('express-session');
-const app = express();
-const crypt = require("bcryptjs");
-const client = require('./models/clientschema');
+var http =require('http');
+var fs=require('fs')
+const express=require('express');
+const session=require('express-session');
+ const app=express();
+ const crypt = require("bcryptjs");
+ const client=require('./models/clientschema');
 //  var db=mongoose.connection;
-app.use(session({ secret: "Your_Secret_Key" }))
-app.set('view engine', 'ejs');
+ app.use(session({secret:"Your_Secret_Key"}))
+app.set('view engine','ejs');
 app.use(express.static('public/css'))
 app.use(express.static('public/images'))
 app.use(express.static('public/js'))
@@ -47,8 +47,8 @@ app.get('/jeanshtml', (req, res) => {
 app.get('/forget', (req, res) => {
     res.render('forget');
 })
-app.get('/signup', (req, res) => {
-    res.render('signup', { user: (req.session.user === undefined ? "" : req.session.user) });
+app.get('/clientup', (req, res) => {
+    res.render('clientup', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 app.get('/admin', (req, res) => {
     res.render('admin', { user: (req.session.user === undefined ? "" : req.session.user) });
@@ -110,7 +110,7 @@ app.get('/product-details', (req, res) => {
     res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 
-app.post("/signup", (req, res) => {
+app.post("/clientup", (req, res) => {
     // req.body.password = crypt.hashSync(req.body.password, 10)
 
 
@@ -143,11 +143,45 @@ app.post("/signup", (req, res) => {
         });
 });
 
+<<<<<<< HEAD
+=======
+
+
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
+
+// mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(result => app.listen(3000))
+//     .catch(err => console.log(err));
+>>>>>>> d279cb12bfe7cebfdd03cd900fbe182dac350d45
 app.post('/login',  (req, res)=> {
+    var user={"Email":req.body.email};
+    const hash=crypt.hashSync(req.body.password,10)
+
+    client.find(user).then(result=>{
+
+        if(result[0]==null){
+         res.send('email does not exist');
+    
+        }
+       
+            if(crypt.compare(result[0].password,hash)){
+                res.send('true');
+            }else{
+                res.send('false');
+           
+        } 
+    })
+    .catch(err => {
+    console.log(err);
+  });
 	//console.log(req.body);
 
-    var query={"Email":req.body.email,"password":req.body.password};
+//     var query={"Email":req.body.email,"password":req.body.password};
     
+<<<<<<< HEAD
   client.find(query)
   .then(result => {
     
@@ -157,15 +191,25 @@ app.post('/login',  (req, res)=> {
         }else{
             res.send('error');
         }
+=======
+//   client.find(query)
+//   .then(result => {
+    
+//     if (result.length>0) {
+//             res.send('found');
+//         }else{
+//             res.send('error');
+//         }
+>>>>>>> d279cb12bfe7cebfdd03cd900fbe182dac350d45
        
    
 
 
-  })
-  .catch(err => {
-    console.log(err);
-  });
-	});
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+ 	});
 
 
 
