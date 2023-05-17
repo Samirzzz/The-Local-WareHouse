@@ -143,28 +143,17 @@ app.post("/signup", (req, res) => {
         });
 });
 
-<<<<<<< HEAD
-
-
-app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
-});
-
-mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(result => app.listen(3000))
-    .catch(err => console.log(err));
-=======
 app.post('/login',  (req, res)=> {
 	//console.log(req.body);
 
     var query={"Email":req.body.email,"password":req.body.password};
     
-  Sign.find(query)
+  client.find(query)
   .then(result => {
     
     if (result.length>0) {
             res.send('found');
+            res.redirect('/');
         }else{
             res.send('error');
         }
@@ -192,4 +181,3 @@ console.log(`server up and listening  on port http://localhost:${port}`)
 }
 )
 .catch(err => console.log(err));
->>>>>>> 3de5b13e62f95d1869447476e031cc863881e32a
