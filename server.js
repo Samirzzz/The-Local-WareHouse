@@ -18,7 +18,9 @@ const port =3000
 
 const mongoose = require('mongoose');
 
-
+app.listen(port, () => {
+    console.log(`Server is up and  listening on port http://localhost:${port}`)
+  });
 
 app.get('/',(req,res)=>{
     res.render('index', { user: (req.session.user === undefined ? "" : req.session.user) });
@@ -198,5 +200,9 @@ app.post("/login", (req, res)=>{
 
 
 mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
-.then(result => app.listen(3000))
+.then(result =>
+    { app.listen(3000);
+console.log(`server up and listening  on port http://localhost:${port}`)
+}
+)
 .catch(err => console.log(err));
