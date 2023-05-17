@@ -18,9 +18,9 @@ const port =3000
 
 const mongoose = require('mongoose');
 
-app.listen(port, () => {
-    console.log(`Server is up and  listening on port http://localhost:${port}`)
-  });
+// app.listen(port, () => {
+//     console.log(`Server is up and  listening on port http://localhost:${port}`)
+//   });
 
 app.get('/',(req,res)=>{
     res.render('index', { user: (req.session.user === undefined ? "" : req.session.user) });
