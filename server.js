@@ -95,19 +95,22 @@ app.post('/login',  (req, res)=> {
         console.log(req.body.password);
         console.log(hash);
         console.log(result.password);
-    const valid=crypt.compareSync(result.password,hash);
+        
         if(result==null){
-         res.send('email does not exist');
+            res.send('email does not exist');
+            
+        }
+        const valid=crypt.compareSync(result.password,hash);
+           if(valid==true){
+   
+               res.send('true');
+           }
+           else{
+               res.send('false');
+          
+       } 
     
-        }
-        if(valid==true){
-
-            res.send('true');
-        }
-        else{
-            res.send('false');
-       
-    } 
+        
        
     })
     .catch(err => {
