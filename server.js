@@ -3,7 +3,7 @@ var fs=require('fs')
 const express=require('express');
 const session=require('express-session');
  const app=express();
- const crypt = require("bcryptjs");
+ const crypt = require("bcrypt");
  const client=require('./models/clientschema');
 //  var db=mongoose.connection;
 app.use(session({secret:"Your_Secret_Key"}))
@@ -40,7 +40,8 @@ app.get('/product-details', (req, res) => {
 })
 
 app.post("/signup", (req, res) => {
-     req.body.password = crypt.hashSync(req.body.password, 10)
+   
+     
     var query = { "Email": req.body.Email };
 
     client.find(query)
@@ -50,20 +51,26 @@ app.post("/signup", (req, res) => {
 
             }
             else {
-
-                const emp = new client({
-                    username: req.body.username,
-                    Email: req.body.Email,
-                    password: req.body.password,
-                    Type: req.body.type,
-                    phonee: req.body.phonee,
-                    birth: req.body.date,
-                    gender: req.body.gender
-
-                })
-
-                emp.save();
+                var salt=crypt.genSaltSync(10);
+                const pass_hash = crypt.hashSync(req.body.password, salt);
+                crypt.hashSync(req.body.password, salt, function(err, pass_hash) {
+                    const emp = new client({
+                        username: req.body.username,
+                        Email: req.body.Email,
+                        password: pass_hash,
+                        Type: req.body.type,
+                        phonee: req.body.phonee,
+                        birth: req.body.date,
+                        gender: req.body.gender
+    
+                    })
+                    
+                    emp.save();
+                });
+                console.log(req.body.password);
+                    console.log(pass_hash);
                 res.redirect('/');
+               
             }
 
         });
@@ -81,19 +88,23 @@ app.get('/logout', (req, res) => {
 //     .catch(err => console.log(err));
 app.post('/login',  (req, res)=> {
     var user={"Email":req.body.email};
-    const hash=crypt.hashSync(req.body.password,10)
-console.log(hash);
-console.log(req.body.password);
+    
     client.findOne(user).then(result=>{
-console.log(result.password);
+        var salt=crypt.genSaltSync(10);
+        const hash=crypt.hashSync(req.body.password,salt)
+        console.log(req.body.password);
+        console.log(hash);
+        console.log(result.password);
+    const valid=crypt.compareSync(result.password,hash);
         if(result==null){
          res.send('email does not exist');
     
         }
-        if(crypt.compare(result.password,hash)){
+        if(valid==true){
 
             res.send('true');
-        }else{
+        }
+        else{
             res.send('false');
        
     } 
