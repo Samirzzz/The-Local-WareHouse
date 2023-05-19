@@ -32,6 +32,7 @@ router.get('/banuser',(req,res)=>{
 })
 
 /* GET Admin/addproduct page. */
+
 router.get('/addproduct',(req,res)=>{
     res.render('addproduct');
 })
