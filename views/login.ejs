@@ -13,7 +13,7 @@
     </style>
 </head>
 <script defer>
-    function email(field) {
+    function Email(field) {
         pattern = /^\S+@\S+\.\S+$/;
 
         if (field.match(pattern)) {
@@ -30,7 +30,7 @@
     }
     function validateUserName(field) {
         if (field == '') {
-            document.getElementById("erroruser").innerHTML = "enter email";
+            document.getElementById("erroruser").innerHTML = "enter Email";
             return 'hh';
         }
         else
@@ -113,7 +113,7 @@
                 Login</h1>
             <form action="login" method="post" class="q" id="l" onsubmit="return validate(this)">
 
-                <input class="b" type="text" name="email" placeholder="email">
+                <input class="b" type="text" name="Email" placeholder="Email">
                 <br>
                 <span class="error" id="erroruser"></span>
                 <br><br>

@@ -4,7 +4,7 @@ const express=require('express');
 const session=require('express-session');
  const app=express();
  const crypt = require("bcrypt");
- const client=require('./models/clientschema');
+ const clients=require('./models/clientschema');
 //  var db=mongoose.connection;
 app.use(session({secret:"Your_Secret_Key"}))
 app.set('view engine','ejs');
@@ -30,7 +30,10 @@ const mongoose = require('mongoose');
 // app.listen(port, () => {
 //     console.log(`Server is up and  listening on port http://localhost:${port}`)
 //   });
-
+// const query=async(Email,password)=>{
+//     const user =await clients.findOne({"Email":Email});
+//   const result= await user.comparepass(password)
+// }
 app.get('/shirtshtml', (req, res) => {
     res.render('shirtshtml', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
@@ -44,20 +47,19 @@ app.post("/signup", (req, res) => {
      
     var query = { "Email": req.body.Email };
 
-    client.find(query)
+    clients.find(query)
         .then(result => {
             if (result.length > 0) {
                 res.send('email taken');
 
             }
             else {
-                var salt=crypt.genSaltSync(10);
-                const pass_hash = crypt.hashSync(req.body.password, salt);
-                crypt.hashSync(req.body.password, salt, function(err, pass_hash) {
-                    const emp = new client({
+              
+                
+                    const emp = new clients({
                         username: req.body.username,
                         Email: req.body.Email,
-                        password: pass_hash,
+                        password: req.body.password,
                         Type: req.body.type,
                         phonee: req.body.phonee,
                         birth: req.body.date,
@@ -66,9 +68,9 @@ app.post("/signup", (req, res) => {
                     })
                     
                     emp.save();
-                });
+              
                 console.log(req.body.password);
-                    console.log(pass_hash);
+                   
                 res.redirect('/');
                
             }
@@ -83,24 +85,26 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
-// mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(result => app.listen(3000))
-//     .catch(err => console.log(err));
-app.post('/login',  (req, res)=> {
-    var user={"Email":req.body.email};
-    
-    client.findOne(user).then(result=>{
-        var salt=crypt.genSaltSync(10);
-        const hash=crypt.hashSync(req.body.password,salt)
-        console.log(req.body.password);
-        console.log(hash);
-        console.log(result.password);
+
+app.post('/login',async function  (req, res) {
+const user = { "Email": req.body.Email };
+    clients.findOne(user).then(async result=>{
+       
+        
         
         if(result==null){
             res.send('email does not exist');
             
         }
-        const valid=crypt.compareSync(result.password,hash);
+        console.log(req.body.Email);
+        console.log(req.body.password);
+        console.log(result.Email);
+        console.log (result.password);
+
+
+
+
+        const valid= await crypt.compare(req.body.password,result.password);
            if(valid==true){
    
                res.send('true');
@@ -118,11 +122,12 @@ app.post('/login',  (req, res)=> {
   });
 });
 
+
 	//console.log(req.body);
 
 //     var query={"Email":req.body.email,"password":req.body.password};
     
-//   client.find(query)
+//   clients.find(query)
 //   .then(result => {
     
 //     if (result.length>0) {
@@ -131,7 +136,7 @@ app.post('/login',  (req, res)=> {
 //         }else{
 //             res.send('error');
 //         }
-//   client.find(query)
+//   clients.find(query)
 //   .then(result => {
     
 //     if (result.length>0) {
@@ -159,7 +164,7 @@ app.use('/forget',forget_router);
 app.use('/edit',edit_router);
 app.use('/wishlist',wishlist_router);
 
-mongoose.connect("mongodb+srv://SBF:SBF30@project2.zbssjs4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
 .then(result =>
     { app.listen(3000);
 console.log(`server up and listening  on port http://localhost:${port}`)

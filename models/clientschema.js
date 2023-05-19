@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const crypt = require("bcrypt");
 
 const clientSchema = new Schema({
   username:{
@@ -31,5 +32,28 @@ const clientSchema = new Schema({
   required:true,
   }, 
 },{timestamps:true});
-const client = mongoose.model('client', clientSchema);
-module.exports=client;
+
+clientSchema.pre('save',async function(next){
+try {
+  const salt= await crypt.genSalt(10);
+  const hash =await crypt.hash(this.password, salt);
+this.password=hash;
+next();
+  
+} catch (error) {
+  next(error);
+}
+
+
+});
+
+clientSchema.methods.comparepass =async function(password){
+  try {
+    return await crypt.compare(password,this.password);
+  } catch (error) {
+    throw error;
+  }
+};
+
+const clients= mongoose.model('clients', clientSchema);
+module.exports=clients;
