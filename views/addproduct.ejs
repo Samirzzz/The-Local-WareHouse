@@ -26,14 +26,15 @@
       <div class="container">
         <div class="right">
           <h2 id="j">Add Product</h2>
+          <form action="/admin/addproduct" method="post" enctype="multipart/form-data">
+          <input type="text" name="id" class="field" placeholder="Product's's ID" />
+          <input type="text" name="name" class="field" placeholder="Product's Name" />
+          <input type="text" name="price" class="field" placeholder="Product's Price" />
+          <input type="text" name="quan" class="field" placeholder="Product's Quantity" />
+          <input type="file" name="img" placeholder="image">
+          <input type="submit" value="Create">            
+          </form>
           
-          <input type="text" class="field" placeholder="Product's's ID" />
-          <input type="text" class="field" placeholder="Product's Name" />
-          <input type="text" class="field" placeholder="Product's Price" />
-          <input type="text"class="field" placeholder="Product's Quantity" />
-
-          <textarea placeholder="Notes" class="field"></textarea>
-          <button class="btn">Add</button>
         </div>
       </div>
     </section>
