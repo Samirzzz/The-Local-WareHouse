@@ -5,6 +5,7 @@ const session=require('express-session');
  const app=express();
  const crypt = require("bcrypt");
  const clients=require('./models/clientschema');
+ const {check,result}=require('express-validator');
 //  var db=mongoose.connection;
 app.use(session({secret:"Your_Secret_Key"}))
 app.set('view engine','ejs');
@@ -86,7 +87,8 @@ app.get('/logout', (req, res) => {
 });
 
 
-app.post('/login',async function  (req, res) {
+app.post('/login'[check(body('Email'),'enter diffrent email').isEmail(),
+check(body('password','password length 4-12').islength({min:4,max:12}))],async function  (req, res) {
 const user = { "Email": req.body.Email };
     clients.findOne(user).then(async result=>{
        
@@ -107,7 +109,7 @@ const user = { "Email": req.body.Email };
         const valid= await crypt.compare(req.body.password,result.password);
            if(valid==true){
    
-               res.send('true');
+               res.redirect('/');
            }
            else{
                res.send('false');
