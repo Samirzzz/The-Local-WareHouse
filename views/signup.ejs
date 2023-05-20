@@ -130,8 +130,7 @@
         else
             return '';
     }
-    function
-        validate(form) {
+    function validate(form) {
         let fail = '';
         fail += validateUserName(form.username.value);
         fail += validateemail(form.Email.value);
@@ -166,8 +165,6 @@
         <h1
             style="color: black; text-align:center 12 ;padding-left: 25%;margin:1px ;margin-left: 10px;margin-top: -10px; padding-bottom: 5%;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             Sign Up</h1><br>
-
-
 
 
         <form action="signup" method="post" class="q" onsubmit="return validate(this)">

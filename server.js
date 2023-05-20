@@ -58,59 +58,45 @@ app.post("/signup", (req, res) => {
 
             }
             else {
-
-
-                const emp = new clients({
-                    username: req.body.username,
-                    Email: req.body.Email,
-                    password: req.body.password,
-                    Type: req.body.type,
-                    phonee: req.body.phonee,
-                    birth: req.body.date,
-                    gender: req.body.gender
-
+                  const emp = new clients({
+                        username: req.body.username,
+                        Email: req.body.Email,
+                        password: req.body.password,
+                        Type: req.body.type,
+                        phonee: req.body.phonee,
+                        birth: req.body.date,
+                        gender: req.body.gender
                 })
-
                 emp.save();
-
                 console.log(req.body.password);
-
                 res.redirect('/');
-
             }
-
         });
 });
 
 app.use(fileUpload());
-
 app.post("/admin/addproduct", (req, res) => {
     let imgfile;
     let uploadPath;
-    console.log(req.files)
+    console.log(req)
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('no files were uploaded.');
     }
     imgfile = req.files.img;
-    uploadPath = __dirname + '/public/images/' + req.body.img;
+    uploadPath = __dirname + '/public/images/' + req.files.img.name;
 
     imgfile.mv(uploadPath, function (err) {
 
-
         if (err)
-            return res.status(500).send(err);
-
-
+        return res.status(500).send(err);
 
         const prod = new product({
             id: req.body.id,
             name: req.body.name,
             price: req.body.price,
             Quantity: req.body.quan,
-            image: req.body.img,
-
+            image: uploadPath,
         })
-
         prod.save()
         .then(result=>{
             res.redirect('/admin');
@@ -118,14 +104,7 @@ app.post("/admin/addproduct", (req, res) => {
         .catch(err=>{
             console.log(err);
         });
-
-       
-
-
     });
-
-
-
 });
 
 
@@ -140,14 +119,12 @@ app.get('/logout', (req, res) => {
 
 app.post('/login',[check('Email').trim().isEmail().withMessage('enter valid email'),
 check('password').trim().isLength(4).withMessage('min password length 4')] ,async function  (req, res) {
-const user = { "Email": req.body.Email };
-const errors=validationResult(req);
-if(!errors.isEmpty()){
-   
-    res.send('error');
-    errors.array(); 
-
-}
+    const user = { "Email": req.body.Email };
+    const errors=validationResult(req);
+    if(!errors.isEmpty()){
+        res.send('error');
+        errors.array(); 
+    }
     clients.findOne(user).then(async result=>{
         
         
@@ -159,9 +136,6 @@ if(!errors.isEmpty()){
         console.log(req.body.password);
         console.log(result.Email);
         console.log(result.password);
-
-
-
 
         const valid= await crypt.compare(req.body.password,result.password);
            if(valid==true){
