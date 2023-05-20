@@ -145,6 +145,7 @@ const errors=validationResult(req);
 if(!errors.isEmpty()){
    
     res.send('error');
+    errors.array(); 
 
 }
     clients.findOne(user).then(async result=>{
