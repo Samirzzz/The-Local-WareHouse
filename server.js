@@ -7,7 +7,7 @@ const app = express();
 const crypt = require("bcrypt");
 const clients = require('./models/clientschema');
 const product = require('./models/productschema')
- const {check,result}=require('express-validator');
+ const {check,validationResult}=require('express-validator');
 //  var db=mongoose.connection;
 app.use(session({ secret: "Your_Secret_Key" }))
 app.set('view engine', 'ejs');
@@ -137,11 +137,15 @@ app.get('/logout', (req, res) => {
 });
 
 
-app.post('/login'[check(body('Email'),'enter diffrent email').isEmail(),
-check(body('password','password length 4-12').islength({min:4,max:12}))],async function  (req, res) {
+app.post('/login',[check('Email').trim().isEmail().withMessage('enter valid email'),
+check('password').trim().isLength(4).withMessage('min password length 4')] ,async function  (req, res) {
 const user = { "Email": req.body.Email };
+const error=validationResult(req);
+if(!error.isEmpty()){
+    console.log("error");
+    return;
+}
     clients.findOne(user).then(async result=>{
-       
         
         
         if(result==null){
