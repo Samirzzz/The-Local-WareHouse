@@ -51,24 +51,24 @@
                 </div>
                 <h2 class="section-title">Tshirts & Hoodies</h2> 
                 <!--content-->
+
+
+                
                             <% if (product.length> 0) { %>
-                
-                
-                
                 
                                 <% product.forEach(prod=> { %>
                 
                             <div class="shop-content">
-                                <!--box1-->
+                                
                                 <div class="product-box">
                                    
-                                    <img src="/images/<%=prod.image%>" alt="" class="product-img" >
+                                    <img src="/images/<%=prod.image%>" height="50px" width="50px"  alt="" class="img" >
                                     <h2 class="product-title"> <%= prod.name %></h2>
                                     <span class="price"><%= prod.price %>$</span>
                                     <div class="add-cart">
                                         <i class='bx bxs-shopping-bag-alt '></i>
-                                        <!-- <i class='bx bx-heart ' 
-                                        onclick="showPhoto()"></i> -->
+                                        <i class='bx bx-heart ' 
+                                        onclick="showPhoto()"></i>
                                     </div>
                 
                                     
@@ -78,11 +78,11 @@
                             </div>
                             <% }) %>
                             <% } else { %>
-                                <p>There are no employees to display...</p>
+                                <p>There are no products to display...</p>
                                 <% } %>
                            
                           
-                        </section>
+                      
            
           
         </section>
@@ -91,7 +91,7 @@
 
             
             
-                <button class="open-button" onclick="openForm()"><img src="chaticon.png"></button>
+                <button class="open-button" onclick="openForm()"><img src="images/chaticon.png"></button>
                 <div class="chat-popup" id="myForm">
                     <form action="/action_page.php" class="form-container">
                         <h1>Chat</h1>
