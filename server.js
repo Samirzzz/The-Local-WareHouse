@@ -12,9 +12,11 @@ const product = require('./models/productschema')
 //  var db=mongoose.connection;
 app.use(session({ secret: "Your_Secret_Key" }))
 app.set('view engine', 'ejs');
-app.use(express.static('public/css'))
-app.use(express.static('public/images'))
-app.use(express.static('public/js'))
+// app.use(express.static('public/css'))
+// app.use(express.static('public/images'))
+// app.use(express.static('public/js'))
+app.use(express.static('public'))
+
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -31,13 +33,7 @@ const port = 3000
 
 const mongoose = require('mongoose');
 
-// app.listen(port, () => {
-//     console.log(`Server is up and  listening on port http://localhost:${port}`)
-//   });
-// const query=async(Email,password)=>{
-//     const user =await clients.findOne({"Email":Email});
-//   const result= await user.comparepass(password)
-// }
+
 app.get('/shirtshtml', (req, res) => {
     res.render('shirtshtml', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
@@ -95,7 +91,7 @@ app.post("/admin/addproduct", (req, res) => {
             name: req.body.name,
             price: req.body.price,
             Quantity: req.body.quan,
-            image: uploadPath,
+            image:  req.files.img.name,
         })
         prod.save()
         .then(result=>{
@@ -106,9 +102,15 @@ app.post("/admin/addproduct", (req, res) => {
         });
     });
 });
-
-
-
+app.get('/product', (req, res) => {
+    product.find()
+    .then(result=>{
+        res.render('product', { product: result ,user: (req.session.user === undefined ? "" : req.session.user) });
+    })
+    .catch(err=>{
+    console.log(err);
+    })
+});
 
 
 app.get('/logout', (req, res) => {
@@ -136,7 +138,7 @@ check('password').trim().isLength(4).withMessage('min password length 4')] ,asyn
         console.log(req.body.password);
         console.log(result.Email);
         console.log(result.password);
-
+        req.session.user=result;
         const valid= await crypt.compare(req.body.password,result.password);
            if(valid==true){
    
@@ -154,37 +156,10 @@ check('password').trim().isLength(4).withMessage('min password length 4')] ,asyn
             console.log(err);
         });
 });
-
-
-//console.log(req.body);
-
-//     var query={"Email":req.body.email,"password":req.body.password};
-
-//   clients.find(query)
-//   .then(result => {
-
-//     if (result.length>0) {
-//             res.send('found');
-//             res.redirect('/');
-//         }else{
-//             res.send('error');
-//         }
-//   clients.find(query)
-//   .then(result => {
-
-//     if (result.length>0) {
-//             res.send('found');
-//         }else{
-//             res.send('error');
-//         }
-
-
-
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
+app.get('/profile', (req, res) => {
+  
+    res.render('profile', { user: (req.session.user === undefined ? "" : req.session.user) });
+});
 
 
 //setup routes

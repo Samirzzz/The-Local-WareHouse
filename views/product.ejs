@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The-Local-WareHouse|Ecommerce Website design</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -49,98 +49,48 @@
                     <a href="/jeanshtml"><button>Jeans </button></a>   
                     <a href="/shirtshtml"><button>Tshirts & Hoodies</button></a>
                 </div>
-            <h2 class="section-title">Tshirts & Hoodies</h2>
-            
-            <!--content-->
-            <div class="shop-content">
-                <!--box1-->
-                <div class="product-box">
-                   
-                    <img src="prod1.jpeg" alt="" class="product-img" >
-                    <h2 class="product-title">Nike Sportswear Premium Essentials Men's T-Shirt</h2>
-                    <span class="price">45$</span>
-                    <div class="add-cart">
-                        <i class='bx bxs-shopping-bag-alt '></i>
-                        <i class='bx bx-heart ' 
-                        onclick="showPhoto()"></i>
-                    </div>
-
-                    
-                </div>
-                <!--box2-->
-                <div class="product-box">
-                    <img src="prod2.webp" alt="" class="product-img">
-                    <h2 class="product-title">Nike Dri-FIT Ready</h2>
-                    <span class="price">40$</span>
-                    <div class="add-cart">
-                        <i class='bx bxs-shopping-bag-alt '></i>
-                        <i class='bx bx-heart ' 
-                        onclick="showPhoto()"></i>
-                    </div>
-                </div>
-                <!--box3-->
-                <div class="product-box">
-                    <img src="prod3.webp" alt="" class="product-img">
-                    <h2 class="product-title">Men's French Terry Crew</h2>     
-                    <span class="price">40$</span>
-                    <div class="add-cart">
-                        <i class='bx bxs-shopping-bag-alt '></i>
-                        <i class='bx bx-heart ' 
-                        onclick="showPhoto()"></i>
-                    </div>
-                    
-                    
-                </div>
-
-            </div>
+                <h2 class="section-title">Tshirts & Hoodies</h2> 
+                <!--content-->
+                            <% if (product.length> 0) { %>
+                
+                
+                
+                
+                                <% product.forEach(prod=> { %>
+                
+                            <div class="shop-content">
+                                <!--box1-->
+                                <div class="product-box">
+                                   
+                                    <img src="/images/<%=prod.image%>" alt="" class="product-img" >
+                                    <h2 class="product-title"> <%= prod.name %></h2>
+                                    <span class="price"><%= prod.price %>$</span>
+                                    <div class="add-cart">
+                                        <i class='bx bxs-shopping-bag-alt '></i>
+                                        <!-- <i class='bx bx-heart ' 
+                                        onclick="showPhoto()"></i> -->
+                                    </div>
+                
+                                    
+                                </div>
+                                
+                
+                            </div>
+                            <% }) %>
+                            <% } else { %>
+                                <p>There are no employees to display...</p>
+                                <% } %>
+                           
+                          
+                        </section>
            
           
         </section>
        
-        <section class="shop container">
-           
-            <h2 class="section-title">Jeans</h2>
-            <!--content-->
-            <div class="shop-content">
-                <!--box1-->
-                <div class="product-box">
-                    <img src="jeans1.jpeg" alt="" class="product-img" >
-                    <h2 class="product-title">MEN Jacket Jeans</h2>
-                    <span class="price">55$</span>
-                    <div class="add-cart">
-                        <i class='bx bxs-shopping-bag-alt '></i>
-                        <i class='bx bx-heart ' 
-                        onclick="showPhoto()"></i>
-                    </div>
-                    
-                </div>
+       
 
-                <!--box2-->
-                <div class="product-box">
-                    <img src="jeans3.jpg" alt="" class="product-img">
-                    <h2 class="product-title">Jeans Pants For Men</h2>
-                    <span class="price">50$</span>
-                    <div class="add-cart">
-                        <i class='bx bxs-shopping-bag-alt '></i>
-                        <i class='bx bx-heart ' 
-                        onclick="showPhoto()"></i>
-                    </div>
-                   
-                </div>
-                <!--box3-->
-                <div class="product-box">
-                    <img src="jeans2.jpg" alt="" class="product-img">
-                    <h2 class="product-title">Women's Jeans Pants</h2>
-                    <span class="price">40$</span>
-                    <div class="add-cart">
-                        <i class='bx bxs-shopping-bag-alt '></i>
-                        <i class='bx bx-heart ' 
-                        onclick="showPhoto()"></i>
-                    </div>
-
-                </div>
-            </div>
-
+            
+            
                 <button class="open-button" onclick="openForm()"><img src="chaticon.png"></button>
                 <div class="chat-popup" id="myForm">
                     <form action="/action_page.php" class="form-container">
@@ -163,7 +113,7 @@
         
        
         <!--Java Script-->
-        <script src="main.js"></script>
+        <script src="/js/main.js"></script>
         <script>
             function closeForm() {
                document.getElementById("myForm").style.display = "none";

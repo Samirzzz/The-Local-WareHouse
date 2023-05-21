@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="top&sidecss.css">
+    <link rel="stylesheet" href="/css/top&sidecss.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,155 +12,112 @@
 </head>
 
 <!-- slideshow motion and index counter -->
-    <script>
-    
+<script>
+
     //   var slideIndex = 1;
-//   showSlides(slideIndex);
-//   function plusSlides(n) {
-//       showSlides(slideIndex += n);
-//   }
-//   function currentSlide(n) {
-//       showSlides(slideIndex = n);
-//   }
+    //   showSlides(slideIndex);
+    //   function plusSlides(n) {
+    //       showSlides(slideIndex += n);
+    //   }
+    //   function currentSlide(n) {
+    //       showSlides(slideIndex = n);
+    //   }
 
-var indexValue = 0;
-         function slideShow(){
-           setTimeout(slideShow, 2500);
-           var x;
-           const img = document.getElementsByClassName("mySlides2");
-           for(x = 0; x < img.length; x++){
-             img[x].style.display = "none";
-           }
-           indexValue++;
-           if(indexValue > img.length){indexValue = 1}
-           img[indexValue -1].style.display = "block";
-         }
-         slideShow();
-
-         
-var index=0;
-  function showslides(){
-    var image=document.getElementsByClassName("mySlides")
-    for(var i=0;i < image.length;i++){
-        image[i].style.display="none";
+    var indexValue = 0;
+    function slideShow() {
+        setTimeout(slideShow, 2500);
+        var x;
+        const img = document.getElementsByClassName("mySlides2");
+        for (x = 0; x < img.length; x++) {
+            img[x].style.display = "none";
+        }
+        indexValue++;
+        if (indexValue > img.length) { indexValue = 1 }
+        img[indexValue - 1].style.display = "block";
     }
-    if(index>image.length-1){
-        index=0;
+    slideShow();
+
+
+    var index = 0;
+    function showslides() {
+        var image = document.getElementsByClassName("mySlides")
+        for (var i = 0; i < image.length; i++) {
+            image[i].style.display = "none";
+        }
+        if (index > image.length - 1) {
+            index = 0;
+        }
+        image[index].style.display = "block";
+        index++;
+        setTimeout(showslides, 3000);
     }
-image[index].style.display="block";
-index++;
-setTimeout(showslides,3000);
-}
-setTimeout(showslides,100);
+    setTimeout(showslides, 100);
 
-  </script>
+</script>
 
-  
+
 </head>
 
 <body>
-   <!-- the head bar (account/wishlist/cart) -->
-<%- include("./partials/navbar.ejs") %>
+    <!-- the head bar (account/wishlist/cart) -->
+    <%- include("./partials/navbar.ejs") %>
 
 
-
-<div class="main-pic">
-           <img src="hm-main.png" style="width:100%;height: auto;">
-        <div class="textcontainer">
-            <div class="text">ALL <br>  NEW <br>& <br> EXCLUSIVE </div>
-            <a href="product">          
-                  <button class="butt" >View Products</button>
-            </a> 
-            </div> 
-</div>
-
- <!-- slideshow images and container --> 
-
-    <div class="slideshow-container">    
-             <!-- the text and button -->
-             <div class="text_inslideshow">NEW  COLLECTION  </div>
-      <div class="mySlides fade"> 
-
-            <!-- theimage itself -->
-          <img class="img_in_slideshow" src="hm4.png" >
-      </div>
-      <div class="mySlides fade">
-      
-          <img class="img_in_slideshow" src="hm3.png" >
-        
-      </div>
-      <div class="mySlides fade">
-       
-          <img class="img_in_slideshow"  src="hm5.png" >
-      </div>
-  </div>
-
-
-  <div class="slideshow-container">    
-    <!-- the text and button -->
-    <div class="text_inslideshow">SUMMER COLLECTION <BR> OUT NOW!!! </div>
-<div class="mySlides2 fade"> 
-
-   <!-- theimage itself -->
- <img class="img_in_slideshow" src="hm10.png" >
-</div>
-<div class="mySlides2 fade">
-
- <img class="img_in_slideshow" src="hm11.png" >
-
-</div>
-<div class="mySlides2 fade">
-
- <img class="img_in_slideshow"  src="hm12.png" >
-</div>
-</div>
-
-
-
- <div class="small pic slide " >
-
-   <div class="shop_container">
-    <h1 id="bestselling"> <i class='bx bxs-offer'></i> Best selling </h1>
-    
-            <!--content-->
-            <div class="shop-content">
-                <!--box1-->
-                <div class="product-box">
-                    <img src="prod1.jpeg" alt="" class="product-img" >
-                    <h2 class="product-title">Nike Sportswear Premium Essentials Men's T-Shirt</h2>
-                    <span class="price">45$</span>
-                    <i class='bx bxs-shopping-bag-alt add-cart'></i>
-                    
-                </div>
-
-                <!--box2-->
-                <div class="product-box">
-                    <img src="prod2.webp" alt="" class="product-img">
-                    <h2 class="product-title">Nike Dri-FIT Ready</h2>
-                    <span class="price">40$</span>
-                    <i class='bx bxs-shopping-bag-alt add-cart'></i>
-                </div>
-                <!--box3-->
-                <div class="product-box">
-                    <img src="prod3.webp" alt="" class="product-img">
-                    <h2 class="product-title">Men's French Terry Crew</h2>
-                    <span class="price">40$</span>
-                    <i class='bx bxs-shopping-bag-alt add-cart'></i>
-                </div>
-
+        <div class="main-pic">
+            <img src="/images/hm-main.png" style="width:100%;height: auto;">
+            <div class="textcontainer">
+                <div class="text">ALL <br> NEW <br>& <br> EXCLUSIVE </div>
+                <a href="product">
+                    <button class="butt">View Products</button>
+                </a>
             </div>
-            
-
         </div>
 
- </div>
+        <!-- slideshow images and container -->
 
-   
+        <div class="slideshow-container">
+            <!-- the text and button -->
+            <div class="text_inslideshow">NEW COLLECTION </div>
+            <div class="mySlides fade">
+
+                <!-- theimage itself -->
+                <img class="img_in_slideshow" src="/images/hm4.png">
+            </div>
+            <div class="mySlides fade">
+
+                <img class="img_in_slideshow" src="/images/hm3.png">
+
+            </div>
+            <div class="mySlides fade">
+
+                <img class="img_in_slideshow" src="/images/hm5.png">
+            </div>
+        </div>
+
+
+        <div class="slideshow-container">
+            <!-- the text and button -->
+            <div class="text_inslideshow">SUMMER COLLECTION <BR> OUT NOW!!! </div>
+            <div class="mySlides2 fade">
+
+                <!-- theimage itself -->
+                <img class="img_in_slideshow" src="/images/hm10.png">
+            </div>
+            <div class="mySlides2 fade">
+
+                <img class="img_in_slideshow" src="/images/hm11.png">
+
+            </div>
+            <div class="mySlides2 fade">
+
+                <img class="img_in_slideshow" src="/images/hm12.png">
+            </div>
+        </div>
 
 
 
 
-    <%- include("./partials/footer.ejs") %>
+        <%- include("./partials/footer.ejs") %>
 </body>
 
 </html>
