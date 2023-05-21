@@ -7,7 +7,9 @@ const app = express();
 const crypt = require("bcrypt");
 const clients = require('./models/clientschema');
 const product = require('./models/productschema')
- const {check,validationResult}=require('express-validator');
+const {check,validationResult}=require('express-validator');
+var bodyParser = require("body-parser");
+
 
 //  var db=mongoose.connection;
 app.use(session({ secret: "Your_Secret_Key" }))
@@ -16,6 +18,8 @@ app.use(express.static('public/css'))
 app.use(express.static('public/images'))
 app.use(express.static('public/js'))
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 var index_router = require("./routes/index.js");
@@ -26,6 +30,7 @@ var product_router = require("./routes/product.js");
 var edit_router = require("./routes/Account.js");
 var forget_router = require("./routes/forget.js");
 var wishlist_router = require("./routes/wishlist.js");
+var reset_pass=require("./routes/reset_pass")
 
 const port = 3000
 
@@ -222,6 +227,7 @@ app.use('/product', product_router);
 app.use('/forget', forget_router);
 app.use('/edit', edit_router);
 app.use('/wishlist', wishlist_router);
+app.use('/reset_password',reset_pass);
 
 mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {

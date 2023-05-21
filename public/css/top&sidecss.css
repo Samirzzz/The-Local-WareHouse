@@ -178,8 +178,8 @@ img  /*allign photos in middlie vertically */
   padding-top: 50px;
    position: relative;
   margin: auto;
-  overflow: auto;
-max-width: 100%;
+  overflow: hidden;
+width: 70%;
 height: 700px;
 margin: auto;
 }

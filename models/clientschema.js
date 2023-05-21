@@ -18,6 +18,11 @@ const clientSchema = new Schema({
   Type:{
     type:String,
   required:true,
+  },
+  reset_password_token:{
+    type:String,
+    required:false,
+    default: "no token"
   }, 
   phonee:{
     type:Number,
