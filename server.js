@@ -14,9 +14,11 @@ var bodyParser = require("body-parser");
 //  var db=mongoose.connection;
 app.use(session({ secret: "Your_Secret_Key" }))
 app.set('view engine', 'ejs');
-app.use(express.static('public/css'))
-app.use(express.static('public/images'))
-app.use(express.static('public/js'))
+// app.use(express.static('public/css'))
+// app.use(express.static('public/images'))
+// app.use(express.static('public/js'))
+app.use(express.static('public'))
+
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,13 +38,7 @@ const port = 3000
 
 const mongoose = require('mongoose');
 
-// app.listen(port, () => {
-//     console.log(`Server is up and  listening on port http://localhost:${port}`)
-//   });
-// const query=async(Email,password)=>{
-//     const user =await clients.findOne({"Email":Email});
-//   const result= await user.comparepass(password)
-// }
+
 app.get('/shirtshtml', (req, res) => {
     res.render('shirtshtml', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
@@ -63,59 +59,45 @@ app.post("/signup", (req, res) => {
 
             }
             else {
-
-
-                const emp = new clients({
-                    username: req.body.username,
-                    Email: req.body.Email,
-                    password: req.body.password,
-                    Type: req.body.type,
-                    phonee: req.body.phonee,
-                    birth: req.body.date,
-                    gender: req.body.gender
-
+                  const emp = new clients({
+                        username: req.body.username,
+                        Email: req.body.Email,
+                        password: req.body.password,
+                        Type: req.body.type,
+                        phonee: req.body.phonee,
+                        birth: req.body.date,
+                        gender: req.body.gender
                 })
-
                 emp.save();
-
                 console.log(req.body.password);
-
                 res.redirect('/');
-
             }
-
         });
 });
 
 app.use(fileUpload());
-
 app.post("/admin/addproduct", (req, res) => {
     let imgfile;
     let uploadPath;
-    console.log(req.files)
+    console.log(req)
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('no files were uploaded.');
     }
     imgfile = req.files.img;
-    uploadPath = __dirname + '/public/images/' + req.body.img;
+    uploadPath = __dirname + '/public/images/' + req.files.img.name;
 
     imgfile.mv(uploadPath, function (err) {
 
-
         if (err)
-            return res.status(500).send(err);
-
-
+        return res.status(500).send(err);
 
         const prod = new product({
             id: req.body.id,
             name: req.body.name,
             price: req.body.price,
             Quantity: req.body.quan,
-            image: req.body.img,
-
+            image:  req.files.img.name,
         })
-
         prod.save()
         .then(result=>{
             res.redirect('/admin');
@@ -123,18 +105,17 @@ app.post("/admin/addproduct", (req, res) => {
         .catch(err=>{
             console.log(err);
         });
-
-       
-
-
     });
-
-
-
 });
-
-
-
+app.get('/product', (req, res) => {
+    product.find()
+    .then(result=>{
+        res.render('product', { product: result ,user: (req.session.user === undefined ? "" : req.session.user) });
+    })
+    .catch(err=>{
+    console.log(err);
+    })
+});
 
 
 app.get('/logout', (req, res) => {
@@ -145,14 +126,12 @@ app.get('/logout', (req, res) => {
 
 app.post('/login',[check('Email').trim().isEmail().withMessage('enter valid email'),
 check('password').trim().isLength(4).withMessage('min password length 4')] ,async function  (req, res) {
-const user = { "Email": req.body.Email };
-const errors=validationResult(req);
-if(!errors.isEmpty()){
-   
-    res.send('error');
-    errors.array(); 
-
-}
+    const user = { "Email": req.body.Email };
+    const errors=validationResult(req);
+    if(!errors.isEmpty()){
+        res.send('error');
+        errors.array(); 
+    }
     clients.findOne(user).then(async result=>{
         
         
@@ -164,10 +143,7 @@ if(!errors.isEmpty()){
         console.log(req.body.password);
         console.log(result.Email);
         console.log(result.password);
-
-
-
-
+        req.session.user=result;
         const valid= await crypt.compare(req.body.password,result.password);
            if(valid==true){
    
@@ -185,37 +161,10 @@ if(!errors.isEmpty()){
             console.log(err);
         });
 });
-
-
-//console.log(req.body);
-
-//     var query={"Email":req.body.email,"password":req.body.password};
-
-//   clients.find(query)
-//   .then(result => {
-
-//     if (result.length>0) {
-//             res.send('found');
-//             res.redirect('/');
-//         }else{
-//             res.send('error');
-//         }
-//   clients.find(query)
-//   .then(result => {
-
-//     if (result.length>0) {
-//             res.send('found');
-//         }else{
-//             res.send('error');
-//         }
-
-
-
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
+app.get('/profile', (req, res) => {
+  
+    res.render('profile', { user: (req.session.user === undefined ? "" : req.session.user) });
+});
 
 
 //setup routes
