@@ -8,7 +8,7 @@ router.get('/',async (req,res)=>
     return await resetcont.setnew(req,res);
 })
  // post -> /set_new_password
-router.post('/',async (req,res)=>
+router.post('/index',async (req,res)=>
 {
     return await resetcont.save_new_password(req,res);
 }) 
