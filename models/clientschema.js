@@ -62,3 +62,13 @@ clientSchema.methods.comparepass =async function(password){
 
 const clients= mongoose.model('clients', clientSchema);
 module.exports=clients;
+
+const productsschema=new Schema({
+  type:string,
+  required:true,
+  child:clientSchema,
+});
+const products=mongoose.model('products',productsschema);
+module.exports=products;
+
+
