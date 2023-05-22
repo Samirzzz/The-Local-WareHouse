@@ -4,20 +4,21 @@ var random=require("uuid");
 
 exports.generateResettokenEmail = async (req, res) => {
     console.log("----------------");
-    const email2  = req.body.email;
+    const email_typed  = req.body.email;
     console.log("======================");
     console.log("======================");
-    console.log(email2);
+    console.log(email_typed);
     
     var token = "test";
 
-    const clients = await Clients.find({Email: email2});
-    if (clients == undefined || clients ==  null || clients.length== 0)
+    const clients = await Clients.find({Email: email_typed});
+    if (clients == undefined || clients ==  null || clients.length== 0)//checks law elmail mawgood aslan fel database wala la2
      {
-        console.log("Could not find usre");
+        console.log("Could not find user");
         return res.send("Could not find user.");
      }
-
+     
+//law user mawgood:
     const user = clients[0];
     user.reset_password_token = token;
     await user.save();
