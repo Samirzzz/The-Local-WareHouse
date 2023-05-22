@@ -60,6 +60,8 @@ clientSchema.methods.comparepass =async function(password){
   }
 };
 
+//schema inside schema
+
 const clients= mongoose.model('clients', clientSchema);
 module.exports=clients;
 
