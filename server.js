@@ -167,6 +167,23 @@ app.get('/profile', (req, res) => {
 });
 
 
+
+// app.get('/banuser', (req, res) => {
+//     clients.findByIdAndDelete(req.body.Email).then(result=>{
+
+//     })
+// });
+
+// app.post('/edit',(req,res)=>{
+//     const user = { "Email": req.body.Email };
+//     clients.findOneAndUpdate(user).then(async result=>{
+//         if(result==null){
+//             res.send('email does not exist');
+
+//         }
+//     })
+// })
+
 //setup routes
 app.use('/', index_router);
 app.use('/login', login_router);
@@ -185,3 +202,7 @@ mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWr
     }
     )
     .catch(err => console.log(err));
+app.use((req,res)=>{
+    res.status(404).render('404', { user: (req.session.user === undefined ? "" : req.session.user) });
+
+})

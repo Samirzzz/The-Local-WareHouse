@@ -6,7 +6,12 @@ const resetcont=require("../controllers/reset_pass_cont")
 router.get('/',async (req,res)=>
 {
     return await resetcont.setnew(req,res);
+})
+ // post -> /set_new_password
+router.post('/index',async (req,res)=>
+{
+    return await resetcont.save_new_password(req,res);
 }) 
-// post -> /set_new_password
+
 
 module.exports = router;

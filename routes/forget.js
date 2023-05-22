@@ -10,7 +10,7 @@ router.get('/',(req,res)=>{
 
 router.post('/reset', async (req, res) =>
  {
-    return await forgetController.generateResetPasswordEmail(req,res);
+    return await forgetController.generateResettokenEmail(req,res);
 });
 
 module.exports = router;
