@@ -2,7 +2,7 @@ const Clients = require("../models/clientschema");
 var random=require("uuid");
 
 
-exports.generateResetPasswordEmail = async (req, res) => {
+exports.generateResettokenEmail = async (req, res) => {
     console.log("----------------");
     const email2  = req.body.email;
     console.log("======================");
