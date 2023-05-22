@@ -1,5 +1,5 @@
 <html>
-<link rel="stylesheet" href="forget.css">
+<link rel="stylesheet" href="/css/forget.css">
 <script >
     
     
@@ -8,11 +8,11 @@
     var password=document.getElementById("password").value;
     var confirm=document.getElementById("confirm").value;
 
-if(password!=confirm){
-   document.getElementById("mess").innerHTML="incorrect password";
-   return false;
-}
-return true;
+    if(password!=confirm){
+        document.getElementById("mess").innerHTML="incorrect password";
+        return false;
+    }
+    return true;
 }
 
 
@@ -24,13 +24,13 @@ return true;
     
     <div class="main">
         <h1 >Reset password</h1><br>
-<form action="" method="post"  onsubmit="return val(this)">
-    <input class="x" type="text" name="email" placeholder="Enter your email address"><br>
-    
-    <!-- <span id="mess" style="color: red; ;">    </span><br><br> -->
-    <input  type="submit"value="Send password reset email" class="c" >
-    
-</form>
+        <form action="/forget/reset" method="post"  onsubmit="return val(this)">
+            <input class="x" type="text" name="email" placeholder="Enter your email address"><br>
+            
+            <!-- <span id="mess" style="color: red; ;">    </span><br><br> -->
+            <input  type="submit"value="Send password reset email" class="c" >
+            
+        </form>
 
 
     </div>
