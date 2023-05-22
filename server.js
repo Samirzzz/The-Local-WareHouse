@@ -156,36 +156,21 @@ check('password').trim().isLength(4).withMessage('min password length 4')] ,asyn
 });
 
 
-//console.log(req.body);
+// app.get('/banuser', (req, res) => {
+//     clients.findByIdAndDelete(req.body.Email).then(result=>{
 
-//     var query={"Email":req.body.email,"password":req.body.password};
+//     })
+// });
 
-//   clients.find(query)
-//   .then(result => {
+// app.post('/edit',(req,res)=>{
+//     const user = { "Email": req.body.Email };
+//     clients.findOneAndUpdate(user).then(async result=>{
+//         if(result==null){
+//             res.send('email does not exist');
 
-//     if (result.length>0) {
-//             res.send('found');
-//             res.redirect('/');
-//         }else{
-//             res.send('error');
 //         }
-//   clients.find(query)
-//   .then(result => {
-
-//     if (result.length>0) {
-//             res.send('found');
-//         }else{
-//             res.send('error');
-//         }
-
-
-
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
-
+//     })
+// })
 
 //setup routes
 app.use('/', index_router);
@@ -204,3 +189,7 @@ mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWr
     }
     )
     .catch(err => console.log(err));
+app.use((req,res)=>{
+    res.status(404).render('404', { user: (req.session.user === undefined ? "" : req.session.user) });
+
+})
