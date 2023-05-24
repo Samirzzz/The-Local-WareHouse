@@ -73,15 +73,12 @@ const orderschema=new Schema({
   child:clientSchema,
   client:{
     type:String,
-    required:true,
   },
   orderproduct:{
     type:String,
-    required:true,
   },
   orderprice:{
     type:Number,
-    required:true,
     default:0,
   },
   orderdate:String,
