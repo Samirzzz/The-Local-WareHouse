@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <link rel="stylesheet" href="/css/navbarcss.css">
+   
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Loacal Warehouse </title>
+</head>
+
+<body>
+    <nav class="head" >
+        <ul >
+            <li><a href="/"  style="color:white">Home</a></li> 
+            <% if(user==="") {%>
+            <li><a href="/login" style="color:white"><i class='bx bx-log-out'></i>Login</a></li>
+            <% }else {
+                console.log(user.Type);
+                if(user.Type==="admin"){
+                 %>
+                 <li><a href="/admin" style="color:white"><i class='bx bx-log-out'></i>Admin</a></li>
+                <%}%>
+                
+
+       
+            <li><a href="/Wishlist" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist</a></li>
+            <li ><a href="#" style="color: aliceblue;"><i class='bx bx-cart' ></i>Cart </a></li>
+            <li><a href="/profile" style="color: aliceblue;">Myprofile</a></li>
+            <li><a href="/logout" style="color:white"><i class='bx bx-log-out'></i>logout</a></li>
+            
+            <% }%>
+        </ul>
+
+
+      
+            
+           
+           
+    </nav>
+    <input type="checkbox" id="check">
+    <label for="check">
+        <i class='bx bx-menu' id="btn"></i>
+        <i class='bx bx-arrow-back' id="cancel" ></i>
+    </label>
+
+    
+    <div class="sidebar">
+        <header><a href="/" id="hmbut" style="color: white;"><i class='bx bx-home'></i>The <br> Local <br> Warehouse</a> </header>
+        <ul>
+            
+            <li><a href="/admin/adduser" class="link">Add user</a></li>
+          <li><a href="/admin/searchedituser" class="link">Edit User</a></li>
+         <li> <a href="/admin/searchbanuser" class="link">Ban User</a></li>
+          <li><a href="/admin/addproduct" class="link">Add products</a></li>
+          <li><a href="/admin/searcheditproduct" class="link">Edit products</a></li>
+          <li><a href="/admin/searchremoveprod" class="link">Remove products</a></li>
+            <li><a href="/logout"><i class='bx bx-log-out'></i>Log Out</a></li>
+        </ul>
+    </div>
+   
+
+    
+
+
+
+</body>
+
+
+
+</html>
