@@ -36,12 +36,6 @@ const clientSchema = new Schema({
     type:String,
   required:true,
   }, 
-  fn:{
-    type:String,
-  },
-  ln:{
-    type:String,
-  },
   address:{
     type:String,
   //required:true,
