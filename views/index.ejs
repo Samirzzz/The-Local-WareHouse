@@ -23,20 +23,6 @@
     //       showSlides(slideIndex = n);
     //   }
 
-    var indexValue = 0;
-    function slideShow() {
-        setTimeout(slideShow, 2500);
-        var x;
-        const img = document.getElementsByClassName("mySlides2");
-        for (x = 0; x < img.length; x++) {
-            img[x].style.display = "none";
-        }
-        indexValue++;
-        if (indexValue > img.length) { indexValue = 1 }
-        img[indexValue - 1].style.display = "block";
-    }
-    slideShow();
-
 
     var index = 0;
     function showslides() {
@@ -78,41 +64,58 @@
         <div class="slideshow-container">
             <!-- the text and button -->
             <div class="text_inslideshow">NEW COLLECTION </div>
-            <div class="mySlides fade">
 
+
+            <div class="mySlides fade">
                 <!-- theimage itself -->
                 <img class="img_in_slideshow" src="/images/hm4.png">
             </div>
-            <div class="mySlides fade">
 
+            <div class="mySlides fade">
                 <img class="img_in_slideshow" src="/images/hm3.png">
-
             </div>
-            <div class="mySlides fade">
 
+            <div class="mySlides fade">
                 <img class="img_in_slideshow" src="/images/hm5.png">
             </div>
-        </div>
 
-
-        <div class="slideshow-container">
-            <!-- the text and button -->
-            <div class="text_inslideshow">SUMMER COLLECTION <BR> OUT NOW!!! </div>
             <div class="mySlides2 fade">
-
                 <!-- theimage itself -->
                 <img class="img_in_slideshow" src="/images/hm10.png">
             </div>
-            <div class="mySlides2 fade">
 
+            <div class="mySlides2 fade">
+                <!-- theimage itself -->
                 <img class="img_in_slideshow" src="/images/hm11.png">
-
             </div>
-            <div class="mySlides2 fade">
 
+            <div class="mySlides2 fade">
+                <!-- theimage itself -->
                 <img class="img_in_slideshow" src="/images/hm12.png">
             </div>
+
         </div>
+
+   <section class="products-view">
+ 
+    <div  class="banner"> Most Poupler
+
+    </div>
+ 
+    <div class="products">   
+ 
+
+
+
+    </div>
+
+
+
+
+
+
+   </section>
+
 
 
 

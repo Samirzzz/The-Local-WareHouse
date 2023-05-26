@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>set_new_passs</title>  
-     <link rel="stylesheet" href="/css/set_new_pass.css">
-</head>
-<body>
-        
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>set_new_passs</title>
+    <link rel="stylesheet" href="/css/set_new_pass.css" />
+  </head>
+  <body>
     <div class="main">
-        <h1 >new password </h1><br>
-        <form action="/routes/reset_pass.js" method="post"  onsubmit="return val(this)">
-            <input class="x" type="text" name="new_pass" placeholder="Enter your new password"><br>
-            
-            <!-- <span id="mess" style="color: red; ;">    </span><br><br> -->
-            <input  type="submit"value="Save" class="c" >
-            
-        </form>
+      <h1>new password</h1>
+      <br />
+      <form
+        action="/reset_password/save"
+        method="post"
+        onsubmit="return val(this)"
+      >
+        <input
+          class="x"
+          type="text"
+          name="token"
+          placeholder="ENter sent token"
+        /><br />
+        <input
+          class="x"
+          type="text"
+          name="new_pass"
+          placeholder="Enter your new password"
+        /><br />
 
-
+        <input
+          class="x"
+          type="text"
+          name="confirm_password"
+          placeholder="Enter your new password"
+        /><br />
+        <!-- <span id="mess" style="color: red; ;">    </span><br><br> -->
+        <input type="submit" value="Save" class="c" />
+      </form>
     </div>
-</body>
+  </body>
 </html>
