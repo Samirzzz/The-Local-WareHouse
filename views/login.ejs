@@ -3,6 +3,9 @@
 <title>the Local Warehouse</title>
 
 <head>
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="/js/ajax.js"></script>
     <style>
         .error {
             color: red;
@@ -102,18 +105,19 @@
         </div>
         <br><br> <br><br><br><br>
         <h1> </h1><br>
+        
+        
 
-
-
-
-
+        
+        
+        
         <div class="box">
             <h1
                 style="color: rgb(0, 0, 0); text-align:center 10 ;padding-left: 38%;margin: auto;padding-bottom: 10%;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
                 Login</h1>
-            <form action="/user/login" method="post" class="q" id="l" onsubmit="return validate(this)">
+            <form action="/user/login" method="post" class="q" id="l" enctype="multipart/form-data" onsubmit="return validate(this)">
 
-                <input class="b" type="text" name="Email" placeholder="Email">
+                <input class="b" type="text" name="Email" placeholder="Email" id="email">
                 <br>
                 <span class="error" id="erroruser"></span>
                 <br><br>
@@ -131,9 +135,11 @@
                 <a href="signup">
                     <h1 class="for">don't have an account?</h1>
                 </a>
-        </div>
-            </form>
+        <p id="backend">nnnnnsxxxxxxxxxx</p>
 
+        </div>
+        
+    </form>
 
 
 
