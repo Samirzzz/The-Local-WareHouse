@@ -57,12 +57,16 @@ router.get('/banuser',(req,res)=>{
 })
 
 /* GET Admin/addproduct page. */
+router.post('/addproduct', Admin1.addprod);
+
 
 router.get('/addproduct',(req,res)=>{
     res.render('addproduct');
 })
 
-router.post('/signup', Admin1.addprod);
+router.post('/addproduct', Admin1.addprod);
+
+
 /* GET Admin/searcheditproduct page. */
 router.get('/searcheditproduct',(req,res)=>{
     res.render('searcheditproduct');
