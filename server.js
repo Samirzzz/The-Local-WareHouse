@@ -49,6 +49,31 @@ app.get('/product-details', (req, res) => {
 
 
 
+    var query = { "Email": req.body.Email };
+
+    clients.find(query)
+        .then(result => {
+            if (result.length > 0) {
+                res.send('email taken');
+
+            }
+            else {
+                  const emp = new clients({
+                        username: req.body.username,
+                        Email: req.body.Email,
+                        password: req.body.password,
+                        Type: req.body.type,
+                        phonee: req.body.phonee,
+                        birth: req.body.date,
+                        gender: req.body.gender
+                })
+                emp.save();
+                console.log(req.body.password);
+                res.redirect('/');
+            }
+        });
+});
+
 app.use(fileUpload());
 app.post("/admin/addproduct", (req, res) => {
     let imgfile;
@@ -77,6 +102,7 @@ app.post("/admin/addproduct", (req, res) => {
         .catch(err=>{
             console.log(err);
         });
+
     });
 });
 app.get('/product', (req, res) => {
@@ -90,13 +116,49 @@ app.get('/product', (req, res) => {
 });
 
 
-// app.get('/logout', (req, res) => {
-//     req.session.destroy();
-//     res.redirect('/');
-// });
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
 
 
+app.post('/login',[check('Email').trim().isEmail().withMessage('enter valid email'),
+check('password').trim().isLength(4).withMessage('min password length 4')] ,async function  (req, res) {
+    const user = { "Email": req.body.Email };
+    const errors=validationResult(req);
+    if(!errors.isEmpty()){
+        res.send('error');
+        errors.array(); 
+    }
+    clients.findOne(user).then(async result=>{
+        
+        
+        if(result==null){
+            res.send('email does not exist');
 
+        }
+        console.log(req.body.Email);
+        console.log(req.body.password);
+        console.log(result.Email);
+        console.log(result.password);
+        req.session.user=result;
+        const valid= await crypt.compare(req.body.password,result.password);
+           if(valid==true){
+   
+               res.redirect('/');
+           }
+           else{
+               res.send('false');
+          
+       } 
+    
+        
+       
+    })
+        .catch(err => {
+            console.log(err);
+        });
+});
 app.get('/profile', (req, res) => {
   
     res.render('profile', { user: (req.session.user === undefined ? "" : req.session.user) });
@@ -110,15 +172,34 @@ app.get('/profile', (req, res) => {
 //     })
 // });
 
-// app.post('/edit',(req,res)=>{
-//     const user = { "Email": req.body.Email };
-//     clients.findOneAndUpdate(user).then(async result=>{
-//         if(result==null){
-//             res.send('email does not exist');
+app.post('/edit',async (req,res)=>{
+    const salt= await crypt.genSalt(10);
+    const hash =await crypt.hash(req.body.password, salt);
+    clients.findByIdAndUpdate(req.session.user._id, { password: hash,fn:req.body.first,ln:req.body.last,address:req.body.Address })
+    .then( async result => {
+            const salt= await crypt.genSalt(10);
+            const hash =await crypt.hash(req.body.password, salt);
+            result.password=hash;
+          req.session.user.password =hash;
+          req.session.user.fn = req.body.first;
+          req.session.user.ln = req.body.last;
+          req.session.user.address = req.body.Address;
+          
+       
+        
+       
+console.log(req.session.user.password)
+console.log(result.password)
+console.log(req.body.password)
 
-//         }
-//     })
-// })
+req.session.user=result;
+
+        res.redirect('/')
+    })
+    .catch(err => {
+        console.log(err);
+    });
+})
 
 //setup routes
 app.use('/', index_router);

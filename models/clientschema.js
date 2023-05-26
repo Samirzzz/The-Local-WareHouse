@@ -36,6 +36,16 @@ const clientSchema = new Schema({
     type:String,
   required:true,
   }, 
+  fn:{
+    type:String,
+  },
+  ln:{
+    type:String,
+  },
+  address:{
+    type:String,
+  //required:true,
+  },
 },{timestamps:true});
 
 clientSchema.pre('save',async function(next){
@@ -51,6 +61,18 @@ next();
 
 
 });
+// exports.update=async function(req,res) {
+//   try {
+//     const salt= await crypt.genSalt(10);
+//     const hash =await crypt.hash(this.password, salt);
+//   this.password=hash;
+//   next();
+    
+//   } catch (error) {
+//     next(error);
+//   }
+//   let updateuser=await clientSchema.findByIdAndUpdate
+// }
 
 clientSchema.methods.comparepass =async function(password){
   try {
