@@ -41,8 +41,6 @@ const logs = async function  (req, res) {
         if(result==null){
             res.send('taken');
 
-        }else{
-            res.send('available')
         }
        
         req.session.user=result;
