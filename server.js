@@ -66,11 +66,18 @@ app.post("/signup", (req, res) => {
                         Type: req.body.type,
                         phonee: req.body.phonee,
                         birth: req.body.date,
-                        gender: req.body.gender
+                        gender: req.body.gender,
+                        fn:req.body.fn,
+                        ln:req.body.ln,
+                        address:req.body.address
+
+                        
                 })
                 emp.save();
                 console.log(req.body.password);
+                req.session.user=result;
                 res.redirect('/');
+
             }
         });
 });
@@ -105,6 +112,7 @@ app.post("/admin/addproduct", (req, res) => {
         .catch(err=>{
             console.log(err);
         });
+
     });
 });
 app.get('/product', (req, res) => {
@@ -139,10 +147,10 @@ check('password').trim().isLength(4).withMessage('min password length 4')] ,asyn
             res.send('email does not exist');
 
         }
-        console.log(req.body.Email);
-        console.log(req.body.password);
-        console.log(result.Email);
-        console.log(result.password);
+        // console.log(req.body.Email);
+        // console.log(req.body.password);
+        // console.log(result.Email);
+        // console.log(result.password);
         req.session.user=result;
         const valid= await crypt.compare(req.body.password,result.password);
            if(valid==true){
@@ -174,15 +182,34 @@ app.get('/profile', (req, res) => {
 //     })
 // });
 
-// app.post('/edit',(req,res)=>{
-//     const user = { "Email": req.body.Email };
-//     clients.findOneAndUpdate(user).then(async result=>{
-//         if(result==null){
-//             res.send('email does not exist');
+app.post('/edit',async (req,res)=>{
+    const salt= await crypt.genSalt(10);
+    const hash =await crypt.hash(req.body.password, salt);
+    clients.findByIdAndUpdate(req.session.user._id, { password: hash,fn:req.body.first,ln:req.body.last,address:req.body.Address })
+    .then( async result => {
+            const salt= await crypt.genSalt(10);
+            const hash =await crypt.hash(req.body.password, salt);
+            result.password=hash;
+          req.session.user.password =hash;
+          req.session.user.fn = req.body.first;
+          req.session.user.ln = req.body.last;
+          req.session.user.address = req.body.Address;
+          
+       
+        
+       
+console.log(req.session.user.password)
+console.log(result.password)
+console.log(req.body.password)
 
-//         }
-//     })
-// })
+req.session.user=result;
+
+        res.redirect('/')
+    })
+    .catch(err => {
+        console.log(err);
+    });
+})
 
 //setup routes
 app.use('/', index_router);
