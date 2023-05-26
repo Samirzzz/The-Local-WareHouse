@@ -29,9 +29,9 @@
 
             <input class="ee" type="text" name="email" placeholder="Email "  ><br><br>
 
-            <span id="name" style="color: red;font-size:90%;"></span>
+            <!-- <span id="name" style="color: red;font-size:90%;"></span>
             <input class="ccc" type="text" name="first" placeholder="First Name " > <span id="namee" style="color: red;font-size: 90%;"></span> <span><input class="ccc" type="text" name="last" placeholder="Last Name " ></span><br><br>
-            
+             -->
             <span id="pass" style="color: red;font-size:90%;"></span>
             <input class="cc" type="password" name="password" placeholder="password " > <span id="passs" style="color:red ;font-size:90%;"></span> <span>  <input class="cc" type="password" name="cpassword" placeholder="Confirm password " > <div id="lpass" style="color: red;font-size:70%; margin-bottom: -15px; "></div>
 
@@ -101,27 +101,6 @@ return "kkk";
     }
 
 
-function name(field) {
-    if (field==""){
-document.getElementById("name").innerHTML="*";
-return "lll";
-
-}
-    
-    
-    else
-    document.getElementById("name").innerHTML="";
-    return "";
-}
-function lname(field) {
-     if(field==""){
-
-document.getElementById("namee").innerHTML="*";
-return "lll"; 
-    } else
-    document.getElementById("namee").innerHTML="";
-    return "";
-}
 
 
 function tel(field) {
@@ -152,8 +131,6 @@ function email(field) {
 function val(form) {
     fail="";
     fail+=email(form.email.value);
-    fail+=name(form.first.value);
-    fail+=lname(form.last.value);
     fail+=pass1(form.password.value,form.cpassword.value);
     
 

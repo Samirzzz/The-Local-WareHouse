@@ -25,14 +25,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 var index_router = require("./routes/index.js");
-var login_router = require("./routes/login.js");
-var signup_router = require("./routes/signup.js");
+// var login_router = require("./routes/login.js");
+var signup_router = require("./routes/user.js");
 var admin_router = require("./routes/admin.js");
 var product_router = require("./routes/product.js");
 var edit_router = require("./routes/Account.js");
 var forget_router = require("./routes/forget.js");
 var wishlist_router = require("./routes/wishlist.js");
-var reset_pass=require("./routes/reset_pass")
+var reset_pass=require("./routes/reset_pass");
 
 const port = 3000
 
@@ -47,74 +47,11 @@ app.get('/product-details', (req, res) => {
     res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 
-app.post("/signup", (req, res) => {
 
 
-    var query = { "Email": req.body.Email };
-
-    clients.find(query)
-        .then(result => {
-            if (result.length > 0) {
-                res.send('email taken');
-
-            }
-            else {
-                  const emp = new clients({
-                        username: req.body.username,
-                        Email: req.body.Email,
-                        password: req.body.password,
-                        Type: req.body.type,
-                        phonee: req.body.phonee,
-                        birth: req.body.date,
-                        gender: req.body.gender,
-                        fn:req.body.fn,
-                        ln:req.body.ln,
-                        address:req.body.address
-
-                        
-                })
-                emp.save();
-                console.log(req.body.password);
-                req.session.user=result;
-                res.redirect('/');
-
-            }
-        });
-});
 
 app.use(fileUpload());
-app.post("/admin/addproduct", (req, res) => {
-    let imgfile;
-    let uploadPath;
-    console.log(req)
-    if (!req.files || Object.keys(req.files).length === 0) {
-        return res.status(400).send('no files were uploaded.');
-    }
-    imgfile = req.files.img;
-    uploadPath = __dirname + '/public/images/' + req.files.img.name;
 
-    imgfile.mv(uploadPath, function (err) {
-
-        if (err)
-        return res.status(500).send(err);
-
-        const prod = new product({
-            id: req.body.id,
-            name: req.body.name,
-            price: req.body.price,
-            Quantity: req.body.quan,
-            image:  req.files.img.name,
-        })
-        prod.save()
-        .then(result=>{
-            res.redirect('/admin');
-        })
-        .catch(err=>{
-            console.log(err);
-        });
-
-    });
-});
 app.get('/product', (req, res) => {
     product.find()
     .then(result=>{
@@ -132,43 +69,7 @@ app.get('/logout', (req, res) => {
 });
 
 
-app.post('/login',[check('Email').trim().isEmail().withMessage('enter valid email'),
-check('password').trim().isLength(4).withMessage('min password length 4')] ,async function  (req, res) {
-    const user = { "Email": req.body.Email };
-    const errors=validationResult(req);
-    if(!errors.isEmpty()){
-        res.send('error');
-        errors.array(); 
-    }
-    clients.findOne(user).then(async result=>{
-        
-        
-        if(result==null){
-            res.send('email does not exist');
 
-        }
-        // console.log(req.body.Email);
-        // console.log(req.body.password);
-        // console.log(result.Email);
-        // console.log(result.password);
-        req.session.user=result;
-        const valid= await crypt.compare(req.body.password,result.password);
-           if(valid==true){
-   
-               res.redirect('/');
-           }
-           else{
-               res.send('false');
-          
-       } 
-    
-        
-       
-    })
-        .catch(err => {
-            console.log(err);
-        });
-});
 app.get('/profile', (req, res) => {
   
     res.render('profile', { user: (req.session.user === undefined ? "" : req.session.user) });
@@ -185,14 +86,12 @@ app.get('/profile', (req, res) => {
 app.post('/edit',async (req,res)=>{
     const salt= await crypt.genSalt(10);
     const hash =await crypt.hash(req.body.password, salt);
-    clients.findByIdAndUpdate(req.session.user._id, { password: hash,fn:req.body.first,ln:req.body.last,address:req.body.Address })
+    clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address })
     .then( async result => {
             const salt= await crypt.genSalt(10);
             const hash =await crypt.hash(req.body.password, salt);
             result.password=hash;
           req.session.user.password =hash;
-          req.session.user.fn = req.body.first;
-          req.session.user.ln = req.body.last;
           req.session.user.address = req.body.Address;
           
        
@@ -213,8 +112,8 @@ req.session.user=result;
 
 //setup routes
 app.use('/', index_router);
-app.use('/login', login_router);
-app.use('/signup', signup_router);
+// app.use('/login', login_router);
+app.use('/user', signup_router);
 app.use('/admin', admin_router);
 app.use('/product', product_router);
 app.use('/forget', forget_router);
