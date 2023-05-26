@@ -1,10 +1,35 @@
-const { Router } = require('express');
-var router = Router();
 
+const express = require("express");
+var bodyParser = require('body-parser');
+
+const router = express.Router();
+router.use(bodyParser.json());
+
+const Admin1 = require("../controllers/productcontrol");
 /* GET Admin page. */
+
+
+
+router.use((req, res, next) => {
+    if (req.session.user !== undefined && req.session.user.Type === 'admin') {
+        next();
+    }
+    else {
+        res.render('err', { err: 'You are not an Admin',user: (req.session.user === undefined ? "" : req.session.user) })
+    }
+});
+
+
 router.get('/',(req,res)=>{
     res.render('admin', { user: (req.session.user === undefined ? "" : req.session.user) });
 }) 
+
+
+
+
+
+
+
 
 /* GET Admin/adduser page. */
 router.get('/adduser',(req,res)=>{
@@ -37,6 +62,7 @@ router.get('/addproduct',(req,res)=>{
     res.render('addproduct');
 })
 
+router.post('/signup', Admin1.addprod);
 /* GET Admin/searcheditproduct page. */
 router.get('/searcheditproduct',(req,res)=>{
     res.render('searcheditproduct');
