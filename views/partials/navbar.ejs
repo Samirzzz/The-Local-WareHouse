@@ -15,7 +15,7 @@
         <ul >
             <li><a href="/"  style="color:white">Home</a></li> 
             <% if(user==="") {%>
-            <li><a href="/login" style="color:white"><i class='bx bx-log-out'></i>Login</a></li>
+            <li><a href="/user/login" style="color:white"><i class='bx bx-log-out'></i>Login</a></li>
             <% }else {
                 console.log(user.Type);
                 if(user.Type==="admin"){
