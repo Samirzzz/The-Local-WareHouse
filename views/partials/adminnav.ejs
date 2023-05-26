@@ -14,23 +14,10 @@
     <nav class="head" >
         <ul >
             <li><a href="/"  style="color:white">Home</a></li> 
-            <% if(user==="") {%>
-            <li><a href="/login" style="color:white"><i class='bx bx-log-out'></i>Login</a></li>
-            <% }else {
-                console.log(user.Type);
-                if(user.Type==="admin"){
-                 %>
-                 <li><a href="/admin" style="color:white"><i class='bx bx-log-out'></i>Admin</a></li>
-                <%}%>
-                
-
-       
-            <li><a href="/Wishlist" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist</a></li>
-            <li ><a href="#" style="color: aliceblue;"><i class='bx bx-cart' ></i>Cart </a></li>
-            <li><a href="/profile" style="color: aliceblue;">Myprofile</a></li>
-            <li><a href="/logout" style="color:white"><i class='bx bx-log-out'></i>logout</a></li>
+            <li><a href="/product"  style="color:white">Products</a></li> 
             
-            <% }%>
+            <li><a href="/logout" style="color:white"><i class='bx bx-log-out'></i>logout</a></li>
+        
         </ul>
 
 
