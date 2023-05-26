@@ -115,14 +115,12 @@ app.get('/profile', (req, res) => {
 app.post('/edit',async (req,res)=>{
     const salt= await crypt.genSalt(10);
     const hash =await crypt.hash(req.body.password, salt);
-    clients.findByIdAndUpdate(req.session.user._id, { password: hash,fn:req.body.first,ln:req.body.last,address:req.body.Address })
+    clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address })
     .then( async result => {
             const salt= await crypt.genSalt(10);
             const hash =await crypt.hash(req.body.password, salt);
             result.password=hash;
           req.session.user.password =hash;
-          req.session.user.fn = req.body.first;
-          req.session.user.ln = req.body.last;
           req.session.user.address = req.body.Address;
           
        

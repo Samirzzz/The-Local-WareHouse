@@ -57,30 +57,4 @@ router.get('/removeprod',(req,res)=>{
     res.render('removeprod');
 })
 
-/* GET Admin/addbrand page. */
-router.get('/addbrand',(req,res)=>{
-    res.render('addbrand');
-})
-
-/* GET Admin/searcheditbrand page. */
-router.get('/searcheditbrand',(req,res)=>{
-    res.render('searcheditbrand');
-})
-
-
-/* GET Admin/editbrand page. */
-router.get('/editbrand',(req,res)=>{
-    res.render('editbrand');
-}) 
-
-/* GET Admin/searchremovebrand page. */
-router.get('/searchremovebrand',(req,res)=>{
-    res.render('searchremovebrand');
-})
-
-/* GET Admin/removebrand page. */
-router.get('/removebrand',(req,res)=>{
-    res.render('removebrand');
-}) 
-
 module.exports = router;
