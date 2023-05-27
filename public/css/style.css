@@ -184,14 +184,12 @@ section{
   /* margin-left: 200px; Adjust this value to match the width of the sidebar */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap:5px;
   /* gap: 10px; Add the desired gap between rows */
   /* grid-template-columns: repeat(auto-fit,minmax(220px,auto));
   gap:1.5rem;   */
 }
 .product-box{
-  justify-content: space-between;
     position: relative; 
     flex: 0 0 33.33%;
     text-align: center;
