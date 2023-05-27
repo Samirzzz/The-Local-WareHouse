@@ -4,64 +4,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tilt+Warp&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;600&family=Righteous&display=swap');
 
-nav.head /*the bar itself */
-{
-z-index: 20px;
-position: relative;
-background: black;
-height: 50px;
-margin-top: 0;
-}
-
-nav.head ul /*the account/cart/wishlist content*/
-{
-    z-index: 21px;
-float:right;
-margin-right: 20px;
-}
-
-nav.head ul li /*the account/wishlist/cart */
-{
-    z-index: 50px;
-font-size: 14px;
-border-color: #ffffff;
-border-width: 2px;
-display:inline-block;
-line-height: 10px;
-top: 10px;
-padding: 10px;
-}
-a:link /*so the link of account  doesnt turn blue */
-{
-color:rgb(0, 0, 0);
-}
-nav.head ul li a /* acc/cart/wishlist fontsize*/
-{
-font-size: 20px;
-}
-.head ul li a:hover /*hover effect of acc / cart/wishlist */
-{
-background-color: #000000;
-transition: 2s all ease;
-padding-top: 30px;
-}
-
-
  /*-----------------------------------------------------------------*/
  /*Side bar */
 
-
-*
-{
+*{
   padding: 0;
   margin: 0;
   list-style: none;
   text-decoration: none;
 }
-body 
-{
-  font-family: 'Roboto', sans-serif;
-}
+
+body {
+  font-family: 'Roboto', sans-serif;}
+
 .sidebar /*the sidde bar itself*/
  {
    z-index: 50px;
@@ -73,7 +28,7 @@ body
   transition: all .5s ease;
   overflow: visible;
 }
-.sidebar header  /*the loacal warehouse on the sidebar and menu icon */
+.sidebar header  /*the local warehouse on the sidebar and menu icon */
 { 
   font-size: 22px;
   color: white;
@@ -83,9 +38,7 @@ body
   background: #000000;
   user-select: none;
 }
-.sidebar ul a /*the links inside the side bar */
-{
-
+.sidebar ul a {   /*the links inside the side bar */
   display: block;
   height: 100%;
   width: 100%;
@@ -98,16 +51,15 @@ body
   border-top: 1px solid rgb(0, 0, 0);
   transition: .4s; 
   z-index: 10px;
-  
 }
-ul li:hover a /*hovering effect of every link */
-{
+
+ul li:hover a{ /*hovering effect of every link */
   padding-left: 50px;
   background: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
-.sidebar ul a i /*icons of links */
-{
+
+.sidebar ul a i {/*icons of links */
   margin-right: 16px;
 }
 
@@ -224,17 +176,33 @@ section{
     text-align: center;
     margin-bottom: 1.5rem;
 }
+
 .shop{
     margin-top: 2rem;
 }
-.shop-content{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,auto));
-    gap:1.5rem; 
+.shop-content {
+  /* margin-left: 200px; Adjust this value to match the width of the sidebar */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap:5px;
+  /* gap: 10px; Add the desired gap between rows */
+  /* grid-template-columns: repeat(auto-fit,minmax(220px,auto));
+  gap:1.5rem;   */
 }
 .product-box{
-    position: relative;
+  justify-content: space-between;
+    position: relative; 
+    flex: 0 0 33.33%;
+    text-align: center;
+    flex-basis: calc(33.33% - 20px); /* Adjust the width and gap value */
 }
+.product-box .img {
+  max-height: 300px;
+  max-width: 300px;
+  object-fit:contain;
+}
+
 .product-box:hover{
     padding:10px;
     border: 1px solid var(--text-color);
@@ -376,7 +344,6 @@ input{
     box-sizing:20px border-box;
     width:100%;
     float: center;
-
 }
 .box{
     display: block;
@@ -387,12 +354,11 @@ input{
     margin: 0 auto;
     display: block;
 }
-/*/////////////////////////////////////////////////////////*/
 
+/*/////////////////////////////////////////////////////////*/
 
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
-
 
 .open-button {
   background-color: #ffffff;
@@ -407,7 +373,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   width: 100px;
 }
 
-
 .chat-popup {
   display: none;
   position: fixed;
@@ -417,13 +382,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
   z-index: 9;
 }
 
-
 .form-container {
   max-width: 300px;
   padding: 10px;
   background-color: white;
 }
-
 
 .form-container textarea {
   width: 100%;
@@ -435,12 +398,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
   min-height: 200px;
 }
 
-
 .form-container textarea:focus {
   background-color: #ddd;
   outline: none;
 }
-
 
 .form-container .btn {
   background-color: #04AA6D;
@@ -453,11 +414,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 0.8;
 }
 
-
 .form-container .cancel {
   background-color: red;
 }
-
 
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
