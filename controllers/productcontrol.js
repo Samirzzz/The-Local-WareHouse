@@ -1,8 +1,10 @@
 const product = require('../models/productschema');
 const crypt = require("bcrypt");
+const fileUpload = require('express-fileupload');
 const path = require('path');
-const {check,validationResult}=require('express-validator');
-
+const express = require('express');
+const app = express();
+app.use(fileUpload());
 const addprod= (req, res) => {
     let imgfile;
     let uploadPath;
@@ -11,7 +13,7 @@ const addprod= (req, res) => {
         return res.status(400).send('no files were uploaded.');
     }
     imgfile = req.files.img;
-    uploadPath = __dirname + '/public/images/' + req.files.img.name;
+    uploadPath = './public/images/' + req.files.img.name;
 
     imgfile.mv(uploadPath, function (err) {
         if (err)

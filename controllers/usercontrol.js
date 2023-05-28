@@ -34,22 +34,15 @@ const AddUser = (req, res) => {
 
 const logs = async function  (req, res) {
     const user = { "Email": req.body.Email };
-    const errors=validationResult(req);
-    if(!errors.isEmpty()){
-        res.send('error');
-        errors.array(); 
-    }
+   
     clients.findOne(user).then(async result=>{
         
         
         if(result==null){
-            res.send('email does not exist');
+            res.send('taken');
 
         }
-        console.log(req.body.Email);
-        console.log(req.body.password);
-        console.log(result.Email);
-        console.log(result.password);
+       
         req.session.user=result;
         const valid= await crypt.compare(req.body.password,result.password);
            if(valid==true){

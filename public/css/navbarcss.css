@@ -1,20 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
 
-nav.head
-{
+nav.head{
 background: black;
 height: 40px;
 margin-top: 0;
 }
 
-nav.head ul
-{
+nav.head ul{
 float:right;
 margin-right: 20px;
 }
 
-nav.head ul li
-{
+nav.head ul li{
 font-size: 14px;
 border-color: #ffffff;
 display:inline-block;
@@ -22,32 +19,33 @@ line-height: 10px;
 top: 10px;
 padding: 10px;
 }
-a:link
-{
+
+a:link{
 color:white;
 }
-nav.head ul li a
-{
-font-size: 20px;
 
+nav.head ul li a{
+font-size: 20px;
 }
-.head ul li a:hover
-{
+
+.head ul li a:hover{
 transition: 3s;
 color: #000000;
 background: whitesmoke;
 padding-left: 1px;
-
 }
+
 *{
   padding: 0;
   margin: 0;
   list-style: none;
   text-decoration: none;
 }
+
 body {
   font-family: 'Roboto', sans-serif;
 }
+
 .sidebar {
   position: fixed;
   left: -250px;
@@ -56,6 +54,7 @@ body {
   background: #000000;
   transition: all .5s ease;
 }
+
 .sidebar header {
   font-size: 22px;
   color: white;
@@ -65,6 +64,7 @@ body {
   background: #000000;
   user-select: none;
 }
+
 .sidebar ul a{
   display: block;
   height: 100%;
@@ -76,25 +76,25 @@ body {
   box-sizing: border-box;
   border-bottom: 1px solid black;
   border-top: 1px solid rgb(0, 0, 0);
-  transition: .4s;
-}
+  transition: .4s;}
+
 ul li:hover a{
   padding-left: 50px;
   background: whitesmoke;
   color: black;
 }
 .sidebar ul a i{
-  margin-right: 16px;
-}
+  margin-right: 16px;}
 
 #check{
-  display: none;
-}
+  display: none;}
+
 label #btn,label #cancel{
   position: absolute;
   border-radius: 3px;
   cursor: pointer;
 }
+
 label #btn{
   left: 10px;
   top: 5px;
@@ -103,6 +103,7 @@ label #btn{
   font-size: 35px;
   transition: all .5s;
 }
+
 label #cancel{
   z-index: 1111;
   left: -195px;
@@ -112,20 +113,22 @@ label #cancel{
   padding: 4px 9px;
   transition: all .5s ease;
 }
+
 #check:checked ~ .sidebar{
-  left: 0;
-}
+  left: 0;}
+
 #check:checked ~ label #btn{
   left: 250px;
   opacity: 0;
   pointer-events: none;
 }
+
 #check:checked ~ label #cancel{
-  left: 195px;
-}
+  left: 195px;}
+
 #check:checked ~ section{
-  margin-left: 250px;
-}
+  margin-left: 250px;}
+  
 section{
   background: url(bg.jpeg) no-repeat;
   background-position: center;

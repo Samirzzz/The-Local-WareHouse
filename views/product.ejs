@@ -51,100 +51,41 @@
                 </div>
                 <h2 class="section-title">Tshirts & Hoodies</h2> 
                 <!--content-->
-
-
-                
-                            <% if (product.length> 0) { %>
-                
-                                <% product.forEach(prod=> { %>
-                
-                            <div class="shop-content">
-                                
-                                <div class="product-box">
-                                   
-                                    <img src="/images/<%=prod.image%>" height="50px" width="50px"  alt="" class="img" >
-                                    <h2 class="product-title"> <%= prod.name %></h2>
-                                    <span class="price"><%= prod.price %>$</span>
-                                    <div class="add-cart">
-                                        <i class='bx bxs-shopping-bag-alt '></i>
-                                        <i class='bx bx-heart ' 
-                                        onclick="showPhoto()"></i>
-                                    </div>
-                
-                                    
+                <% if (product.length> 0) { %>
+                    <div class="shop-content">
+                        <% product.forEach((prod, index) => { %>
+                            <div class="product-box">
+                                <img src="/images/<%= prod.image %>" alt="" class="img">
+                                <h2 class="product-title"><%= prod.name %></h2>
+                                <span class="price"><%= prod.price %>$</span>
+                                <div class="add-cart">
+                                    <i class='bx bxs-shopping-bag-alt'></i>
+                                    <i class='bx bx-heart' onclick="showPhoto()"></i>
                                 </div>
-                                
-                
                             </div>
-                            <% }) %>
-                            <% } else { %>
-                                <p>There are no products to display...</p>
-                                <% } %>
-                           
-                          
-                      
-           
-          
+                            <% if ((index + 1) % 3 === 0) { %>
+                                </div>
+                                <div class="shop-content">
+                            <% } %>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <p>There are no products to display...</p>
+                <% } %>
         </section>
        
-       
-
-            
-            
-                <button class="open-button" onclick="openForm()"><img src="images/chaticon.png"></button>
-                <div class="chat-popup" id="myForm">
-                    <form action="/action_page.php" class="form-container">
-                        <h1>Chat</h1>
-        
-                        <label for="msg"><b>Message</b></label>
-                        <textarea placeholder="Type message.." name="msg" required></textarea>
-                        
-        
-                        <button type="submit" class="btn">Send</button>
-                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                    </form>
-                </div>
-
-          
-            
-        </section>
-
-        
-        
-       
-        <!--Java Script-->
-        <script src="/js/main.js"></script>
-        <script>
-            function closeForm() {
-               document.getElementById("myForm").style.display = "none";
-           }
-   
-           function openForm() {
-               document.getElementById("myForm").style.display = "block";
-           }
-
-
-//                 document.addEventListener("DOMContentLoaded", function() {
-//                 var heartIcons = document.querySelectorAll(".add-cart");
-
-//             heartIcons.forEach(function(icon) {
-//             icon.addEventListener("click", function() {
-//             var imageSrc = this.parentNode.querySelector(".product-img").src;
-//             openPhotoPage(imageSrc);
-//             });
-//         });
-
-//   function openPhotoPage(imageSrc) {
-//     window.open(imageSrc, "_blank");
-//   }
-// });
-
-    function showPhoto() {
-        window.open("/Wishlist", "_blank");
-    }
-
-
-        </script>
-   <%- include("./partials/footer.ejs") %>
+        <button class="open-button" onclick="openForm()"><img src="images/chaticon.png"></button>
+    <div class="chat-popup" id="myForm">
+      <form action="/action_page.php" class="form-container">
+        <h1>Chat</h1>
+  
+        <label for="msg"><b>Message</b></label>
+        <textarea placeholder="Type message.." name="msg" required></textarea>
+  
+        <button type="submit" class="btn">Send</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+    <script src="/js/main.js"></script>
 </body>
 </html>
