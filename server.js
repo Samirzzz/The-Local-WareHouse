@@ -6,11 +6,11 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const crypt = require("bcrypt");
 const clients = require('./models/clientschema');
-// const Order=require('./models/clientschema');
 const product = require('./models/productschema');
+const Wishlist = require('./models/wishlist')
+
 const {check,validationResult}=require('express-validator');
 var bodyParser = require("body-parser");
-// jsonParser = bodyParser.json();
 
 
 //  var db=mongoose.connection;
@@ -65,6 +65,22 @@ app.get('/product', (req, res) => {
 });
 
 
+app.get('/wishlist', (req, res) => {
+
+    Wishlist.findOne({ "email":req.session.user.Email })
+    .then(result=>{
+        product.find().then(products=>{
+            const mod=result.items.map(item=>products.find(p=>p.id==item.productId))
+            res.render('wishlist', { wishlist: mod ,user: (req.session.user === undefined ? "" : req.session.user) });
+        })
+    
+    })
+    .catch(err=>{
+    console.log(err);
+    })
+});
+
+
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
@@ -88,8 +104,6 @@ app.get('/profile', (req, res) => {
 app.post('/edit',async (req,res)=>{
     const salt= await crypt.genSalt(10);
     const hash =await crypt.hash(req.body.password, salt);
-    // console.log(req.body);
-    // res.json(req.body);
     clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address })
     .then( async result => {
             const salt= await crypt.genSalt(10);
@@ -97,18 +111,6 @@ app.post('/edit',async (req,res)=>{
             result.password=hash;
           req.session.user.password =hash;
           req.session.user.address = req.body.Address;
-
-        //   const res = await post(GET_ORDERS_URL, {
-        //     client: {
-        //       firstname: firstname,
-        //       lastname: lastname,
-        //       numTel: numTel,
-        //       address: address,
-        //     },
-        //     orderproduct: orderproduct,
-        //     orderprice: orderprice,
-        //     orderdate: orderdate,
-        //   });
           
        
         
@@ -137,18 +139,7 @@ app.use('/edit', edit_router);
 app.use('/wishlist', wishlist_router);
 app.use('/reset_password',reset_pass);
 
-/////
-
-app.get("./models/clientschema",(req,res)=>{
-order.find()
-.then((result)=>{console.log(result)})
-.catch((err)=>{console.log(err)});
-});
-
-////
-
-
-mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
         app.listen(3000);
         console.log(`server up and listening  on port http://localhost:${port}`)

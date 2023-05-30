@@ -145,3 +145,19 @@ function updatetotal(){
     
 
 }
+
+
+function addToWishlist(productId) {
+    // Send an AJAX request to the server to add the product to the wishlist
+    fetch(`/wishlist/${productId}`, { method: 'POST' })
+      .then(response => response.json())
+      .then(data => {
+        // Product added to the wishlist, you can show a success message or update the UI as needed
+        console.log('Product added to wishlist:', data);
+      })
+      .catch(error => {
+        // Error occurred while adding the product to the wishlist
+        console.error('Error adding product to wishlist:', error);
+      });
+  }
+  

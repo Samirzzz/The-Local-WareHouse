@@ -1,4 +1,6 @@
 const clients = require('../models/clientschema');
+const Product = require('../models/productschema');
+const Wishlist = require('../models/wishlist');
 const crypt = require("bcrypt");
 const path = require('path');
 const {check,validationResult}=require('express-validator');
@@ -60,7 +62,39 @@ const logs = async function  (req, res) {
         });
 };
 
+    // Function to add a product to the wishlist
+ const addToWishlist= async function (req,res) {
+    const productId=req.params.productId;
+    const email=req.session.user.Email;
+        try {
+          // Fetch the product details from the database
+          const product = await Product.findById(productId);
+      
+          if (!product) {
+            throw new Error('Product not found');
+          }
+      
+          // Create a new wishlist entry with the fetched product details
+          const user = { "email":email };
+   
+            let list=await Wishlist.findOne(user);
+            if(!list){
+                list=await Wishlist.create({items:[],email:email})
+            }
+           
+            list.items.push({productId:product.id,internalId:productId});
+            list.save();
+            res.send(list);
+        
+        } catch (error) {
+          console.error('Error adding product to wishlist:', error);
+          throw error ;
+        }
+      }
+    
+
 module.exports = {
     AddUser,
     logs,
+    addToWishlist,
 };
