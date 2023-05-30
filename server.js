@@ -6,7 +6,8 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const crypt = require("bcrypt");
 const clients = require('./models/clientschema');
-const product = require('./models/productschema')
+// const Order=require('./models/clientschema');
+const product = require('./models/productschema');
 const {check,validationResult}=require('express-validator');
 var bodyParser = require("body-parser");
 
@@ -86,6 +87,8 @@ app.get('/profile', (req, res) => {
 app.post('/edit',async (req,res)=>{
     const salt= await crypt.genSalt(10);
     const hash =await crypt.hash(req.body.password, salt);
+    // console.log(req.body);
+    // res.json(req.body);
     clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address })
     .then( async result => {
             const salt= await crypt.genSalt(10);
@@ -93,6 +96,18 @@ app.post('/edit',async (req,res)=>{
             result.password=hash;
           req.session.user.password =hash;
           req.session.user.address = req.body.Address;
+
+        //   const res = await post(GET_ORDERS_URL, {
+        //     client: {
+        //       firstname: firstname,
+        //       lastname: lastname,
+        //       numTel: numTel,
+        //       address: address,
+        //     },
+        //     orderproduct: orderproduct,
+        //     orderprice: orderprice,
+        //     orderdate: orderdate,
+        //   });
           
        
         
