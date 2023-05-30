@@ -10,6 +10,7 @@ const clients = require('./models/clientschema');
 const product = require('./models/productschema');
 const {check,validationResult}=require('express-validator');
 var bodyParser = require("body-parser");
+// jsonParser = bodyParser.json();
 
 
 //  var db=mongoose.connection;
@@ -136,7 +137,18 @@ app.use('/edit', edit_router);
 app.use('/wishlist', wishlist_router);
 app.use('/reset_password',reset_pass);
 
-mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+/////
+
+app.get("./models/clientschema",(req,res)=>{
+order.find()
+.then((result)=>{console.log(result)})
+.catch((err)=>{console.log(err)});
+});
+
+////
+
+
+mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true})
     .then(result => {
         app.listen(3000);
         console.log(`server up and listening  on port http://localhost:${port}`)
