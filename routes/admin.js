@@ -1,11 +1,12 @@
 
 const express = require("express");
 var bodyParser = require('body-parser');
+const clients = require('../models/clientschema');
 
 const router = express.Router();
 router.use(bodyParser.json());
 
-const Admin1 = require("../controllers/productcontrol");
+const Admin1 = require("../controllers/Adminproductcontrol");
 /* GET Admin page. */
 
 router.use((req, res, next) => {
@@ -78,6 +79,16 @@ router.get('/searchremoveprod',(req,res)=>{
 /* GET Admin/removeprod page. */
 router.get('/removeprod',(req,res)=>{
     res.render('removeprod', { user: (req.session.user === undefined ? "" : req.session.user) });
+})
+
+router.get('/view&edituser',(req,res)=>{
+    clients.find()
+    .then(result => {
+      res.render('view&edituser', { employees: result, user: (req.session.user === undefined ? "" : req.session.user) });
+    })
+    .catch(err => {
+      console.log(err);
+    });
 })
 
 module.exports = router;
