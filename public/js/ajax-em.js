@@ -1,22 +1,23 @@
 $(document).ready(function () {
-    $("#Email").on('keyup', function (e) {
+    $("#signupform").on('keyup', function (e) {
         e.preventDefault();
-        var data = $('#Email').val();
+        var data = $('#email').val();
         $.ajax({
-            url: '/user/logs',
-            method: 'POST',
+            url: '/user/AddUser',
+            method: 'post',
             contentType: 'application/json',
             data: JSON.stringify({ Email: data }),
             success: function (response) {
                 $('#backend').html('Email is ' + response);
 
-                if (response == 'taken') {
+                if (response == 'Does not exist') {
                     $('#backend').css("color", "red");
                 }
-                else {
+                else if(response=='') {
                     $('#backend').css("color", "green");
                 }
-            }
+            },
+            
         });
     });
 });
