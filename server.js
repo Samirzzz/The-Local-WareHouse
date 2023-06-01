@@ -6,16 +6,14 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const crypt = require("bcrypt");
 const clients = require('./models/clientschema');
-// const Order=require('./models/clientschema');
 const product = require('./models/productschema');
+const Wishlist = require('./models/wishlist')
+
 const {check,validationResult}=require('express-validator');
 var bodyParser = require("body-parser");
-// jsonParser = bodyParser.json();
-
-
-//  var db=mongoose.connection;
 app.use(session({ secret: "Your_Secret_Key" }))
 app.set('view engine', 'ejs');
+
 // app.use(express.static('public/css'))
 // app.use(express.static('public/images'))
 // app.use(express.static('public/js'))
@@ -49,15 +47,17 @@ app.get('/product-details', (req, res) => {
     res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 
-
-
-
 app.use(fileUpload());
 
-app.get('/product', (req, res) => {
-    product.find()
+app.get('/wishlist', (req, res) => {
+
+    Wishlist.findOne({ "email":req.session.user.Email })
     .then(result=>{
-        res.render('product', { product: result ,user: (req.session.user === undefined ? "" : req.session.user) });
+        product.find().then(products=>{
+            const mod=result.items.map(item=>products.find(p=>p.id==item.productId))
+            res.render('wishlist', { wishlist: mod ,user: (req.session.user === undefined ? "" : req.session.user) });
+        })
+    
     })
     .catch(err=>{
     console.log(err);
@@ -88,8 +88,6 @@ app.get('/profile', (req, res) => {
 app.post('/edit',async (req,res)=>{
     const salt= await crypt.genSalt(10);
     const hash =await crypt.hash(req.body.password, salt);
-    // console.log(req.body);
-    // res.json(req.body);
     clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address })
     .then( async result => {
             const salt= await crypt.genSalt(10);
@@ -97,21 +95,7 @@ app.post('/edit',async (req,res)=>{
             result.password=hash;
           req.session.user.password =hash;
           req.session.user.address = req.body.Address;
-
-        //   const res = await post(GET_ORDERS_URL, {
-        //     client: {
-        //       firstname: firstname,
-        //       lastname: lastname,
-        //       numTel: numTel,
-        //       address: address,
-        //     },
-        //     orderproduct: orderproduct,
-        //     orderprice: orderprice,
-        //     orderdate: orderdate,
-        //   });
           
-       
-        
        
 console.log(req.session.user.password)
 console.log(result.password)
@@ -128,7 +112,6 @@ req.session.user=result;
 
 //setup routes
 app.use('/', index_router);
-// app.use('/login', login_router);
 app.use('/user', signup_router);
 app.use('/admin', admin_router);
 app.use('/product', product_router);
@@ -137,25 +120,14 @@ app.use('/edit', edit_router);
 app.use('/wishlist', wishlist_router);
 app.use('/reset_password',reset_pass);
 
-/////
-
-app.get("./models/clientschema",(req,res)=>{
-order.find()
-.then((result)=>{console.log(result)})
-.catch((err)=>{console.log(err)});
-});
-
-////
-
-
-mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
         app.listen(3000);
         console.log(`server up and listening  on port http://localhost:${port}`)
     }
     )
     .catch(err => console.log(err));
+    
 app.use((req,res)=>{
     res.status(404).render('404', { user: (req.session.user === undefined ? "" : req.session.user) });
-
 })

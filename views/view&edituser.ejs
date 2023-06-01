@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View and edit user</title>
+
+    <!-- Box Icons  -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <!-- Styles  -->
+    <link rel="stylesheet" href="/css/adminDashboard.css" />
+  </head>
+
+  <body>
+    <%- include('./partials/aside.ejs')%>
+
+    <section class="users">
+      <% if (employees.length> 0) { %>
+        <div class="board">
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th colspan="3">Action</th>
+                    </tr>
+                </thead>
+                <% employees.forEach(emp=> { %>
+                <tbody>
+
+                    <tr>
+                        <td class="people">
+                            <!-- <img src="bakry.jfif" alt=""> -->
+                            <div class="people-de">
+                             <p><%= emp.username %></p> 
+                            </div>
+                        </td>
+                        <td class="people-des">
+                          <p><%= emp.Email %></p> 
+                        </td>
+                        <td class="role">
+                          <p><%= emp.Type %></p> 
+                        </td>
+                        <td class="edit">
+                          <% if (emp.Type==='client' ){ %>
+                            <a href="/admin/toAdmin/<%= emp.id %>">Make Admin</a>
+                            <% } else{ %>
+                              <a href="/admin/toClient/<%= emp.id %>">Make Client</a>
+                              <% } %>
+                        </td>
+                        <td class="edit"><a href="#">Edit</a></td>
+                        <td class="edit"> <a href="/admin/delete/<%= emp.id %>">Delete</a></td>
+                    </tr>
+                    
+               </tbody>
+               <% }) %>
+            </table>
+            <% } else { %>
+              <p>There are no employees to display...</p>
+          <% } %>
+    </div>                
+    </section>
+
+    <!-- Link JS -->
+    <script src="/js/adminDashboard.js"></script>
+
+  </body>
+</html>

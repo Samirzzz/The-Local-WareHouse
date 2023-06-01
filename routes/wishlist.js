@@ -1,10 +1,29 @@
 const { Router } = require('express');
+var bodyParser = require('body-parser');
 
 var router = Router();
+const user = require("../controllers/usercontrol");
+router.use(bodyParser.json());
 
-/* GET wishlist page. */
-router.get('/', function(req, res, next) {
-        res.render('wishlist', { user: (req.session.user === undefined ? "" : req.session.user) });
-    });
+router.use((req, res, next) => {
+    if (req.session.user !== undefined) {
+        next();
+    }
+    else {
+        res.render('err', { err: 'You must login to access this page', user: (req.session.user === undefined ? "" : req.session.user) })
+    }
+});
+
+
+///wishlist
+
+    /* GET wishlist page. */
+    router.get('/', function(req, res, next) {
+            res.render('wishlist', { user: (req.session.user === undefined ? "" : req.session.user) });
+        });
+
+
+    router.post('/:productId', user.addToWishlist);
+
 
 module.exports = router;
