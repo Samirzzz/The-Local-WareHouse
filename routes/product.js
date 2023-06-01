@@ -5,6 +5,8 @@ router.use(bodyParser.json());
 
 const product = require('../models/productschema');
 
+
+
 /* GET products page. */
 router.get('/', (req, res) => {
     product.find()
