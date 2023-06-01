@@ -1,11 +1,13 @@
 
 const express = require("express");
 var bodyParser = require('body-parser');
+const clients = require('../models/clientschema');
 
 const router = express.Router();
 router.use(bodyParser.json());
 
-const Admin1 = require("../controllers/productcontrol");
+const Admin1 = require("../controllers/Adminproductcontrol");
+const Admin2 = require("../controllers/Adminusercontrol");
 /* GET Admin page. */
 
 router.use((req, res, next) => {
@@ -30,26 +32,10 @@ router.get('/adduser',(req,res)=>{
     res.render('adduser', { user: (req.session.user === undefined ? "" : req.session.user) });
     
 })
-
-/* GET Admin/searchedituser page. */
-router.get('/searchedituser',(req,res)=>{
-    res.render('searchedituser', { user: (req.session.user === undefined ? "" : req.session.user) });
-}) 
-
-/* GET Admin/edituser page. */
-router.get('/edituser',(req,res)=>{
-    res.render('edituser', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-
-/* GET Admin/searchbanuser page. */
-router.get('/searchbanuser',(req,res)=>{
-    res.render('searchbanuser', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-
-/* GET Admin/banuser page. */
-router.get('/banuser',(req,res)=>{
-    res.render('banuser', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
+router.get('/view&edituser', Admin2.GetAllUsers);
+router.get("/toAdmin/:id", Admin2.toAdmin);
+router.get("/toClient/:id", Admin2.toClient);
+router.get("/delete/:id", Admin2.DeleteUser);
 
 /* GET Admin/addproduct page. */
 
@@ -79,5 +65,7 @@ router.get('/searchremoveprod',(req,res)=>{
 router.get('/removeprod',(req,res)=>{
     res.render('removeprod', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
+
+
 
 module.exports = router;
