@@ -1,8 +1,79 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const crypt = require("bcrypt");
+// const orderschema=require("./productschema");
+
+////////
+
+//orderschema inside productschema
+
+
+// const orderschema=new Schema({
+  
+//   client:{
+//     type:String,
+//   },
+//   orderproduct:{
+//     type:String,
+//   },
+//   orderprice:{
+//     type:Number,
+//     default:0,
+//   },
+//   orderdate:String,
+//   status:{
+//     type:Boolean,
+//     default:false,
+//   },
+// },
+// {timestamps:true});
+
+
+// const Order=mongoose.model('Order',orderschema);
+// module.exports=Order;
+
+// exports.createorder=async(req,res)=>{
+//   const neworder=new order(req.body)
+//   neworder.save();
+
+//   return res.status(200).json({
+//     client:neworder.client,
+//     orderproduct:neworder.orderproduct,
+//     orderprice:neworder.orderprice,
+//     orderdate:neworder.orderdate,
+//     status:neworder.status
+//   })
+// }
+
+// // const[order, setOrder] = useRef(); 
+
+// const handleSubmit = async (e) => {
+//       e.preventDefault();
+//       try {
+//         const res = await post(GET_ORDERS_URL, {
+//           client: {
+//             firstname: firstname,
+//             lastname: lastname,
+//             numTel: numTel,
+//             address: address,
+//           },
+//           orderproduct: orderproduct,
+//           orderprice: orderprice,
+//           orderdate: orderdate,
+//         });
+
+//         setOrder(res.data);
+//         console.log("Order ", order);
+//       } catch (error) {
+//         console.log(error);
+//       } 
+//   };
+
+////////
 
 const clientSchema = new Schema({
+  // child:orderschema,
+  // children:[orderschema],
   username:{
     type:String,
   required:true,
@@ -82,67 +153,5 @@ module.exports=Clients;
 
 
 
-//orderschema inside productschema
 
-
-// const orderschema=new Schema({
-//   child:clientSchema,
-//   client:{
-//     type:String,
-//   },
-//   orderproduct:{
-//     type:String,
-//   },
-//   orderprice:{
-//     type:Number,
-//     default:0,
-//   },
-//   orderdate:String,
-//   status:{
-//     type:Boolean,
-//     default:false,
-//   },
-// },
-// {timestamps:true});
-
-
-// const Order=mongoose.model('Order',orderschema);
-// module.exports=Order;
-
-// exports.createorder=async(req,res)=>{
-//   const neworder=new order(req.body)
-//   neworder.save();
-
-//   return res.status(200).json({
-//     client:neworder.client,
-//     orderproduct:neworder.orderproduct,
-//     orderprice:neworder.orderprice,
-//     orderdate:neworder.orderdate,
-//     status:neworder.status
-//   })
-// }
-
-// // const[order, setOrder] = useRef(); 
-
-// const handleSubmit = async (e) => {
-//       e.preventDefault();
-//       try {
-//         const res = await post(GET_ORDERS_URL, {
-//           client: {
-//             firstname: firstname,
-//             lastname: lastname,
-//             numTel: numTel,
-//             address: address,
-//           },
-//           orderproduct: orderproduct,
-//           orderprice: orderprice,
-//           orderdate: orderdate,
-//         });
-
-//         setOrder(res.data);
-//         console.log("Order ", order);
-//       } catch (error) {
-//         console.log(error);
-//       }
-//   };
 

@@ -6,14 +6,14 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const crypt = require("bcrypt");
 const clients = require('./models/clientschema');
-const product = require('./models/productschema')
+const product = require('./models/productschema');
+const Wishlist = require('./models/wishlist')
+
 const {check,validationResult}=require('express-validator');
 var bodyParser = require("body-parser");
-
-
-//  var db=mongoose.connection;
 app.use(session({ secret: "Your_Secret_Key" }))
 app.set('view engine', 'ejs');
+
 // app.use(express.static('public/css'))
 // app.use(express.static('public/images'))
 // app.use(express.static('public/js'))
@@ -47,15 +47,17 @@ app.get('/product-details', (req, res) => {
     res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 
-
-
-
 app.use(fileUpload());
 
-app.get('/product', (req, res) => {
-    product.find()
+app.get('/wishlist', (req, res) => {
+
+    Wishlist.findOne({ "email":req.session.user.Email })
     .then(result=>{
-        res.render('product', { product: result ,user: (req.session.user === undefined ? "" : req.session.user) });
+        product.find().then(products=>{
+            const mod=result.items.map(item=>products.find(p=>p.id==item.productId))
+            res.render('wishlist', { wishlist: mod ,user: (req.session.user === undefined ? "" : req.session.user) });
+        })
+    
     })
     .catch(err=>{
     console.log(err);
@@ -95,8 +97,6 @@ app.post('/edit',async (req,res)=>{
           req.session.user.address = req.body.Address;
           
        
-        
-       
 console.log(req.session.user.password)
 console.log(result.password)
 console.log(req.body.password)
@@ -112,7 +112,6 @@ req.session.user=result;
 
 //setup routes
 app.use('/', index_router);
-// app.use('/login', login_router);
 app.use('/user', signup_router);
 app.use('/admin', admin_router);
 app.use('/product', product_router);
@@ -128,7 +127,7 @@ mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWr
     }
     )
     .catch(err => console.log(err));
+    
 app.use((req,res)=>{
     res.status(404).render('404', { user: (req.session.user === undefined ? "" : req.session.user) });
-
 })

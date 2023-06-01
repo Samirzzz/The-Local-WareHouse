@@ -46,7 +46,7 @@ z-index: 100;
       border-radius: 5px;
       padding: 10px;
       padding-right: 60px;
-
+margin-top: -20px;
       }
       input.c:hover {
         /* Increase width */
@@ -91,6 +91,7 @@ background-color: aliceblue;
     border-radius: 5px;
     padding: 5px;
     padding-right: 60px;
+    margin-top: -20px;
    }
    div.sectionv {
     position: fixed;
