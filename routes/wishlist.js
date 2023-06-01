@@ -4,6 +4,17 @@ var bodyParser = require('body-parser');
 var router = Router();
 const user = require("../controllers/usercontrol");
 router.use(bodyParser.json());
+
+router.use((req, res, next) => {
+    if (req.session.user !== undefined) {
+        next();
+    }
+    else {
+        res.render('err', { err: 'You must login to access this page', user: (req.session.user === undefined ? "" : req.session.user) })
+    }
+});
+
+
 ///wishlist
 
     /* GET wishlist page. */
