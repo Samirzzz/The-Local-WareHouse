@@ -76,19 +76,15 @@ const clientSchema = new Schema({
   // children:[orderschema],
   username:{
     type:String,
-  required:true,
   }, 
   Email:{
     type:String,
-  required:true,
   }, 
   password:{
     type:String,
-  required:true,
   }, 
   Type:{
     type:String,
-  required:true,
   },
   reset_password_token:{
     type:String,
@@ -97,20 +93,15 @@ const clientSchema = new Schema({
   }, 
   phonee:{
     type:Number,
-  required:true,
-  }, 
-  birth:{
-    type:Date,
-  required:true,
-  }, 
-  gender:{
-    type:String,
-  required:true,
   }, 
   address:{
     type:String,
   //required:true,
-  },
+  }, 
+  gender:{
+    type:String,
+  }, 
+ 
 },{timestamps:true});
 
 clientSchema.pre('save',async function(next){

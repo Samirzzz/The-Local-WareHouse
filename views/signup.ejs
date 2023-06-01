@@ -3,6 +3,8 @@
 <title>the Local Warehouse</title>
 
 <head>
+    <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="/js/ajax-em.js"></script>
     <style>
         .error {
             color: red;
@@ -147,7 +149,31 @@
         else
             return false;
     }
+// const form=document.querySelector('signup-form');
+// const errorm=document.querySelector(".error-mess");
+// form.addEventListener('submit',(e)=>{
+// e.preventDefault();
+// errorm=innerHTML='';
+//  const formdata=new FormData(form);
+//  fetch('/AddUser',{
+//     method:'POST',
+//     headers:{
+//         'Content-Type':'application/json'
+//     },
+//     body:JSON.stringify({
+//         username:formdata.get('username'),
+//         Email:formdata.get('Email'),
+//         password:formdata.get('password'),
 
+//         phonee:formdata.get('phone'),
+//         address:formdata.get('address'),
+//         gender:formdata.get('gender')
+//     })   
+//  }).then((res)=>res.json()).then((data)=>{
+//     console.log(data)
+//  })
+
+// })
 
 </script>
 
@@ -167,26 +193,38 @@
             Sign Up</h1><br>
 
 
-        <form action="signup" method="post" class="q" onsubmit="return validate(this)">
+        <form action="signup" method="post" class="signup-form" id="signup-form" >
             <input class="cc" id="errorName" type="text" name="username" placeholder="username ">
             <span class="error" id="errorNameid"> </span>
+            <span class="backenderror" id="un"> </span>
+
             <br>
             <input class="cc" type="text" id="errormail" name="Email" placeholder="Email">
             <span class="error" id="errormails"></span>
+            <span class="backenderror" id="email"> </span>
+
             <br>
             <input class="cc" type="password" id="errorpassid" name="password" placeholder="password ">
             <span class="error" id="errorpasss"></span>
+            <span class="backenderror" id="pass"> </span>
+
             <br>
             <input class="cc" type="password" name="conpassword" placeholder="Confirm password ">
             <span class="error" id="errorconpassid"></span>
+            <span class="backenderror" id="confpass"> </span>
+
             <br>
             <input class="cc" type="text" id="errorno" name="phonee" placeholder="phone no. ">
             <span class="error" id="phone"></span>
+            <span class="backenderror" id="num"> </span>
+
             <br>
-            <input class="d" type="date" name="date" id="date">
+            <input class="cc" type="text" name="address" id="address" placeholder="address ">
             <span class="error" name="datee"></span>
+            <span class="backenderror" id="addr"> </span>
+
             <br><br>
-            <select class="sel" name="gender">
+            <select class="sel" name="gender" id="gender">
                 <option value="">Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -196,7 +234,6 @@
 
             <br><br>
             <input type="hidden" name="type" value="client">
-            <input type="hidden" name="address" value="">
 
 
             <input type="submit" value="Create" class="c"><br>
@@ -204,7 +241,14 @@
                 <h1 class="for">Already have an account?</h1>
             </a>
         </form>
+<p id="un-error">kkkk</p>
+<p id="em-error">kkkk</p>
+<p id="pass-error">kkkk</p>
+<p id="ph-error">kkkk</p>
+<p id="add-error">kkkk</p>
+<p id="gn-error">kkkk</p>
 
+<ul id="error-list"></ul>
 
         
     </div>
