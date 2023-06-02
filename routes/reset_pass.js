@@ -9,9 +9,13 @@ router.get('/',async (req,res) => {
 });
 
  // post -> /set_new_password
-router.post('/save',async (req,res) => {
-    return await resetcont.save_new_password(req,res);
-}) 
+router.post('/save',async (req,res) =>
+ {
+    if(await resetcont.save_new_password(req,res) == 1)
+    res.render("pass_saved_sucess");
+    else
+    console.log("error"); 
+ }) 
 
 
 module.exports = router;

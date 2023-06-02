@@ -55,7 +55,7 @@ exports.generateResettokenEmail = async (req, res) => {
   const user = clients[0];
   user.reset_password_token = token;
   await user.save();
-  return res.send("DONE!");
+  return console.log("email sent");
   // save t odb to email given by user
 };
 

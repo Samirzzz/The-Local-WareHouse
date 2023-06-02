@@ -17,22 +17,18 @@ exports.save_new_password = async (req, res) => {
     console.log("no token found");
     return res.send("couldn't find token ");
   }
-
-  console.log("1 tmm");
   const new_pass = req.body.new_pass;
   const conf_pass = req.body.confirm_password;
 
   if (new_pass != conf_pass) 
   return res.status(400).send("conf!=pass");
 
-  console.log("2 tmm");
   const user = clients[0];
-  console.log("3 tmm");
   user.password = new_pass;
-  console.log("4 tmm");
   await user.save();
-  return res.send("password saved sucessfully");
+  return 1;
   // search for user
   // update password field
   // save to DB
+
 };
