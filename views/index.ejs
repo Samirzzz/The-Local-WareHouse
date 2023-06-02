@@ -14,21 +14,47 @@
 <!-- slideshow motion and index counter -->
 <script>
 
+let slider = document.querySelector('.slider .list');
+let items = document.querySelectorAll('.slider .list .item');
+let next = document.getElementById('next');
+let prev = document.getElementById('prev');
+let dots = document.querySelectorAll('.slider .dots li');
 
-    var index = 0;
-    function showslides() {
-        var image = document.getElementsByClassName("mySlides")
-        for (var i = 0; i < image.length; i++) {
-            image[i].style.display = "none";
-        }
-        if (index > image.length - 1) {
-            index = 0;
-        }
-        image[index].style.display = "block";
-        index++;
-        setTimeout(showslides, 3000);
-    }
-    setTimeout(showslides, 100);
+let lengthItems = items.length - 1;
+let active = 0;
+next.onclick = function(){
+    active = active + 1 <= lengthItems ? active + 1 : 0;
+    reloadSlider();
+}
+prev.onclick = function(){
+    active = active - 1 >= 0 ? active - 1 : lengthItems;
+    reloadSlider();
+}
+let refreshInterval = setInterval(()=> {next.click()}, 3000);
+function reloadSlider(){
+    slider.style.left = -items[active].offsetLeft + 'px';
+    // 
+    let last_active_dot = document.querySelector('.slider .dots li.active');
+    last_active_dot.classList.remove('active');
+    dots[active].classList.add('active');
+
+    clearInterval(refreshInterval);
+    refreshInterval = setInterval(()=> {next.click()}, 3000);
+
+    
+}
+
+dots.forEach((li, key) => {
+    li.addEventListener('click', ()=>{
+         active = key;
+         reloadSlider();
+    })
+})
+window.onresize = function(event) {
+    reloadSlider();
+};
+
+
 
 </script>
 
@@ -36,81 +62,97 @@
 </head>
 
 <body>
+
+
     <!-- the head bar (account/wishlist/cart) -->
     <%- include("./partials/navbar.ejs") %>
 
-
-        <div class="main-pic">
-            <img src="/images/hm-main.png" style="width:100%;height: auto;">
+        <section id="hero">
+            <div id="bord-2">
+              <div id="bord-3">
             <div class="textcontainer">
-                <div class="text">ALL <br> NEW <br>& <br> EXCLUSIVE </div>
-                <a href="product">
-                    <button class="butt">View Products</button>
-                </a>
+              <div class="text">ALL  NEW <br>& <br> EXCLUSIVE </div>
+              <a href="product">
+                  <button class="butt">View Products</button>
+              </a>
             </div>
+          </div>
         </div>
-
-        <!-- slideshow images and container -->
-
-        <div class="slideshow-container">
-            <!-- the text and button -->
-            <div class="text_inslideshow">NEW COLLECTION </div>
+          </section>
 
 
-            <div class="mySlides fade">
-                <!-- theimage itself -->
-                <img class="img_in_slideshow" src="/images/hm4.png">
+
+          <section id="feature" class="secotion-p1">
+            <div class="fe-box">
+              <img src="/images/premium-quality-icon-12.jpg" alt="free-shipping" />
+              <div id="txt-feature"> Premium Quality</div>
             </div>
-
-            <div class="mySlides fade">
-                <img class="img_in_slideshow" src="/images/hm3.png">
+      
+            <div class="fe-box">
+              <img src="/images/refund-icon-vector.jpg" alt="free-shipping" />
+              <div id="txt-feature" style="font-size: 22px;"> Refund in 30 days </div>
             </div>
-
-            <div class="mySlides fade">
-                <img class="img_in_slideshow" src="/images/hm5.png">
+            
+            <div class="fe-box">
+              <img src="/images/custmor.png" alt="free-shipping" />
+              <div id="txt-feature"> 24/7 support  </div>
             </div>
-
-            <div class="mySlides2 fade">
-                <!-- theimage itself -->
-                <img class="img_in_slideshow" src="/images/hm10.png">
+      
+            <div class="fe-box">
+              <img src="/images/wordlwide.jpg" alt="free-shipping" style="height:110px;"/>
+              <div id="txt-feature" style="font-size: 20px; "> world-wide shipping </div>
             </div>
-
-            <div class="mySlides2 fade">
-                <!-- theimage itself -->
-                <img class="img_in_slideshow" src="/images/hm11.png">
+      
+            <div class="fe-box">
+              <img src="/images/f2.png" alt="free-shipping" style="height: 100px;" />
+              <div id="txt-feature"> Fast- Delivery </div>
+      
+              
             </div>
-
-            <div class="mySlides2 fade">
-                <!-- theimage itself -->
-                <img class="img_in_slideshow" src="/images/hm12.png">
-            </div>
-
-        </div>
-
-   <section class="products-view">
- 
-    <div  class="banner"> Most Poupler
-
-    </div>
- 
-    <div class="products">   
- 
+          </section>
 
 
 
-    </div>
+          <div class="reveal-text-container">
+            <div id="bord-1">
+              <img id="truck" src="/images/truck.png" alt="">
+               <a id="txt">Free-shipping</a>
+              </div>
+              </div>
+          
+
+              <section id="img-slideshow">
 
 
-
-
-
-
-   </section>
-
-
-
-
-
+                <div class="slider">
+                    <div class="list">
+                        <div class="item">
+                            <img src="/images/hm4.png" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="/images/hm11.png" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="/images/hm5.png" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="/images/hm12.png" alt="">
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button id="prev"><</button>
+                        <button id="next">></button>
+                    </div>
+                    <ul class="dots">
+                        <li class="active"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div> 
+            </section>
+<script src="/public/js/homescript.js"></script>
         <%- include("./partials/footer.ejs") %>
 </body>
 
