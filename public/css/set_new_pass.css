@@ -1,4 +1,7 @@
 div.main{
+    top: 20%;
+    left: 35%;
+    position: fixed;
     padding: 3cm 2cm 2cm 4cm;
        font-size: 14px;
        margin-top: 30px;
@@ -50,3 +53,24 @@ div.main{
            width: 270px;
            
        }
+       .header {
+        z-index: 1;
+        background: linear-gradient(-45deg,black,blanchedalmond, white, black);
+        background-size: 400% 400%;
+        width: 100%;
+        height: 100vh;
+        animation: animate 15s ease infinite;
+    }
+    
+    @keyframes animate {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    
