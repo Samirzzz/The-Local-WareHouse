@@ -5,6 +5,7 @@
 <head>
     <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="/js/ajax-em.js"></script>
+    
     <style>
         .error {
             color: red;
@@ -178,12 +179,29 @@
 </script>
 
 <body>
+    <span class="con"> 
+        <span class="alert " role="alert">
+        <% if(typeof alert !='undefined'){%>
+            <% alert.forEach(function(error) {%>
+                <div class="alert " role="alert">
+                    <%= error.msg %>
+                    </button>
+                </div>
+                
+            <%});%>
+        
+        
+        <%}%>
+            </span>
+        
+        </span>
+   
     <div class="log">
 
         <br><br> <br><br><br><br>
         <h1> </h1><br>
     </div>
-    
+   
 
 
     
@@ -191,9 +209,12 @@
         <h1
             style="color: black; text-align:center 12 ;padding-left: 25%;margin:1px ;margin-left: 10px;margin-top: -10px; padding-bottom: 5%;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             Sign Up</h1><br>
+            
 
 
-        <form action="signup" method="post" class="signup-form" id="signup-form" >
+
+
+        <form action="signup" method="post" class="signup-form" id="signup-form" onsubmit="return validate(this)" >
             <input class="cc" id="errorName" type="text" name="username" placeholder="username ">
             <span class="error" id="errorNameid"> </span>
             <span class="backenderror" id="un"> </span>
@@ -241,12 +262,7 @@
                 <h1 class="for">Already have an account?</h1>
             </a>
         </form>
-<p id="un-error">kkkk</p>
-<p id="em-error">kkkk</p>
-<p id="pass-error">kkkk</p>
-<p id="ph-error">kkkk</p>
-<p id="add-error">kkkk</p>
-<p id="gn-error">kkkk</p>
+
 
 <ul id="error-list"></ul>
 
@@ -258,13 +274,7 @@
 
 
 
-    <div class="sectionv">
-        <div class="video-container">
-            <div class="color-overlay"></div>
-            <video autoplay loop muted>
-                <source src="/images/bavk.mp4" type="video/mp4">
-            </video>
-        </div>
+   
 </body>
 
 </html>

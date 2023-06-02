@@ -119,4 +119,11 @@ background-color: aliceblue;
     height: 100%;
     opacity: 0.2;
   }
+  
  
+ div.alert{
+  background-color: #e88787;
+ margin-left: 70%;
+ margin-right: -20cm;
+ }
+  
