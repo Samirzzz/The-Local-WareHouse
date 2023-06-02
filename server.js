@@ -49,7 +49,7 @@ app.get('/product-details', (req, res) => {
 
 app.use(fileUpload());
 
-app.get('/wishlist', (req, res) => {
+// app.get('/wishlist', (req, res) => {
 
 //     Wishlist.findOne({ "email":req.session.user.Email })
 //     .then(result=>{
