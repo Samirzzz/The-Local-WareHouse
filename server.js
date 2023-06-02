@@ -49,20 +49,20 @@ app.get('/product-details', (req, res) => {
 
 app.use(fileUpload());
 
-app.get('/wishlist', (req, res) => {
+// app.get('/wishlist', (req, res) => {
 
-    Wishlist.findOne({ "email":req.session.user.Email })
-    .then(result=>{
-        product.find().then(products=>{
-            const mod=result.items.map(item=>products.find(p=>p.id==item.productId))
-            res.render('wishlist', { wishlist: mod ,user: (req.session.user === undefined ? "" : req.session.user) });
-        })
+//     Wishlist.findOne({ "email":req.session.user.Email })
+//     .then(result=>{
+//         product.find().then(products=>{
+//             const mod=result.items.map(item=>products.find(p=>p.id==item.productId))
+//             res.render('wishlist', { wishlist: mod ,user: (req.session.user === undefined ? "" : req.session.user) });
+//         })
     
-    })
-    .catch(err=>{
-    console.log(err);
-    })
-});
+//     })
+//     .catch(err=>{
+//     console.log(err);
+//     })
+// });
 
 
 app.get('/logout', (req, res) => {

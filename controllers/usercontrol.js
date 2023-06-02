@@ -5,32 +5,81 @@ const crypt = require("bcrypt");
 const path = require('path');
 const {check,validationResult}=require('express-validator');
 
-const AddUser = (req, res) => {
-        var query = { "Email": req.body.Email };
+const AddUser =[ check('username')
+.notEmpty()
+.withMessage('Username is required')
+.isLength({ max: 50 })
+.withMessage('Username cannot be longer than 50 characters'),
+
+check('Email')
+.notEmpty()
+.withMessage('Email is required')
+.isEmail()
+.withMessage('Invalid email address'),
+
+check('password')
+.notEmpty()
+.withMessage('Password is required')
+.isLength({ min: 4 })
+.withMessage('Password must be at least 6 characters long'),
+
+check('phonee')
+.notEmpty()
+.withMessage('Phone number required')
+.optional({ nullable: true })
+.isMobilePhone()
+.withMessage('Invalid phone number'),
+
+check('address')
+.notEmpty()
+.withMessage('address required')
+.optional({ nullable: true })
+.isLength({ max: 100 })
+.withMessage('Address cannot be longer than 100 characters'),
+
+check('gender')
+.notEmpty()
+.withMessage('gender required')
+.optional({ nullable: true })
+.isIn(['male', 'female', 'other'])
+.withMessage('Gender must be either "male", "female", or "other"') , (req, res) => {
+   
+  
     
-        clients.find(query)
-            .then(result => {
-                if (result.length > 0) {
-                    res.send('email taken');
     
-                }
-                else {
-                      const emp = new clients({
-                            username: req.body.username,
-                            Email: req.body.Email,
-                            password: req.body.password,
-                            Type: req.body.type,
-                            phonee: req.body.phonee,
-                            birth: req.body.date,
-                            gender: req.body.gender
-                    })
-                    emp.save();
-                    console.log(req.body.password);
-                    res.redirect('/');
-                }
-            });
     
-}
+    const errors = validationResult(req);
+    var query = { "Email": req.body.Email };
+    clients.find(query)
+      .then(result => {
+          if (result.length > 0 ) {
+              
+              console.log(errors)
+              res.send('Email taken');
+            }else if(!errors.isEmpty()){
+            
+            return res.send({errors:errors.array()})
+        }
+        
+        else {
+          const emp = new clients({
+            username: req.body.username,
+            Email: req.body.Email,
+            password: req.body.password,
+            Type: req.body.type,
+            phonee: req.body.phonee,
+            address: req.body.address,
+            gender: req.body.gender
+          })
+          emp.save();
+          req.session.user=result;
+  
+          console.log(req.body.password);
+          res.redirect('/');
+        }
+      });
+    
+  }]
 
 
 
@@ -38,24 +87,17 @@ const logs = async function  (req, res) {
     const user = { "Email": req.body.Email };
    
     clients.findOne(user).then(async result=>{
-        
-        
         if(result==null){
             res.send('taken');
-
         }
-       
         req.session.user=result;
         const valid= await crypt.compare(req.body.password,result.password);
            if(valid==true){
-   
                res.redirect('/');
            }
            else{
                res.send('false');
-          
        } 
- 
     })
         .catch(err => {
             console.log(err);

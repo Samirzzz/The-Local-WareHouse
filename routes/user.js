@@ -1,6 +1,6 @@
 const express = require("express");
 var bodyParser = require('body-parser');
-
+const { check, validationResult } = require('express-validator');
 const router = express.Router();
 router.use(bodyParser.json());
 
@@ -18,6 +18,7 @@ const User = require("../controllers/usercontrol");
 
     router.post('/login', User.logs);
     router.post('/signup', User.AddUser);
+    router.post('/AddUser', User.AddUser);
 
 
     router.get('/logout', (req, res) => {
