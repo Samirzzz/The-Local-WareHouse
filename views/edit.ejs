@@ -27,7 +27,7 @@
             
             <span id="em" style="color: red;font-size:90%;"></span>
 
-            <input class="ee" type="text" name="email" placeholder="Email "  ><br><br>
+            <input class="ee" type="text" name="email" placeholder="Email "  value="<%=user.Email %>" ><br><br>
 
             <!-- <span id="name" style="color: red;font-size:90%;"></span>
             <input class="ccc" type="text" name="first" placeholder="First Name " > <span id="namee" style="color: red;font-size: 90%;"></span> <span><input class="ccc" type="text" name="last" placeholder="Last Name " ></span><br><br>
@@ -36,9 +36,9 @@
             <input class="cc" type="password" name="password" placeholder="password " > <span id="passs" style="color:red ;font-size:90%;"></span> <span>  <input class="cc" type="password" name="cpassword" placeholder="Confirm password " > <div id="lpass" style="color: red;font-size:70%; margin-bottom: -15px; "></div>
 
             </span><br><br>
-            <input class="cc" type="text" name="Address" placeholder="Address " >
+            <input class="cc" type="text" name="Address" placeholder="Address " value="<%=user.address%>" >
        
-            <span id="ph" style="color: red;"></span> <input class="cc" type="text" name="phone" placeholder="phone no. "  ><span></span><br><br>   
+            <span id="ph" style="color: red;"></span> <input class="cc" type="text" name="phone" placeholder="phone no. "  value="<%=user.phonee%>" ><span></span><br><br>   
             <input type="submit" value="  Save Changes" class="cccc">
             
         </form>
@@ -130,7 +130,7 @@ function email(field) {
 }
 function val(form) {
     fail="";
-    fail+=email(form.email.value);
+   // fail+=email(form.email.value);
     fail+=pass1(form.password.value,form.cpassword.value);
     
 

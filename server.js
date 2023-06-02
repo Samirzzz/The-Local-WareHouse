@@ -110,7 +110,7 @@ app.get('/profile', (req, res) => {
 app.post('/edit',async (req,res)=>{
     const salt= await crypt.genSalt(10);
     const hash =await crypt.hash(req.body.password, salt);
-    clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address })
+    clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address , phonee:req.body.phone ,Email:req.body.email  })
     .then( async result => {
             const salt= await crypt.genSalt(10);
             const hash =await crypt.hash(req.body.password, salt);
