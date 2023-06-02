@@ -8,6 +8,8 @@ const crypt = require("bcrypt");
 const clients = require('./models/clientschema');
 const product = require('./models/productschema');
 const Wishlist = require('./models/wishlist')
+const Order = require('./models/orderschema')
+
 
 const {check,validationResult}=require('express-validator');
 var bodyParser = require("body-parser");
@@ -63,6 +65,24 @@ app.get('/wishlist', (req, res) => {
      console.log(err);
     })
  });
+
+ app.get('/cart', (req, res) => {
+
+    Order.findOne({ "email":req.session.user.Email })
+    .then(result=>{
+        product.find().then(products=>{
+        // const mod=result.items.map(item=>products.find(p=>p.id==item.productId))
+        const mod = result?.items?.map(item => products.find(p => p.id === item.productId));
+            // Rest of your code using the 'mod' variable
+
+            res.render('cart', { order: mod ,user: (req.session.user === undefined ? "" : req.session.user) });
+        });
+    })
+    .catch(err=>{
+    console.log(err);
+   })
+});
+
 
 
 app.get('/logout', (req, res) => {
