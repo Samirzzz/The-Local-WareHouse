@@ -11,61 +11,14 @@
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 </head>
 
-<!-- slideshow motion and index counter -->
-<script>
-
-let slider = document.querySelector('.slider .list');
-let items = document.querySelectorAll('.slider .list .item');
-let next = document.getElementById('next');
-let prev = document.getElementById('prev');
-let dots = document.querySelectorAll('.slider .dots li');
-
-let lengthItems = items.length - 1;
-let active = 0;
-next.onclick = function(){
-    active = active + 1 <= lengthItems ? active + 1 : 0;
-    reloadSlider();
-}
-prev.onclick = function(){
-    active = active - 1 >= 0 ? active - 1 : lengthItems;
-    reloadSlider();
-}
-let refreshInterval = setInterval(()=> {next.click()}, 3000);
-function reloadSlider(){
-    slider.style.left = -items[active].offsetLeft + 'px';
-    // 
-    let last_active_dot = document.querySelector('.slider .dots li.active');
-    last_active_dot.classList.remove('active');
-    dots[active].classList.add('active');
-
-    clearInterval(refreshInterval);
-    refreshInterval = setInterval(()=> {next.click()}, 3000);
-
-    
-}
-
-dots.forEach((li, key) => {
-    li.addEventListener('click', ()=>{
-         active = key;
-         reloadSlider();
-    })
-})
-window.onresize = function(event) {
-    reloadSlider();
-};
-
-
-
-</script>
-
-
-</head>
 
 <body>
 
 
     <!-- the head bar (account/wishlist/cart) -->
     <%- include("./partials/navbar.ejs") %>
+
+
 
         <section id="hero">
             <div id="bord-2">
@@ -78,7 +31,7 @@ window.onresize = function(event) {
             </div>
           </div>
         </div>
-          </section>
+        </section>
 
 
 
@@ -125,7 +78,10 @@ window.onresize = function(event) {
 
 
                 <div class="slider">
+
+
                     <div class="list">
+
                         <div class="item">
                             <img src="/images/hm4.png" alt="">
                         </div>
@@ -152,7 +108,10 @@ window.onresize = function(event) {
                     </ul>
                 </div> 
             </section>
-<script src="/public/js/homescript.js"></script>
+
+
+<script src="/js/homescript.js"></script>
+
         <%- include("./partials/footer.ejs") %>
 </body>
 

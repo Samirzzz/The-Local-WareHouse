@@ -343,9 +343,9 @@ padding-left: 20px;
 /* Main image in the homepage andbutton */
 #hero
 {
-background-image:url(/public/images/hm19.png);
+background-image:url(../images/hm19.png);
 height: 100vh;
-width: 90%;
+width: 89%;
 background-position: top 25% right 0;
 background-size: cover;
 padding: 0 80px;
@@ -359,11 +359,6 @@ border: 4px solid black;
 #hero button
 {
 cursor: pointer;
-}
-
-#navbar
-{
-postion:sticky
 }
 
 .section-p1
@@ -441,7 +436,7 @@ padding: 25px 15px;
 box-shadow: 20px 20px 34px  rgba(0, 0, 0, 0.03);
 border: 3px solid black;
 border-radius: 8px;
-margin: 40px;
+margin: 10px;
 
 }
 #feature .fe-box:hover

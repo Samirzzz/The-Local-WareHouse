@@ -1,10 +1,8 @@
 const product = require('../models/productschema');
-const crypt = require("bcrypt");
-const fileUpload = require('express-fileupload');
-const path = require('path');
-const express = require('express');
-const app = express();
-app.use(fileUpload());
+const fs = require('fs');
+ const path = require('path');
+
+
 const addprod= (req, res) => {
     let imgfile;
     let uploadPath;
@@ -35,7 +33,34 @@ const addprod= (req, res) => {
 
     });
 };
+const GetAllprod = (req, res) => {
+    product.find()
+      .then(result => {
+        res.render('view&editprod', { product: result, user: (req.session.user === undefined ? "" : req.session.user) });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  const Deleteprod = (req, res) => {
+    product.findByIdAndDelete(req.params.id)
+      .then(result => {
+        fs.unlink(path.join(__dirname, '../public/images/' + req.params.img), (err) => {
+          if (err) {
+            throw err;
+          }
+          res.redirect('/admin/view&editprod');
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+
 
 module.exports = {
-    addprod
+    addprod,
+    GetAllprod,
+    Deleteprod
 };
