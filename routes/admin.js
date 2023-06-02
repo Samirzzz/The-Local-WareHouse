@@ -37,14 +37,19 @@ router.get("/toAdmin/:id", Admin2.toAdmin);
 router.get("/toClient/:id", Admin2.toClient);
 router.get("/delete/:id", Admin2.DeleteUser);
 
+
+
 /* GET Admin/addproduct page. */
 
 router.get('/addproduct',(req,res)=>{
     res.render('addproduct', { user: (req.session.user === undefined ? "" : req.session.user) });
 })
 
-router.post('/addproduct', Admin1.addprod);
 
+
+router.post('/addproduct', Admin1.addprod);
+router.get('/view&editprod', Admin1.GetAllprod);
+router.get('/delete/:img/:id', Admin1.Deleteprod);
 
 /* GET Admin/searcheditproduct page. */
 router.get('/searcheditproduct',(req,res)=>{

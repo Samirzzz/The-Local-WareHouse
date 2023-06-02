@@ -12,9 +12,7 @@
    <!-- the head bar (account/wishlist/cart) -->
    <%- include("./partials/navbar.ejs") %>
   
-  <!--cart-->
-   <div  class="cart"> 
-
+  
 
       <h2 class="cart-title">Your Cart <br> <i class='bx bxs-shopping-bag-alt' id="cart-icon"></i></h2> -->
 
@@ -60,7 +58,7 @@
                                 <h2 class="product-title"><%= prod.name %></h2>
                                 <span class="price"><%= prod.price %>$</span>
                                 <div class="add-cart">
-                                    <i class='bx bxs-shopping-bag-alt'></i>
+                                    <i class='bx bxs-shopping-bag-alt'  onclick="addToCart('<%= prod._id %>')"></i>
                                     <i class="bx bx-heart" onclick="addToWishlist('<%= prod._id %>')"></i>
                                 </div>
                             </div>
@@ -86,15 +84,18 @@
         <textarea placeholder="Type message.." name="msg" required></textarea>
         <input type="hidden" name="id" value="%=p.id%>">
   
-        <button type="submit" class="btn btn-primary">Add to Cart</button>
+        <div class="add-cart">
+            <i class='bx bxs-shopping-bag-alt'></i>
       </form>
       <form action="/admin/removeprod" method="post">
-
+    
         <input type="hidden" name="id" value="%=p.id%>">
         <button type="submit" class="btn btn-primary">delete</button>
 
       </form>
     </div>
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js">
+   
+    </script>
 </body>
 </html>

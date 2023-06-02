@@ -1,6 +1,8 @@
 const clients = require('../models/clientschema');
 const Product = require('../models/productschema');
 const Wishlist = require('../models/wishlist');
+const Order = require('../models/orderschema');
+
 const crypt = require("bcrypt");
 const path = require('path');
 const {check,validationResult}=require('express-validator');
@@ -104,7 +106,7 @@ const logs = async function  (req, res) {
         const email = req.session.user.Email;
         try {
           const user = { email: email };
-          // Find the wishlist document for the user
+          // Find the order document for the user
           const wishlist = await Wishlist.findOne(user);
       
           if (!wishlist) {
@@ -117,7 +119,7 @@ const logs = async function  (req, res) {
             throw new Error('Product not found in wishlist');
           }
       
-          // Remove the item from the wishlist array
+          // Remove the item from the order array
           wishlist.items.splice(index, 1);
       
           // Save the updated wishlist
@@ -129,10 +131,70 @@ const logs = async function  (req, res) {
           res.sendStatus(500);}
 };
     
+const addToCart= async function (req,res) {
+  const productId=req.params.productId;
+  const email=req.session.user.Email;
+      try {
+        // Fetch the product details from the database
+        const product = await Product.findById(productId);
+    
+        if (!product) {
+          throw new Error('Product not found');
+        }
+    
+        // Create a new wishlist entry with the fetched product details
+        const user = { "email":email };
+ 
+          let list=await Order.findOne(user);
+          if(!list){
+              list=await Order.create({items:[],email:email})
+          }
+         
+          list.items.push({productId:product.id,internalId:productId});
+          list.save();
+          res.send(list);
+      
+      } catch (error) {
+        console.error('Error adding product to cart:', error);
+        throw error ;
+      }
+    }
+
+    const removeFromCart = async function (req, res) {
+      const productId = req.params.productId;
+      const email = req.session.user.Email;
+      try {
+        const user = { email: email };
+        // Find the order document for the user
+        const order = await Order.findOne(user);
+    
+        if (!order) {
+          throw new Error('Wishlist not found');
+        }
+        // Find the index of the item to remove
+        const index = order.items.findIndex(item => item.productId === productId);
+    
+        if (index === -1) {
+          throw new Error('Product not found in cart');
+        }
+    
+        // Remove the item from the order array
+        order.items.splice(index, 1);
+    
+        // Save the updated order
+        await order.save();
+    
+        res.send(order);
+      } catch (error) {
+        console.error('Error removing product from cart:', error);
+        res.sendStatus(500);}
+};
 
 module.exports = {
     AddUser,
     logs,
     addToWishlist,
-    removeFromWishlist
+    removeFromWishlist,
+    addToCart,
+    removeFromCart
 };
