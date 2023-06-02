@@ -36,13 +36,15 @@ function send_Email(email, token)
       });
 }
 
+
 exports.generateResettokenEmail = async (req, res) => {
   const email_typed = req.body.email;
   console.log(email_typed);
   var token = randomNum();
 
   const clients = await Clients.find({ Email: email_typed });
-  if (clients == undefined || clients == null || clients.length == 0) {
+  if (clients == undefined || clients == null || clients.length == 0) 
+  {
     //checks law elmail mawgood aslan fel database wala la2
     console.log("Could not find user");
     return res.send("Could not find user.");
