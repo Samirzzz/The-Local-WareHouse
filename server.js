@@ -26,15 +26,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-var index_router = require("./routes/index.js");
+const index_router = require("./routes/index.js");
 // var login_router = require("./routes/login.js");
-var signup_router = require("./routes/user.js");
-var admin_router = require("./routes/admin.js");
-var product_router = require("./routes/product.js");
-var edit_router = require("./routes/Account.js");
-var forget_router = require("./routes/forget.js");
-var wishlist_router = require("./routes/wishlist.js");
-var reset_pass=require("./routes/reset_pass");
+const signup_router = require("./routes/user.js");
+const admin_router = require("./routes/admin.js");
+const product_router = require("./routes/product.js");
+const edit_router = require("./routes/Account.js");
+const forget_router = require("./routes/forget.js");
+const wishlist_router = require("./routes/wishlist.js");
+const reset_pass=require("./routes/reset_pass");
+const cart_router=require("./routes/cart");
+
 
 const port = 3000
 
@@ -68,20 +70,20 @@ app.get('/wishlist', (req, res) => {
 
  app.get('/cart', (req, res) => {
 
-    Order.findOne({ "email":req.session.user.Email })
-    .then(result=>{
-        product.find().then(products=>{
-        // const mod=result.items.map(item=>products.find(p=>p.id==item.productId))
-        const mod = result?.items?.map(item => products.find(p => p.id === item.productId));
-            // Rest of your code using the 'mod' variable
+  if (req.session.user && req.session.user.Email) {
+  Order.findOne({ "email": req.session.user.Email })
+      .then(result => {
+          product.find().then(products => {
+              const mod = result?.items?.map(item => products.find(p => p.id === item.productId));
+              // Rest of your code using the 'mod' variable
+              res.render('cart', { order: mod, user: (req.session.user === undefined ? "" : req.session.user) });
+          });
+      })
+      .catch(err => {
+          console.log(err);
+      });
+}});
 
-            res.render('cart', { order: mod ,user: (req.session.user === undefined ? "" : req.session.user) });
-        });
-    })
-    .catch(err=>{
-    console.log(err);
-   })
-});
 
 
 
@@ -139,6 +141,8 @@ app.use('/forget', forget_router);
 app.use('/edit', edit_router);
 app.use('/wishlist', wishlist_router);
 app.use('/reset_password',reset_pass);
+app.use('/cart',cart_router);
+
 
 mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {

@@ -48,9 +48,8 @@
                                 <h2 class="product-title"><%= prod.name %></h2>
                                 <span class="price"><%= prod.price %>$</span>
                                 <div class="add-cart">
-                                 
+                                    <i class='bx bxs-shopping-bag-alt'  onclick="addToCart('<%= prod._id %>')"></i>
                                     <i class="bx bx-heart" onclick="addToWishlist('<%= prod._id %>')"></i>
-                                    <i class='bx bxs-shopping-bag-alt '></i>
                                 </div>
                             </div>
                             <% if ((index + 1) % 3 === 0) { %>
@@ -85,6 +84,8 @@
 
       </form>
     </div>
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js">
+   
+    </script>
 </body>
 </html>
