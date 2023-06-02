@@ -133,10 +133,41 @@ const logs = async function  (req, res) {
           throw error ;
         }
       }
+
+      const removeFromWishlist = async function (req, res) {
+        const productId = req.params.productId;
+        const email = req.session.user.Email;
+        try {
+          const user = { email: email };
+          // Find the wishlist document for the user
+          const wishlist = await Wishlist.findOne(user);
+      
+          if (!wishlist) {
+            throw new Error('Wishlist not found');
+          }
+          // Find the index of the item to remove
+          const index = wishlist.items.findIndex(item => item.productId === productId);
+      
+          if (index === -1) {
+            throw new Error('Product not found in wishlist');
+          }
+      
+          // Remove the item from the wishlist array
+          wishlist.items.splice(index, 1);
+      
+          // Save the updated wishlist
+          await wishlist.save();
+      
+          res.send(wishlist);
+        } catch (error) {
+          console.error('Error removing product from wishlist:', error);
+          res.sendStatus(500);}
+};
     
 
 module.exports = {
     AddUser,
     logs,
     addToWishlist,
+    removeFromWishlist
 };

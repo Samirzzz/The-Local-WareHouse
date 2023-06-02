@@ -161,3 +161,22 @@ function addToWishlist(productId) {
       });
   }
   
+  function removeFromWishlist(productId) {
+    console.log(productId);
+    fetch(`/wishlist/${productId}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        // Refresh the page or update the wishlist content
+        location.reload();
+      } else {
+        console.error('Error removing product from wishlist:', response.status);
+        // Handle the error
+      }
+    })
+    .catch(error => {
+      console.error('Error removing product from wishlist:', error);
+      // Handle the error
+    });
+  }
