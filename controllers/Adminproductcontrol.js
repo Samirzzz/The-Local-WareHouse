@@ -20,6 +20,7 @@ const addprod= (req, res) => {
             id: req.body.id,
             name: req.body.name,
             price: req.body.price,
+            type: req.body.type,
             Quantity: req.body.quan,
             image:  req.files.img.name,
         })
