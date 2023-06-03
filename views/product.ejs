@@ -14,10 +14,10 @@
   
   
 
-      <h2 class="cart-title">Your Cart <br> <i class='bx bxs-shopping-bag-alt' id="cart-icon"></i></h2> -->
+      <!-- <h2 class="cart-title">Your Cart <br> <i class='bx bxs-shopping-bag-alt' id="cart-icon"></i></h2>  -->
 
       <!-- Content -->
-      <div class="cart-content"> 
+      <!-- <div class="cart-content"> 
           
           <div class="cart-box">
               <img src="prod1.jpeg" alt="" class="cart-img">
@@ -27,18 +27,20 @@
                   <input type="number" value="1" class="cart-quantity">
               </div>              
           </div>
-     </div>
+     </div> -->
+
       <!--Total-->
-      <div class="total">
+      <!-- <div class="total">
           <div class="total-title">Total</div>
           <div class="total-price">0$</div>
-      </div> 
+      </div>  -->
+
       <!--Buy Button-->
-       <button type="button" class="btn-buy">Buy Now</button>
+       <!-- <button type="button" class="btn-buy">Buy Now</button> -->
+
       <!--Cart Close-->
-      <i class="bx bx-x" id="close-cart" ></i>
+      <!-- <i class="bx bx-x" id="close-cart" ></i> -->
       
- </div> 
 
     
         <!--shop-->
@@ -71,7 +73,11 @@
                 <% } else { %>
                     <p>There are no products to display...</p>
                 <% } %>
+   
+
         </section>
+        <%- include("./partials/footer.ejs") %>
+        
        
         <button class="open-button" onclick="openForm()"><img src="images/chaticon.png"></button>
     <div class="chat-popup" id="myForm">
@@ -92,10 +98,12 @@
         <input type="hidden" name="id" value="%=p.id%>">
         <button type="submit" class="btn btn-primary">delete</button>
 
+        
       </form>
+
     </div>
-    <script src="/js/main.js">
-   
-    </script>
+    <script src="/js/main.js"></script>
+
+    
 </body>
 </html>

@@ -117,34 +117,43 @@ const logs = async function  (req, res) {
 };
 
     // Function to add a product to the wishlist
- const addToWishlist= async function (req,res) {
-    const productId=req.params.productId;
-    const email=req.session.user.Email;
-        try {
-          // Fetch the product details from the database
-          const product = await Product.findById(productId);
-      
-          if (!product) {
-            throw new Error('Product not found');
-          }
-      
-          // Create a new wishlist entry with the fetched product details
-          const user = { "email":email };
-   
-            let list=await Wishlist.findOne(user);
-            if(!list){
-                list=await Wishlist.create({items:[],email:email})
-            }
-           
-            list.items.push({productId:product.id,internalId:productId});
-            list.save();
-            res.send(list);
-        
-        } catch (error) {
-          console.error('Error adding product to wishlist:', error);
-          throw error ;
+    const addToWishlist = async function (req, res) {
+      const productId = req.params.productId;
+      const email = req.session.user.Email;
+    
+      try {
+        // Fetch the product details from the database
+        const product = await Product.findById(productId);
+    
+        if (!product) {
+          throw new Error('Product not found');
         }
+    
+        // Check if the product already exists in the wishlist
+        const user = { email: email };
+        let list = await Wishlist.findOne(user);
+    
+        if (!list) {
+          list = await Wishlist.create({ items: [], email: email });
+        }
+    
+        // Check if the product already exists in the wishlist items
+        const exists = list.items.some(item => item.productId == product.id);
+    
+        if (exists) {
+          res.json({ success: false, message: 'Product already exists in the wishlist' });
+          return;
+        }
+    
+        list.items.push({ productId: product.id, internalId: productId });
+        list.save();
+        res.json({ success: true, message: 'Product added to wishlist' });
+      } catch (error) {
+        console.error('Error adding product to wishlist:', error);
+        res.status(500).json({ success: false, message: 'Error adding product to wishlist' });
       }
+    };
+    
 
       const removeFromWishlist = async function (req, res) {
         const productId = req.params.productId;
@@ -158,7 +167,7 @@ const logs = async function  (req, res) {
             throw new Error('Wishlist not found');
           }
           // Find the index of the item to remove
-          const index = wishlist.items.findIndex(item => item.productId === productId);
+          const index = wishlist.items.findIndex(item => item.productId == productId);
       
           if (index === -1) {
             throw new Error('Product not found in wishlist');
@@ -176,7 +185,7 @@ const logs = async function  (req, res) {
           res.sendStatus(500);}
 };
     
-const addToCart= async function (req,res) {
+const addToCart= async function(req,res) {
   const productId=req.params.productId;
   const email=req.session.user.Email;
       try {
@@ -214,15 +223,17 @@ const addToCart= async function (req,res) {
         const order = await Order.findOne(user);
     
         if (!order) {
-          throw new Error('Wishlist not found');
+          throw new Error('CART not found');
         }
+        console.log("A");
         // Find the index of the item to remove
-        const index = order.items.findIndex(item => item.productId === productId);
+        const index = order.items.findIndex(item => item.productId == productId);
     
         if (index === -1) {
           throw new Error('Product not found in cart');
         }
-    
+        console.log("B");
+
         // Remove the item from the order array
         order.items.splice(index, 1);
     
@@ -231,7 +242,7 @@ const addToCart= async function (req,res) {
     
         res.send(order);
       } catch (error) {
-        console.error('Error removing product from cart:', error);
+        console.error('Error removing product from cart njnj:', error);
         res.sendStatus(500);}
 };
 

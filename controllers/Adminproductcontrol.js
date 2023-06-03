@@ -20,12 +20,13 @@ const addprod= (req, res) => {
             id: req.body.id,
             name: req.body.name,
             price: req.body.price,
+            type: req.body.type,
             Quantity: req.body.quan,
             image:  req.files.img.name,
         })
         prod.save()
         .then(result=>{
-            res.redirect('/admin');
+            res.redirect('/admin/view&editprod');
         })
         .catch(err=>{
             console.log(err);
@@ -56,11 +57,31 @@ const GetAllprod = (req, res) => {
         console.log(err);
       });
   };
+const editprod=(req,res)=>{
+    var query = { "_id": req.params.id };
+    product.findById(query)
+      .then(result => {
+        res.render('editprod', { editprod: result , user: (req.session.user === undefined ? "" : req.session.user) });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    };
 
-
+    const editing= (req, res) => {
+        product.findByIdAndUpdate(req.params.id, { name:req.body.name , price:req.body.price, Quantity:req.body.quan  })
+            .then(result => {
+                res.redirect('/admin/view&editprod')
+            })
+            .catch(err => {
+                console.log(err);
+            });
+      };
 
 module.exports = {
     addprod,
     GetAllprod,
-    Deleteprod
+    Deleteprod,
+    editprod,
+    editing
 };

@@ -17,16 +17,11 @@
           <div class="shop-content">
             <% order.forEach((prod, index) => { %>
               <div class="product-box">
-                <% if (prod && prod.image) { %>
                   <img src="/images/<%= prod.image %>" alt="" class="img">
-                <% } %>
-                <% if (prod && prod.name) { %>
-                <h2 class="product-title"><%= prod.name %></h2> <% } %>
-                <% if (prod && prod.price) { %>
-                <span class="price"><%= prod.price %>$</span><% } %>
+                <h2 class="product-title"><%= prod.name %></h2> 
+                <span class="price"><%= prod.price %>$</span>
                 <div class="add-cart">
                     <i class='bx bxs-message-alt-x' onclick="removeFromCart('<%= prod.id%>')"></i>                        
-
                 </div>
               </div>
               <% if ((index + 1) % 3 === 0) { %>
@@ -39,8 +34,6 @@
           <p>There are no products in the cart...</p>
         <% } %>
       </section>
-      
-
 
 <script src="/js/main.js"></script>
 <%- include("./partials/footer.ejs") %>

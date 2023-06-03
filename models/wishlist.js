@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // Define the Wishlist schema
 const wishlistItemScehma = new mongoose.Schema({
   productId: {
-    type: String,
+    type: Number,
     required: true
   },
   internalId: {

@@ -1,7 +1,6 @@
 
 const express = require("express");
 var bodyParser = require('body-parser');
-const clients = require('../models/clientschema');
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -49,6 +48,8 @@ router.get('/addproduct',(req,res)=>{
 
 router.post('/addproduct', Admin1.addprod);
 router.get('/view&editprod', Admin1.GetAllprod);
+router.get('/editprod/:id',Admin1.editprod)
+router.post('/editing/:id',Admin1.editing)
 router.get('/delete/:img/:id', Admin1.Deleteprod);
 
 /* GET Admin/searcheditproduct page. */

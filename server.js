@@ -58,10 +58,12 @@ app.get('/wishlist', (req, res) => {
      Wishlist.findOne({ "email":req.session.user.Email })
      .then(result=>{
          product.find().then(products=>{
-         const mod=result.items.map(item=>products.find(p=>p.id==item.productId))
-             res.render('wishlist', { wishlist: mod ,user: (req.session.user === undefined ? "" : req.session.user) });
+            const mod = result?.items?.map(item => products.find(p => p.id == item.productId)).filter(item=>!!item);
+            console.log(mod);
+                res.render('wishlist', { wishlist: mod??[] ,user: (req.session.user === undefined ? "" : req.session.user) });
+                
          })
-    
+       
      })
      .catch(err=>{
      console.log(err);
@@ -69,14 +71,14 @@ app.get('/wishlist', (req, res) => {
  });
 
  app.get('/cart', (req, res) => {
-
+    
   if (req.session.user && req.session.user.Email) {
   Order.findOne({ "email": req.session.user.Email })
       .then(result => {
           product.find().then(products => {
-              const mod = result?.items?.map(item => products.find(p => p.id === item.productId));
+              const mod = result?.items?.map(item => products.find(p => p.id == item.productId)).filter(item=>!!item);
               // Rest of your code using the 'mod' variable
-              res.render('cart', { order: mod, user: (req.session.user === undefined ? "" : req.session.user) });
+              res.render('cart', { order: mod??[], user: (req.session.user === undefined ? "" : req.session.user) });
           });
       })
       .catch(err => {
