@@ -7,10 +7,54 @@ const crypt = require("bcrypt");
 const path = require('path');
 const {check,validationResult}=require('express-validator');
 
+const chechem = (req,res)=>{
+    var query = { "Email": req.body.Email };
+    clients.find(query)
+      .then(result => {
+          if (result.length > 0 ) {
+              res.send('taken');
+            }
+            else {
+                res.send('available');
+            }
+        });
+
+
+
+}
+const validate=
+    [check('username').isLength({min:4}).withMessage('min 4 characters'),
+    //     check('username,Email,password,phonee,address,gender')
+    // .notEmpty()
+    // .withMessage('field is required'),
+   
+    
+    check('Email')
+    .isEmail()
+    .withMessage('Invalid email address'),
+    
+    check('password')
+    .isLength({ min: 4 })
+    .withMessage('Password must be at least 4 characters long'),
+    
+    check('phonee')
+  
+    .isMobilePhone()
+    .withMessage('Invalid phone number'),
+    
+    check('address')
+    
+    .isLength({ max: 100 })
+    .withMessage('Address cannot be longer than 100 characters'),
+    
+    check('gender')
+    .optional({ nullable: true })
+    .isIn(['male', 'female', 'other'])
+    .withMessage('choose gender"')]
+
 const AddUser = (req, res) => {
    
   
-    
     
     
     const errors = validationResult(req);
@@ -19,11 +63,10 @@ const AddUser = (req, res) => {
       .then(result => {
           if (result.length > 0 ) {
               
-              console.log(errors)
-              res.send('Email taken');
+              res.send('taken');
             }else if(!errors.isEmpty()){
            const alert=errors.array();
-          res.render('AddUser',{
+          res.render('signup',{
            alert
           })
         }
@@ -45,6 +88,8 @@ const AddUser = (req, res) => {
           res.redirect('/');
         }
       });
+
+
     
   }
 
@@ -191,10 +236,13 @@ const addToCart= async function (req,res) {
 };
 
 module.exports = {
-    AddUser,
+    chechem,
     logs,
     addToWishlist,
     removeFromWishlist,
     addToCart,
-    removeFromCart
+    removeFromCart,
+    validate,
+    AddUser
+    
 };
