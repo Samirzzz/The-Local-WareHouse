@@ -55,7 +55,7 @@ router.get('/addproduct',(req,res)=>{
 router.post('/addproduct', Admin1.addprod);
 router.get('/view&editprod', Admin1.GetAllprod);
 router.get('/editprod/:id',Admin1.editprod)
-router.post('/editing/:id',Admin1.editing)
+router.post('/editingg/:id',Admin1.editingg)
 router.get('/delete/:img/:id', Admin1.Deleteprod);
 
 /* GET Admin/searcheditproduct page. */

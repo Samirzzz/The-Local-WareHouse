@@ -68,7 +68,7 @@ const editprod=(req,res)=>{
       });
     };
 
-    const editing= (req, res) => {
+    const editingg= (req, res) => {
         product.findByIdAndUpdate(req.params.id, { name:req.body.name , price:req.body.price, Quantity:req.body.quan  })
             .then(result => {
                 res.redirect('/admin/view&editprod')
@@ -83,5 +83,5 @@ module.exports = {
     GetAllprod,
     Deleteprod,
     editprod,
-    editing
+    editingg
 };
