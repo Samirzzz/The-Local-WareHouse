@@ -30,12 +30,11 @@
         <div class="right">
           <h2 id="j">Add User</h2>
           <form action="/admin/editing/<%=edituser.id%>" method="post">
-            <input type="text"   name="username" class="field" value="<%=edituser.username%>" />
-            <input type="text"   name="Email"    class="field" value="<%=edituser.Email%>" disabled />
-            <input type="text"   name="phone"    class="field" value="<%=edituser.phonee%>" />
-            <input type="text"   name="address"  class="field" value="<%=edituser.address%>" />
-            <input type="hidden" name="type" value="client">
-          <input type="submit" class="btn" value="Save Changes">
+           UserName: <input type="text"   name="username" class="field" value="<%=edituser.username%>" />
+           Email:    <input type="text"   name="Email"    class="field" value="<%=edituser.Email%>" disabled />
+           Phone:    <input type="text"   name="phone"    class="field" value="<%=edituser.phonee%>" />
+           Address:  <input type="text"   name="address"  class="field" value="<%=edituser.address%>" />
+                     <input type="submit" class="btn" value="Save Changes">
           </form>
         
 
