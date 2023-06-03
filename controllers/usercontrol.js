@@ -113,7 +113,7 @@ const logs = async function  (req, res) {
             throw new Error('Wishlist not found');
           }
           // Find the index of the item to remove
-          const index = wishlist.items.findIndex(item => item.productId === productId);
+          const index = wishlist.items.findIndex(item => item.productId == productId);
       
           if (index === -1) {
             throw new Error('Product not found in wishlist');
