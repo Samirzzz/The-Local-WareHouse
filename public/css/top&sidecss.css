@@ -230,9 +230,41 @@ section{
   width: 30px;
 }
 @media screen and (max-width: 768px){
+
+  .textcontainer .text /*text in the middle of the slide show */
+{
+  z-index: 6;
+  text-align: center;
+  position: absolute;
+ font-family: 'Righteous', cursive;
+ font-size:60px; 
+ top:30%;
+ left: 20%;
+ color: #000000;
+ font-style: italic;
+height: auto;
+-webkit-text-stroke: #fff;
+-webkit-text-stroke-width: 1px;
+}
+
   .slider{
       height: 400px;
+      max-width: 100%;
+      margin: 0 auto;
   }
+  #feature .fe-box
+  {
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  padding: 25px 15px;
+  box-shadow: 20px 20px 34px  rgba(0, 0, 0, 0.03);
+  border: 3px solid black;
+  border-radius: 8px;
+  margin: 10px;
+  width: 100%;
+  }
+
 }
 
 #img-slideshow
@@ -381,21 +413,7 @@ padding: 40px 80px;
     height: 98.05%;
 
 }
-.textcontainer .text /*text in the middle of the slide show */
-{
-  z-index: 6;
-  text-align: center;
-  position: absolute;
- font-family: 'Righteous', cursive;
- font-size:60px; 
- top:30%;
- left: 20%;
- color: #000000;
- font-style: italic;
-height: auto;
--webkit-text-stroke: #fff;
--webkit-text-stroke-width: 1px;
-}
+
 .butt /*the button in the middle of the sliude show */
 {
   height: auto;
@@ -427,18 +445,7 @@ transition: all  1.5s ;
 /* ------------------------------------------------------ */
 /* FEATURE BOXES IN THE MIDDLE */
 
-#feature .fe-box
-{
-width: 150px;
-height: 150px;
-text-align: center;
-padding: 25px 15px;
-box-shadow: 20px 20px 34px  rgba(0, 0, 0, 0.03);
-border: 3px solid black;
-border-radius: 8px;
-margin: 10px;
 
-}
 #feature .fe-box:hover
 {
     box-shadow: 10px 10px 54px rgba(7, 7, 7, 0.63);
