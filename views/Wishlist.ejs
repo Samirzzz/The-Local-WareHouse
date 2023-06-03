@@ -13,28 +13,29 @@
        <h1 style="text-align: center;padding: 20px;">My Wishlist</h1>
        <!--shop-->
        <section class="shop container">
-        <% if (wishlist.length> 0) { %>
-            <div class="shop-content">
-                <% wishlist.forEach((prod, index) => { %>
-                    <div class="product-box">
-                        <img src="/images/<%= prod.image %>" alt="" class="img">
-                        <h2 class="product-title"><%= prod.name %></h2>
-                        <span class="price"><%= prod.price %>$</span>
-                        <div class="add-cart">
-                            <i class='bx bxs-shopping-bag-alt'></i>
-                            <i class='bx bxs-message-alt-x' onclick="removeFromWishlist('<%= prod.id%>')"></i>                        
-                        </div>
-                    </div>
-                    <% if ((index + 1) % 3 === 0) { %>
-                        </div>
-                        <div class="shop-content">
-                    <% } %>
-                <% }) %>
-            </div>
+        <% if (wishlist.length > 0) { %>
+          <div class="shop-content">
+            <% wishlist.forEach((prod, index) => { %>
+              <div class="product-box">
+                <img src="/images/<%= prod.image %>" alt="" class="img">
+                <h2 class="product-title"><%= prod.name %></h2>
+                <span class="price"><%= prod.price %>$</span>
+                <div class="add-cart">
+                  <i class='bx bxs-shopping-bag-alt'></i>
+                  <i class='bx bxs-message-alt-x' onclick="removeFromWishlist('<%= prod.id %>')"></i>                        
+                </div>
+              </div>
+              <% if ((index + 1) % 3 === 0) { %>
+                </div>
+                <div class="shop-content">
+              <% } %>
+            <% }) %>
+          </div>
         <% } else { %>
-            <p>There are no products to display...</p>
+          <p>There are no products to display...</p>
         <% } %>
-</section>
+      </section>
+      
 
 
 <script src="/js/main.js"></script>

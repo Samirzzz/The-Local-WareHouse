@@ -205,12 +205,12 @@ function addToCart(productId) {
         // Refresh the page or update the cart content
         location.reload();
       } else {
-        console.error('Error removing product from cart:', response.status);
+        console.error('Error removing product from cart noo:', response.status);
         // Handle the error
       }
     })
     .catch(error => {
-      console.error('Error removing product from cart:', error);
+      console.error('Error removing product from cart yees:', error);
       // Handle the error
 });
 }
