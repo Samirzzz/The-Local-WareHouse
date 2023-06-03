@@ -73,7 +73,11 @@
                 <% } else { %>
                     <p>There are no products to display...</p>
                 <% } %>
+   
+
         </section>
+        <%- include("./partials/footer.ejs") %>
+        
        
         <button class="open-button" onclick="openForm()"><img src="images/chaticon.png"></button>
     <div class="chat-popup" id="myForm">
@@ -94,8 +98,12 @@
         <input type="hidden" name="id" value="%=p.id%>">
         <button type="submit" class="btn btn-primary">delete</button>
 
+        
       </form>
+
     </div>
     <script src="/js/main.js"></script>
+
+    
 </body>
 </html>
