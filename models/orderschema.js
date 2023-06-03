@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 // Define the order schema
 const OrderItemScehma = new mongoose.Schema({
   productId: {
-    type: String,
+    type: Number,
     required: true
   },
   internalId: {

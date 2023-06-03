@@ -113,7 +113,7 @@ const logs = async function  (req, res) {
             throw new Error('Wishlist not found');
           }
           // Find the index of the item to remove
-          const index = wishlist.items.findIndex(item => item.productId === productId);
+          const index = wishlist.items.findIndex(item => item.productId == productId);
       
           if (index === -1) {
             throw new Error('Product not found in wishlist');
@@ -131,7 +131,7 @@ const logs = async function  (req, res) {
           res.sendStatus(500);}
 };
     
-const addToCart= async function (req,res) {
+const addToCart= async function(req,res) {
   const productId=req.params.productId;
   const email=req.session.user.Email;
       try {
@@ -169,15 +169,17 @@ const addToCart= async function (req,res) {
         const order = await Order.findOne(user);
     
         if (!order) {
-          throw new Error('Wishlist not found');
+          throw new Error('CART not found');
         }
+        console.log("A");
         // Find the index of the item to remove
-        const index = order.items.findIndex(item => item.productId === productId);
+        const index = order.items.findIndex(item => item.productId == productId);
     
         if (index === -1) {
           throw new Error('Product not found in cart');
         }
-    
+        console.log("B");
+
         // Remove the item from the order array
         order.items.splice(index, 1);
     
@@ -186,7 +188,7 @@ const addToCart= async function (req,res) {
     
         res.send(order);
       } catch (error) {
-        console.error('Error removing product from cart:', error);
+        console.error('Error removing product from cart njnj:', error);
         res.sendStatus(500);}
 };
 
