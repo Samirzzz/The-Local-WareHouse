@@ -26,7 +26,7 @@ const addprod= (req, res) => {
         })
         prod.save()
         .then(result=>{
-            res.redirect('/admin');
+            res.redirect('/admin/view&editprod');
         })
         .catch(err=>{
             console.log(err);
