@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>search to ban</title>
+    <title>Add User</title>
 
     <!-- Box Icons  -->
     <link
@@ -16,8 +16,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
     <!-- Styles  -->
-    <link rel="stylesheet" href="/css/adminDashboard.css" />
 
+    <link rel="stylesheet" href="/css/adminDashboard.css" />
+    
   </head>
 
   <body>
@@ -25,24 +26,26 @@
 
     <!-- ============= Home Section =============== -->
     <section class="home">
-      
-
-      
       <div class="container">
         <div class="right">
-          <h2 id="j">Search User</h2>
+          <h2 id="j">Add User</h2>
+          <form action="/admin/editing/<%=edituser.id%>" method="post">
+            <input type="text"   name="username" class="field" value="<%=edituser.username%>" />
+            <input type="text"   name="Email"    class="field" value="<%=edituser.Email%>" disabled />
+            <input type="text"   name="phone"    class="field" value="<%=edituser.phonee%>" />
+            <input type="text"   name="address"  class="field" value="<%=edituser.address%>" />
+            <input type="hidden" name="type" value="client">
+          <input type="submit" class="btn" value="Save Changes">
+          </form>
+        
 
-          <!-- <input class="filed" type="text" name="search" placeholder="Enter "> -->
-          <div class="serchbar">
-          <input type="text" class="field" placeholder="User's ID"/> <a href="/admin/banuser"> <i id="searchicon" class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></a>
-          </div>
-          <!-- <button class="btn">Search</button> -->
+        
+          
         </div>
       </div>
-    
-      
     </section>
-    <!-- Link JS -->
     <script src="/js/adminDashboard.js"></script>
+    
+    
   </body>
 </html>

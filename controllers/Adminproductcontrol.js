@@ -6,7 +6,7 @@ const fs = require('fs');
 const addprod= (req, res) => {
     let imgfile;
     let uploadPath;
-    console.log(req)
+    // console.log(req)
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('no files were uploaded.');
     }

@@ -13,6 +13,7 @@
 <body>
     <nav class="head" >
         <ul >
+
             <li><a href="/"  style="color:white">Home</a></li> 
             <% if(user==="") {%>
             <li><a href="/user/login" style="color:white"><i class='bx bx-log-out'></i>Login</a></li>
@@ -23,13 +24,13 @@
                  %>
                  <li><a href="/admin" style="color:white"><i class='bx bx-log-out'></i>Admin</a></li>
                 <%}%>
-                
+               
 
        
             <li><a href="/Wishlist" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist</a></li>
             <li ><a href="/cart" style="color: aliceblue;"><i class='bx bx-cart' ></i>Cart </a></li>
-            <li><a href="/profile" style="color: aliceblue;">Myprofile</a></li>
             <li><a href="/logout" style="color:white"><i class='bx bx-log-out'></i>logout</a></li>
+            <a href="/profile" style="color: aliceblue;"> Welcome <%=user.username%></a>
             
             <% }%>
         </ul>
@@ -37,7 +38,7 @@
 
       
             
-           
+          
            
     </nav>
     <input type="checkbox" id="check">

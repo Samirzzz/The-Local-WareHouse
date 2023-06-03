@@ -31,9 +31,15 @@ router.get('/adduser',(req,res)=>{
     res.render('adduser', { user: (req.session.user === undefined ? "" : req.session.user) });
     
 })
+router.get('/edituseradmin',(req,res)=>{
+    res.render('edituseradmin', { user: (req.session.user === undefined ? "" : req.session.user) });
+})
+router.post('/adduser',Admin2.AddUseradmin)
 router.get('/view&edituser', Admin2.GetAllUsers);
 router.get("/toAdmin/:id", Admin2.toAdmin);
 router.get("/toClient/:id", Admin2.toClient);
+router.get('/edituser/:id',Admin2.edituser)
+router.post("/editing/:id", Admin2.editing);
 router.get("/delete/:id", Admin2.DeleteUser);
 
 

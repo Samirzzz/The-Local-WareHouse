@@ -1,18 +1,50 @@
 <html lang="en">
+<head>
+
+  <link rel="stylesheet" href="/css/top&sidecss.css">
+
+<style>
+
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+h1 {
+  color: #333;
+}
+p {
+  color: #666;
+}
+
+</style>
+
+</head>
+
+
+
 <body>
   <%- include("./partials/navbar.ejs") %>
 
   <div>
-    <h2>Myprofile</h2>
+    <h1>Myprofile</h1>
+    <br><br>
 
-        <%= user.username%>
-        <br>
-        Password <%= user.password%>
+    <h2>Name: <%= user.username %></h2>
+    <br><br>
+    <h2>Email: <%= user.Email %></h2>
+    <br><br>
 
+    <h2>Phone: <%= user.phonee %></h2>
+    <br><br>
+    <h2>Address:<%=user.address%></h2>
+    <br><br>
 
 
   </div>
 
+
+  <script src="/js/homescript.js"></script>
 
   <%- include("./partials/footer.ejs") %>
 </body>
