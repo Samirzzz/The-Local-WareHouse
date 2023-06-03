@@ -27,10 +27,10 @@
         <div class="right">
           <h2 id="j">Edit Product</h2>
           <form action="/admin/editing/<%=editprod._id%>" method="post" >
-          <input type="text" class="field"  placeholder="<%=editprod.id%>" disabled/>
-          <input type="text" name="name" class="field"  value="<%=editprod.name%>" />
-          <input type="text" name="price" class="field"  value="<%=editprod.price%>" />
-          <input type="text" name="quan" class="field"  value="<%=editprod.Quantity%>" />
+          ID:<input type="text" class="field"  placeholder="<%=editprod.id%>" disabled/>
+          Name:<input type="text" name="name" class="field"  value="<%=editprod.name%>" />
+          Price:<input type="text" name="price" class="field"  value="<%=editprod.price%>" />
+          Quantity:<input type="text" name="quan" class="field"  value="<%=editprod.Quantity%>" />
           <input type="submit" calss="btn" value="EDIT">            
           </form>
           
