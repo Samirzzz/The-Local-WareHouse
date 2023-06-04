@@ -1,14 +1,9 @@
-var http = require('http');
-var fs = require('fs')
 const express = require('express');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const app = express();
 const crypt = require("bcrypt");
 const clients = require('./models/clientschema');
-const product = require('./models/productschema');
-const Wishlist = require('./models/wishlist')
-const Order = require('./models/orderschema')
 require("dotenv").config();
 const dblink=process.env.DBlink;
 
@@ -53,43 +48,6 @@ app.get('/product-details', (req, res) => {
 })
 
 app.use(fileUpload());
-
-app.get('/wishlist', (req, res) => {
-
-     Wishlist.findOne({ "email":req.session.user.Email })
-     .then(result=>{
-         product.find().then(products=>{
-            const mod = result?.items?.map(item => products.find(p => p.id == item.productId)).filter(item=>!!item);
-            console.log(mod);
-                res.render('wishlist', { wishlist: mod??[] ,user: (req.session.user === undefined ? "" : req.session.user) });
-                
-         })
-       
-     })
-     .catch(err=>{
-     console.log(err);
-    })
- });
-
- app.get('/cart', (req, res) => {
-    
-  if (req.session.user && req.session.user.Email) {
-  Order.findOne({ "email": req.session.user.Email })
-      .then(result => {
-          product.find().then(products => {
-              const mod = result?.items?.map(item => products.find(p => p.id == item.productId)).filter(item=>!!item);
-              // Rest of your code using the 'mod' variable
-              res.render('cart', { order: mod??[], user: (req.session.user === undefined ? "" : req.session.user) });
-          });
-      })
-      .catch(err => {
-          console.log(err);
-      });
-}});
-
-
-
-
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');

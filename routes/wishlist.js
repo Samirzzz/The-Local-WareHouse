@@ -1,9 +1,12 @@
-const { Router } = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const { Router } = express;
 
-var router = Router();
+const product = require('../models/productschema');
+const Wishlist = require('../models/wishlist')
+
+const router = Router();
 const user = require("../controllers/usercontrol");
-router.use(bodyParser.json());
+router.use(express.json());
 
 router.use((req, res, next) => {
     if (req.session.user !== undefined) {
@@ -15,12 +18,20 @@ router.use((req, res, next) => {
 });
 
 
-///wishlist
-
     /* GET wishlist page. */
     router.get('/', function(req, res, next) {
-            res.render('wishlist', { user: (req.session.user === undefined ? "" : req.session.user) });
-        });
+        Wishlist.findOne({ email: req.session.user.Email })
+          .then(result => {
+            product.find().then(products => {
+              const mod = result?.items?.map(item => products.find(p => p.id == item.productId)).filter(item => !!item);
+              res.render('wishlist', { wishlist: mod ?? [], user: (req.session.user === undefined ? "" : req.session.user) });
+            });
+          })
+          .catch(err => {
+            console.log(err);
+            // Handle the error appropriately
+          });
+      });
 
 
     router.post('/:productId', user.addToWishlist);

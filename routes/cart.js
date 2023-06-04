@@ -1,9 +1,13 @@
-const { Router } = require('express');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
+const express = require('express');
+const { Router } = express;
+const router = Router();
 
-var router = Router();
+const Order = require('../models/orderschema');
+const product = require('../models/productschema');
 const user1 = require("../controllers/usercontrol");
-router.use(bodyParser.json());
+
+router.use(express.json());
 
 router.use((req, res, next) => {
   if (req.session.user !== undefined) {
@@ -13,12 +17,24 @@ router.use((req, res, next) => {
       res.render('err', { err: 'You must login to access this page', user: (req.session.user === undefined ? "" : req.session.user) })
   }
 });
-///wishlist
 
-  /* GET wishlist page. */
+  /* GET Cart page. */
   router.get('/', function(req, res, next) {
-          res.render('cart', { user: (req.session.user === undefined ? "" : req.session.user) });
-      });
+    if (req.session.user && req.session.user.Email) {
+      Order.findOne({ email: req.session.user.Email })
+        .then(result => {
+          product.find().then(products => {
+            const mod = result?.items?.map(item => products.find(p => p.id == item.productId)).filter(item => !!item);
+            res.render('cart', { order: mod ?? [], user: (req.session.user === undefined ? "" : req.session.user) });
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          // Handle the error appropriately
+        });
+    }
+  });
+  
 
 
   router.post('/:productId', user1.addToCart);
