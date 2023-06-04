@@ -97,3 +97,10 @@ footer{
     width:100%;
   }
   }
+
+  #google_translate_element
+{
+  margin-top: 30px;
+ margin-right: 100px;
+  z-index: 9999;
+}
