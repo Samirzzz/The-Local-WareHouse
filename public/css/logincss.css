@@ -45,7 +45,6 @@ div.box{
       box-shadow: -5px 5px 25px #000;
     }
   body{
-    background-image: url("back2.jpg");
     background-position: center;
            background-repeat: no-repeat;
            background-size: 100cm;
@@ -56,7 +55,14 @@ div.box{
   }
   body{
       height: 100%;
-  }
+       
+  
+      z-index: 1;
+      background: linear-gradient(-45deg,black,blanchedalmond, white, black);
+      background-size: 400% 400%;
+      width: 100%;
+      height: 100vh;
+      animation: animate 15s ease infinite;  }
  h1.for{
 color: #000000;
 font-size:x-small ;
@@ -77,20 +83,15 @@ div.sectionv {
   justify-content: center;
   
 }
-.video-container {
-  position: fixed;
-  display: flex;
-  top: 0;
-  width: 150%;
-  height: 100%;
-  left: 0;
-  margin-left: 6.5%;
-}
 
-.color-overlay {
-  position: fixed;
-  background-color: rgb(188, 188, 188);
-  width: 150%;
-  height: 100%;
-  opacity: 0.2;
+@keyframes animate {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }

@@ -6,7 +6,7 @@ const fs = require('fs');
 const addprod= (req, res) => {
     let imgfile;
     let uploadPath;
-    console.log(req)
+    // console.log(req)
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send('no files were uploaded.');
     }
@@ -68,7 +68,7 @@ const editprod=(req,res)=>{
       });
     };
 
-    const editing= (req, res) => {
+    const editingg= (req, res) => {
         product.findByIdAndUpdate(req.params.id, { name:req.body.name , price:req.body.price, Quantity:req.body.quan  })
             .then(result => {
                 res.redirect('/admin/view&editprod')
@@ -83,5 +83,5 @@ module.exports = {
     GetAllprod,
     Deleteprod,
     editprod,
-    editing
+    editingg
 };

@@ -29,12 +29,24 @@
       <div class="container">
         <div class="right">
           <h2 id="j">Add User</h2>
-          <input type="text" class="field" placeholder="User's ID" />
-          <input type="text" class="field" placeholder="User's Name" />
-          <input type="text" class="field" placeholder="User's Email" />
-          <input type="text" class="field" placeholder="User's Password" />
-          <textarea placeholder="Notes" class="field"></textarea>
-          <button class="btn">Add</button>
+          <form action="/admin/adduser" method="post">
+            <input type="text"   name="username" class="field" placeholder="User's UserName" />
+            <input type="text"   name="Email"    class="field" placeholder="User's Email" />
+            <input type="text"   name="password" class="field" placeholder="User's Password" />
+            <input type="text"   name="phone"    class="field" placeholder="User's phone" />
+            <input type="text"   name="address"  class="field" placeholder="User's address" />
+            <input type="hidden" name="type" value="client">
+            <select class="field"  name="gender">
+              <option value="">Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+          </select>
+          <input type="submit" class="btn" value="ADD">
+          </form>
+        
+
+        
+          
         </div>
       </div>
     </section>

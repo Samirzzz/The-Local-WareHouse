@@ -31,9 +31,15 @@ router.get('/adduser',(req,res)=>{
     res.render('adduser', { user: (req.session.user === undefined ? "" : req.session.user) });
     
 })
+router.get('/edituseradmin',(req,res)=>{
+    res.render('edituseradmin', { user: (req.session.user === undefined ? "" : req.session.user) });
+})
+router.post('/adduser',Admin2.AddUseradmin)
 router.get('/view&edituser', Admin2.GetAllUsers);
 router.get("/toAdmin/:id", Admin2.toAdmin);
 router.get("/toClient/:id", Admin2.toClient);
+router.get('/edituser/:id',Admin2.edituser)
+router.post("/editing/:id", Admin2.editing);
 router.get("/delete/:id", Admin2.DeleteUser);
 
 
@@ -49,7 +55,7 @@ router.get('/addproduct',(req,res)=>{
 router.post('/addproduct', Admin1.addprod);
 router.get('/view&editprod', Admin1.GetAllprod);
 router.get('/editprod/:id',Admin1.editprod)
-router.post('/editing/:id',Admin1.editing)
+router.post('/editingg/:id',Admin1.editingg)
 router.get('/delete/:img/:id', Admin1.Deleteprod);
 
 /* GET Admin/searcheditproduct page. */

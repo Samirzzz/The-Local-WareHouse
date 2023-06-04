@@ -60,15 +60,30 @@ margin-top: -20px;
         /* background-image: url("black.jpg") ; 
         background-position:center;
         background-size:contain; */
-background-color: aliceblue;
-        background-position: center;
        background-repeat: no-repeat;
        background-size: 100cm;
        width: 500px;
        height: 500px;
+       z-index: 1;
+       background: linear-gradient(-45deg,black,blanchedalmond, white, black);
+       background-size: 400% 400%;
+       height: 100vh;
+       animation: animate 15s ease infinite;  
 
        
     }
+    @keyframes animate {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+    }
+    
    
    h1.for{
   color: #000000;

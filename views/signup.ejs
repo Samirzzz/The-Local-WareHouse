@@ -133,9 +133,16 @@
         else
             return '';
     }
+    function validatel() {
+            if (document.getElementById('errormail').innerHTML.includes('taken'))
+                return false;
+            else
+                return true;
+        }
     function validate(form) {
         let fail = '';
         fail += validateUserName(form.username.value);
+        fail+=validatel();
         fail += validateemail(form.Email.value);
         fail += validatepassword(form.password.value, form.conpassword.value);
         fail += tel(form.phonee.value);
@@ -150,6 +157,7 @@
         else
             return false;
     }
+      
 // const form=document.querySelector('signup-form');
 // const errorm=document.querySelector(".error-mess");
 // form.addEventListener('submit',(e)=>{
@@ -211,7 +219,11 @@
             Sign Up</h1><br>
 
             
-        <form action="signup" method="post" class="signup-form" id="signup-form" onsubmit="return validate(this)" >
+
+
+
+
+        <form action="/user/signup" method="post" class="signup-form" id="signup-form" onsubmit="return validate(this) " >
             <input class="cc" id="errorName" type="text" name="username" placeholder="username ">
             <span class="error" id="errorNameid"> </span>
             <span class="backenderror" id="un"> </span>
@@ -259,7 +271,6 @@
                 <h1 class="for">Already have an account?</h1>
             </a>
         </form>
-
 
 <ul id="error-list"></ul>
 

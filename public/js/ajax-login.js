@@ -8,13 +8,13 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: JSON.stringify({ Email: data }),
             success: function (response) {
-                $('#errormails').html('Email is ' + response);
+                $('#erroruser').html('Email is ' + response);
 
                 if (response == 'taken') {
-                    $('#errormails').css("color", "red");
+                    $('#erroruser').css("color", "red");
                 }
                 else if(response =='available') {
-                    $('#errormails').css("color", "green");
+                    $('#erroruser').css("color", "green");
                 }
             },
             error:function(err){

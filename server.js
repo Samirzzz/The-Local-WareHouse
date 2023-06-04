@@ -10,7 +10,6 @@ const product = require('./models/productschema');
 const Wishlist = require('./models/wishlist')
 const Order = require('./models/orderschema')
 
-
 const {check,validationResult}=require('express-validator');
 var bodyParser = require("body-parser");
 app.use(session({ secret: "Your_Secret_Key" }))
@@ -133,6 +132,10 @@ req.session.user=result;
         console.log(err);
     });
 })
+
+
+
+
 
 //setup routes
 app.use('/', index_router);
