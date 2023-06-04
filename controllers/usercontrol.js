@@ -99,9 +99,7 @@ const logs = async function  (req, res) {
     const user = { "Email": req.body.Email };
    
     clients.findOne(user).then(async result=>{
-        if(result==null){
-            res.send('taken');
-        }
+      
         req.session.user=result;
         const valid= await crypt.compare(req.body.password,result.password);
            if(valid==true){

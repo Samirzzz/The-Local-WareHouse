@@ -8,13 +8,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Local Warehouse </title>
+    <script src="https://get.geojs.io/v1/ip/geolocate.js"></script>
+    <script>
+        function displayLocation() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://get.geojs.io/v1/ip/geo.json', true);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          const region = `${data.region}, ${data.country}`;
+          document.getElementById('location').innerHTML = region;
+        }
+      };
+      xhr.send();
+    }
+    
+      </script>
 </head>
 
 <body>
+
+    
     <nav class="head" >
         <ul >
-
+ 
             <li><a href="/"  style="color:white">Home</a></li> 
+            <body onload="displayLocation()">
+                <li id="location" style="color: aliceblue;"></li>
+        
+              </body>
             <% if(user==="") {%>
             <li><a href="/user/login" style="color:white"><i class='bx bx-log-out'></i>Login</a></li>
             <li><a href="/user/signup" style="color:white">Create account</a></li>
@@ -29,7 +51,6 @@
        
             <li><a href="/Wishlist" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist</a></li>
             <li ><a href="/cart" style="color: aliceblue;"><i class='bx bx-cart' ></i>Cart </a></li>
-            <li><a href="/logout" style="color:white"><i class='bx bx-log-out'></i>logout</a></li>
             <a href="/profile" style="color: aliceblue;"> Welcome <%=user.username%></a>
             
             <% }%>

@@ -17,10 +17,10 @@ const User = require("../controllers/usercontrol");
         res.render('login', { user: (req.session.user === undefined ? "" : req.session.user) });
     });
 
+    router.post('/checkem',User.chechem)
     router.post('/login', User.logs);
    // router.post('/checkem',User.chechem)
 
-   router.post('/checkem',User.chechem)
    router.post('/signup',User.validate,User.AddUser)
 
 
