@@ -9,15 +9,17 @@ const clients = require('./models/clientschema');
 const product = require('./models/productschema');
 const Wishlist = require('./models/wishlist')
 const Order = require('./models/orderschema')
+require("dotenv").config();
+const dblink=process.env.DBlink;
+
+
 
 const {check,validationResult}=require('express-validator');
 var bodyParser = require("body-parser");
 app.use(session({ secret: "Your_Secret_Key" }))
 app.set('view engine', 'ejs');
 
-// app.use(express.static('public/css'))
-// app.use(express.static('public/images'))
-// app.use(express.static('public/js'))
+
 app.use(express.static('public'))
 
 app.use(express.urlencoded({ extended: true }));
@@ -37,7 +39,7 @@ const reset_pass=require("./routes/reset_pass");
 const cart_router=require("./routes/cart");
 
 
-const port = 3000
+const port = process.env.PORT;
 
 const mongoose = require('mongoose');
 
@@ -102,11 +104,7 @@ app.get('/profile', (req, res) => {
 
 
 
-// app.get('/banuser', (req, res) => {
-//     clients.findByIdAndDelete(req.body.Email).then(result=>{
 
-//     })
-// });
 
 app.post('/edit',async (req,res)=>{
     const salt= await crypt.genSalt(10);
@@ -149,7 +147,7 @@ app.use('/reset_password',reset_pass);
 app.use('/cart',cart_router);
 
 
-mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dblink, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
         app.listen(3000);
         console.log(`server up and listening  on port http://localhost:${port}`)
