@@ -2,23 +2,23 @@
   "name": "the-local-warehouse",
   "version": "1.0.0",
   "description": "<h3>Description</h3>\r The Local Ware-house website contains a various collection of brands around the world available with all sizes. In addition to the modern design of our web application and the new services to facilitate placing orders and communication , this will give you the best shopping experience. Our website has alot of validations to make sure all the data is correct and to avoid mistakes. The shopping cart is made with a dynamic way to help the user choose what he wants with any size and any color.\r A clothing brand website serves as a digital storefront for the brand, providing customers with a convenient and easy way to shop their collections from the comfort of their own home.\r <h3>Instructions</h3>\r <ul>\r <li>Fork this repository\r <li>Clone your forked repository\r <li>Add your scripts\r <li>Commit and push\r <li>Create a pull request\r <li>Star this repository\r <li>Wait for pull request to merge\r <li>Celebrate your first step into the open source world and contribute more\r </ul>\r <h3>Team Members</h3>\r <ul>\r <li><a href=\"https://github.com/AbdelrahmanElsuezy\">Abdelrahman Ahmed Ibrahim </a>\r <li> <a href=\"https://github.com/Samirzzz\"> Abdelrahman Ahmed Mohamed </a>\r <li> <a href=\"https://github.com/arafat3300\"> Aly Khaled Hamdy </a>\r <li> <a href=\"https://github.com/YoussefBakry5\"> Youssef Abdelrahman Bakry </a>\r <li> <a href=\"https://github.com/mohamedalyhussien\">Mohamed Aly </a>\r </ul>",
-  "main": "main.js",
+  "main": "server.js",
+  "bin": {
+    "the-local-warehouse": "bin/www.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
-    "body": "^5.1.0",
     "body-parser": "^1.20.2",
     "dotenv": "^16.1.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
     "fileupload": "^1.0.0",
@@ -26,8 +26,6 @@
     "mongoose": "^7.2.2",
     "nodemailer": "^6.9.3",
     "npm-watch": "^0.11.0",
-    "parser": "^0.1.4",
-    "passport-facebook-token": "^4.0.0",
     "readable-stream": "^4.4.0",
     "save": "^2.9.0",
     "uuid": "^9.0.0"
