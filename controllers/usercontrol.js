@@ -2,10 +2,12 @@ const clients = require('../models/clientschema');
 const Product = require('../models/productschema');
 const Wishlist = require('../models/wishlist');
 const Order = require('../models/orderschema');
+const UserPayments = require('../models/purchaseSchema');
 
 const crypt = require("bcrypt");
 const path = require('path');
 const {check,validationResult}=require('express-validator');
+const { request } = require('http');
 
 const chechem = (req,res)=>{
     var query = { "Email": req.body.Email };
@@ -216,6 +218,7 @@ const logs = async function  (req, res) {
 const addToCart= async function(req,res) {
   const productId=req.params.productId;
   const email=req.session.user.Email;
+
       try {
         // Fetch the product details from the database
         const product = await Product.findById(productId);
@@ -232,7 +235,7 @@ const addToCart= async function(req,res) {
               list=await Order.create({items:[],email:email})
           }
          
-          list.items.push({productId:product.id,internalId:productId});
+          list.items.push({productId:product.id,internalId:productId,amount:1});
           list.save();
           res.send(list);
       
@@ -274,6 +277,78 @@ const addToCart= async function(req,res) {
         res.sendStatus(500);}
 };
 
+const editCart = async function (req, res) {
+  const productId = req.params.productId;
+  const email = req.session.user.Email;
+  try {
+    const user = { email: email };
+    // Find the order document for the user
+    const order = await Order.findOne(user);
+
+    if (!order) {
+      throw new Error('CART not found');
+    }
+    // Find the index of the item to remove
+    const index = order.items.findIndex(item => item.productId == productId);
+
+    if (index === -1) {
+      throw new Error('Product not found in cart');
+    }
+    // Remove the item from the order array
+    order.items[index].amount=req.body.amount??0;
+    // Save the updated order
+    await order.save();
+
+    res.send(order);
+  } catch (error) {
+    console.error('Error removing product from cart njnj:', error);
+    res.sendStatus(500);}
+};
+
+const buyOrder= async function(req,res) {
+  const email=req.session.user.Email;
+      try {      
+        const user = { "email":email };
+
+          let list=await Order.findOne(user);
+          if(!list || list.items.length==0){
+            throw new Error("Your Cart is Empty!");
+          }
+
+         let userPayments=await UserPayments.findOne(user);
+         if(!userPayments){
+         userPayments=await UserPayments.create({orders:[],email:email})
+        }
+        const items=list.items.map(item=>{return{amount:item.amount,productId:item.productId,internalId:item.internalId}});
+        console.log(items);
+        userPayments.orders.push({items:items});
+        
+        userPayments.save();
+        list.items=[];
+        list.save();
+        res.send(list);
+
+      } catch (error) {
+        // console.error('Error adding product to cart:', error);
+        throw error ;
+      }
+    }
+
+    const prodpage=(req,res)=>{
+      var query = { "_id": req.params.id };
+      Product.findById(query)
+        .then(result => {
+          res.render('product-details', { prod: result , user: (req.session.user === undefined ? "" : req.session.user) });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      };
+
+
+
+
+
 module.exports = {
     chechem,
     logs,
@@ -282,8 +357,11 @@ module.exports = {
     addToCart,
     removeFromCart,
     validate,
+    editCart,
     AddUser,
     validatepass,
     chechemlogin,
+    buyOrder,
+    prodpage
     
 };

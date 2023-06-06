@@ -38,14 +38,6 @@ const port = process.env.PORT;
 const mongoose = require('mongoose');
 
 
-app.get('/shirtshtml', (req, res) => {
-    res.render('shirtshtml', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-
-app.get('/product-details', (req, res) => {
-    res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-
 app.use(fileUpload());
 
 app.get('/logout', (req, res) => {
@@ -97,10 +89,9 @@ app.use('/wishlist', wishlist_router);
 app.use('/reset_password',reset_pass);
 app.use('/cart',cart_router);
 
-
 mongoose.connect(dblink, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
-        app.listen(3000);
+        app.listen(port);
         console.log(`server up and listening  on port http://localhost:${port}`)
     }
     )
