@@ -37,9 +37,6 @@ const port = process.env.PORT;
 
 const mongoose = require('mongoose');
 
-app.get('/product-details', (req, res) => {
-    res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
 
 app.use(fileUpload());
 
