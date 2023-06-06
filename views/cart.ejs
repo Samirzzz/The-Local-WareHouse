@@ -36,9 +36,8 @@
                         <th colspan="3">Action</th>
                     </tr>
                 </thead>
-                <% order.forEach((prod, index)=> { %>
                 <tbody>
-
+                  <% order.forEach((prod, index)=> { %>
                     <tr>
                         <td class="people">
                             <img src="/images/<%= prod.image %>" alt="" class="img">
@@ -57,21 +56,28 @@
                             <p><%= prod.type %></p> 
                           </td>
                         <td class="role">
-                            <p><%= prod.Quantity %></p> 
+                            <input type="number" value="<%= prod.amount %>" onchange="editCart(this.value,'<%= prod.id%>')"/>
                         </td>
                         <!-- <td class="edit"><a href="/admin/editprod/<%=prod._id%>">Edit</a></td> -->
                         <td>  <i class='bx bxs-message-alt-x' onclick="removeFromCart('<%= prod.id%>')"></i></td> 
                     </tr>
-                    
+                    <% }) %>
+                    <tr>
+                      <td  class="people">Total:</td>
+                      <td  colspan="3"></td>
+
+                      <td><%= total %></td>
+                    </tr>   
                </tbody>
-               <% }) %>
+            
             </table>
+            <button onclick="buyOrder()"> Buy Now</button>
+
             <% } else { %>
               <p>There are no Products to display...</p>
           <% } %>
     </div>                
     </section>
-
     <!-- Link JS -->
     <script src="/js/main.js"></script>
 

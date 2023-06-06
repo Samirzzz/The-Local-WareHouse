@@ -38,14 +38,6 @@ const port = process.env.PORT;
 const mongoose = require('mongoose');
 
 
-app.get('/shirtshtml', (req, res) => {
-    res.render('shirtshtml', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-
-app.get('/product-details', (req, res) => {
-    res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
-
 app.use(fileUpload());
 
 app.get('/logout', (req, res) => {
@@ -96,9 +88,6 @@ app.use('/edit', edit_router);
 app.use('/wishlist', wishlist_router);
 app.use('/reset_password',reset_pass);
 app.use('/cart',cart_router);
-app.get('/chat',(req,res)=>{
-    res.render('chat', { user: (req.session.user === undefined ? "" : req.session.user) });
-}) 
 
 mongoose.connect(dblink, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
