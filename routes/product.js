@@ -62,6 +62,34 @@ router.get('/', (req, res) => {
     console.log(err);
     })
 });
+router.get('/Tshirts', (req, res) => {
+    product.find()
+    .then(result=>{
+        res.render('Tshirts', { product: result ,user: (req.session.user === undefined ? "" : req.session.user) });
+    })
+    .catch(err=>{
+    console.log(err);
+    })
+});
+router.get('/Hoodies', (req, res) => {
+    product.find()
+    .then(result=>{
+        res.render('Hoodies', { product: result ,user: (req.session.user === undefined ? "" : req.session.user) });
+    })
+    .catch(err=>{
+    console.log(err);
+    })
+});
+router.get('/Cargos', (req, res) => {
+    product.find()
+    .then(result=>{
+        res.render('Cargos', { product: result ,user: (req.session.user === undefined ? "" : req.session.user) });
+    })
+    .catch(err=>{
+    console.log(err);
+    })
+});
+
 
 
 module.exports = router;
