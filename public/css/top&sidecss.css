@@ -394,6 +394,7 @@ padding: 40px 80px;
     height: 98.05%;
 
 }
+
 .textcontainer2 .text2
 {
   z-index: 6;
@@ -409,6 +410,7 @@ height: auto;
 -webkit-text-stroke: #fff;
 -webkit-text-stroke-width: 1px;
 }
+
 .textcontainer .text /*text in the middle of photo */
 {
   z-index: 6;
