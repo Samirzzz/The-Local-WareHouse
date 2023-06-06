@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 
 // Define the order schema
-const OrderItemScehma = new mongoose.Schema({
+const CartItemSchema = new mongoose.Schema({
   productId: {
     type: Number,
     required: true
@@ -25,13 +25,18 @@ const OrderItemScehma = new mongoose.Schema({
 
 });
 
-const OrderScehma = new mongoose.Schema({
-    items: [OrderItemScehma],
-    email:String,
+const purchaseSchema = new mongoose.Schema({//buy now
+    items: [CartItemSchema],
+    paidAt: {type: Date,
+    default: Date.now}
   });
 
+  const userPaymentsSchema = new mongoose.Schema({//history kolo lel 1
+    orders: [purchaseSchema],
+    email:String,
+  });
 // Create the Order model
-const Order = mongoose.model('Order', OrderScehma);
+const UserPayments = mongoose.model('UserPayments', userPaymentsSchema);
 
 // Export the Order model
-module.exports = Order;
+module.exports =UserPayments ;
