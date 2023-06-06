@@ -77,8 +77,9 @@
     function
         validate(form) {
         let fail = '';
-        fail += both(form.username.value, form.password.value);
-        fail += validateUserName(form.username.value);
+        fail += both(form.Email.value, form.password.value);
+        
+        fail += validateUserName(form.Email.value);
         fail += validatepassword(form.password.value);
 
         if (fail == '') {
