@@ -51,14 +51,18 @@
                           <p><%= emp.Type %></p> 
                         </td>
                         <td class="edit">
+                          <% if (emp.username!==user.username ){ %>
                           <% if (emp.Type==='client' ){ %>
                             <a href="/admin/toAdmin/<%= emp.id %>">Make Admin</a>
                             <% } else{ %>
                               <a href="/admin/toClient/<%= emp.id %>">Make Client</a>
                               <% } %>
+                              <% }%>
                         </td>
                         <td class="edit"><a href="/admin/edituser/<%=emp.id%>">Edit</a></td>
+                        <% if (emp.username!==user.username ){ %>
                         <td class="edit"> <a href="/admin/delete/<%= emp.id %>">Delete</a></td>
+                        <% }%>
                     </tr>
                     
                </tbody>
