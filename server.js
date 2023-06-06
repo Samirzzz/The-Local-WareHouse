@@ -96,7 +96,9 @@ app.use('/edit', edit_router);
 app.use('/wishlist', wishlist_router);
 app.use('/reset_password',reset_pass);
 app.use('/cart',cart_router);
-
+app.get('/chat',(req,res)=>{
+    res.render('chat', { user: (req.session.user === undefined ? "" : req.session.user) });
+}) 
 
 mongoose.connect(dblink, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
