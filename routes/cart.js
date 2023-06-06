@@ -18,14 +18,20 @@ router.use((req, res, next) => {
   }
 });
 
+
   /* GET Cart page. */
   router.get('/', function(req, res, next) {
     if (req.session.user && req.session.user.Email) {
       Order.findOne({ email: req.session.user.Email })
         .then(result => {
           product.find().then(products => {
-            const mod = result?.items?.map(item => products.find(p => p.id == item.productId)).filter(item => !!item);
-            res.render('cart', { order: mod ?? [], user: (req.session.user === undefined ? "" : req.session.user) });
+            const mod = result?.items?.map(item => {
+              const p= products.find(p => p.id == item.productId);
+             if(p) p.amount=item.amount;
+              return p;
+            }).filter(item => !!item);
+            var total=mod.reduce((t,item)=>t+item.price*item.amount,0);
+            res.render('cart', { total:total,order: mod ?? [], user: (req.session.user === undefined ? "" : req.session.user) });
           });
         })
         .catch(err => {
@@ -34,10 +40,11 @@ router.use((req, res, next) => {
         });
     }
   });
-  
 
-
+  router.post('/buyOrder', user1.buyOrder);
   router.post('/:productId', user1.addToCart);
   router.delete('/:productId', user1.removeFromCart);
+  router.put('/:productId', user1.editCart);
+
 
 module.exports = router;

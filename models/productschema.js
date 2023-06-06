@@ -22,8 +22,10 @@ const productSchema= new Schema({
     },
 
     Quantity:{
-        type:Number,
-
+        type:Number
+    },
+    color:{
+     type:String
     },
     image:{
         type:String,
