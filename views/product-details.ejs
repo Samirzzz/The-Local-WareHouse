@@ -16,51 +16,20 @@
         <div class = "product-imgs">
           <div class = "img-display">
             <div class = "img-showcase">
-              <img src = "https://m.media-amazon.com/images/I/81YqrY9xHZL._UX535_.jpg" alt = "Airjordan-black">
-              <img src = "https://product.hstatic.net/200000255805/product/img_9621_9382854159ae48f7a75eb2e16c784c70_grande.jpg " alt = "Airjordan-blue">
-              <img src = "https://i.ebayimg.com/images/g/sTcAAOSwlf9ddOzK/s-l500.jpg "  alt = "Airjordan-red">
-              <img src = "https://i.ebayimg.com/images/g/gSAAAOSwz8tjx3OD/s-l500.jpg "  alt = "Airjordan-white">
+              <img src = "/images/<%=prod.image%>" class="img">
+              
             </div>
           </div>
-          <div class = "img-select">
-            <div class = "img-item">
-              <a href = "#" data-id = "1">
-                <img src = "https://m.media-amazon.com/images/I/81YqrY9xHZL._UX535_.jpg " alt = "shoe image">
-              </a>
-            </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "2">
-                <img src = "https://product.hstatic.net/200000255805/product/img_9621_9382854159ae48f7a75eb2e16c784c70_grande.jpg" alt = "shoe image">
-              </a>
-            </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "3">
-                <img src =  "https://i.ebayimg.com/images/g/sTcAAOSwlf9ddOzK/s-l500.jpg"  alt = "shoe image">
-              </a>
-            </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "4">
-                <img src = "https://i.ebayimg.com/images/g/gSAAAOSwz8tjx3OD/s-l500.jpg" alt = "shoe image">
-              </a>
-            </div>
-          </div>
+          
         </div>
         <!-- card right -->
         <div class = "product-content">
-          <h2 class = "product-title">nike shoes</h2>
-          <a href = "https://www.nike.com/" class = "product-link">visit nike store</a>
-          <div class = "product-rating">
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star-half-alt"></i>
-            <span>4.7(21)</span>
-          </div>
+          <h2 class = "product-title"><%=prod.name%></h2>
+          
 
           <div class = "product-price">
-            <p class = "last-price">Old Price: <span>$257.00</span></p>
-            <p class = "new-price">New Price: <span>$249.00 (5%)</span></p>
+            <!-- <p class = "last-price">Old Price: <span>$257.00</span></p> -->
+            <p class = "new-price"> Price: <span><%=prod.price%>$</span></p>
           </div>
 
           <div class = "product-detail">
@@ -68,27 +37,27 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</p>
             <ul>
-              <li>Color: <span>Black</span></li>
-              <li>Available: <span>in stock</span></li>
-              <li>Category: <span>Shoes</span></li>
+              
+              <li>Available: <span style="color: red;"><%=prod.Quantity%> Left!</span></li>
+              <li>Category: <span><%=prod.type%></span></li>
               <li>Shipping Area: <span>All over the world</span></li>
               <li>Shipping Fee: <span>Free</span></li>
             </ul>
           </div>
 
          
-              <select>
+              <!-- <select>
                 <option value="black">Black</option>
                 <option value="white">White</option>
                 <option value="red">Red</option>
                 <option value="blue">Blue</option>
-              </select>
+              </select> -->
            
 
           <div class = "purchase-info">
-            <input type = "number" min = "0" value = "1">
+            <input type="number" value="<%= prod.amount %>" onchange="editCart(this.value,'<%= prod.id%>')"/>
             <button type = "button" class = "btn">
-              Add to Cart <i class = "fas fa-shopping-cart"></i>
+              Add to Cart <i class = "fas fa-shopping-cart" onclick="addToCart('<%= prod._id %>')"></i>
             </button>
              
           </div>
@@ -99,7 +68,8 @@
     </div>
 
     
-    <script src="/js/prod-details.js"></script>
+    <!-- <script src="/js/prod-details.js"></script> -->
+    <script src="/js/main.js"></script>
     <%- include("./partials/footer.ejs") %>
   </body>
 </html>

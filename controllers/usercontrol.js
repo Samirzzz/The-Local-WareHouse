@@ -304,6 +304,21 @@ const buyOrder= async function(req,res) {
       }
     }
 
+    const prodpage=(req,res)=>{
+      var query = { "_id": req.params.id };
+      Product.findById(query)
+        .then(result => {
+          res.render('product-details', { prod: result , user: (req.session.user === undefined ? "" : req.session.user) });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      };
+
+
+
+
+
 module.exports = {
     chechem,
     logs,
@@ -314,6 +329,7 @@ module.exports = {
     validate,
     editCart,
     AddUser,
-    buyOrder
+    buyOrder,
+    prodpage
     
 };

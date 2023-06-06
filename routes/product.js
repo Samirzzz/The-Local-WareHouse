@@ -4,6 +4,7 @@ var router = Router();
 router.use(bodyParser.json());
 
 const product = require('../models/productschema');
+const productt = require("../controllers/usercontrol");
 /////////
 
 // // Get pagination elements
@@ -305,9 +306,7 @@ router.get('/Cargos', (req, res) => {
     })
 });
 
-router.get('/product-details', (req, res) => {
-    res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
-})
+router.get('/product-details/:id', productt.prodpage)
 
 
 module.exports = router;
