@@ -6,6 +6,8 @@
     
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="/js/ajax-login.js"></script>
+    <script src="/js/ajax-pass.js"></script>
+
     <style>
         .error {
             color: red;
@@ -95,6 +97,22 @@
 
 
 <body>
+    <span class="con"> 
+        <span class="alert " role="alert">
+        <% if(typeof alert !='undefined'){%>
+            <% alert.forEach(function(error) {%>
+                <div class="alert " role="alert">
+                    <%= error.msg %>
+                    </button>
+                </div>
+                
+            <%});%>
+        
+        
+        <%}%>
+            </span>
+        
+        </span>
     <div class="log">
     </div>
     <div class="sectionv">
@@ -121,7 +139,7 @@
                 <span class="error" id="erroruser"></span>
                 <br><br>
 
-                <input class="b" type="password" name="password" placeholder="password ">
+                <input class="b" type="password" name="password" placeholder="password " id="password">
                 <br>
 
                 <span class="error" id="errorpass"></span>

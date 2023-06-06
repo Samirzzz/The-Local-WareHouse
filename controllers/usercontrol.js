@@ -11,9 +11,10 @@ const chechem = (req,res)=>{
     var query = { "Email": req.body.Email };
     clients.find(query)
       .then(result => {
-          if (result.length > 0 ) {
-              res.send('taken');
-            }
+        if (!result) {
+              
+            res.send('not found');
+          }
             else {
                 res.send('available');
             }
@@ -21,6 +22,18 @@ const chechem = (req,res)=>{
 
 
 
+}
+const chechemlogin = (req,res)=>{
+    const user = { "Email": req.body.Email };
+    clients.findOne(user).then(async result=>{
+        if(!result){
+            res.send('not found');
+         
+      }
+            else {
+                res.send('available');
+            }
+        });
 }
 const validate=
     [check('username').isLength({min:4}).withMessage('min 4 characters'),
@@ -52,11 +65,24 @@ const validate=
     .isIn(['male', 'female', 'other'])
     .withMessage('choose gender"')]
 
-const AddUser = (req, res) => {
+    const validatepass=
+    [
+    //     check('username,Email,password,phonee,address,gender')
+    // .notEmpty()
+    // .withMessage('field is required'),
    
+    
+    check('Email')
+    .isEmail()
+    .withMessage('Invalid email address'),
+    
+    check('password')
+    .isLength({ min: 1 })
+    .withMessage('enter password'),]
+    
   
-    
-    
+
+const AddUser = (req, res) => {
     const errors = validationResult(req);
     var query = { "Email": req.body.Email };
     clients.find(query)
@@ -93,21 +119,25 @@ const AddUser = (req, res) => {
     
   }
 
-
-
 const logs = async function  (req, res) {
     const user = { "Email": req.body.Email };
-   
+    const errors = validationResult(req);
     clients.findOne(user).then(async result=>{
+        if(!errors.isEmpty()){
+         const alert=errors.array();
+        res.render('login',{
+         alert
+        })
+      }
+      req.session.user=result;
+      const valid= await crypt.compare(req.body.password,result.password);
+      if(valid==true){
+          res.redirect('/');
+      }
+      else{
+        res.send('incorrect');
+} 
       
-        req.session.user=result;
-        const valid= await crypt.compare(req.body.password,result.password);
-           if(valid==true){
-               res.redirect('/');
-           }
-           else{
-               res.send('false');
-       } 
     })
         .catch(err => {
             console.log(err);
@@ -252,6 +282,8 @@ module.exports = {
     addToCart,
     removeFromCart,
     validate,
-    AddUser
+    AddUser,
+    validatepass,
+    chechemlogin,
     
 };

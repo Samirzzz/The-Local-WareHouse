@@ -95,3 +95,8 @@ div.sectionv {
       background-position: 0% 50%;
   }
 }
+div.alert{
+  background-color: #e88787;
+ margin-left: 30%;
+ margin-right: 30%;
+ }
