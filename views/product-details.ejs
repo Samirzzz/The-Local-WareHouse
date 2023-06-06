@@ -28,7 +28,6 @@
           
 
           <div class = "product-price">
-            <!-- <p class = "last-price">Old Price: <span>$257.00</span></p> -->
             <p class = "new-price"> Price: <span><%=prod.price%>$</span></p>
           </div>
 
@@ -55,9 +54,8 @@
            
 
           <div class = "purchase-info">
-            <input type="number" value="<%= prod.amount %>" onchange="editCart(this.value,'<%= prod.id%>')"/>
-            <button type = "button" class = "btn">
-              Add to Cart <i class = "fas fa-shopping-cart" onclick="addToCart('<%= prod._id %>')"></i>
+            <button type = "button" class = "btn" onclick="addToCart('<%= prod._id %>')">
+              Add to Cart <i class = "fas fa-shopping-cart" ></i>
             </button>
              
           </div>

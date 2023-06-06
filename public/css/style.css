@@ -426,7 +426,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   position: relative;
   background-color: var(--color_Light1);
   left: 175px;
-  width: calc(100% - 500px);
+  width: calc(100% - 450px);
   height: 50vh;
   transition: all 0.5s ease;
 
@@ -437,6 +437,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   overflow: auto;
   background: white;
   border-radius: 8px;
+
 }
 .board img{
  width: 55px;
@@ -498,9 +499,42 @@ table, th, td {
   margin-left: auto;
   margin-right: auto;
   border-collapse: collapse;
-  width: 700px;
+  width: 720px;
   text-align: center;
   font-size: 20px;
-  } 
 
-  
+  } 
+  .purchase-info{
+    margin: 1.5rem 0;
+}
+.purchase-info input,
+.purchase-info .btn{
+    border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    margin-left:50%;
+    padding: 10px 10px;
+    outline: 250px;
+    margin-right: 250px;
+    margin-bottom: 250px;
+}
+
+.purchase-info input{
+    width: 60px;
+}
+.purchase-info .btn{
+    cursor: pointer;
+    color: #fff;
+}
+.purchase-info .btn:first-of-type{
+    background: #256eff;
+}
+.purchase-info .btn:last-of-type{
+    background: #f64749;
+}
+.purchase-info .btn:hover{
+    opacity: 0.9;
+}
+.bx{
+  cursor: pointer;
+}
