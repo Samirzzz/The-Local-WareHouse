@@ -305,6 +305,9 @@ router.get('/Cargos', (req, res) => {
     })
 });
 
+router.get('/product-details', (req, res) => {
+    res.render('product-details', { user: (req.session.user === undefined ? "" : req.session.user) });
+})
 
 
 module.exports = router;
