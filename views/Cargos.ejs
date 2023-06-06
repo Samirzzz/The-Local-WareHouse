@@ -17,7 +17,7 @@
         <section class="shop container">
                 <div class="filter">
                     <a href="/product"><button>All</button></a>
-                    <a href="/products/Cargos"><button>Cargos </button></a>   
+                    <a href="/product/Cargos"><button>Cargos </button></a>   
                     <a href="/product/Tshirts"><button>Tshirts</button></a>
                     <a href="/product/Hoodies"><button>Hoodies</button></a>
                 </div>
@@ -30,7 +30,8 @@
                             <div class="product-box">
                                 <img src="/images/<%= prod.image %>" alt="" class="img">
                                 <h2 class="product-title"><%= prod.name %></h2>
-                                <span class="price"><%= prod.price %>$</span>
+                                <span class="price"><%= prod.price %>$</span> <br>
+                                <span style="color: red; font-style: italic;">Hurry, only <%=prod.Quantity%> left!</span>
                                 <div class="add-cart">
                                     <i class='bx bxs-shopping-bag-alt'  onclick="addToCart('<%= prod._id %>')"></i>
                                     <i class="bx bx-heart" onclick="addToWishlist('<%= prod._id %>')"></i>
