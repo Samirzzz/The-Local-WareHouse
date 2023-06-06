@@ -102,7 +102,7 @@ app.get('/chat',(req,res)=>{
 
 mongoose.connect(dblink, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
-        app.listen(3000);
+        app.listen(port);
         console.log(`server up and listening  on port http://localhost:${port}`)
     }
     )
