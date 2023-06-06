@@ -1,41 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The-Local-WareHouse|Ecommerce Website design</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-    <%- include("./partials/navbar.ejs") %>
-       <h1 style="text-align: center;padding: 20px;">My Cart</h1>
-       <!--shop-->
-       <section class="shop container">
-        <% if (order.length > 0) { %>
-          <div class="shop-content">
-            <% order.forEach((prod, index) => { %>
-              <div class="product-box">
-                  <img src="/images/<%= prod.image %>" alt="" class="img">
-                <h2 class="product-title"><%= prod.name %></h2> 
-                <span class="price"><%= prod.price %>$</span>
-                <div class="add-cart">
-                    <i class='bx bxs-message-alt-x' onclick="removeFromCart('<%= prod.id%>')"></i>                        
-                </div>
-              </div>
-              <% if ((index + 1) % 3 === 0) { %>
-                </div>
-                <div class="shop-content">
-              <% } %>
-            <% }) %>
-          </div>
-        <% } else { %>
-          <p>There are no products in the cart...</p>
-        <% } %>
-      </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
 
-<script src="/js/main.js"></script>
-<%- include("./partials/footer.ejs") %>
-</body>
+    <!-- Box Icons  -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <!-- Styles  -->
+    <link rel="stylesheet" href="/css/style.css" />
+    
+  </head>
+
+  <body>
+    <%- include('./partials/navbar.ejs')%>
+
+    <section class="users">
+      <% if (order.length> 0) { %>
+        <div class="board">
+            <table width="100%" class="center-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Type</th>
+                        <th>Quantity</th>
+                        <th colspan="3">Action</th>
+                    </tr>
+                </thead>
+                <% order.forEach((prod, index)=> { %>
+                <tbody>
+
+                    <tr>
+                        <td class="people">
+                            <img src="/images/<%= prod.image %>" alt="" class="img">
+                            <div class="people-de">
+                                <h2 class="product-title"><%= prod.name %></h2> 
+                                <span class="price"><%= prod.price %>$</span>
+                                 <!-- <div class="add-cart">
+                                                           
+                                </div>  -->
+                            </div>
+                        </td>
+                        <td class="role">
+                          <p><%= prod.price %></p> 
+                        </td>
+                        <td class="role">
+                            <p><%= prod.type %></p> 
+                          </td>
+                        <td class="role">
+                            <p><%= prod.Quantity %></p> 
+                        </td>
+                        <!-- <td class="edit"><a href="/admin/editprod/<%=prod._id%>">Edit</a></td> -->
+                        <td>  <i class='bx bxs-message-alt-x' onclick="removeFromCart('<%= prod.id%>')"></i></td> 
+                    </tr>
+                    
+               </tbody>
+               <% }) %>
+            </table>
+            <% } else { %>
+              <p>There are no Products to display...</p>
+          <% } %>
+    </div>                
+    </section>
+
+    <!-- Link JS -->
+    <script src="/js/main.js"></script>
+
+  </body>
 </html>

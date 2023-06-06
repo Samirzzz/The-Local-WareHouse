@@ -45,12 +45,26 @@
                 if(user.Type==="admin"){
                  %>
                  <li><a href="/admin" style="color:white"><i class='bx bx-log-out'></i>Admin</a></li>
-                <%}%>
-               
+                <%} else if(user.Type==="client"){
+                  %>
+                  <li><a href="/Wishlist" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist</a></li>
+                  <li ><a href="/cart" style="color: aliceblue;"><i class='bx bx-cart' ></i>Cart </a></li>
 
-       
-            <li><a href="/Wishlist" style="color:white"><i class='bx bxs-magic-wand'></i>Wishlist</a></li>
-            <li ><a href="/cart" style="color: aliceblue;"><i class='bx bx-cart' ></i>Cart </a></li>
+                  <!--Start of Tawk.to Script-->
+                      <script type="text/javascript">
+                         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                        (function(){
+                         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                         s1.async=true;
+                         s1.src='https://embed.tawk.to/647f604e94cf5d49dc5c2881/1h28p0drb';
+                         s1.charset='UTF-8';
+                         s1.setAttribute('crossorigin','*');
+                          s0.parentNode.insertBefore(s1,s0);
+                            })();
+                      </script>
+                    <!--End of Tawk.to Script-->
+               <% } %>
+                
             <a href="/profile" style="color: aliceblue;"> Welcome <%=user.username%></a>
             
             <% }%>
@@ -76,7 +90,7 @@
             <li><a href="/product"><i class='bx bx-female'></i>Women</a></li>
             <li><a href="/edit"><i class='bx bxs-user-account'></i>Account</a></li>
             <li><a href="#"><i class='bx bx-group'></i>About US</a></li>
-            <li><a href="/login"><i class='bx bx-log-out'></i>Log Out</a></li>
+            <li><a href="/user/logout"><i class='bx bx-log-out'></i>Log Out</a></li>
         </ul>
     </div>
    

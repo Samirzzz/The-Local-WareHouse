@@ -23,7 +23,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 const index_router = require("./routes/index.js");
-// var login_router = require("./routes/login.js");
 const signup_router = require("./routes/user.js");
 const admin_router = require("./routes/admin.js");
 const product_router = require("./routes/product.js");
@@ -48,20 +47,16 @@ app.get('/product-details', (req, res) => {
 })
 
 app.use(fileUpload());
+
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
 });
 
-
-
 app.get('/profile', (req, res) => {
   
     res.render('profile', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
-
-
-
 
 
 app.post('/edit',async (req,res)=>{
@@ -91,8 +86,6 @@ req.session.user=result;
 
 
 
-
-
 //setup routes
 app.use('/', index_router);
 app.use('/user', signup_router);
@@ -103,7 +96,9 @@ app.use('/edit', edit_router);
 app.use('/wishlist', wishlist_router);
 app.use('/reset_password',reset_pass);
 app.use('/cart',cart_router);
-
+app.get('/chat',(req,res)=>{
+    res.render('chat', { user: (req.session.user === undefined ? "" : req.session.user) });
+}) 
 
 mongoose.connect(dblink, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
