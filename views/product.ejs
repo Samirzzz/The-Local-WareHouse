@@ -57,7 +57,7 @@
                     <div class="shop-content">
                         <% product.forEach((prod, index) => { %>
                            <a href="/product/product-details/<%=prod._id%>" style="color:black;"> <div class="product-box">
-                                <img src="/images/<%= prod.image %>" alt="" class="img">
+                                <img src="/images/<%= prod.image %>" alt="" class="img"></a>
                                 <h2 class="product-title"><%= prod.name %></h2>
                                 <span class="price"><%= prod.price %>$</span><br>
                                 <span style="color: red; font-style: italic;">Hurry, only <%=prod.Quantity%> left!</span>
@@ -65,7 +65,7 @@
                                     <i class='bx bxs-shopping-bag-alt'  onclick="addToCart('<%= prod._id %>')"></i>
                                     <i class="bx bx-heart" onclick="addToWishlist('<%= prod._id %>')"></i>
                                 </div>
-                            </div></a>
+                            </div>
                             <% if ((index + 1) % 3 === 0) { %>
                                 </div>
                                 <div class="shop-content">
