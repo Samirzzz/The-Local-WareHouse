@@ -10,11 +10,11 @@ const user1 = require("../controllers/usercontrol");
 router.use(express.json());
 
 router.use((req, res, next) => {
-  if (req.session.user !== undefined) {
+  if (req.session.user.Type === "client") {
       next();
   }
   else {
-      res.render('err', { err: 'You must login to access this page', user: (req.session.user === undefined ? "" : req.session.user) })
+      res.render('err', { err: 'You must login as a user to access this page', user: (req.session.user === undefined ? "" : req.session.user) })
   }
 });
 
