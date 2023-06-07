@@ -48,7 +48,7 @@ router.use((req, res, next) => {
   router.post('/:productId', user1.addToCart);
   router.delete('/:productId', user1.removeFromCart);
   router.put('/:productId', user1.editCart);
-  router.post('/checkout', user1.create_checkout_session);
+  // router.post('/checkout', user1.create_checkout_session);
 
   router.get('/message', function(req, res, next) {
     res.render('message', { user: (req.session.user === undefined ? "" : req.session.user) });
