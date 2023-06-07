@@ -28,8 +28,8 @@
                     <div class="shop-content">
                         <% product.forEach((prod, index) => { %>
                             <% if (prod.type==="Tshirts") { %>
-                            <div class="product-box">
-                                <img src="/images/<%= prod.image %>" alt="" class="img">
+                                <a href="/product/product-details/<%=prod._id%>" style="color:black;"> <div class="product-box">
+                                    <img src="/images/<%= prod.image %>" alt="" class="img"></a>
                                 <h2 class="product-title"><%= prod.name %></h2>
                                 <span class="price"><%= prod.price %>$</span><br>
                                 <span style="color: red; font-style: italic;">Hurry, only <%=prod.Quantity%> left!</span>
