@@ -7,6 +7,52 @@
     <title>set_new_passs</title>
     <link rel="stylesheet" href="/css/set_new_pass.css" />
   </head>
+  <script>
+    function validatepassword(field1) {
+        if (field1 == '') {
+            document.getElementById("errorpass").innerHTML = "your password must be filled";
+            return "kkk";
+
+        } else if (field1.length < 4) {
+            document.getElementById("errorpass").innerHTML = "enter more than 4 characters";
+            return "kkk";
+
+
+        } else if (field1.length > 12) {
+            document.getElementById("errorpass").innerHTML = "enter less than 12 characters";
+            return "kkk";
+
+        }
+        else
+            document.getElementById("errorpass").innerHTML = "";
+
+
+        return '';
+
+
+    }
+    function both(field, field2) {
+        if (field == '' || field2 == '') {
+            return 'kkk';
+        } else {
+            return '';
+        }
+    }
+
+
+    function
+        validate(form) {
+        let fail = '';
+        fail += both(form.new_pass.value, form.confirm_password.value);
+        fail += validatepassword(form.new_pass.value);
+
+        if (fail == '') {
+            return true;
+        }
+        else
+            return false;
+    }
+  </script>
   <body>
     <div class="header">
     <div class="main">
@@ -15,7 +61,7 @@
       <form
         action="/reset_password/save"
         method="post"
-        onsubmit="return val(this)"
+        onsubmit="return validate(this)"
       >
         <input
           class="x"
@@ -29,13 +75,15 @@
           name="new_pass"
           placeholder="Enter your new password"
         /><br />
-
+<span id="errorpass"> </span>
         <input
           class="x"
           type="text"
           name="confirm_password"
           placeholder="Confirm password"
         /><br />
+        <span id="errorpass"> </span>
+
         <!-- <span id="mess" style="color: red; ;">    </span><br><br> -->
         <input type="submit" value="Save" class="c" />
       </form>
