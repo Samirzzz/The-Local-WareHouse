@@ -28,6 +28,7 @@
     margin-bottom:10px ;
     margin-left: 75%;
     margin-top: 1%;
+    color: #000;
     }
     </style>
 
@@ -67,12 +68,13 @@ function sendData(e) {
             payload.forEach(async (product, index) => {
                 if (index > 0) searchResults.innerHTML += '<hr>';
                 
-                const productLink = document.createElement('a');
-            productLink.href = `/Skinproducts/productdetail/${product._id}`;
-            productLink.innerHTML = `<p>${product.name}</p>`;
+                 const productLink = document.createElement('a');
+                 productLink.innerHTML = `<p>${product.name}</p>`;
+                productLink.href = `/product/product-details/${product._id}`;
             
-            prodsearch.appendChild(productLink);
-            prodsearch.innerHTML += `<p>${product.price}EGP</p>`;
+            
+                searchResults.appendChild(productLink);
+                searchResults.innerHTML += `<p>${product.price}EGP</p>`;
           });
 
         });
