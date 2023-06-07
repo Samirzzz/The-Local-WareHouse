@@ -8,6 +8,29 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
+<style>
+    input.sb {
+        width: 410px;
+        border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 60px;
+    margin-bottom:10px ;
+    margin-left: 75%;
+    margin-top: 1%;
+    box-shadow: 2px 2px 2px #000;        
+        
+        
+    }
+    div.ss{
+      
+   
+    margin-bottom:10px ;
+    margin-left: 75%;
+    margin-top: 1%;
+    }
+    </style>
+
 
 <body>
     <script>
@@ -94,8 +117,8 @@ function sendData(e) {
         <!--shop-->
         
         <section class="shop container">
-            <input type="text" id="search-box" placeholder="search" onkeyup=" return sendData(this)"><br><br>
-        <div id="searchResults"></div>
+            <input type="text" id="search-box" class="sb" placeholder="search" onkeyup=" return sendData(this)"><br><br>
+        <div id="searchResults" class="ss"></div>
                 <div class="filter">
                     <a href="/product"><button>All</button></a>
                     <a href="/product/Cargos"><button>Cargos </button></a>   
