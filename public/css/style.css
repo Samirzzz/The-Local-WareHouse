@@ -538,3 +538,60 @@ table, th, td {
 .bx{
   cursor: pointer;
 }
+.all{
+  padding: 12px 28px;
+  background-color: grey; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.all:hover{
+  background:black;
+}
+.cargos{
+  padding: 12px 28px;
+  background-color: grey; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.cargos:hover{
+  background:black;
+}
+.Tshirts{
+  padding: 12px 28px;
+  background-color: grey; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+
+}
+.Tshirts:hover{
+  background:black;
+}
+.Hoodies{
+  padding: 12px 28px;
+  background-color: grey; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.Hoodies:hover{
+  background:black;
+}

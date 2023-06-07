@@ -236,6 +236,33 @@ section{
       height: 400px;
   }
 }
+@media (max-width: 768px) {
+  /* Styles for screens with a maximum width of 768px */
+  #hero2 {
+    padding: 0 40px; /* Adjust the padding value as needed */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Styles for screens with a maximum width of 480px */
+  #hero2 {
+    padding: 0 20px; /* Adjust the padding value as needed */
+  }
+}
+#hero2
+{
+background-image:url(../images/testhm2.png);
+height: 100vh;  
+width: 89%;
+background-position: top 25% right 0;
+background-size: cover;
+padding: 0 80px;
+display: flex;
+align-items: flex-start;
+justify-content: center;
+flex-direction: column;
+border-radius: 4px;
+}
 
 #img-slideshow
 {
@@ -345,8 +372,8 @@ padding-left: 20px;
 /* Main image in the homepage andbutton */
 #hero2
 {
-  background-image:url(../images/testhm2.png);
-height: 100vh;
+background-image:url(../images/testhm2.png);
+height: 100vh;  
 width: 89%;
 background-position: top 25% right 0;
 background-size: cover;

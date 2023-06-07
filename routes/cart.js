@@ -46,5 +46,8 @@ router.use((req, res, next) => {
   router.delete('/:productId', user1.removeFromCart);
   router.put('/:productId', user1.editCart);
 
+  router.get('/message', function(req, res, next) {
+    res.render('message', { user: (req.session.user === undefined ? "" : req.session.user) });
+});
 
 module.exports = router;

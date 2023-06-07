@@ -22,6 +22,7 @@ const addprod= (req, res) => {
             price: req.body.price,
             type: req.body.type,
             Quantity: req.body.quan,
+            Description:req.body.description,
             image:  req.files.img.name,
         })
         prod.save()

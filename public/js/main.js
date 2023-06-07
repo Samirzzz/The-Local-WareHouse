@@ -128,15 +128,18 @@ function updatePagination() {
 ////////
 
 function buyOrder() {
-  // Send an AJAX request to the server to add the product to the cart
+  // Send an AJAX request to the server to process the payment and complete the order
   fetch(`/cart/buyOrder`, { method: 'POST' })
     .then(response => response.json())
     .then(data => {
-      // Product added to the cart, you can show a success message or update the UI as needed
-      console.log('Product added to cart:', data); //window.location=
+      // Payment successful, you can show a success message or update the UI as needed
+      console.log('Payment successful:', data);
+      // Redirect the user to a new route or display a success message
+      window.location.href = '/cart/message'; // Replace '/success' with the actual route for the success message
     })
     .catch(error => {
-      // Error occurred while adding the product to the cart
-      console.error('Error adding product to cart:', error);
+      // Error occurred while processing the payment
+      console.error('Error processing payment:', error);
+      // Handle the error, display an error message, etc.
     });
 }
