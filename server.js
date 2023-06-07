@@ -6,8 +6,6 @@ const crypt = require("bcrypt");
 const clients = require('./models/clientschema');
 const product = require('./models/productschema');
 
-require("dotenv").config();
-const dblink=process.env.DBlink;
 
 
 
@@ -110,7 +108,7 @@ app.use('/wishlist', wishlist_router);
 app.use('/reset_password',reset_pass);
 app.use('/cart',cart_router);
 
-mongoose.connect(dblink, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
         app.listen(port);
         console.log(`server up and listening  on port http://localhost:${port}`)
