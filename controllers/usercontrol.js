@@ -228,22 +228,30 @@ const addToCart= async function(req,res) {
         }
     
         // Create a new wishlist entry with the fetched product details
-        const user = { "email":email };
+          const user = { "email":email };
  
           let list=await Order.findOne(user);
           if(!list){
               list=await Order.create({items:[],email:email})
           }
          
+          const exists = list.items.some(item => item.productId == product.id);
+    
+          if (exists) {
+            res.json({ success: false, message: 'Product already exists in the Cart' });
+            return;
+          }
+    
           list.items.push({productId:product.id,internalId:productId,amount:1});
           list.save();
-          res.send(list);
+          res.json({ success: true, message: 'Product added to Cart' });
       
-      } catch (error) {
-        console.error('Error adding product to cart:', error);
-        throw error ;
+      }  catch (error) {
+        console.error('Error adding product to Cart:', error);
+        res.status(500).json({ success: false, message: 'Error adding product to Cart' });
       }
-    }
+    };
+    
 
     const removeFromCart = async function (req, res) {
       const productId = req.params.productId;
