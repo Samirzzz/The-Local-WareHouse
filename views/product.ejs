@@ -28,6 +28,7 @@
     margin-bottom:10px ;
     margin-left: 75%;
     margin-top: 1%;
+    color: #000;
     }
     </style>
 
@@ -67,11 +68,14 @@ function sendData(e) {
             payload.forEach(async (product, index) => {
                 if (index > 0) searchResults.innerHTML += '<hr>';
                 
-                searchResults.innerHTML += `<p>${product.name}</p>`;
-
-              
-
-            });
+                 const productLink = document.createElement('a');
+                 productLink.innerHTML = `<p>${product.name}</p>`;
+                productLink.href = `/product/product-details/${product._id}`;
+            
+            
+                searchResults.appendChild(productLink);
+                searchResults.innerHTML += `<p>${product.price}"$"</p>`;
+          });
 
 
 
@@ -92,11 +96,12 @@ function sendData(e) {
             <input type="text" id="search-box" class="sb" placeholder="search" onkeyup=" return sendData(this)"><br><br>
         <div id="searchResults" class="ss"></div>
                 <div class="filter">
-                    <a href="/product"><button>All</button></a>
-                    <a href="/product/Cargos"><button>Cargos </button></a>   
-                    <a href="/product/Tshirts"><button>Tshirts</button></a>
-                    <a href="/product/Hoodies"><button>Hoodies</button></a>
+                    <a href="/product"><button class="all">All</button></a>
+                    <a href="/product/Cargos"><button class="cargos">Cargos </button></a>   
+                    <a href="/product/Tshirts"><button class="Tshirts">Tshirts</button></a>
+                    <a href="/product/Hoodies"><button class="Hoodies">Hoodies</button></a>
                 </div>
+                <br>
                 <h2 class="section-title">All Products</h2> 
                 <!--content-->
                 <% if (product.length> 0) { %>
