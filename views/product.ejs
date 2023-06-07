@@ -8,12 +8,64 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
+    <script>
+        const product = require('../models/productschema');
+const table=document.querySelectorAll('.search');
+
+
+
+function sendData(e) {
+    const searchResults = document.getElementById("searchResults");
+    let match = e.value.match(/^[a-zA-Z]*/);
+    let match2 = e.value.match(/^\s*/);
+    
+    if (match2&&match2[0] == e.value) {
+        searchResults.innerHTML = '';
+        return;
+        
+    }
+    if (match&&match[0] == e.value) {
+        fetch('/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ payload: e.value })
+        }).then(res => res.json())
+        .then(data => {
+            let payload = data.payload;
+            searchResults.innerHTML = '';
+            if (payload.length < 1) {
+                searchResults.innerHTML = '<p>Sorry. Nothing Found</p>';
+                return;
+            }
+            payload.forEach(async (product, index) => {
+                if (index > 0) searchResults.innerHTML += '<hr>';
+                
+                searchResults.innerHTML += `<p>${product.name}</p>`;
+
+              
+
+            });
+
+        });
+        return;
+    }
+    searchResults.innerHTML = '';
+}
+    </script>
    <!-- the head bar (account/wishlist/cart) -->
+   
    <%- include("./partials/navbar.ejs") %>
  
+
         <!--shop-->
+        
         <section class="shop container">
+            <input type="text" id="search-box" placeholder="search" onkeyup=" return sendData(this)"><br><br>
+        <div id="searchResults"></div>
                 <div class="filter">
                     <a href="/product"><button>All</button></a>
                     <a href="/product/Cargos"><button>Cargos </button></a>   
