@@ -67,11 +67,13 @@ function sendData(e) {
             payload.forEach(async (product, index) => {
                 if (index > 0) searchResults.innerHTML += '<hr>';
                 
-                searchResults.innerHTML += `<p>${product.name}</p>`;
-
-              
-
-            });
+                const productLink = document.createElement('a');
+            productLink.href = `/Skinproducts/productdetail/${product._id}`;
+            productLink.innerHTML = `<p>${product.name}</p>`;
+            
+            prodsearch.appendChild(productLink);
+            prodsearch.innerHTML += `<p>${product.price}EGP</p>`;
+          });
 
         });
         return;
