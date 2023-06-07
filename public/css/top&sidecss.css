@@ -54,6 +54,7 @@ padding-top: 30px;
   list-style: none;
   text-decoration: none;
 }
+
 body 
 {
   font-family: 'Roboto', sans-serif;
@@ -149,6 +150,7 @@ label #cancel /*back button in sidebar */
 #check:checked ~ section{
   margin-left: 250px;
 }
+
 section{
   background: url(bg.jpeg) no-repeat;
   background-position: center;
@@ -500,5 +502,42 @@ flex-wrap: wrap;
 justify-content: space-between;
 margin-left: 120px;
 margin-right: 40px;
+margin-top: 3px;
 
 }
+
+.box
+{
+  margin-left: 10px;
+  position:fixed;
+  box-shadow: black 0px 5px 15px;
+  margin-top: 10px;
+  padding: 60px ;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.5); 
+  width: 80%;
+  height: 400px;
+  backdrop-filter: blur(10px);
+  padding-top: 35px;
+  margin-top: 30px;
+  
+  }
+  #edit
+  {
+
+    height: 50px;
+    width: 150px;
+    border: 4px solid black;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  }
+
+  #edit:hover
+  {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }

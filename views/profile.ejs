@@ -25,7 +25,7 @@ p {
 
 <body>
   <%- include("./partials/navbar.ejs") %>
-
+<div class="box">
   <div>
     <h1>Myprofile</h1>
     <br><br>
@@ -39,14 +39,12 @@ p {
     <br><br>
     <h2>Address:<%=user.address%></h2>
     <br><br>
-
-
+    <a href="edit"> <button id="edit">Edit profile</button></a>
   </div>
-
-
   <script src="/js/homescript.js"></script>
+</div>
 
-  <%- include("./partials/footer.ejs") %>
+
 </body>
 
 </html>
