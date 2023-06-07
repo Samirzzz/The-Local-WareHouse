@@ -3,8 +3,8 @@ const express = require('express');
 const { Router } = express;
 const router = Router();
 require("dotenv").config();
-const Stripe = require('stripe');
-const stripe = new Stripe(process.env.StripeSecretKey);
+// const Stripe = require('stripe');
+// const stripe = new Stripe(process.env.StripeSecretKey);
 
 const Order = require('../models/orderschema');
 const product = require('../models/productschema');

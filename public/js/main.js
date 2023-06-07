@@ -96,34 +96,44 @@ function editCart(amount,productId) {
 
 ////////
 
-var currentPage = 1;
-var totalPages = 5;
 
-function changePage(page) {
-  if (page < 1 || page > totalPages) {
-    return;
-  }
 
-  currentPage = page;
-  updatePagination();
-  // Perform any additional actions or fetch data for the new page here
-}
 
-function previousPage() {
-  changePage(currentPage - 1);
-}
 
-function nextPage() {
-  changePage(currentPage + 1);
-}
 
-function updatePagination() {
-  var paginationLinks = document.getElementsByClassName('page');
-  for (var i = 0; i < paginationLinks.length; i++) {
-    paginationLinks[i].classList.remove('active');
-  }
-  paginationLinks[currentPage].classList.add('active');
-}
+
+
+
+////////
+
+// var currentPage = 1;
+// var totalPages = 5;
+
+// function changePage(page) {
+//   if (page < 1 || page > totalPages) {
+//     return;
+//   }
+
+//   currentPage = page;
+//   updatePagination();
+//   // Perform any additional actions or fetch data for the new page here
+// }
+
+// function previousPage() {
+//   changePage(currentPage - 1);
+// }
+
+// function nextPage() {
+//   changePage(currentPage + 1);
+// }
+
+// function updatePagination() {
+//   var paginationLinks = document.getElementsByClassName('page');
+//   for (var i = 0; i < paginationLinks.length; i++) {
+//     paginationLinks[i].classList.remove('active');
+//   }
+//   paginationLinks[currentPage].classList.add('active');
+// }
 
 ////////
 
