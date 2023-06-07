@@ -34,7 +34,6 @@ const wishlist_router = require("./routes/wishlist.js");
 const reset_pass=require("./routes/reset_pass");
 const cart_router=require("./routes/cart");
 
-
 const port = process.env.PORT;
 
 const mongoose = require('mongoose');
