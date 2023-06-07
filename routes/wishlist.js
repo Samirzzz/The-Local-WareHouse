@@ -25,7 +25,7 @@ router.use((req, res, next) => {
           .then(result => {
             product.find().then(products => {
               const mod = result?.items?.map(item => products.find(p => p.id == item.productId)).filter(item => !!item);
-              res.render('wishlist', { wishlist: mod ?? [], user: (req.session.user === undefined ? "" : req.session.user) });
+              res.render('Wishlist', { wishlist: mod ?? [], user: (req.session.user === undefined ? "" : req.session.user) });
             });
           })
           .catch(err => {
