@@ -21,7 +21,6 @@ const User = require("../controllers/usercontrol");
     router.post('/login', User.validatepass,User.logs);
    // router.post('/checkem',User.chechem)
    router.post('/checkemlogin',User.chechemlogin)
-   router.post('/logs',User.logs)
 
 
 

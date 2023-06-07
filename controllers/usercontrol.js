@@ -115,11 +115,9 @@ const AddUser = (req, res) => {
           console.log(req.body.password);
           res.redirect('/');
         }
-      });
-
-
-    
+      });    
   }
+  
 
 const logs = async function  (req, res) {
     const user = { "Email": req.body.Email };
@@ -137,7 +135,7 @@ const logs = async function  (req, res) {
           res.redirect('/');
       }
       else{
-        res.send('incorrect');
+        res.redirect('login');
 } 
       
     })
