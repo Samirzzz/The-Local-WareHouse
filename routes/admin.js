@@ -19,10 +19,8 @@ router.use((req, res, next) => {
 });
 
 
-router.get('/',(req,res)=>{
-    res.render('admin', { user: (req.session.user === undefined ? "" : req.session.user) });
-}) 
 
+router.get('/',Admin2.GetAllUsersdash);
 
 
 
