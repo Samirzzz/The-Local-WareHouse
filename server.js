@@ -111,8 +111,8 @@ app.use('/cart',cart_router);
 
 mongoose.connect("mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(result => {
-        app.listen(port);
-        console.log(`server up and listening  on port http://localhost:${port}`)
+        app.listen(3000);
+        console.log(`server up and listening  on port http://localhost:${3000}`)
     }
     )
     .catch(err => console.log(err));

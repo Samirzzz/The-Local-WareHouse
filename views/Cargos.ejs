@@ -12,26 +12,26 @@
  
    <%- include("./partials/navbar.ejs") %>
   
-   <br>
-   <br>
-        <!--shop-->
+    <br>
+    <br>
+    <!--shop-->
         <section class="shop container">
                 <div class="filter">
                     <a href="/product"><button class="all">All</button></a>
-                    <a href="/product/Cargos"><button class="cargos">Cargos </button></a>   
-                    <a href="/product/Tshirts"><button  class="Tshirts">Tshirts</button></a>
+                    <a href="/product/Cargos"><button class="cargos">Cargos</button></a>   
+                    <a href="/product/Tshirts"><button class="Tshirts">Tshirts</button></a>
                     <a href="/product/Hoodies"><button class="Hoodies">Hoodies</button></a>
                 </div>
-                <h2 class="section-title">Cargos</h2> 
+                <h2 class="section-title">Tshirts</h2> 
                 <!--content-->
                 <% if (product.length> 0) { %>
                     <div class="shop-content">
                         <% product.forEach((prod, index) => { %>
                             <% if (prod.type==="Cargos") { %>
-                            <div class="product-box">
-                                <img src="/images/<%= prod.image %>" alt="" class="img">
+                                <a href="/product/product-details/<%=prod._id%>" style="color:black;"> <div class="product-box">
+                                    <img src="/images/<%= prod.image %>" alt="" class="img"></a>
                                 <h2 class="product-title"><%= prod.name %></h2>
-                                <span class="price"><%= prod.price %>$</span> <br>
+                                <span class="price"><%= prod.price %>$</span><br>
                                 <span style="color: red; font-style: italic;">Hurry, only <%=prod.Quantity%> left!</span>
                                 <div class="add-cart">
                                     <i class='bx bxs-shopping-bag-alt'  onclick="addToCart('<%= prod._id %>')"></i>
@@ -52,13 +52,17 @@
    <br>
    <br>
    
-  
+   <div class="pagination">
+    <a href="#" class="prev">&laquo; Before</a>
+    <a href="#https://www.w3schools.com/" class="page active">1</a>
+    <a href="#" class="page">2</a>
+    <a href="#" class="page">3</a>
+    <a href="#" class="page">4</a>
+    <a href="#" class="page">5</a>
+    <a href="#" class="next">After &raquo;</a>
+    </div>
 
-    <br>
-    <br>
     </section>
-    
-
 
      
         
