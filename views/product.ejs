@@ -23,8 +23,8 @@
 
 
 <body>
-    <script>
-        const product = require('../models/productschema');
+<script>
+const product = require('../models/productschema');
 const table=document.querySelectorAll('.search');
 
 
@@ -40,7 +40,7 @@ function sendData(e) {
         
     }
     if (match&&match[0] == e.value) {
-        fetch('/search', {
+        fetch('/product/search', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -73,7 +73,11 @@ function sendData(e) {
     }
     searchResults.innerHTML = '';
 }
-    </script>
+
+</script>
+
+
+
    <!-- the head bar (account/wishlist/cart) -->
    
    <%- include("./partials/navbar.ejs") %>

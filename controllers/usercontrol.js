@@ -3,10 +3,10 @@ const Product = require('../models/productschema');
 const Wishlist = require('../models/wishlist');
 const Order = require('../models/orderschema');
 const UserPayments = require('../models/purchaseSchema');
-require('dotenv').config();
 const Stripe = require('stripe');
-
-const stripe = new Stripe(process.env.stripeSecretKey);
+ StripePublishableKey="pk_test_51NGRj4C0y9Z2PZln6aZHDyNDxjEi9kKeZY57q8KKA3BhJ7dNmPPC5xkS7WmxXICHl1OPMpeaepQ8OEpb9yOWYsI000bkPnqsPl"
+const StripeSecretKey="sk_test_51NGRj4C0y9Z2PZlnB3umXOLHm3ZU3DvsMZ0IZ2MGpl0UU4P1WqQx1eFr20KQ4qyDb7LeBXTwckkKr72vPGZFcNDl00EyZARZCO"
+const stripe = new Stripe(StripeSecretKey);
 const crypt = require("bcrypt");
 const path = require('path');
 const {check,validationResult}=require('express-validator');
@@ -356,7 +356,7 @@ const buyOrder= async function(req,res) {
           payment_method_types: ['card'],
           line_items: line_items,
           mode: 'payment',
-          success_url: `http://localhost:3000/cart/message?email=${user.Email}`,
+          success_url: `https://thelocalwarehouse.store/cart/message?email=${user.Email}`,
           cancel_url: `http://localhost:3000/error/email=${user.Email}`,
         });
         console.log(session.url);
@@ -380,7 +380,53 @@ const buyOrder= async function(req,res) {
       };
 
 
+const edituser=async(req,res)=>{
+  const salt= await crypt.genSalt(10);
+    const hash =await crypt.hash(req.body.password, salt);
+    clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address , phonee:req.body.phone ,Email:req.body.email  })
+    .then( async result => {
+            const salt= await crypt.genSalt(10);
+            const hash =await crypt.hash(req.body.password, salt);
+            result.password=hash;
+          req.session.user.password =hash;
+          req.session.user.address = req.body.Address;
+          
+       
+console.log(req.session.user.password)
+console.log(result.password)
+console.log(req.body.password)
 
+req.session.user=result;
+
+        res.redirect('/')
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}
+const search=async(req,res)=>{
+  let payload = req.body.payload.trim();
+  
+  try {
+    let searchResults = await product.find({
+      name: { $regex: new RegExp('^' + payload + '.*', 'i') },
+    }).exec();
+
+    if (searchResults) {
+      // Limit search results to 10
+      searchResults = searchResults.slice(0,3);
+      res.send({ payload: searchResults });
+    } else {
+      // Handle the case when searchResults is undefined
+      res.send({ payload: [] });
+    }
+  } catch (error) {
+    console.log('Error in search:', error);
+    res.send({ payload: [] });
+  }
+  console.log(payload)
+
+}
 
 
 module.exports = {
@@ -397,5 +443,6 @@ module.exports = {
     chechemlogin,
     buyOrder,
     prodpage,
+    edituser
     
 };

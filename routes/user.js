@@ -22,7 +22,7 @@ const User = require("../controllers/usercontrol");
    // router.post('/checkem',User.chechem)
    router.post('/checkemlogin',User.chechemlogin)
 
-
+   router.post('/edit',User.edituser)
 
    router.post('/signup',User.validate,User.AddUser)
 
