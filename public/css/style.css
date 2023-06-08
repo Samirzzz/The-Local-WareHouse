@@ -164,6 +164,30 @@ section{
     text-align: center;
     flex-basis: calc(30% - -20px); /* Adjust the width and gap value */
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 10px;
+  background-color: #f2f2f2;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.page-link:hover,
+.page-link.active {
+  background-color: #333;
+  color: #fff;}
+  @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
 .product-box.img {
   max-height: 300px;
   max-width: 300px;
@@ -596,30 +620,7 @@ table, th, td {
   background:black;
 }
  /* yewgfiuhq */
-.pag {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
-.page-link {
-  display: inline-block;
-  padding: 10px;
-  background-color: #f2f2f2;
-  color: #333;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-.page-link:hover,
-.page-link.active {
-  background-color: #333;
-  color: #fff;}
-  @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
-@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
 
 
 #wrap {
