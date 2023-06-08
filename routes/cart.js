@@ -43,7 +43,6 @@ router.use((req, res, next) => {
         });
     }
   });
-  // router.post('/checkout', user1.create_checkout_session);
 
   router.post('/buyOrder', user1.buyOrder);
   router.post('/:productId', user1.addToCart);
