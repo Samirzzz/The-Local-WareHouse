@@ -8,13 +8,82 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
+<style>
+  
+    div.ss{
+      
+   
+    margin-bottom:10px ;
+    margin-left: 64%;
+    margin-top: 10px;
+    color: #000;
+    }
+    
+    </style>
 <body>
- 
+    <script>
+        const product = require('../models/productschema');
+   const table=document.querySelectorAll('.search');
+   
+   
+   
+   function sendData(e) {
+       const searchResults = document.getElementById("searchResults");
+       let match = e.value.match(/^[a-zA-Z]*/);
+       let match2 = e.value.match(/^\s*/);
+       
+       if (match2&&match2[0] == e.value) {
+           searchResults.innerHTML = '';
+           return;
+           
+       }
+       if (match&&match[0] == e.value) {
+           fetch('/search', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({ payload: e.value })
+           }).then(res => res.json())
+           .then(data => {
+               let payload = data.payload;
+               searchResults.innerHTML = '';
+               if (payload.length < 1) {
+                   searchResults.innerHTML = '<p>Sorry. Nothing Found</p>';
+                   return;
+               }
+               payload.forEach(async (product, index) => {
+                   if (index > 0) searchResults.innerHTML += '<hr>';
+                   
+                    const productLink = document.createElement('a');
+                    productLink.innerHTML = `<p>${product.name}</p>`;
+                   productLink.href = `/product/product-details/${product._id}`;
+               
+               
+                   searchResults.appendChild(productLink);
+                   searchResults.innerHTML += `<p>${product.price}"$"</p>`;
+             });
+   
+   
+   
+           });
+           return;
+       }
+       searchResults.innerHTML = '';
+   }
+   
+    </script>
    <%- include("./partials/navbar.ejs") %>
   
-    <br>
-    <br>
+   
     <!--shop-->
+    <section class="shop container">
+        <div id="wrap">
+          <form action="" autocomplete="on">
+          <input id="search" onkeyup=" return sendData(this)" name="search" type="text" placeholder="What're we looking for ?"><input id="search_submit" value="Rechercher" type="submit">
+          </form>
+        </div>
+      <div id="searchResults" class="ss"></div>
         <section class="shop container">
                 <div class="filter">
                     <a href="/product"><button class="all">All</button></a>

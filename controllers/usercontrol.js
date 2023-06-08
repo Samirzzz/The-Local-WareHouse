@@ -380,7 +380,53 @@ const buyOrder= async function(req,res) {
       };
 
 
+const edituser=async(req,res)=>{
+  const salt= await crypt.genSalt(10);
+    const hash =await crypt.hash(req.body.password, salt);
+    clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address , phonee:req.body.phone ,Email:req.body.email  })
+    .then( async result => {
+            const salt= await crypt.genSalt(10);
+            const hash =await crypt.hash(req.body.password, salt);
+            result.password=hash;
+          req.session.user.password =hash;
+          req.session.user.address = req.body.Address;
+          
+       
+console.log(req.session.user.password)
+console.log(result.password)
+console.log(req.body.password)
 
+req.session.user=result;
+
+        res.redirect('/')
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}
+const search=async(req,res)=>{
+  let payload = req.body.payload.trim();
+  
+  try {
+    let searchResults = await product.find({
+      name: { $regex: new RegExp('^' + payload + '.*', 'i') },
+    }).exec();
+
+    if (searchResults) {
+      // Limit search results to 10
+      searchResults = searchResults.slice(0,3);
+      res.send({ payload: searchResults });
+    } else {
+      // Handle the case when searchResults is undefined
+      res.send({ payload: [] });
+    }
+  } catch (error) {
+    console.log('Error in search:', error);
+    res.send({ payload: [] });
+  }
+  console.log(payload)
+
+}
 
 
 module.exports = {
@@ -397,5 +443,6 @@ module.exports = {
     chechemlogin,
     buyOrder,
     prodpage,
+    edituser
     
 };

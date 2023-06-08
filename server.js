@@ -51,30 +51,7 @@ app.get('/profile', (req, res) => {
 });
 
 
-app.post('/edit',async (req,res)=>{
-    const salt= await crypt.genSalt(10);
-    const hash =await crypt.hash(req.body.password, salt);
-    clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address , phonee:req.body.phone ,Email:req.body.email  })
-    .then( async result => {
-            const salt= await crypt.genSalt(10);
-            const hash =await crypt.hash(req.body.password, salt);
-            result.password=hash;
-          req.session.user.password =hash;
-          req.session.user.address = req.body.Address;
-          
-       
-console.log(req.session.user.password)
-console.log(result.password)
-console.log(req.body.password)
 
-req.session.user=result;
-
-        res.redirect('/')
-    })
-    .catch(err => {
-        console.log(err);
-    });
-})
 app.post('/search', async (req, res) => {
     let payload = req.body.payload.trim();
   
