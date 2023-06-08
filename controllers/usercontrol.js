@@ -48,10 +48,7 @@ const validate=
     // .withMessage('field is required'),
    
     
-    check('Email')
-    .isEmail()
-    .withMessage('Invalid email address'),
-    
+  
     check('password')
     .isLength({ min: 4 })
     .withMessage('Password must be at least 4 characters long'),
