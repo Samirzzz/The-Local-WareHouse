@@ -3,10 +3,10 @@ const Product = require('../models/productschema');
 const Wishlist = require('../models/wishlist');
 const Order = require('../models/orderschema');
 const UserPayments = require('../models/purchaseSchema');
-require('dotenv').config();
 const Stripe = require('stripe');
-
-const stripe = new Stripe(process.env.stripeSecretKey);
+ StripePublishableKey="pk_test_51NGRj4C0y9Z2PZln6aZHDyNDxjEi9kKeZY57q8KKA3BhJ7dNmPPC5xkS7WmxXICHl1OPMpeaepQ8OEpb9yOWYsI000bkPnqsPl"
+const StripeSecretKey="sk_test_51NGRj4C0y9Z2PZlnB3umXOLHm3ZU3DvsMZ0IZ2MGpl0UU4P1WqQx1eFr20KQ4qyDb7LeBXTwckkKr72vPGZFcNDl00EyZARZCO"
+const stripe = new Stripe(StripeSecretKey);
 const crypt = require("bcrypt");
 const path = require('path');
 const {check,validationResult}=require('express-validator');
