@@ -707,3 +707,16 @@ input[type="submit"] {
 input[type="submit"]:hover {
   opacity: 0.8;
 }
+
+@media (max-width: 1080px) {
+}
+
+/* For Medium Devices */
+@media (max-width: 774px) {
+}
+@media (max-width: 560px) {
+}
+
+/* For Small Devices */
+@media (max-width: 360px) {
+}
