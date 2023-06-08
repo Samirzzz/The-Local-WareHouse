@@ -1,11 +1,25 @@
 const clients = require('../models/clientschema');
+const UserPayments = require('../models/purchaseSchema');
+
 const express = require('express');
 const app = express();
 
 const GetAllUsers = (req, res) => {
-    clients.find()
+ 
+ 
+  clients.find()
       .then(result => {
         res.render('view&edituser', { employees: result, user: (req.session.user === undefined ? "" : req.session.user) });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  const GetAllUsersdash = (req, res) => {
+    var order=UserPayments.find;
+    clients.find()
+      .then(result => {
+        res.render('admin', { employees: result, ord: order, user: (req.session.user === undefined ? "" : req.session.user) });
       })
       .catch(err => {
         console.log(err);
@@ -94,5 +108,6 @@ const GetAllUsers = (req, res) => {
     DeleteUser,
     AddUseradmin,
     edituser,
-    editing
+    editing,
+    GetAllUsersdash
 };
