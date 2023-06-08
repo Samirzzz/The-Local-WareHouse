@@ -22,7 +22,7 @@
                     <a href="/product/Tshirts"><button class="Tshirts">Tshirts</button></a>
                     <a href="/product/Hoodies"><button class="Hoodies">Hoodies</button></a>
                 </div>
-                <h2 class="section-title">Tshirts</h2> 
+                <h2 class="section-title">Cargos</h2> 
                 <!--content-->
                 <% if (product.length> 0) { %>
                     <div class="shop-content">
@@ -32,7 +32,7 @@
                                     <img src="/images/<%= prod.image %>" alt="" class="img"></a>
                                 <h2 class="product-title"><%= prod.name %></h2>
                                 <span class="price"><%= prod.price %>$</span><br>
-                                <span style="color: red; font-style: italic;">Hurry, only <%=prod.Quantity%> left!</span>
+                                <%if(prod.Quantity<'5'){ %> <span style="color: red; font-style: italic;">Hurry, only <%=prod.Quantity%> left!</span><%}%>
                                 <div class="add-cart">
                                     <i class='bx bxs-shopping-bag-alt'  onclick="addToCart('<%= prod._id %>')"></i>
                                     <i class="bx bx-heart" onclick="addToWishlist('<%= prod._id %>')"></i>
@@ -48,7 +48,10 @@
                 <% } else { %>
                     <p>There are no products to display...</p>
                 <% } %>
-
+   <br>
+   <br>
+   <br>
+   
    
 
     </section>
