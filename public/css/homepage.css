@@ -296,6 +296,8 @@
   
   #feature .fe-box
   {
+  margin-top: 70px;
+  margin-bottom: 50px;
   width: 150px;
   height: 150px;
   text-align: center;
