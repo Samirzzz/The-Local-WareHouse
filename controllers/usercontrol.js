@@ -356,7 +356,7 @@ const buyOrder= async function(req,res) {
           payment_method_types: ['card'],
           line_items: line_items,
           mode: 'payment',
-          success_url: `http://localhost:3000/cart?email=${user.Email}`,
+          success_url: `http://localhost:3000/cart`,
           cancel_url: `http://localhost:3000/error/email=${user.Email}`,
         });
         console.log(session.url);
