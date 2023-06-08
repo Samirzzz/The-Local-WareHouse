@@ -4,8 +4,9 @@ const { Router } = express;
 const router = Router();
 require("dotenv").config();
 const Stripe = require('stripe');
-const stripe = new Stripe(process.env.StripeSecretKey);
-
+ StripePublishableKey="pk_test_51NGRj4C0y9Z2PZln6aZHDyNDxjEi9kKeZY57q8KKA3BhJ7dNmPPC5xkS7WmxXICHl1OPMpeaepQ8OEpb9yOWYsI000bkPnqsPl"
+const StripeSecretKey="sk_test_51NGRj4C0y9Z2PZlnB3umXOLHm3ZU3DvsMZ0IZ2MGpl0UU4P1WqQx1eFr20KQ4qyDb7LeBXTwckkKr72vPGZFcNDl00EyZARZCO"
+const stripe = new Stripe(StripeSecretKey);
 const Order = require('../models/orderschema');
 const product = require('../models/productschema');
 const user1 = require("../controllers/usercontrol");
