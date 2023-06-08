@@ -340,7 +340,8 @@
   margin-right: 40px;
   }
 
-  @media (max-width: 1080px) {
+  @media (max-width: 1080px)
+   {
   }
   
   /* For Medium Devices */
@@ -350,5 +351,11 @@
   }
   
   /* For Small Devices */
-  @media (max-width: 360px) {
+  @media (max-width: 360px)
+  {
+    #hero
+    {
+      height: 20vh;
+      width: 100%;
+    }
   }
