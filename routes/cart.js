@@ -3,8 +3,8 @@ const express = require('express');
 const { Router } = express;
 const router = Router();
 require("dotenv").config();
-// const Stripe = require('stripe');
-// const stripe = new Stripe(process.env.StripeSecretKey);
+const Stripe = require('stripe');
+const stripe = new Stripe(process.env.StripeSecretKey);
 
 const Order = require('../models/orderschema');
 const product = require('../models/productschema');
@@ -43,12 +43,12 @@ router.use((req, res, next) => {
         });
     }
   });
+  // router.post('/checkout', user1.create_checkout_session);
 
   router.post('/buyOrder', user1.buyOrder);
   router.post('/:productId', user1.addToCart);
   router.delete('/:productId', user1.removeFromCart);
   router.put('/:productId', user1.editCart);
-  // router.post('/checkout', user1.create_checkout_session);
 
   router.get('/message', function(req, res, next) {
     res.render('message', { user: (req.session.user === undefined ? "" : req.session.user) });
