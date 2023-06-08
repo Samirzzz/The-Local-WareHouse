@@ -2,8 +2,9 @@
 
 nav.head{
 background: black;
-height: 50px;
+height: 60px;
 margin-top: 0;
+position: sticky;
 }
 
 nav.head ul{
@@ -11,7 +12,8 @@ float:right;
 margin-right: 20px;
 }
 
-nav.head ul li{
+nav.head ul li
+{
 font-size: 14px;
 border-color: #ffffff;
 display:inline-block;
@@ -25,7 +27,9 @@ font-size: 20px;
 }
 
 .head ul li a:hover{
-padding-left: 1px;
+background-color: #000000;
+
+
 }
 
 *{
@@ -38,6 +42,10 @@ padding-left: 1px;
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+
+
+
 
 .sidebar {
   position: fixed;
