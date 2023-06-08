@@ -238,7 +238,7 @@
     position: absolute;
    font-family: 'Righteous', cursive;
    font-size:60px; 
-   top:28%;
+   top:130%;
    left: 70%;
    color: #000000;
    font-style: italic;
@@ -254,7 +254,7 @@
     position: absolute;
    font-family: 'Righteous', cursive;
    font-size:60px; 
-   top:9%;
+   top:25%;
    left: 18%;
    color: #000000;
    font-style: italic;
@@ -267,7 +267,7 @@
     height: auto;
     z-index: 6;
     position: absolute;
-    top: 16%;
+    top: 58%;
     left: 22%;
   font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(0, 0, 0);
