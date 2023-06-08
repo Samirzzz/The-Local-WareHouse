@@ -9,27 +9,16 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <style>
-    input.sb {
-        width: 410px;
-        border: 1px solid;
-    border-radius: 5px;
-    padding: 10px;
-    padding-right: 60px;
-    margin-bottom:10px ;
-    margin-left: 75%;
-    margin-top: 1%;
-    box-shadow: 2px 2px 2px #000;        
-        
-        
-    }
+  
     div.ss{
       
    
     margin-bottom:10px ;
-    margin-left: 75%;
-    margin-top: 1%;
+    margin-left: 64%;
+    margin-top: 10px;
     color: #000;
     }
+    
     </style>
 
 
@@ -93,7 +82,11 @@ function sendData(e) {
         <!--shop-->
         
         <section class="shop container">
-            <input type="text" id="search-box" class="sb" placeholder="search" onkeyup=" return sendData(this)"><br><br>
+          <div id="wrap">
+            <form action="" autocomplete="on">
+            <input id="search" onkeyup=" return sendData(this)" name="search" type="text" placeholder="What're we looking for ?"><input id="search_submit" value="Rechercher" type="submit">
+            </form>
+          </div>
         <div id="searchResults" class="ss"></div>
                 <div class="filter">
                     <a href="/product"><button class="all">All</button></a>
