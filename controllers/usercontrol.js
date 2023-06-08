@@ -314,69 +314,7 @@ const editCart = async function (req, res) {
     console.error('Error removing product from cart njnj:', error);
     res.sendStatus(500);}
   };
-  const create_checkout_session = async (req, res) => {
-    const query = { name: req.body.boody };
-    console.log(req.body.boody);
-    const result = await Product.findOne(query);
-    const price = req.body.bakry;
-  const userrr = req.session.user;
-  console.log(user);
   
-  if (!result) {
-    throw new Error("Product Not Found");
-  }
-  console.log(result);
-  const email=req.session.user.Email;
-  try {   
-
-    const user = { "email":email };
-
-      let list=await Order.findOne(user);
-      if(!list || list.items.length==0){
-        throw new Error("Your Cart is Empty!");
-      }
-
-     let userPayments=await UserPayments.findOne(user);
-     if(!userPayments){
-     userPayments=await UserPayments.create({orders:[],email:email})
-    }
-    const items=list.items.map(item=>{return{amount:item.amount,productId:item.productId,internalId:item.internalId}});
-    console.log(items);
-    userPayments.orders.push({items:items});
-    
-    userPayments.save();
-    list.items=[];
-    list.save();
-    res.send(list);
-
-  } catch (error) {
-    // console.error('Error adding product to cart:', error);
-    throw error ;
-  } 
-  
-
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: [
-      {
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: result.name,
-          },
-          unit_amount: price * 100,
-        },
-        quantity: 1,
-      },
-    ],
-    mode: 'payment',
-    success_url: `http://localhost:3000/cart/message?email=${user.Email}`,
-    cancel_url: `http://localhost:3000/error/email=${user.Email}`,
-  });
-
-  res.redirect(303, session.url);
-  // console.log(session.url);
-};
 const buyOrder= async function(req,res) {
   const email=req.session.user.Email;
       try {   
@@ -459,6 +397,5 @@ module.exports = {
     chechemlogin,
     buyOrder,
     prodpage,
-    create_checkout_session
     
 };
