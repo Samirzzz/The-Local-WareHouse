@@ -3,11 +3,15 @@ const Product = require('../models/productschema');
 const Wishlist = require('../models/wishlist');
 const Order = require('../models/orderschema');
 const UserPayments = require('../models/purchaseSchema');
+require('dotenv').config();
+const Stripe = require('stripe');
 
+const stripe = new Stripe(process.env.stripeSecretKey);
 const crypt = require("bcrypt");
 const path = require('path');
 const {check,validationResult}=require('express-validator');
 const { request } = require('http');
+const { CLIENT_RENEG_LIMIT } = require('tls');
 
 const chechem = (req,res)=>{
     var query = { "Email": req.body.Email };
@@ -304,16 +308,17 @@ const editCart = async function (req, res) {
     order.items[index].amount=req.body.amount??0;
     // Save the updated order
     await order.save();
-
+    
     res.send(order);
   } catch (error) {
     console.error('Error removing product from cart njnj:', error);
     res.sendStatus(500);}
-};
-
+  };
+  
 const buyOrder= async function(req,res) {
   const email=req.session.user.Email;
-      try {      
+      try {   
+
         const user = { "email":email };
 
           let list=await Order.findOne(user);
@@ -332,8 +337,31 @@ const buyOrder= async function(req,res) {
         userPayments.save();
         list.items=[];
         list.save();
-        res.send(list);
+        // res.send(list);
+        const products = await Product.find();
+        const line_items=items.map(item=>{
+          const product =products.find(p=>p.id==item.productId);
+          return{
 
+           quantity:item.amount,
+           price_data: {
+            currency: 'usd',
+            product_data: {
+              name: product?.name??"product name",
+            },
+            unit_amount: product?.price*100??0
+          }
+          }});
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ['card'],
+          line_items: line_items,
+          mode: 'payment',
+          success_url: `http://localhost:3000/cart/message?email=${user.Email}`,
+          cancel_url: `http://localhost:3000/error/email=${user.Email}`,
+        });
+        console.log(session.url);
+
+        res.send({url:session.url});
       } catch (error) {
         // console.error('Error adding product to cart:', error);
         throw error ;
@@ -352,7 +380,53 @@ const buyOrder= async function(req,res) {
       };
 
 
+const edituser=async(req,res)=>{
+  const salt= await crypt.genSalt(10);
+    const hash =await crypt.hash(req.body.password, salt);
+    clients.findByIdAndUpdate(req.session.user._id, { password: hash,address:req.body.Address , phonee:req.body.phone ,Email:req.body.email  })
+    .then( async result => {
+            const salt= await crypt.genSalt(10);
+            const hash =await crypt.hash(req.body.password, salt);
+            result.password=hash;
+          req.session.user.password =hash;
+          req.session.user.address = req.body.Address;
+          
+       
+console.log(req.session.user.password)
+console.log(result.password)
+console.log(req.body.password)
 
+req.session.user=result;
+
+        res.redirect('/')
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}
+const search=async(req,res)=>{
+  let payload = req.body.payload.trim();
+  
+  try {
+    let searchResults = await product.find({
+      name: { $regex: new RegExp('^' + payload + '.*', 'i') },
+    }).exec();
+
+    if (searchResults) {
+      // Limit search results to 10
+      searchResults = searchResults.slice(0,3);
+      res.send({ payload: searchResults });
+    } else {
+      // Handle the case when searchResults is undefined
+      res.send({ payload: [] });
+    }
+  } catch (error) {
+    console.log('Error in search:', error);
+    res.send({ payload: [] });
+  }
+  console.log(payload)
+
+}
 
 
 module.exports = {
@@ -368,6 +442,7 @@ module.exports = {
     validatepass,
     chechemlogin,
     buyOrder,
-    prodpage
+    prodpage,
+    edituser
     
 };

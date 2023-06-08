@@ -2,6 +2,9 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const { Router } = express;
 const router = Router();
+require("dotenv").config();
+const Stripe = require('stripe');
+const stripe = new Stripe(process.env.StripeSecretKey);
 
 const Order = require('../models/orderschema');
 const product = require('../models/productschema');
@@ -49,5 +52,6 @@ router.use((req, res, next) => {
   router.get('/message', function(req, res, next) {
     res.render('message', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
+
 
 module.exports = router;

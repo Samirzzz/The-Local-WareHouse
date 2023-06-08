@@ -8,8 +8,72 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
+<style>
+  
+    div.ss{
+      
+   
+    margin-bottom:10px ;
+    margin-left: 64%;
+    margin-top: 10px;
+    color: #000;
+    }
+    
+    </style>
+
 <body>
- 
+ <script>
+     const product = require('../models/productschema');
+const table=document.querySelectorAll('.search');
+
+
+
+function sendData(e) {
+    const searchResults = document.getElementById("searchResults");
+    let match = e.value.match(/^[a-zA-Z]*/);
+    let match2 = e.value.match(/^\s*/);
+    
+    if (match2&&match2[0] == e.value) {
+        searchResults.innerHTML = '';
+        return;
+        
+    }
+    if (match&&match[0] == e.value) {
+        fetch('/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ payload: e.value })
+        }).then(res => res.json())
+        .then(data => {
+            let payload = data.payload;
+            searchResults.innerHTML = '';
+            if (payload.length < 1) {
+                searchResults.innerHTML = '<p>Sorry. Nothing Found</p>';
+                return;
+            }
+            payload.forEach(async (product, index) => {
+                if (index > 0) searchResults.innerHTML += '<hr>';
+                
+                 const productLink = document.createElement('a');
+                 productLink.innerHTML = `<p>${product.name}</p>`;
+                productLink.href = `/product/product-details/${product._id}`;
+            
+            
+                searchResults.appendChild(productLink);
+                searchResults.innerHTML += `<p>${product.price}"$"</p>`;
+          });
+
+
+
+        });
+        return;
+    }
+    searchResults.innerHTML = '';
+}
+
+ </script>
    <%- include("./partials/navbar.ejs") %>
   
    <br>
@@ -17,20 +81,28 @@
     
         <!--shop-->
         <section class="shop container">
+            <div id="wrap">
+                <form action="" autocomplete="on">
+                <input id="search" onkeyup=" return sendData(this)" name="search" type="text" placeholder="What're we looking for ?"><input id="search_submit" value="Rechercher" type="submit">
+                </form>
+                
+            </div>
+            <div id="searchResults" class="ss"></div>
                 <div class="filter">
                     <a href="/product"><button class="all">All</button></a>
                     <a href="/product/Cargos"><button class="cargos">Cargos </button></a>   
                     <a href="/product/Tshirts"><button class="Tshirts">Tshirts</button></a>
                     <a href="/product/Hoodies"><button class="Hoodies">Hoodies</button></a>
                 </div>
+                <br>
                 <h2 class="section-title">Hoodies</h2> 
                 <!--content-->
                 <% if (product.length> 0) { %>
                     <div class="shop-content">
                         <% product.forEach((prod, index) => { %>
                             <% if (prod.type==="Hoodies") { %>
-                            <div class="product-box">
-                                <img src="/images/<%= prod.image %>" alt="" class="img">
+                           <a href="/product/product-details/<%=prod._id%>" style="color:black;"> <div class="product-box">
+                                <img src="/images/<%= prod.image %>" alt="" class="img"></a>
                                 <h2 class="product-title"><%= prod.name %></h2>
                                 <span class="price"><%= prod.price %>$</span><br>
                                 <span style="color: red; font-style: italic;">Hurry, only <%=prod.Quantity%> left!</span>
@@ -38,40 +110,94 @@
                                     <i class='bx bxs-shopping-bag-alt'  onclick="addToCart('<%= prod._id %>')"></i>
                                     <i class="bx bx-heart" onclick="addToWishlist('<%= prod._id %>')"></i>
                                 </div>
+
                             </div>
                             <% if ((index + 1) % 3 === 0) { %>
-                                </div>
-                                <div class="shop-content">
-                            <% } %>
-                            <% } %>
+                            </div>
+                            <div class="shop-content">
+                        <% } %>
+                        <% } %>
+
                         <% }) %>
+
+                            
+<br>
+<br>
+<br>
+<br>
                     </div>
+                    <% const itemsPerPage = 3; %>
+                    <% const totalPages = Math.ceil(product.length / itemsPerPage); %>
+                    <% let currentPage = 1; %>
+                    <div class="pagination">
+                      <% for (let i = 1; i <= totalPages; i++) { %>
+                        <a href="/product?page=<%= i %>" class="page-link<%= currentPage === i ? ' active' : '' %>">
+                          <%= i %>
+                        </a>
+                      <% } %>
+                    </div>
+                
+
+
                 <% } else { %>
                     <p>There are no products to display...</p>
                 <% } %>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <div class="pagination">
-    <a href="#" class="prev">&laquo; Before</a>
-    <a href="#https://www.w3schools.com/" class="page active">1</a>
-    <a href="#" class="page">2</a>
-    <a href="#" class="page">3</a>
-    <a href="#" class="page">4</a>
-    <a href="#" class="page">5</a>
-    <a href="#" class="next">After &raquo;</a>
-    </div>
+                
+   
 
+
+
+<br>
+<br>
     </section>
-
-        <%- include("./partials/footer.ejs") %>
+      
         
        
 
     <script src="/js/main.js"></script>
-    
+    <script>
+        const pr = document.querySelectorAll('.product-box');
+            const itemsPerPage = 3;
+            const totalPages = Math.ceil(pr.length / itemsPerPage);
+            let currentPage = 1;
+      
+            showPage(currentPage);
+      
+            function showPage(page) {
+              const startIndex = (page - 1) * itemsPerPage;
+              const endIndex = startIndex + itemsPerPage;
+              pr.forEach((pr, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    pr.style.display = 'flex';
+                } else {
+                    pr.style.display = 'none';
+                }
+              });
+            }
+      
+            const pageLinks = document.querySelectorAll('.page-link');
+            pageLinks.forEach(pageLink => {
+              pageLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                const newPage = parseInt(event.target.textContent);
+                currentPage = newPage;
+                showPage(currentPage);
+                updatePagination();
+              });
+            });
+      
+            function updatePagination() {
+              const pageLinks = document.querySelectorAll('.page-link');
+              pageLinks.forEach(pageLink => {
+                if (parseInt(pageLink.textContent) === currentPage) {
+                  pageLink.classList.add('active');
+                } else {
+                  pageLink.classList.remove('active');
+                }
+              });
+            }
+          </script>
+        
 
     
 </body>
