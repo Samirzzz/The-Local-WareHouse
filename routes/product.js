@@ -53,26 +53,5 @@ router.get('/Cargos', (req, res) => {
 
 router.get('/product-details/:id', productt.prodpage);
 
-router.post('/search', async (req, res) => {
-  let payload = req.body.payload.trim();
-
-  try {
-    let searchResults = await product.find({
-      name: { $regex: new RegExp('^' + payload + '.*', 'i') },
-    }).exec();
-
-    if (searchResults) {
-      // Limit search results to 10
-      searchResults = searchResults.slice(0, 3);
-      res.send({ payload: searchResults });
-    } else {
-      // Handle the case when searchResults is undefined
-      res.send({ payload: [] });
-    }
-  } catch (error) {
-    console.log('Error in search:', error);
-    res.send({ payload: [] });
-  }
-});
 
 module.exports = router;
