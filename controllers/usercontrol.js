@@ -13,17 +13,17 @@ const { request } = require('http');
 const { CLIENT_RENEG_LIMIT } = require('tls');
 
 const chechem = (req,res)=>{
-    var query = { "Email": req.body.Email };
-    clients.find(query)
-      .then(result => {
-        if (!result) {
-              
-            res.send('not found');
+  var query = { "Email": req.body.Email };
+  clients.find(query)
+    .then(result => {
+      if (result.length>0) {
+            
+          res.send('taken');
+        }
+          else {
+              res.send('available');
           }
-            else {
-                res.send('available');
-            }
-        });
+      });
 
 
 
@@ -91,7 +91,7 @@ const AddUser = (req, res) => {
       .then(result => {
           if (result.length > 0 ) {
               
-              res.send('taken');
+              res.render('signup')
             }else if(!errors.isEmpty()){
            const alert=errors.array();
           res.render('signup',{
