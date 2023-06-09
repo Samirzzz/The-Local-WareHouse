@@ -1,8 +1,0 @@
-#.ENV
-PORT =3000
-HOST=localhost
-DATABASE_URL=https://cloud.mongodb.com/v2/645bf8e6a276a72ad8810a03#/clusters
-DB_NAME=project2
-DBlink="mongodb+srv://SBF2:SBF20@cluster0.ufxwb7t.mongodb.net/?retryWrites=true&w=majority"
-StripeSecretKey="sk_test_51NGRj4C0y9Z2PZlnB3umXOLHm3ZU3DvsMZ0IZ2MGpl0UU4P1WqQx1eFr20KQ4qyDb7LeBXTwckkKr72vPGZFcNDl00EyZARZCO"
-StripePublishableKey="pk_test_51NGRj4C0y9Z2PZln6aZHDyNDxjEi9kKeZY57q8KKA3BhJ7dNmPPC5xkS7WmxXICHl1OPMpeaepQ8OEpb9yOWYsI000bkPnqsPl"

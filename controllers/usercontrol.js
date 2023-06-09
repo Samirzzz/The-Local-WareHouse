@@ -4,8 +4,8 @@ const Wishlist = require('../models/wishlist');
 const Order = require('../models/orderschema');
 const UserPayments = require('../models/purchaseSchema');
 const Stripe = require('stripe');
-const StripeSecretKey="sk_test_51NGRj4C0y9Z2PZlnB3umXOLHm3ZU3DvsMZ0IZ2MGpl0UU4P1WqQx1eFr20KQ4qyDb7LeBXTwckkKr72vPGZFcNDl00EyZARZCO"
-const stripe = new Stripe(StripeSecretKey);
+require('dotenv').config();
+const stripe = new Stripe(process.env.StripeSecretKey);
 const crypt = require("bcrypt");
 const path = require('path');
 const {check,validationResult}=require('express-validator');
