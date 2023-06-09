@@ -4,7 +4,6 @@ const Wishlist = require('../models/wishlist');
 const Order = require('../models/orderschema');
 const UserPayments = require('../models/purchaseSchema');
 const Stripe = require('stripe');
- StripePublishableKey="pk_test_51NGRj4C0y9Z2PZln6aZHDyNDxjEi9kKeZY57q8KKA3BhJ7dNmPPC5xkS7WmxXICHl1OPMpeaepQ8OEpb9yOWYsI000bkPnqsPl"
 const StripeSecretKey="sk_test_51NGRj4C0y9Z2PZlnB3umXOLHm3ZU3DvsMZ0IZ2MGpl0UU4P1WqQx1eFr20KQ4qyDb7LeBXTwckkKr72vPGZFcNDl00EyZARZCO"
 const stripe = new Stripe(StripeSecretKey);
 const crypt = require("bcrypt");
@@ -120,31 +119,32 @@ const AddUser = (req, res) => {
   }
   
 
-const logs = async function  (req, res) {
+  const logs = async function (req, res) {
     const user = { "Email": req.body.Email };
     const errors = validationResult(req);
-    clients.findOne(user).then(async result=>{
-        if(!errors.isEmpty()){
-         const alert=errors.array();
-        res.render('login',{
-         alert
-        })
-      }
-      req.session.user=result;
-      const valid= await crypt.compare(req.body.password,result.password);
-      if(valid==true){
-          res.redirect('/');
-      }
-      else{
-        res.redirect('login');
-} 
-      
-    })
-        .catch(err => {
-            console.log(err);
+    clients.findOne(user).then(async result => {
+      if (!errors.isEmpty()) {
+        const alert = errors.array();
+        res.render('login', {
+          alert
         });
-};
-
+      } else {
+        const valid = await crypt.compare(req.body.password, result.password);
+        if (valid) {
+          req.session.user = result;
+          res.redirect('/');
+        } else {
+          const alert = [{ msg: 'Wrong password' }]; // Create an alert for wrong password
+          res.render('login', {
+            alert
+          });
+        }
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+  };
+  
     // Function to add a product to the wishlist
     const addToWishlist = async function (req, res) {
       const productId = req.params.productId;
@@ -360,8 +360,8 @@ const buyOrder= async function(req,res) {
 
         res.send({url:session.url});
       } catch (error) {
-        // console.error('Error adding product to cart:', error);
-        throw error ;
+        console.error('Error adding product to cart:', error);
+        // throw error ;
       }
     }
 
